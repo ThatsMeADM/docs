@@ -1,127 +1,104 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
-  "colors": {
-    "primary": "#FFE2AF",
-    "light": "#F9F5F2",
-    "dark": "#1E2025"
-  },
+  "name": "That's Me Docs",
+  "colors": { "primary": "#D4A017", "light": "#F9F5F2", "dark": "#1E2025" },
   "favicon": "/favicon.svg",
+  "styles": ["/styles.css"],
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Introdução",
         "groups": [
           {
-            "group": "Getting started",
+            "group": " ",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "introducao/bem-vindo-rewardtech",
+              "introducao/missao-thats-me",
+              "introducao/faq",
+              "introducao/3d-e-ar"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Funcionalidades",
         "groups": [
           {
-            "group": "API documentation",
+            "group": " ",
             "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "funcionalidades/mural-de-conquistas",
+              "funcionalidades/receber-visualizar-compartilhar",
+              "funcionalidades/ecossistema-social",
+              "funcionalidades/one-page-certificate"
             ]
           }
         ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
+      },
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "tab": "Para emissores",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "para-emissores/loja-e-creditos",
+              "para-emissores/criar-evento",
+              "para-emissores/emitir-e-acompanhar-conquistas",
+              "para-emissores/administradores",
+              "para-emissores/verificacao-e-seguranca"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrações",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "integracoes/linkedin",
+              "integracoes/redes-sociais-e-email",
+              "integracoes/api-em-breve"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Casos de Uso",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "casos-de-uso/corporativo-e-rh",
+              "casos-de-uso/educacao-e-cursos",
+              "casos-de-uso/eventos-esportivos-e-e-esportivos",
+              "casos-de-uso/causas-sociais-e-ongs",
+              "casos-de-uso/comunidades-e-influencia",
+              "casos-de-uso/premiacoes-b2b-e-certificacoes"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Glossário",
+        "groups": [
+          { "group": " ", "pages": ["glossario"] }
+        ]
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
+    ]
+  },
+  "logo": { "light": "/logo/light.svg", "dark": "/logo/dark.svg" },
+  "navbar": {
+    "links": [{ "label": "Suporte", "href": "mailto:suporte@thatsme.com.br" }]
   },
   "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+    "options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "instagram": "https://www.instagram.com/app.thatsme/",
+      "linkedin": "https://www.linkedin.com/company/that-sme/",
+      "website": "https://thatsme.com.br/"
     }
   }
 }
