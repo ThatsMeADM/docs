@@ -1,0 +1,104 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "That's Me Docs",
+  "colors": { "primary": "#D4A017", "light": "#F9F5F2", "dark": "#1E2025" },
+  "favicon": "/favicon.svg",
+  "styles": ["/styles.css"],
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Introdução",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "introducao/bem-vindo-rewardtech",
+              "introducao/missao-thats-me",
+              "introducao/faq",
+              "introducao/3d-e-ar"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Funcionalidades",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "funcionalidades/mural-de-conquistas",
+              "funcionalidades/receber-visualizar-compartilhar",
+              "funcionalidades/ecossistema-social",
+              "funcionalidades/one-page-certificate"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Para emissores",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "para-emissores/loja-e-creditos",
+              "para-emissores/criar-evento",
+              "para-emissores/emitir-e-acompanhar-conquistas",
+              "para-emissores/administradores",
+              "para-emissores/verificacao-e-seguranca"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrações",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "integracoes/linkedin",
+              "integracoes/redes-sociais-e-email",
+              "integracoes/api-em-breve"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Casos de Uso",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "casos-de-uso/corporativo-e-rh",
+              "casos-de-uso/educacao-e-cursos",
+              "casos-de-uso/eventos-esportivos-e-e-esportivos",
+              "casos-de-uso/causas-sociais-e-ongs",
+              "casos-de-uso/comunidades-e-influencia",
+              "casos-de-uso/premiacoes-b2b-e-certificacoes"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Glossário",
+        "groups": [
+          { "group": " ", "pages": ["glossario"] }
+        ]
+      }
+    ]
+  },
+  "logo": { "light": "/logo/light.svg", "dark": "/logo/dark.svg" },
+  "navbar": {
+    "links": [{ "label": "Suporte", "href": "mailto:suporte@thatsme.com.br" }]
+  },
+  "contextual": {
+    "options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"]
+  },
+  "footer": {
+    "socials": {
+      "instagram": "https://www.instagram.com/app.thatsme/",
+      "linkedin": "https://www.linkedin.com/company/that-sme/",
+      "website": "https://thatsme.com.br/"
+    }
+  }
+}
