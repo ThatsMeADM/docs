@@ -41,7 +41,9 @@
           {
             "group": " ",
             "pages": [
-              "para-emissores/loja-e-creditos",
+              "para-emissores/loja",
+              "para-emissores/galeria-de-tms",
+              "para-emissores/créditos",
               "para-emissores/criar-evento",
               "para-emissores/emitir-e-acompanhar-conquistas",
               "para-emissores/administradores",
