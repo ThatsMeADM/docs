@@ -1,4 +1,133 @@
 ---
 title: "Glossário"
-description: "Resumo curto do conteúdo da página"
+description: "Conheça os principais termos da plataforma That’s Me, organizados por tema para consulta rápida."
+---
+
+> **Como usar:** navegue pelas seções temáticas abaixo. Os termos aparecem em **negrito** seguidos de uma definição direta.
+
+## Fundamentos da plataforma
+
+- **Plataforma** — Serviço digital que centraliza a criação, emissão, exibição e compartilhamento de conquistas e certificados.
+- **Conquista** — Registro de um reconhecimento (vitória, mérito, participação, meta atingida etc.) emitido por um **Emissor**, com dados de data, local e motivo.
+- **Reconhecimento** — Ato de valorizar formalmente alguém por um feito; na That’s Me, vira uma **Conquista**acompanhada de **Certificado Digital** e **TM 3D**.
+- **Certificado Digital** — Página dedicada e verificável da conquista ("Página da Conquista") com dados do evento, emissor, motivo, TM 3D e botões de AR/compartilhamento.
+- **Experiência Digital** — Conjunto de interações do usuário com a conquista: visualização 3D/WebGL, AR nativa, página dedicada, feed social e metadados de compartilhamento.
+- **Validação** — Processo técnico e operacional que garante autenticidade (selo de verificação de emissor/KYB, logs, IDs únicos e checagens antifraude).
+- **ID da Conquista** — Identificador único e rastreável usado para verificação e auditoria.
+- **Link único (público/verificável)** — URL da Página da Conquista com metadados sociais (Open Graph/Twitter Cards) para preview rico.
+
+---
+
+## Usuários
+
+- **Emissor** — Pessoa/empresa que cria **Eventos**, escolhe **TMs** e emite **Conquistas**.
+- **Administrador** — Membro com permissões de gestão (eventos, emissões, TMs e créditos). Todas as ações são logadas para **Auditoria**.
+- **Membro / Usuário comum** — Quem recebe, guarda e compartilha conquistas; mantém um **Mural de Conquistas**.
+
+---
+
+## Objetos e conteúdos do reconhecimento
+
+- **TM (Trophy Model)** — Troféu/medalha digital em 3D que representa visualmente a conquista.
+- **TM Essencial** — TM configurável via self‑service (cores, formas, ícones, textos); primeira versão liberada após revisão técnica.
+- **TM Exclusivo** — TM sob medida a partir de briefing; inclui primeira entrega em até 5 dias úteis e 2 revisões.
+- **Importar Modelo** — Função para enviar um 3D próprio (.zip com .glb/.fbx/texturas). Passa por integração técnica antes de uso.
+- **Configurar TM** — Personalização de aparência (materiais, cores, efeitos) quando disponível no Essencial.
+- **Jornada do Herói** — Texto do emissor que explica o motivo/ contexto do reconhecimento.
+
+---
+
+## Fluxos e operações
+
+- **Evento** — Ocasião criada pelo emissor (nome, categoria, datas, localidade) que agrupa TMs e emissões.
+- **TMs e Emissões (do Evento)** — Tela para vincular TMs ao evento e iniciar premiação.
+- **Emissão** — Geração de certificados: informar **Motivo**, adicionar ganhadores (e‑mail único ou CSV), revisar e enviar.
+- **Motivo da Conquista** — Campo descritivo e flexível (ex.: "1º lugar", "Top 3 vendas Q2", "Contribuição Pro Bono").
+- **Importação CSV** — Adição em massa de ganhadores via arquivo .csv (cada e‑mail = 1 emissão).
+- **Painel de Emissões** — Lista de emissões do evento com TM usado, motivo, e‑mail e situação (Aceita, Pendente, Recusada).
+- **Prova Pronta** — Marco do fluxo de TM (em Meus Pedidos) indicando versão para aprovação/aceite técnico.
+- **Finalizar Evento** — Trava edições e novas emissões daquele evento.
+
+---
+
+## Visualização 3D e AR
+
+- **3D **— Modelo digital interativo.
+- **AR **— Realidade Aumentada (sigla inspirada por Augmented Reality)
+- **Visualização 3D (WebGL)** — Renderização interativa do TM no navegador (atualmente via Sketchfab incorporado).
+- **Ver em AR** — Abre a visualização nativa do sistema para colocar o TM no mundo real (iOS: Quick Look/.usdz; Android: ARCore/.glb), sem app extra.
+- **Requisitos de AR** — iPhone 6S\+/iPad 5ª gen com iOS 12\+ ou Android 8.0\+ com ARCore 1.9\+.
+- **Tela Cheia** — Modo de visualização do TM que prioriza imersão durante apreciação/compartilhamento.
+
+---
+
+## Segurança, verificação e conformidade
+
+- **KYB (Know Your Business)** — Processo de verificação de emissores para aumentar credibilidade do ecossistema.
+- **Selo de Verificação** — Indica emissor autenticado/validado.
+- **Antifraude** — Checagens automáticas e manuais para detectar uso indevido; inclui **Denunciar** pela comunidade.
+- **Criptografia & Autenticação** — Proteções técnicas de dados e contas (inclui suporte a 2FA quando aplicável).
+- **Logs de Ação (Admin)** — Registro rastreável de atividades administrativas, disponível para auditoria.
+- **LGPD & Privacidade** — Conformidade com a lei; controle de visibilidade (perfil e conquistas), relatório e exclusão de dados mediante solicitação.
+
+---
+
+## Social e integrações
+
+- **Mural de Conquistas** — Perfil do usuário com todas as conquistas organizadas por data; permite filtrar, ajustar privacidade e compartilhar.
+- **Ecossistema Social (Feed)** — Timeline de conquistas públicas em tempo real; permite curtir e copiar link.
+- **Conexões/Seguidores** — Acompanhe membros e emissores; conteúdos aparecem com prioridade no feed.
+- **Notificações** — Área de interações (novos seguidores, conquistas recebidas, curtidas).
+- **Compartilhar** — Botões nativos para LinkedIn (Add ao Perfil), WhatsApp, X/Twitter, Pinterest, E‑mail e copiar link.
+- **Metadados Sociais** — Informações (og:title, og:description, imagem do TM) que geram o cartão/preview ao postar links.
+- **Integração com LinkedIn** — Preenche automaticamente o formulário de “Licenças e Certificados” com dados da conquista.
+- **Página da Conquista (Certificado em Página Única)** — Link público permanente da conquista com TM 3D, AR e contexto do evento.
+
+---
+
+## Loja, ativos e créditos
+
+- **Loja de TMs** — Aquisição de TMs (Essencial, Exclusivo ou Importar Modelo) e abertura de pedidos.
+- **Meus Pedidos** — Acompanhamento dos projetos de TMs (Pedido Recebido → Em Produção → Prova Pronta → Concluído).
+- **Galeria de TMs** — Repositório do emissor; visualizar, renomear, descrever, aceitar TMs novos ou **Solicitar Revisão** (para Exclusivo ou problemas técnicos).
+- **Créditos** — Moeda interna usada somente para **Emissões** (cada certificado enviado consome 1 crédito).
+- **Saldo de Créditos** — Quantidade disponível para novas emissões.
+- **Pacotes de Créditos** — Opções progressivas de volume com desconto por unidade.
+
+---
+
+## Métricas, estratégia e termos de valor
+
+- **Engajamento** — Interação gerada por conquistas (curtidas, compartilhamentos, alcance orgânico, adesão a programas).
+- **Microvitórias** — Resultados parciais celebrados para reforçar motivação contínua.
+- **Employer Branding** — Reforço da marca empregadora por meio de conquistas compartilhadas e verificáveis.
+- **Gamificação** — Uso de desafios, metas e recompensas digitais para estimular participação.
+
+---
+
+## Tecnologias e arquivos
+
+- **Sketchfab** — Serviço de incorporação/visualização 3D usado atualmente na plataforma.
+- **WebGL** — Padrão web para gráficos 3D no navegador.
+- **ARCore / Quick Look** — Tecnologias nativas de AR para Android e iOS, respectivamente.
+- **.glb / .fbx / texturas** — Formatos aceitos para importação de modelos 3D.
+- **.usdz** — Formato otimizado para AR no iOS (Quick Look).
+- **Open Graph / Twitter Cards** — Esquemas de metadados usados para previews sociais.
+
+---
+
+## Ações de confiança da comunidade
+
+- **Denunciar** — Botão presente na visualização da conquista para reportar suspeitas; alimenta nosso processo antifraude.
+- **Privacidade (perfil/conquista)** — Controle de visibilidade público/privado por perfil e individualmente por conquista.
+
+---
+
+## Referências cruzadas
+
+- **Página da Conquista** ↔ **Certificado Digital**, **Metadados Sociais**, **Ver em AR**
+- **Evento** ↔ **TMs e Emissões**, **Painel de Emissões**, **Finalizar Evento**
+- **Galeria de TMs** ↔ **Aceitar** / **Solicitar Revisão**, **Ver em AR**
+- **Créditos** ↔ **Emissão** (1 crédito por e‑mail)
+
 ---
