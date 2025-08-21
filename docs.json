@@ -43,7 +43,7 @@
             "pages": [
               "para-emissores/loja",
               "para-emissores/galeria-de-tms",
-              "para-emissores/créditos",
+              "para-emissores/creditos",
               "para-emissores/criar-evento",
               "para-emissores/emitir-e-acompanhar-conquistas",
               "para-emissores/administradores",
@@ -59,7 +59,7 @@
             "group": " ",
             "pages": [
               "integracoes/linkedin",
-              "integracoes/redes-sociais-e-email",
+              "integracoes/compartilhamento",
               "integracoes/api-em-breve"
             ]
           }
@@ -78,7 +78,7 @@
               "casos-de-uso/comunidades-e-influencia",
               "casos-de-uso/premiacoes-b2b-e-certificacoes",
               "casos-de-uso/arte-e-cultura",
-              "casos-de-uso/membros"
+              "casos-de-uso/membro"
             ]
           }
         ]
