@@ -1,45 +1,360 @@
 ---
-title: "API (Em breve)"
-description: "Automatize emissões e integre a That’s Me ao seu sistema com facilidade."
+title: "API Pública v1.0"
+api: "true"
 ---
 
-## **Benefícios da API**
+A API Pública v1.0 permite integração com o sistema ThatsMe usando API Keys. Todas as rotas requerem autenticação via Bearer Token.
 
-A That’s Me está desenvolvendo uma **API pública** que permitirá a **integração direta de sistemas externos com nossa plataforma de reconhecimento digital**. Com ela, organizações poderão automatizar seus fluxos de emissão, personalização e distribuição de troféus e certificados digitais, com total controle e escala.
+<Info>
+  Todas as rotas desta API requerem o parâmetro `userCode` na URL, que é o código único da empresa gerado automaticamente ao criar a primeira API Key.
+</Info>
 
-#### **• Emissões automatizadas**
+## Autenticação
 
-A API permitirá disparar conquistas a partir de eventos internos do seu sistema (ex: conclusão de curso, vitória em campeonato, meta batida, participação em evento, etc), sem intervenção manual.
+Todas as requisições devem incluir o header de autenticação:
 
-#### **• Integração com CRMs, ERPs e LMSs**
-
-Conecte a That’s Me com ferramentas como **Salesforce, Zoho, Moodle, Totvs, Notion, Slack, Google Sheets, etc** — criando automações como:
-
-- Emissão de conquistas ao preencher comando ou formulários;
-- Geração em lote a partir de planilhas dinâmicas;
-- Vinculação com trilhas de aprendizado;
-
-#### **• Escalabilidade total**
-
-Para projetos com milhares de emissões, a API elimina gargalos operacionais, reduz erros humanos e garante entrega rápida com rastreabilidade em tempo real.
-
-#### **• Personalização via payload**
-
-Cada chamada à API poderá conter dados personalizados por conquista, como: nome, título, descrição, datas, design, código único e muito mais.
-
-## **Casos de uso futuros**
-
-- Plataformas de cursos e treinamentos que querem emitir TMs automaticamente
-- Sistemas esportivos que desejam premiar atletas após eventos
-- Portais educacionais que integram reconhecimento a cada aula, série ou desafio completado
-- Empresas que desejam automatizar prêmios após conclusão de tarefas e reconhecer resultados internos de forma digital, rápida, segura e rastreável
-
-## **Status atual**
-
-Atualmente, a API está em fase de testes internos. Em breve, disponibilizaremos documentação oficial e chave de acesso para desenvolvedores parceiros.
-
-<Note>
-  **Quer ser um dos primeiros a integrar?** Fale com nosso time para receber updates ou participar do programa beta.
-</Note>
+```bash
+Authorization: Bearer sua_api_key_aqui
+```
 
 ---
+
+## GET /api/v1.0/:userCode
+
+Retorna informações sobre a API v1.0.
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/balance
+
+Retorna o saldo de créditos da empresa autenticada.
+
+<RequestExample>
+
+```bash
+curl -X GET "https://api.thatsme.com.br/api/v1.0/{userCode}/balance" \
+  -H "Authorization: Bearer sua_api_key"
+```
+
+</RequestExample>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+<Info>
+  O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0.
+</Info>
+
+---
+
+## GET /api/v1.0/:userCode/winners
+
+Lista winners (ganhadores).
+
+<ParamField path="query" type="object">
+  <ParamField path="issuerId" type="string">
+    ID do emissor (opcional)
+  </ParamField>
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<RequestExample>
+
+```bash
+curl -X GET "https://api.thatsme.com.br/api/v1.0/{userCode}/winners?limit=10&offset=0" \
+  -H "Authorization: Bearer sua_api_key"
+```
+
+</RequestExample>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/winner-invitations
+
+Lista winner invitations (convites de ganhadores).
+
+<ParamField path="query" type="object">
+  <ParamField path="issuerId" type="string">
+    ID do emissor (opcional)
+  </ParamField>
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## POST /api/v1.0/:userCode/assertions
+
+Emite uma assertion (certificado).
+
+<ParamField path="body" type="object">
+  <ParamField path="badge_id" type="string" required>
+    ID do badge
+  </ParamField>
+  <ParamField path="event_id" type="string" required>
+    ID do evento
+  </ParamField>
+  <ParamField path="recipient_email" type="string" required>
+    Email do recebedor
+  </ParamField>
+  <ParamField path="recipient_name" type="string" required>
+    Nome do recebedor
+  </ParamField>
+  <ParamField path="fields" type="object">
+    Campos personalizados do certificado
+  </ParamField>
+</ParamField>
+
+<RequestExample>
+
+```bash
+curl -X POST "https://api.thatsme.com.br/api/v1.0/{userCode}/assertions" \
+  -H "Authorization: Bearer sua_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "badge_id": "badge_123",
+    "event_id": "event_456",
+    "recipient_email": "usuario@exemplo.com",
+    "recipient_name": "João Silva"
+  }'
+```
+
+</RequestExample>
+
+<ResponseField name="201">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/assertions
+
+Lista assertions (certificados emitidos).
+
+<ParamField path="query" type="object">
+  <ParamField path="issuerId" type="string">
+    ID do emissor (opcional)
+  </ParamField>
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/assertions/:id
+
+Retorna uma assertion específica.
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/assertions/recipient/:recipientId
+
+Retorna assertions de um recebedor específico.
+
+<ParamField path="query" type="object">
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/assertions/issuer/:issuerId
+
+Retorna assertions emitidas por um emissor específico.
+
+<ParamField path="query" type="object">
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/winners/issuer/:issuerId
+
+Retorna winners de um emissor específico.
+
+<ParamField path="query" type="object">
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/badges
+
+Lista badges (modelos de badges).
+
+<ParamField path="query" type="object">
+  <ParamField path="issuerId" type="string">
+    ID do emissor (opcional)
+  </ParamField>
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/badges/:id
+
+Retorna um badge específico.
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/badges/issuer/:issuerId
+
+Retorna badges de um emissor específico.
+
+<ParamField path="query" type="object">
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/issuers/:id
+
+Retorna um emissor específico.
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/events
+
+Lista eventos públicos.
+
+<ParamField path="query" type="object">
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/events/:id
+
+Retorna um evento específico.
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/events/:id/badges
+
+Retorna badges de um evento.
+
+<ParamField path="query" type="object">
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+---
+
+## GET /api/v1.0/:userCode/verify/:id
+
+Verifica a autenticidade de uma assertion.
+
+<ResponseField name="200">
+  
+</ResponseField>
+
+<ResponseField name="200">
+  
+</ResponseField>
