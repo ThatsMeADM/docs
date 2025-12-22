@@ -1,0 +1,62 @@
+---
+api: "GET /api/v1.0/{userCode}/winners"
+---
+
+Lista winners (ganhadores).
+
+<ParamField path="query" type="object">
+  <ParamField path="issuerId" type="string">
+    ID do emissor (opcional)
+  </ParamField>
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+<RequestExample>
+
+```bash Request
+curl -X GET "https://api.thatsme.com.br/api/v1.0/{userCode}/winners?limit=10&offset=0" \
+  -H "Authorization: Bearer sua_api_key"
+```
+
+</RequestExample>
+
+**Resposta 200:**
+
+```json
+{
+  "data": [
+    {
+      "winner_id": "winner_123",
+      "reason": "Primeiro lugar na competição",
+      "created_at": "2024-01-15T10:30:00Z",
+      "event": {
+        "event_id": "event_456",
+        "name": "Competição de Programação",
+        "description": "Descrição do evento",
+        "category": "TECHNOLOGY"
+      },
+      "profile": {
+        "name": "João Silva",
+        "nickname": "joao_silva",
+        "email": "joao@exemplo.com"
+      },
+      "badge": {
+        "badge_id": "badge_789",
+        "name": "Campeão",
+        "assets": {
+          "image_url": "https://example.com/badge.png"
+        }
+      }
+    }
+  ],
+  "total": 10,
+  "limit": 10,
+  "offset": 0
+}
+```
+

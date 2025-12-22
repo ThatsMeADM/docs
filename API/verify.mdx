@@ -1,0 +1,44 @@
+---
+api: "GET /api/v1.0/{userCode}/verify/{id}"
+---
+
+Verifica a autenticidade de uma assertion.
+
+**Resposta 200 (válida):**
+
+```json
+{
+  "valid": true,
+  "assertion": {
+    "post_id": "post_123",
+    "created_at": "2024-01-15T10:30:00Z",
+    "badge": {
+      "badge_id": "badge_456",
+      "name": "Certificado de Participação"
+    },
+    "profile": {
+      "profile_id": "profile_789",
+      "name": "João Silva",
+      "company_name": "Empresa XYZ"
+    },
+    "event": {
+      "event_id": "event_123",
+      "name": "Workshop de Tecnologia",
+      "profile": {
+        "profile_id": "profile_456",
+        "company_name": "Empresa Organizadora"
+      }
+    }
+  }
+}
+```
+
+**Resposta 200 (inválida):**
+
+```json
+{
+  "valid": false,
+  "message": "Assertion não encontrada"
+}
+```
+

@@ -1,0 +1,61 @@
+---
+api: "POST /api/v1.0/{userCode}/assertions"
+---
+
+Emite uma assertion (certificado).
+
+<ParamField path="body" type="object">
+  <ParamField path="badge_id" type="string" required>
+    ID do badge
+  </ParamField>
+  <ParamField path="event_id" type="string" required>
+    ID do evento
+  </ParamField>
+  <ParamField path="recipient_email" type="string" required>
+    Email do recebedor
+  </ParamField>
+  <ParamField path="recipient_name" type="string" required>
+    Nome do recebedor
+  </ParamField>
+  <ParamField path="fields" type="object">
+    Campos personalizados do certificado
+  </ParamField>
+</ParamField>
+
+<RequestExample>
+
+```bash Request
+curl -X POST "https://api.thatsme.com.br/api/v1.0/{userCode}/assertions" \
+  -H "Authorization: Bearer sua_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "badge_id": "badge_123",
+    "event_id": "event_456",
+    "recipient_email": "usuario@exemplo.com",
+    "recipient_name": "João Silva"
+  }'
+```
+
+</RequestExample>
+
+**Resposta 201:**
+
+```json
+{
+  "post_id": "post_123",
+  "message": "Assertion emitida com sucesso",
+  "recipient": {
+    "email": "usuario@exemplo.com",
+    "name": "João Silva"
+  },
+  "badge": {
+    "badge_id": "badge_456",
+    "name": "Certificado de Participação"
+  },
+  "event": {
+    "event_id": "event_789",
+    "name": "Workshop de Tecnologia"
+  }
+}
+```
+

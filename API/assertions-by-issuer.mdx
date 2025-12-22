@@ -1,0 +1,52 @@
+---
+api: "GET /api/v1.0/{userCode}/assertions/issuer/{issuerId}"
+---
+
+Retorna assertions emitidas por um emissor específico.
+
+<ParamField path="query" type="object">
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+**Resposta 200:**
+
+```json
+{
+  "data": [
+    {
+      "post_id": "post_123",
+      "created_at": "2024-01-15T10:30:00Z",
+      "badge": {
+        "badge_id": "badge_456",
+        "name": "Certificado de Participação",
+        "assets": {
+          "image_url": "https://example.com/badge.png"
+        }
+      },
+      "profile": {
+        "name": "João Silva",
+        "nickname": "joao_silva",
+        "company_name": "Empresa XYZ"
+      },
+      "event": {
+        "event_id": "event_789",
+        "name": "Workshop de Tecnologia",
+        "description": "Workshop sobre desenvolvimento",
+        "category": "TECHNOLOGY"
+      },
+      "winner": {
+        "reason": "Participação completa no evento"
+      }
+    }
+  ],
+  "total": 25,
+  "limit": 50,
+  "offset": 0
+}
+```
+

@@ -1,0 +1,43 @@
+---
+api: "GET /api/v1.0/{userCode}/badges/issuer/{issuerId}"
+---
+
+Retorna badges de um emissor específico.
+
+<ParamField path="query" type="object">
+  <ParamField path="limit" type="number">
+    Limite de resultados
+  </ParamField>
+  <ParamField path="offset" type="number">
+    Offset para paginação
+  </ParamField>
+</ParamField>
+
+**Resposta 200:**
+
+```json
+{
+  "data": [
+    {
+      "badge_id": "badge_123",
+      "name": "Certificado de Participação",
+      "description": "Badge para participantes do evento",
+      "created_at": "2024-01-10T09:00:00Z",
+      "assets": {
+        "image_url": "https://example.com/badge.png"
+      },
+      "user": {
+        "profile": {
+          "profile_id": "profile_456",
+          "name": "Organizador",
+          "company_name": "Empresa Organizadora"
+        }
+      }
+    }
+  ],
+  "total": 15,
+  "limit": 50,
+  "offset": 0
+}
+```
+
