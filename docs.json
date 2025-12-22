@@ -86,69 +86,61 @@
       },
       {
         "tab": "Glossário",
+        "groups": [{ "group": " ", "pages": ["glossario"] }]
+      },
+      {
+        "tab": "API Pública v1.0",
         "groups": [
-          { "group": " ", "pages": ["glossario"] }
+          {
+            "group": "Início",
+            "pages": ["API/v1-root", "API/balance"]
+          },
+          {
+            "group": "Assertions",
+            "pages": [
+              "API/assertions-create",
+              "API/assertions-list",
+              "API/assertions-get",
+              "API/assertions-by-recipient",
+              "API/assertions-by-issuer"
+            ]
+          },
+          {
+            "group": "Ganhadores",
+            "pages": [
+              "API/winners-list",
+              "API/winners-by-issuer",
+              "API/winner-invitations"
+            ]
+          },
+          {
+            "group": "Badges",
+            "pages": [
+              "API/badges-list",
+              "API/badges-get",
+              "API/badges-by-issuer"
+            ]
+          },
+          {
+            "group": "Eventos",
+            "pages": [
+              "API/events-list",
+              "API/events-get",
+              "API/events-badges"
+            ]
+          },
+          {
+            "group": "Emissões",
+            "pages": ["API/issuers-get"]
+          },
+          {
+            "group": "Verificar",
+            "pages": ["API/verify"]
+          }
         ]
       }
     ]
   },
-  {
-  "tab": "API Pública v1.0",
-  "groups": [
-    {
-      "group": "Início",
-      "pages": [
-        "API/v1-root",
-        "API/balance"
-      ]
-    },
-    {
-      "group": "Assertions",
-      "pages": [
-        "API/assertions-create",
-        "API/assertions-list",
-        "API/assertions-get",
-        "API/assertions-by-recipient",
-        "API/assertions-by-issuer"
-      ]
-    },
-    {
-      "group": "Ganhadores",
-      "pages": [
-        "API/winners-list",
-        "API/winners-by-issuer",
-        "API/winner-invitations"
-      ]
-    },
-    {
-      "group": "Badges",
-      "pages": [
-        "API/badges-list",
-        "API/badges-get",
-        "API/badges-by-issuer"
-      ]
-    },
-    {
-      "group": "Eventos",
-      "pages": [
-        "API/events-list",
-        "API/events-get",
-        "API/events-badges"
-      ]
-    },
-    {
-      "group": "Emissões",
-      "pages": [
-        "API/issuers-get"
-      ]
-    },
-    {
-      "group": "Verificar",
-      "pages": [
-        "API/verify"
-      ]
-    }
-  ],
   "logo": { "light": "/logo/light.svg", "dark": "/logo/dark.svg" },
   "navbar": {
     "links": [{ "label": "Suporte", "href": "mailto:suporte@thatsme.com.br" }]
