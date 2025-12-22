@@ -1,12 +1,12 @@
 ---
-title: API Pública v1.0
-api: true
+title: "API Pública v1.0"
+api: "GET /api/v1.0/{userCode}/balance"
 ---
 
 A API Pública v1.0 permite integração com o sistema ThatsMe usando API Keys. Todas as rotas requerem autenticação via Bearer Token.
 
 <Info>
-Todas as rotas desta API requerem o parâmetro `userCode` na URL, que é o código único da empresa gerado automaticamente ao criar a primeira API Key.
+  Todas as rotas desta API requerem o parâmetro `userCode` na URL, que é o código único da empresa gerado automaticamente ao criar a primeira API Key.
 </Info>
 
 ## Autenticação
@@ -58,7 +58,7 @@ curl -X GET "https://api.thatsme.com.br/api/v1.0/{userCode}/balance" \
 ```
 
 <Info>
-O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0.
+  O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0.
 </Info>
 
 ---
@@ -783,4 +783,3 @@ Verifica a autenticidade de uma assertion.
   "message": "Assertion não encontrada"
 }
 ```
-
