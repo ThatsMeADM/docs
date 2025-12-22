@@ -1,12 +1,12 @@
 ---
-title: "API Pública v1.0"
-api: "true"
+title: API Pública v1.0
+api: true
 ---
 
 A API Pública v1.0 permite integração com o sistema ThatsMe usando API Keys. Todas as rotas requerem autenticação via Bearer Token.
 
 <Info>
-  Todas as rotas desta API requerem o parâmetro `userCode` na URL, que é o código único da empresa gerado automaticamente ao criar a primeira API Key.
+Todas as rotas desta API requerem o parâmetro `userCode` na URL, que é o código único da empresa gerado automaticamente ao criar a primeira API Key.
 </Info>
 
 ## Autenticação
@@ -23,9 +23,10 @@ Authorization: Bearer sua_api_key_aqui
 
 Retorna informações sobre a API v1.0.
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "message": "v1.0 API",
+  "version": "1.0"
+}} />
 
 ---
 
@@ -42,12 +43,14 @@ curl -X GET "https://api.thatsme.com.br/api/v1.0/{userCode}/balance" \
 
 </RequestExample>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "balance": 150.50,
+  "profile_id": "profile_123",
+  "company_name": "Nome da Empresa"
+}} />
 
 <Info>
-  O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0.
+O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0.
 </Info>
 
 ---
@@ -77,9 +80,7 @@ curl -X GET "https://api.thatsme.com.br/api/v1.0/{userCode}/winners?limit=10&off
 
 </RequestExample>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{"winners": "array", "total": "number"}} />
 
 ---
 
@@ -99,9 +100,21 @@ Lista winner invitations (convites de ganhadores).
   </ParamField>
 </ParamField>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "data": [
+    {
+      "winner_invitation_id": "invitation_123",
+      "event_id": "event_456",
+      "recipient_email": "usuario@exemplo.com",
+      "recipient_name": "Maria Santos",
+      "status": "PENDING",
+      "created_at": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "total": 5,
+  "limit": 10,
+  "offset": 0
+}} />
 
 ---
 
@@ -143,9 +156,22 @@ curl -X POST "https://api.thatsme.com.br/api/v1.0/{userCode}/assertions" \
 
 </RequestExample>
 
-<ResponseField name="201">
-  
-</ResponseField>
+<ResponseField name="201" body={{
+  "post_id": "post_123",
+  "message": "Assertion emitida com sucesso",
+  "recipient": {
+    "email": "usuario@exemplo.com",
+    "name": "João Silva"
+  },
+  "badge": {
+    "badge_id": "badge_456",
+    "name": "Certificado de Participação"
+  },
+  "event": {
+    "event_id": "event_789",
+    "name": "Workshop de Tecnologia"
+  }
+}} />
 
 ---
 
@@ -165,9 +191,38 @@ Lista assertions (certificados emitidos).
   </ParamField>
 </ParamField>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "data": [
+    {
+      "post_id": "post_123",
+      "created_at": "2024-01-15T10:30:00Z",
+      "badge": {
+        "badge_id": "badge_456",
+        "name": "Certificado de Participação",
+        "assets": {
+          "image_url": "https://example.com/badge.png"
+        }
+      },
+      "profile": {
+        "name": "João Silva",
+        "nickname": "joao_silva",
+        "company_name": "Empresa XYZ"
+      },
+      "event": {
+        "event_id": "event_789",
+        "name": "Workshop de Tecnologia",
+        "description": "Workshop sobre desenvolvimento",
+        "category": "TECHNOLOGY"
+      },
+      "winner": {
+        "reason": "Participação completa no evento"
+      }
+    }
+  ],
+  "total": 25,
+  "limit": 50,
+  "offset": 0
+}} />
 
 ---
 
@@ -175,9 +230,40 @@ Lista assertions (certificados emitidos).
 
 Retorna uma assertion específica.
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "post_id": "post_123",
+  "created_at": "2024-01-15T10:30:00Z",
+  "badge": {
+    "badge_id": "badge_456",
+    "name": "Certificado de Participação",
+    "assets": {
+      "image_url": "https://example.com/badge.png"
+    }
+  },
+  "profile": {
+    "name": "João Silva",
+    "nickname": "joao_silva",
+    "company_name": "Empresa XYZ"
+  },
+  "event": {
+    "event_id": "event_789",
+    "name": "Workshop de Tecnologia",
+    "description": "Workshop sobre desenvolvimento",
+    "category": "TECHNOLOGY",
+    "city": "São Paulo",
+    "state": "SP",
+    "initial_date": "2024-01-10T09:00:00Z",
+    "finish_date": "2024-01-12T18:00:00Z",
+    "profile": {
+      "profile_id": "profile_123",
+      "name": "Organizador",
+      "company_name": "Empresa Organizadora"
+    }
+  },
+  "winner": {
+    "reason": "Participação completa no evento"
+  }
+}} />
 
 ---
 
@@ -194,9 +280,38 @@ Retorna assertions de um recebedor específico.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "data": [
+    {
+      "post_id": "post_123",
+      "created_at": "2024-01-15T10:30:00Z",
+      "badge": {
+        "badge_id": "badge_456",
+        "name": "Certificado de Participação",
+        "assets": {
+          "image_url": "https://example.com/badge.png"
+        }
+      },
+      "event": {
+        "event_id": "event_789",
+        "name": "Workshop de Tecnologia",
+        "description": "Workshop sobre desenvolvimento",
+        "category": "TECHNOLOGY",
+        "profile": {
+          "profile_id": "profile_123",
+          "name": "Organizador",
+          "company_name": "Empresa Organizadora"
+        }
+      },
+      "winner": {
+        "reason": "Participação completa no evento"
+      }
+    }
+  ],
+  "total": 3,
+  "limit": 50,
+  "offset": 0
+}} />
 
 ---
 
@@ -213,9 +328,38 @@ Retorna assertions emitidas por um emissor específico.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "data": [
+    {
+      "post_id": "post_123",
+      "created_at": "2024-01-15T10:30:00Z",
+      "badge": {
+        "badge_id": "badge_456",
+        "name": "Certificado de Participação",
+        "assets": {
+          "image_url": "https://example.com/badge.png"
+        }
+      },
+      "profile": {
+        "name": "João Silva",
+        "nickname": "joao_silva",
+        "company_name": "Empresa XYZ"
+      },
+      "event": {
+        "event_id": "event_789",
+        "name": "Workshop de Tecnologia",
+        "description": "Workshop sobre desenvolvimento",
+        "category": "TECHNOLOGY"
+      },
+      "winner": {
+        "reason": "Participação completa no evento"
+      }
+    }
+  ],
+  "total": 25,
+  "limit": 50,
+  "offset": 0
+}} />
 
 ---
 
@@ -232,9 +376,36 @@ Retorna winners de um emissor específico.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "data": [
+    {
+      "winner_id": "winner_123",
+      "reason": "Primeiro lugar na competição",
+      "created_at": "2024-01-15T10:30:00Z",
+      "event": {
+        "event_id": "event_456",
+        "name": "Competição de Programação",
+        "description": "Descrição do evento",
+        "category": "TECHNOLOGY"
+      },
+      "profile": {
+        "name": "João Silva",
+        "nickname": "joao_silva",
+        "email": "joao@exemplo.com"
+      },
+      "badge": {
+        "badge_id": "badge_789",
+        "name": "Campeão",
+        "assets": {
+          "image_url": "https://example.com/badge.png"
+        }
+      }
+    }
+  ],
+  "total": 10,
+  "limit": 10,
+  "offset": 0
+}} />
 
 ---
 
@@ -254,9 +425,29 @@ Lista badges (modelos de badges).
   </ParamField>
 </ParamField>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "data": [
+    {
+      "badge_id": "badge_123",
+      "name": "Certificado de Participação",
+      "description": "Badge para participantes do evento",
+      "created_at": "2024-01-10T09:00:00Z",
+      "assets": {
+        "image_url": "https://example.com/badge.png"
+      },
+      "user": {
+        "profile": {
+          "profile_id": "profile_456",
+          "name": "Organizador",
+          "company_name": "Empresa Organizadora"
+        }
+      }
+    }
+  ],
+  "total": 15,
+  "limit": 50,
+  "offset": 0
+}} />
 
 ---
 
@@ -264,9 +455,22 @@ Lista badges (modelos de badges).
 
 Retorna um badge específico.
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "badge_id": "badge_123",
+  "name": "Certificado de Participação",
+  "description": "Badge para participantes do evento",
+  "created_at": "2024-01-10T09:00:00Z",
+  "assets": {
+    "image_url": "https://example.com/badge.png"
+  },
+  "user": {
+    "profile": {
+      "profile_id": "profile_456",
+      "name": "Organizador",
+      "company_name": "Empresa Organizadora"
+    }
+  }
+}} />
 
 ---
 
@@ -283,9 +487,29 @@ Retorna badges de um emissor específico.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "data": [
+    {
+      "badge_id": "badge_123",
+      "name": "Certificado de Participação",
+      "description": "Badge para participantes do evento",
+      "created_at": "2024-01-10T09:00:00Z",
+      "assets": {
+        "image_url": "https://example.com/badge.png"
+      },
+      "user": {
+        "profile": {
+          "profile_id": "profile_456",
+          "name": "Organizador",
+          "company_name": "Empresa Organizadora"
+        }
+      }
+    }
+  ],
+  "total": 15,
+  "limit": 50,
+  "offset": 0
+}} />
 
 ---
 
@@ -293,9 +517,15 @@ Retorna badges de um emissor específico.
 
 Retorna um emissor específico.
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "profile_id": "profile_123",
+  "name": "Empresa XYZ",
+  "nickname": "empresa_xyz",
+  "company_name": "Empresa XYZ Ltda",
+  "bio": "Descrição da empresa",
+  "sector": "TECHNOLOGY",
+  "user_id": "user_456"
+}} />
 
 ---
 
@@ -312,9 +542,41 @@ Lista eventos públicos.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "data": [
+    {
+      "event_id": "event_123",
+      "name": "Workshop de Tecnologia",
+      "description": "Workshop sobre desenvolvimento web",
+      "category": "TECHNOLOGY",
+      "subcategory": "WEB_DEVELOPMENT",
+      "city": "São Paulo",
+      "state": "SP",
+      "initial_date": "2024-02-01T09:00:00Z",
+      "finish_date": "2024-02-03T18:00:00Z",
+      "image_url": "https://example.com/event.png",
+      "official_url": "https://evento.com.br",
+      "status": "ACTIVE",
+      "profile": {
+        "name": "Organizador",
+        "company_name": "Empresa Organizadora"
+      },
+      "badges": [
+        {
+          "badge_id": "badge_456",
+          "name": "Certificado de Participação",
+          "description": "Badge para participantes",
+          "assets": {
+            "image_url": "https://example.com/badge.png"
+          }
+        }
+      ]
+    }
+  ],
+  "total": 20,
+  "limit": 50,
+  "offset": 0
+}} />
 
 ---
 
@@ -322,9 +584,33 @@ Lista eventos públicos.
 
 Retorna um evento específico.
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "event_id": "event_123",
+  "name": "Workshop de Tecnologia",
+  "description": "Workshop sobre desenvolvimento web",
+  "category": "TECHNOLOGY",
+  "subcategory": "WEB_DEVELOPMENT",
+  "city": "São Paulo",
+  "state": "SP",
+  "initial_date": "2024-02-01T09:00:00Z",
+  "finish_date": "2024-02-03T18:00:00Z",
+  "image_url": "https://example.com/event.png",
+  "official_url": "https://evento.com.br",
+  "status": "ACTIVE",
+  "profile": {
+    "name": "Organizador",
+    "company_name": "Empresa Organizadora"
+  },
+  "badges": [
+    {
+      "badge_id": "badge_456",
+      "name": "Certificado de Participação",
+      "assets": {
+        "image_url": "https://example.com/badge.png"
+      }
+    }
+  ]
+}} />
 
 ---
 
@@ -341,9 +627,21 @@ Retorna badges de um evento.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "data": [
+    {
+      "badge_id": "badge_456",
+      "name": "Certificado de Participação",
+      "created_at": "2024-01-10T09:00:00Z",
+      "assets": {
+        "image_url": "https://example.com/badge.png"
+      }
+    }
+  ],
+  "total": 5,
+  "limit": 50,
+  "offset": 0
+}} />
 
 ---
 
@@ -351,10 +649,33 @@ Retorna badges de um evento.
 
 Verifica a autenticidade de uma assertion.
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "valid": true,
+  "assertion": {
+    "post_id": "post_123",
+    "created_at": "2024-01-15T10:30:00Z",
+    "badge": {
+      "badge_id": "badge_456",
+      "name": "Certificado de Participação"
+    },
+    "profile": {
+      "profile_id": "profile_789",
+      "name": "João Silva",
+      "company_name": "Empresa XYZ"
+    },
+    "event": {
+      "event_id": "event_123",
+      "name": "Workshop de Tecnologia",
+      "profile": {
+        "profile_id": "profile_456",
+        "company_name": "Empresa Organizadora"
+      }
+    }
+  }
+}} />
 
-<ResponseField name="200">
-  
-</ResponseField>
+<ResponseField name="200" body={{
+  "valid": false,
+  "message": "Assertion não encontrada"
+}} />
+
