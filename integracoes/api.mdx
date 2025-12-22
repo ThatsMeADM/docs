@@ -23,10 +23,14 @@ Authorization: Bearer sua_api_key_aqui
 
 Retorna informações sobre a API v1.0.
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "message": "v1.0 API",
   "version": "1.0"
-}} />
+}
+```
 
 ---
 
@@ -43,11 +47,15 @@ curl -X GET "https://api.thatsme.com.br/api/v1.0/{userCode}/balance" \
 
 </RequestExample>
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "balance": 150.50,
   "profile_id": "profile_123",
   "company_name": "Nome da Empresa"
-}} />
+}
+```
 
 <Info>
 O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0.
@@ -80,7 +88,40 @@ curl -X GET "https://api.thatsme.com.br/api/v1.0/{userCode}/winners?limit=10&off
 
 </RequestExample>
 
-<ResponseField name="200" body={{"winners": "array", "total": "number"}} />
+**Resposta 200:**
+
+```json
+{
+  "data": [
+    {
+      "winner_id": "winner_123",
+      "reason": "Primeiro lugar na competição",
+      "created_at": "2024-01-15T10:30:00Z",
+      "event": {
+        "event_id": "event_456",
+        "name": "Competição de Programação",
+        "description": "Descrição do evento",
+        "category": "TECHNOLOGY"
+      },
+      "profile": {
+        "name": "João Silva",
+        "nickname": "joao_silva",
+        "email": "joao@exemplo.com"
+      },
+      "badge": {
+        "badge_id": "badge_789",
+        "name": "Campeão",
+        "assets": {
+          "image_url": "https://example.com/badge.png"
+        }
+      }
+    }
+  ],
+  "total": 10,
+  "limit": 10,
+  "offset": 0
+}
+```
 
 ---
 
@@ -100,7 +141,10 @@ Lista winner invitations (convites de ganhadores).
   </ParamField>
 </ParamField>
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "data": [
     {
       "winner_invitation_id": "invitation_123",
@@ -114,7 +158,8 @@ Lista winner invitations (convites de ganhadores).
   "total": 5,
   "limit": 10,
   "offset": 0
-}} />
+}
+```
 
 ---
 
@@ -156,7 +201,10 @@ curl -X POST "https://api.thatsme.com.br/api/v1.0/{userCode}/assertions" \
 
 </RequestExample>
 
-<ResponseField name="201" body={{
+**Resposta 201:**
+
+```json
+{
   "post_id": "post_123",
   "message": "Assertion emitida com sucesso",
   "recipient": {
@@ -171,7 +219,8 @@ curl -X POST "https://api.thatsme.com.br/api/v1.0/{userCode}/assertions" \
     "event_id": "event_789",
     "name": "Workshop de Tecnologia"
   }
-}} />
+}
+```
 
 ---
 
@@ -191,7 +240,10 @@ Lista assertions (certificados emitidos).
   </ParamField>
 </ParamField>
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "data": [
     {
       "post_id": "post_123",
@@ -222,7 +274,8 @@ Lista assertions (certificados emitidos).
   "total": 25,
   "limit": 50,
   "offset": 0
-}} />
+}
+```
 
 ---
 
@@ -230,7 +283,10 @@ Lista assertions (certificados emitidos).
 
 Retorna uma assertion específica.
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "post_id": "post_123",
   "created_at": "2024-01-15T10:30:00Z",
   "badge": {
@@ -263,7 +319,8 @@ Retorna uma assertion específica.
   "winner": {
     "reason": "Participação completa no evento"
   }
-}} />
+}
+```
 
 ---
 
@@ -280,7 +337,10 @@ Retorna assertions de um recebedor específico.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "data": [
     {
       "post_id": "post_123",
@@ -311,7 +371,8 @@ Retorna assertions de um recebedor específico.
   "total": 3,
   "limit": 50,
   "offset": 0
-}} />
+}
+```
 
 ---
 
@@ -328,7 +389,10 @@ Retorna assertions emitidas por um emissor específico.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "data": [
     {
       "post_id": "post_123",
@@ -359,7 +423,8 @@ Retorna assertions emitidas por um emissor específico.
   "total": 25,
   "limit": 50,
   "offset": 0
-}} />
+}
+```
 
 ---
 
@@ -376,7 +441,10 @@ Retorna winners de um emissor específico.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "data": [
     {
       "winner_id": "winner_123",
@@ -405,7 +473,8 @@ Retorna winners de um emissor específico.
   "total": 10,
   "limit": 10,
   "offset": 0
-}} />
+}
+```
 
 ---
 
@@ -425,7 +494,10 @@ Lista badges (modelos de badges).
   </ParamField>
 </ParamField>
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "data": [
     {
       "badge_id": "badge_123",
@@ -447,7 +519,8 @@ Lista badges (modelos de badges).
   "total": 15,
   "limit": 50,
   "offset": 0
-}} />
+}
+```
 
 ---
 
@@ -455,7 +528,10 @@ Lista badges (modelos de badges).
 
 Retorna um badge específico.
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "badge_id": "badge_123",
   "name": "Certificado de Participação",
   "description": "Badge para participantes do evento",
@@ -470,7 +546,8 @@ Retorna um badge específico.
       "company_name": "Empresa Organizadora"
     }
   }
-}} />
+}
+```
 
 ---
 
@@ -487,7 +564,10 @@ Retorna badges de um emissor específico.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "data": [
     {
       "badge_id": "badge_123",
@@ -509,7 +589,8 @@ Retorna badges de um emissor específico.
   "total": 15,
   "limit": 50,
   "offset": 0
-}} />
+}
+```
 
 ---
 
@@ -517,7 +598,10 @@ Retorna badges de um emissor específico.
 
 Retorna um emissor específico.
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "profile_id": "profile_123",
   "name": "Empresa XYZ",
   "nickname": "empresa_xyz",
@@ -525,7 +609,8 @@ Retorna um emissor específico.
   "bio": "Descrição da empresa",
   "sector": "TECHNOLOGY",
   "user_id": "user_456"
-}} />
+}
+```
 
 ---
 
@@ -542,7 +627,10 @@ Lista eventos públicos.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "data": [
     {
       "event_id": "event_123",
@@ -576,7 +664,8 @@ Lista eventos públicos.
   "total": 20,
   "limit": 50,
   "offset": 0
-}} />
+}
+```
 
 ---
 
@@ -584,7 +673,10 @@ Lista eventos públicos.
 
 Retorna um evento específico.
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "event_id": "event_123",
   "name": "Workshop de Tecnologia",
   "description": "Workshop sobre desenvolvimento web",
@@ -610,7 +702,8 @@ Retorna um evento específico.
       }
     }
   ]
-}} />
+}
+```
 
 ---
 
@@ -627,7 +720,10 @@ Retorna badges de um evento.
   </ParamField>
 </ParamField>
 
-<ResponseField name="200" body={{
+**Resposta 200:**
+
+```json
+{
   "data": [
     {
       "badge_id": "badge_456",
@@ -641,7 +737,8 @@ Retorna badges de um evento.
   "total": 5,
   "limit": 50,
   "offset": 0
-}} />
+}
+```
 
 ---
 
@@ -649,7 +746,10 @@ Retorna badges de um evento.
 
 Verifica a autenticidade de uma assertion.
 
-<ResponseField name="200" body={{
+**Resposta 200 (válida):**
+
+```json
+{
   "valid": true,
   "assertion": {
     "post_id": "post_123",
@@ -672,10 +772,15 @@ Verifica a autenticidade de uma assertion.
       }
     }
   }
-}} />
+}
+```
 
-<ResponseField name="200" body={{
+**Resposta 200 (inválida):**
+
+```json
+{
   "valid": false,
   "message": "Assertion não encontrada"
-}} />
+}
+```
 
