@@ -5,14 +5,7 @@ title: "Balance"
 
 Retorna o saldo de créditos da empresa autenticada.
 
-<Request
-  method="GET"
-  baseUrl="https://api.thatsme.com.br"
-  url="/api/v1.0/{{userCode}}/balance"
-  headers={{
-    "Authorization": "Bearer {{bearerToken}}"
-  }}
-/>
+<Request method="GET" url="/api/v1.0/{userCode}/balance" auth="bearer" />
 
 
 <ResponseField name="balance" type="number">
