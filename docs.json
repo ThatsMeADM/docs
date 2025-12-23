@@ -116,46 +116,46 @@
           {
             "version": "V1.0",
             "default": true,
-            "groups": [
+            "menu": [
               {
-                "group": "Core",
+                "item": "Core",
                 "pages": [
                   "api/v1-0/core/home",
                   "api/v1-0/core/balance"
                 ]
               },
               {
-                "group": "Assertions",
+                "item": "Assertions",
                 "pages": [
                   "api/v1-0/assertions/test1"
                 ]
               },
               {
-                "group": "Winners",
+                "item": "Winners",
                 "pages": [
                   "api/v1-0/winners/test2"
                 ]
               },
               {
-                "group": "Badges",
+                "item": "Badges",
                 "pages": [
                   "untitled-page"
                 ]
               },
               {
-                "group": "Events",
+                "item": "Events",
                 "pages": [
                   "api/v1-0/events/test4"
                 ]
               },
               {
-                "group": "Issuers",
+                "item": "Issuers",
                 "pages": [
                   "api/v1-0/issuers/test5"
                 ]
               },
               {
-                "group": "Verify",
+                "item": "Verify",
                 "pages": [
                   "api/v1-0/verify/test6"
                 ]
