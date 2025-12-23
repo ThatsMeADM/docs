@@ -8,7 +8,11 @@ Retorna o saldo de créditos da empresa autenticada.
 
 ## Endpoint
 
-<Request method="GET" url="/api/v1.0/{userCode}/balance" auth="bearer" />
+<Request
+  method="GET"
+  url="/api/v1.0/{userCode}/balance"
+  auth="bearer"
+/>
 
 ## Response Fields
 
@@ -27,7 +31,6 @@ Retorna o saldo de créditos da empresa autenticada.
 ## Response Example
 
 <Response status="200" type="object">
-
 ```json
 {
   "balance": 150.5,
