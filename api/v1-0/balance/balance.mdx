@@ -7,6 +7,10 @@ Retorna o saldo de créditos da empresa autenticada.
 
 <Request method="GET" url="/api/v1.0/{userCode}/balance" auth="bearer" />
 
+<ParamField path="path.userCode" type="string" required placeholder="ABC123XYZ">
+  Código do usuário usado no path da rota.
+</ParamField>
+
 <Expandable title="properties">
   <ResponseField name="balance" type="number">
   Saldo atual de créditos da empresa em reais (R$)
