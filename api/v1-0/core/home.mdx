@@ -1,4 +1,67 @@
 ---
-title: 'home'
+title: "API Pública v1.0"
+description: "Integração via API Keys (Bearer Token) — endpoints por página."
 ---
 
+A API Pública v1.0 permite integração com o sistema ThatsMe usando **API Keys**.
+
+<Info>
+  Todas as rotas requerem autenticação via 
+  <code>Authorization: Bearer sua_api_key</code>e exigem <code>userCode</code>no path.
+</Info>
+
+<Columns cols={2}>
+  <Card title="Começar" icon="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJvY2tldC1pY29uIGx1Y2lkZS1yb2NrZXQiPjxwYXRoIGQ9Ik00LjUgMTYuNWMtMS41IDEuMjYtMiA1LTIgNXMzLjc0LS41IDUtMmMuNzEtLjg0LjctMi4xMy0uMDktMi45MWEyLjE4IDIuMTggMCAwIDAtMi45MS0uMDl6Ii8+PHBhdGggZD0ibTEyIDE1LTMtM2EyMiAyMiAwIDAgMSAyLTMuOTVBMTIuODggMTIuODggMCAwIDEgMjIgMmMwIDIuNzItLjc4IDcuNS02IDExYTIyLjM1IDIyLjM1IDAgMCAxLTQgMnoiLz48cGF0aCBkPSJNOSAxMkg0cy41NS0zLjAzIDItNGMxLjYyLTEuMDggNSAwIDUgMCIvPjxwYXRoIGQ9Ik0xMiAxNXY1czMuMDMtLjU1IDQtMmMxLjA4LTEuNjIgMC01IDAtNSIvPjwvc3ZnPg==" href="/api/v1-0/core/get-started">
+    Configure seu projeto com nosso guia de início rápido.
+  </Card>
+  <Card title="Referência da API" icon="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNvZGUtaWNvbiBsdWNpZGUtY29kZSI+PHBhdGggZD0ibTE2IDE4IDYtNi02LTYiLz48cGF0aCBkPSJtOCA2LTYgNiA2IDYiLz48L3N2Zz4=" href="/api/v1-0/core/api-publica-v1">
+    Explore endpoints, parâmetros e exemplos para sua API.
+  </Card>
+</Columns>
+
+## Comece por aqui
+
+- **Autenticação**: envie o header `Authorization: Bearer sua_api_key`
+- **Base URL**: `https://api.thatsme.com.br`
+- **Path obrigatório**: `{userCode}` (código único da empresa gerado ao criar a primeira API Key)
+
+## Endpoints
+
+### Core
+
+- [GET /api/v1.0/](/api/v1.0/v1-root)
+- [GET /api/v1.0/balance](/api/v1.0/balance)
+
+### Winners
+
+- [GET /api/v1.0/winners](/api/v1.0/winners/winners-list)
+- [GET /api/v1.0/winners/issuer](/api/v1.0/winners/winners-by-issuer)
+- [GET /api/v1.0/winner-invitations](/api/v1.0/winners/winner-invitations)
+
+### Assertions (certificados emitidos)
+
+- [POST /api/v1.0/assertions](/api/v1.0/assertions/assertions-create)
+- [GET /api/v1.0/assertions](/api/v1.0/assertions/assertions-list)
+- [GET /api/v1.0/assertions](/api/v1.0/assertions/assertions-get)
+- [GET /api/v1.0/assertions/recipient](/api/v1.0/assertions/assertions-by-recipient)
+- [GET /api/v1.0/assertions/issuer](/api/v1.0/assertions/assertions-by-issuer)
+
+### Badges
+
+- [GET /api/v1.0/badges](/api/v1.0/badges/badges-list)
+- [GET /api/v1.0/badges](/api/v1.0/badges/badges-get)
+- [GET /api/v1.0/badgesissuer/](/api/v1.0/badges/badges-by-issuer)
+
+### Issuers
+
+- [GET /api/v1.0/issuers](/api/v1.0/issuers/issuers-get)
+
+### Events
+
+- [GET /api/v1.0/events](/api/v1.0/events/events-list)
+- [GET /api/v1.0/events](/api/v1.0/events/events-get)
+- [GET /api/v1.0/events/badges](/api/v1.0/events/events-badges)
+
+### Verify
+
+- [GET /api/v1.0/verify](/api/v1.0/verify/verify)
