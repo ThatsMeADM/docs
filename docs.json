@@ -126,13 +126,13 @@
                     "expanded": false,
                     "pages": [
                       "api/v1-0/core/home",
-                      "api/v1-0/api-v1-0/core/get-started"
+                      "api-v1-0/core/get-started"
                     ]
                   },
                   {
                     "group": "Balance",
                     "pages": [
-                      "api/v1-0/core/balance"
+                      "api/v1-0/balance/balance"
                     ]
                   },
                   {
