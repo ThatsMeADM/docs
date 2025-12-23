@@ -17,7 +17,7 @@
       "auth": {
         "method": "bearer"
       },
-      "server": "https://api.thatsme.com.br"
+      "server": "https://service.thatsme.com.br"
     }
   },
   "navbar": {
