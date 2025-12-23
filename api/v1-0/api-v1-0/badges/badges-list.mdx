@@ -7,11 +7,11 @@ Retorna badges de um emissor específico.
 
 <Request method="GET" url="/api/v1.0/{userCode}/badges/issuer/{issuerId}" auth="bearer" />
 
-<ParamField path="path.userCode" type="string" required placeholder="ABC123XYZ">
+<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
   Código do usuário usado no path da rota.
 </ParamField>
 
-<ParamField path="path.issuerId" type="string" required>
+<ParamField path="issuerId" type="string" required>
   ID do emissor
 </ParamField>
 
