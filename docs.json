@@ -113,7 +113,11 @@
       {
   "tab": "API",
   "versions": [
-            {
+    {
+      "version": "V1.0",
+      "default": true,
+      "groups": [
+        {
           "group": "API (V1.0)",
           "expanded": true,
           "pages": [
@@ -154,6 +158,8 @@
             }
           ]
         }
+      ]
+    }
   ]
 }
     ]
