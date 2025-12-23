@@ -1,0 +1,108 @@
+---
+api: "GET /api/v1.0/{userCode}/events/{id}"
+title: "Get Event"
+---
+
+Retorna um evento específico.
+
+<Request method="GET" url="/api/v1.0/{userCode}/events/{id}" auth="bearer" />
+
+<ParamField path="path.userCode" type="string" required placeholder="ABC123XYZ">
+  Código do usuário usado no path da rota.
+</ParamField>
+
+<ParamField path="path.id" type="string" required>
+  ID do evento
+</ParamField>
+
+<Expandable title="properties">
+  <ResponseField name="event_id" type="string">
+    ID do evento
+  </ResponseField>
+  
+  <ResponseField name="name" type="string">
+    Nome do evento
+  </ResponseField>
+  
+  <ResponseField name="description" type="string">
+    Descrição do evento
+  </ResponseField>
+  
+  <ResponseField name="category" type="string">
+    Categoria do evento
+  </ResponseField>
+  
+  <ResponseField name="subcategory" type="string">
+    Subcategoria do evento
+  </ResponseField>
+  
+  <ResponseField name="city" type="string">
+    Cidade do evento
+  </ResponseField>
+  
+  <ResponseField name="state" type="string">
+    Estado do evento
+  </ResponseField>
+  
+  <ResponseField name="initial_date" type="string">
+    Data de início do evento
+  </ResponseField>
+  
+  <ResponseField name="finish_date" type="string">
+    Data de término do evento
+  </ResponseField>
+  
+  <ResponseField name="image_url" type="string">
+    URL da imagem do evento
+  </ResponseField>
+  
+  <ResponseField name="official_url" type="string">
+    URL oficial do evento
+  </ResponseField>
+  
+  <ResponseField name="status" type="string">
+    Status do evento
+  </ResponseField>
+  
+  <ResponseField name="profile" type="object">
+    Informações do perfil organizador
+  </ResponseField>
+  
+  <ResponseField name="badges" type="array">
+    Lista de badges do evento
+  </ResponseField>
+</Expandable>
+
+<Response status="200" type="object">
+
+```json
+{
+  "event_id": "event_123",
+  "name": "Workshop de Tecnologia",
+  "description": "Workshop sobre desenvolvimento web",
+  "category": "TECHNOLOGY",
+  "subcategory": "WEB_DEVELOPMENT",
+  "city": "São Paulo",
+  "state": "SP",
+  "initial_date": "2024-02-01T09:00:00Z",
+  "finish_date": "2024-02-03T18:00:00Z",
+  "image_url": "https://example.com/event.png",
+  "official_url": "https://evento.com.br",
+  "status": "ACTIVE",
+  "profile": {
+    "name": "Organizador",
+    "company_name": "Empresa Organizadora"
+  },
+  "badges": [
+    {
+      "badge_id": "badge_456",
+      "name": "Certificado de Participação",
+      "assets": {
+        "image_url": "https://example.com/badge.png"
+      }
+    }
+  ]
+}
+```
+
+</Response>

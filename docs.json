@@ -176,21 +176,23 @@
                     "group": "Events",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/events/test4"
+                      "api/v1-0/api-v1-0/events/events-badges",
+                      "api/v1-0/api-v1-0/events/events-list",
+                      "api/v1-0/api-v1-0/events/events-get"
                     ]
                   },
                   {
                     "group": "Issuers",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/issuers/test5"
+                      "api/v1-0/issuers/issuers-get"
                     ]
                   },
                   {
                     "group": "Verify",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/verify/test6"
+                      "api/v1-0/verify/verify"
                     ]
                   }
                 ]

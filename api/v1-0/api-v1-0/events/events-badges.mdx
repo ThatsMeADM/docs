@@ -1,0 +1,64 @@
+---
+api: "GET /api/v1.0/{userCode}/events/{id}/badges"
+title: "Get Event Badges"
+---
+
+Retorna badges de um evento.
+
+<Request method="GET" url="/api/v1.0/{userCode}/events/{id}/badges" auth="bearer" />
+
+<ParamField path="path.userCode" type="string" required placeholder="ABC123XYZ">
+  Código do usuário usado no path da rota.
+</ParamField>
+
+<ParamField path="path.id" type="string" required>
+  ID do evento
+</ParamField>
+
+<ParamField path="query.limit" type="number">
+  Limite de resultados
+</ParamField>
+
+<ParamField path="query.offset" type="number">
+  Offset para paginação
+</ParamField>
+
+<Expandable title="properties">
+  <ResponseField name="data" type="array">
+    Lista de badges do evento
+  </ResponseField>
+  
+  <ResponseField name="total" type="number">
+    Total de resultados encontrados
+  </ResponseField>
+  
+  <ResponseField name="limit" type="number">
+    Limite de resultados por página
+  </ResponseField>
+  
+  <ResponseField name="offset" type="number">
+    Offset usado na paginação
+  </ResponseField>
+</Expandable>
+
+<Response status="200" type="object">
+
+```json
+{
+  "data": [
+    {
+      "badge_id": "badge_456",
+      "name": "Certificado de Participação",
+      "created_at": "2024-01-10T09:00:00Z",
+      "assets": {
+        "image_url": "https://example.com/badge.png"
+      }
+    }
+  ],
+  "total": 5,
+  "limit": 50,
+  "offset": 0
+}
+```
+
+</Response>
