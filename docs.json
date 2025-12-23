@@ -11,11 +11,8 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
-  "api": {
-    "baseUrl": "https://api.thatsme.com.br",
-    "auth": {
-      "type": "bearer"
-    }
+  "openapi": {
+    "baseUrl": "https://api.thatsme.com.br"
   },
   "favicon": "/favicon.svg",
   "navbar": {

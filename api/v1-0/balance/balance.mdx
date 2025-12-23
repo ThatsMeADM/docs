@@ -7,11 +7,13 @@ Retorna o saldo de créditos da empresa autenticada.
 
 <Request
   method="GET"
-  url="/api/v1.0/{userCode}/balance"
+  baseUrl="https://api.thatsme.com.br"
+  url="/api/v1.0/{{userCode}}/balance"
   headers={{
     "Authorization": "Bearer {{bearerToken}}"
   }}
 />
+
 
 <ResponseField name="balance" type="number">
   Saldo atual de créditos da empresa em reais (R$)
