@@ -112,16 +112,56 @@
       },
       {
         "tab": "API",
-        "pages": [
-          "api-publica-v1-0/inicio/home",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          ""
+        "versions": [
+          {
+            "version": "V1.0",
+            "default": true,
+            "dropdowns": [
+              {
+                "dropdown": "Core",
+                "pages": [
+                  "api/v1-0/core/home",
+                  "api/v1-0/core/balance"
+                ]
+              },
+              {
+                "dropdown": "Assertions",
+                "pages": [
+                  "api/v1-0/assertions/test1"
+                ]
+              },
+              {
+                "dropdown": "Winners",
+                "pages": [
+                  "api/v1-0/winners/test2"
+                ]
+              },
+              {
+                "dropdown": "Badges",
+                "pages": [
+                  "untitled-page"
+                ]
+              },
+              {
+                "dropdown": "Events",
+                "pages": [
+                  "api/v1-0/events/test4"
+                ]
+              },
+              {
+                "dropdown": "Issuers",
+                "pages": [
+                  "api/v1-0/issuers/test5"
+                ]
+              },
+              {
+                "dropdown": "Verify",
+                "pages": [
+                  "api/v1-0/verify/test6"
+                ]
+              }
+            ]
+          }
         ]
       }
     ]
