@@ -1,0 +1,77 @@
+---
+api: "POST /api/v1.0/{userCode}/assertions"
+title: "Create Assertion"
+---
+
+Emite uma assertion (certificado).
+
+<Request method="POST" url="/api/v1.0/{userCode}/assertions" auth="bearer" />
+
+<ParamField path="path.userCode" type="string" required placeholder="ABC123XYZ">
+  Código do usuário usado no path da rota.
+</ParamField>
+
+<ParamField path="body.badge_id" type="string" required>
+  ID do badge
+</ParamField>
+
+<ParamField path="body.event_id" type="string" required>
+  ID do evento
+</ParamField>
+
+<ParamField path="body.recipient_email" type="string" required>
+  Email do recebedor
+</ParamField>
+
+<ParamField path="body.recipient_name" type="string" required>
+  Nome do recebedor
+</ParamField>
+
+<ParamField path="body.fields" type="object">
+  Campos personalizados do certificado
+</ParamField>
+
+<Expandable title="properties">
+  <ResponseField name="post_id" type="string">
+    ID da assertion criada
+  </ResponseField>
+  
+  <ResponseField name="message" type="string">
+    Mensagem de confirmação
+  </ResponseField>
+  
+  <ResponseField name="recipient" type="object">
+    Informações do recebedor
+  </ResponseField>
+  
+  <ResponseField name="badge" type="object">
+    Informações do badge
+  </ResponseField>
+  
+  <ResponseField name="event" type="object">
+    Informações do evento
+  </ResponseField>
+</Expandable>
+
+<Response status="201" type="object">
+
+```json
+{
+  "post_id": "post_123",
+  "message": "Assertion emitida com sucesso",
+  "recipient": {
+    "email": "usuario@exemplo.com",
+    "name": "João Silva"
+  },
+  "badge": {
+    "badge_id": "badge_456",
+    "name": "Certificado de Participação"
+  },
+  "event": {
+    "event_id": "event_789",
+    "name": "Workshop de Tecnologia"
+  }
+}
+```
+
+</Response>

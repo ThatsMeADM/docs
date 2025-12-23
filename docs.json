@@ -11,15 +11,15 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
+  "favicon": "/favicon.svg",
   "api": {
     "mdx": {
-      "server": "https://api.thatsme.com.br",
       "auth": {
         "method": "bearer"
-      }
-   }
+      },
+      "server": "https://api.thatsme.com.br"
+    }
   },
-  "favicon": "/favicon.svg",
   "navbar": {
     "links": [
       {
@@ -144,17 +144,21 @@
                     ]
                   },
                   {
+                    "group": "Assertions",
+                    "expanded": false,
+                    "pages": [
+                      "api/v1-0/assertions/assertions-create",
+                      "api/v1-0/api-v1-0/assertions/assertions-get",
+                      "api/v1-0/api-v1-0/assertions/assertions-list",
+                      "api/v1-0/api-v1-0/assertions/assertions-by-recipient",
+                      "api/v1-0/api-v1-0/assertions/assertions-by-issuer"
+                    ]
+                  },
+                  {
                     "group": "Winners",
                     "expanded": false,
                     "pages": [
                       "api/v1-0/winners/test2"
-                    ]
-                  },
-                  {
-                    "group": "Assertions",
-                    "expanded": false,
-                    "pages": [
-                      "api/v1-0/assertions/test1"
                     ]
                   },
                   {
