@@ -1,6 +1,6 @@
 ---
+title: Balance
 api: "GET /api/v1.0/{userCode}/balance"
-title: "Balance"
 ---
 
 Retorna o saldo de créditos da empresa autenticada.
@@ -9,14 +9,9 @@ Retorna o saldo de créditos da empresa autenticada.
 
 <Request
   method="GET"
-  url="https://api.thatsme.com.br/api/v1.0/{userCode}/balance"
+  url="/api/v1.0/{userCode}/balance"
+  auth="bearer"
 />
-
-> 🔐 **Autenticação**
->
-> Este endpoint requer autenticação via **Bearer Token**.
-> Informe o token no campo exibido acima.  
-> O header `Authorization: Bearer <token>` será aplicado automaticamente.
 
 ## Response Fields
 
