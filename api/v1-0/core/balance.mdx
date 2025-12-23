@@ -1,4 +1,42 @@
 ---
-title: "Balance"
+api: "GET /api/v1.0/{userCode}/balance"
 ---
 
+Retorna o saldo de créditos da empresa autenticada.
+
+<RequestExample>
+
+```bash Request
+curl -X GET "https://api.thatsme.com.br/api/v1.0/{userCode}/balance" \
+  -H "Authorization: Bearer {bearerToken}"
+```
+
+</RequestExample>
+
+<ResponseField name="balance" type="number">
+  Saldo atual de créditos da empresa em reais (R$)
+</ResponseField>
+
+<ResponseField name="profile_id" type="string">
+  ID único do perfil da empresa
+</ResponseField>
+
+<ResponseField name="company_name" type="string">
+  Nome da empresa
+</ResponseField>
+
+<Response status="200" type="object">
+
+```json
+{
+  "balance": 150.50,
+  "profile_id": "profile_123",
+  "company_name": "Nome da Empresa"
+}
+```
+
+</Response>
+
+<Info>
+O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0.
+</Info>
