@@ -167,9 +167,9 @@
                     "group": "Badges",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/api-v1-0/badges/badges-list",
                       "api/v1-0/api-v1-0/badges/badges-get",
-                      "api/v1-0/api-v1-0/badges/badges-by-issuer"
+                      "api/v1-0/api-v1-0/badges/badges-by-issuer",
+                      "api/v1-0/api-v1-0/badges/badges-list"
                     ]
                   },
                   {
