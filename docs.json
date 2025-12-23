@@ -20,13 +20,6 @@
       }
     ]
   },
-
-  "openapi": {
-    "auth": {
-      "type": "bearer"
-    }
-  },
-
   "navigation": {
     "tabs": [
       {
@@ -111,7 +104,9 @@
         "groups": [
           {
             "group": " ",
-            "pages": ["glossario"]
+            "pages": [
+              "glossario"
+            ]
           }
         ]
       },
@@ -131,39 +126,56 @@
                     "expanded": false,
                     "pages": [
                       "api/v1-0/core/home",
-                      "api/v1-0/api-v1-0/core/get-started",
+                      "api/v1-0/api-v1-0/core/get-started"
+                    ]
+                  },
+                  {
+                    "group": "Balance",
+                    "pages": [
                       "api/v1-0/core/balance"
+                    ]
+                  },
+                  {
+                    "group": "Winners",
+                    "expanded": false,
+                    "pages": [
+                      "api/v1-0/winners/test2"
                     ]
                   },
                   {
                     "group": "Assertions",
                     "expanded": false,
-                    "pages": ["api/v1-0/assertions/test1"]
-                  },
-                  {
-                    "group": "Winners",
-                    "expanded": false,
-                    "pages": ["api/v1-0/winners/test2"]
+                    "pages": [
+                      "api/v1-0/assertions/test1"
+                    ]
                   },
                   {
                     "group": "Badges",
                     "expanded": false,
-                    "pages": ["api/v1-0/badges/untitled-page"]
+                    "pages": [
+                      "api/v1-0/badges/untitled-page"
+                    ]
                   },
                   {
                     "group": "Events",
                     "expanded": false,
-                    "pages": ["api/v1-0/events/test4"]
+                    "pages": [
+                      "api/v1-0/events/test4"
+                    ]
                   },
                   {
                     "group": "Issuers",
                     "expanded": false,
-                    "pages": ["api/v1-0/issuers/test5"]
+                    "pages": [
+                      "api/v1-0/issuers/test5"
+                    ]
                   },
                   {
                     "group": "Verify",
                     "expanded": false,
-                    "pages": ["api/v1-0/verify/test6"]
+                    "pages": [
+                      "api/v1-0/verify/test6"
+                    ]
                   }
                 ]
               }
@@ -181,6 +193,15 @@
     }
   },
   "contextual": {
-    "options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"]
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   }
 }
