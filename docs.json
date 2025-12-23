@@ -113,40 +113,47 @@
       {
   "tab": "API",
   "versions": [
-    {
-      "version": "V1.0",
-      "default": true,
-      "groups": [
-        {
-          "group": "Core",
-          "pages": ["api/v1-0/core/home", "api/v1-0/core/balance"]
-        },
-        {
-          "group": "Assertions",
-          "pages": ["api/v1-0/assertions/test1"]
-        },
-        {
-          "group": "Winners",
-          "pages": ["api/v1-0/winners/test2"]
-        },
-        {
-          "group": "Badges",
-          "pages": ["api/v1-0/badges/untitled-page"]
-        },
-        {
-          "group": "Events",
-          "pages": ["api/v1-0/events/test4"]
-        },
-        {
-          "group": "Issuers",
-          "pages": ["api/v1-0/issuers/test5"]
-        },
-        {
-          "group": "Verify",
-          "pages": ["api/v1-0/verify/test6"]
+            {
+          "group": "API (V1.0)",
+          "expanded": true,
+          "pages": [
+            {
+              "group": "Core",
+              "expanded": false,
+              "pages": ["api/v1-0/core/home", "api/v1-0/core/balance"]
+            },
+            {
+              "group": "Assertions",
+              "expanded": false,
+              "pages": ["api/v1-0/assertions/test1"]
+            },
+            {
+              "group": "Winners",
+              "expanded": false,
+              "pages": ["api/v1-0/winners/test2"]
+            },
+            {
+              "group": "Badges",
+              "expanded": false,
+              "pages": ["api/v1-0/badges/untitled-page"]
+            },
+            {
+              "group": "Events",
+              "expanded": false,
+              "pages": ["api/v1-0/events/test4"]
+            },
+            {
+              "group": "Issuers",
+              "expanded": false,
+              "pages": ["api/v1-0/issuers/test5"]
+            },
+            {
+              "group": "Verify",
+              "expanded": false,
+              "pages": ["api/v1-0/verify/test6"]
+            }
+          ]
         }
-      ]
-    }
   ]
 }
     ]
