@@ -1,0 +1,57 @@
+---
+title: "Get Started"
+description: "Guia rápido para começar a usar a API Pública v1.0"
+---
+
+## Como obter seu primeiro token e user code
+
+Para começar a usar a API, você precisa gerar sua primeira API Key através do painel administrativo do ThatsMe:
+
+1. **Acesse o painel administrativo**: Faça login na sua conta empresa no ThatsMe
+2. **Navegue até Integrações**: Acesse a seção de **Integrações** no menu lateral
+3. **Gere sua primeira API Key**: 
+   - Clique em "Gerar nova API Key"
+   - Informe um nome descritivo (ex: "Integração Produção")
+   - Opcionalmente, defina uma data de expiração
+   - Clique em "Gerar"
+
+4. **Copie suas credenciais**: Após a geração, você receberá:
+   - **API Key (Token)**: Sua chave de autenticação (ex: `tm_abc123.eyJ...`)
+   - **User Code**: Código único da sua empresa (ex: `ABC123XYZ`)
+   
+   <Warning>
+   **Importante**: Guarde sua API Key em local seguro. Ela não será exibida novamente após a criação. Se você perder a chave, será necessário revogá-la e gerar uma nova.
+   </Warning>
+
+5. **Use nas requisições**: 
+   - Use a **API Key** no header `Authorization: Bearer sua_api_key`
+   - Use o **User Code** no path das URLs: `/api/v1.0/{userCode}/...`
+
+<Note>
+Se você já possui uma API Key criada anteriormente, o `userCode` já foi gerado e pode ser visualizado na lista de API Keys na seção de Integrações.
+</Note>
+
+## Autenticação
+
+Todas as requisições devem incluir o header de autenticação:
+
+```bash
+Authorization: Bearer sua_api_key_aqui
+```
+
+## Base URL
+
+Todas as requisições devem ser feitas para:
+
+```
+https://api.thatsme.com.br
+```
+
+## Path obrigatório
+
+Todas as rotas requerem o parâmetro `{userCode}` na URL, que é o código único da empresa gerado automaticamente ao criar a primeira API Key.
+
+Exemplo:
+```
+GET https://api.thatsme.com.br/api/v1.0/{userCode}/balance
+```
