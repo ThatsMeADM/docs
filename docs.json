@@ -158,7 +158,9 @@
                     "group": "Winners",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/winners/test2"
+                      "api/v1-0/winners/winners-list",
+                      "api/v1-0/api-v1-0/winners/winners-by-issuer",
+                      "api/v1-0/api-v1-0/winners/winner-invitations"
                     ]
                   },
                   {

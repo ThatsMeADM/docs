@@ -1,0 +1,64 @@
+---
+api: "GET /api/v1.0/{userCode}/winner-invitations"
+title: "List Winner Invitations"
+---
+
+Lista winner invitations (convites de ganhadores).
+
+<Request method="GET" url="/api/v1.0/{userCode}/winner-invitations" auth="bearer" />
+
+<ParamField path="path.userCode" type="string" required placeholder="ABC123XYZ">
+  Código do usuário usado no path da rota.
+</ParamField>
+
+<ParamField path="query.issuerId" type="string">
+  ID do emissor (opcional)
+</ParamField>
+
+<ParamField path="query.limit" type="number">
+  Limite de resultados
+</ParamField>
+
+<ParamField path="query.offset" type="number">
+  Offset para paginação
+</ParamField>
+
+<Expandable title="properties">
+  <ResponseField name="data" type="array">
+    Lista de winner invitations
+  </ResponseField>
+  
+  <ResponseField name="total" type="number">
+    Total de resultados encontrados
+  </ResponseField>
+  
+  <ResponseField name="limit" type="number">
+    Limite de resultados por página
+  </ResponseField>
+  
+  <ResponseField name="offset" type="number">
+    Offset usado na paginação
+  </ResponseField>
+</Expandable>
+
+<Response status="200" type="object">
+
+```json
+{
+  "data": [
+    {
+      "winner_invitation_id": "invitation_123",
+      "event_id": "event_456",
+      "recipient_email": "usuario@exemplo.com",
+      "recipient_name": "Maria Santos",
+      "status": "PENDING",
+      "created_at": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "total": 5,
+  "limit": 10,
+  "offset": 0
+}
+```
+
+</Response>
