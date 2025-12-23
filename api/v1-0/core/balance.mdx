@@ -1,43 +1,44 @@
 ---
+title: Balance
 api: "GET /api/v1.0/{userCode}/balance"
-title: "Balance"
 ---
 
 Retorna o saldo de créditos da empresa autenticada.
 
-<RequestExample>
+## Endpoint
 
-```bash Request
-curl -X GET "https://api.thatsme.com.br/api/v1.0/{userCode}/balance" \
-  -H "Authorization: Bearer {bearerToken}"
-```
+<Request
+  method="GET"
+  url="https://api.thatsme.com.br/api/v1.0/{userCode}/balance"
+/>
 
-</RequestExample>
+> 🔐 **Autenticação**
+>
+> Este endpoint requer autenticação via **Bearer Token**.
+> Informe o token no campo exibido acima.  
+> O header `Authorization: Bearer <token>` será aplicado automaticamente.
+
+## Response Fields
 
 <ResponseField name="balance" type="number">
-  Saldo atual de créditos da empresa em reais (R$)
+  Saldo atual de créditos da empresa em reais (R$).
 </ResponseField>
 
 <ResponseField name="profile_id" type="string">
-  ID único do perfil da empresa
+  ID único do perfil da empresa.
 </ResponseField>
 
 <ResponseField name="company_name" type="string">
-  Nome da empresa
+  Nome da empresa.
 </ResponseField>
+
+## Response Example
 
 <Response status="200" type="object">
 
 ```json
 {
-  "balance": 150.50,
+  "balance": 150.5,
   "profile_id": "profile_123",
   "company_name": "Nome da Empresa"
 }
-```
-
-</Response>
-
-<Info>
-O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0.
-</Info>
