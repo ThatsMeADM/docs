@@ -148,7 +148,7 @@
                     "group": "Destinatários",
                     "pages": [
                       "api/v1-0/api-v1-0/destinatarios/introducao",
-                      "api/v1-0/api-v1-0/destinatarios/listar-destinatarios-1",
+                      "api/v1-0/api-v1-0/destinatarios/listar-destinatarios",
                       "api/v1-0/api-v1-0/destinatarios/listar-convites",
                       "api/v1-0/api-v1-0/destinatarios/destinatarios-emissor"
                     ]
