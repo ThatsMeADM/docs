@@ -1,0 +1,65 @@
+---
+api: "GET /api/v1.0/{userCode}/badges/{id}"
+title: "Informações de uma Badge"
+---
+
+Retorna um badge específico.
+
+<Request method="GET" url="/api/v1.0/{userCode}/badges/{id}" auth="bearer" />
+
+<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
+  Código do usuário usado no path da rota.
+</ParamField>
+
+<ParamField path="id" type="string" required>
+  ID do badge
+</ParamField>
+
+<Expandable title="properties">
+  <ResponseField name="badge_id" type="string">
+    ID do badge
+  </ResponseField>
+  
+  <ResponseField name="name" type="string">
+    Nome do badge
+  </ResponseField>
+  
+  <ResponseField name="description" type="string">
+    Descrição do badge
+  </ResponseField>
+  
+  <ResponseField name="created_at" type="string">
+    Data de criação do badge
+  </ResponseField>
+  
+  <ResponseField name="assets" type="object">
+    Assets do badge (imagens, etc)
+  </ResponseField>
+  
+  <ResponseField name="user" type="object">
+    Informações do usuário criador do badge
+  </ResponseField>
+</Expandable>
+
+<Response status="200" type="object">
+
+```json
+{
+  "badge_id": "badge_123",
+  "name": "Certificado de Participação",
+  "description": "Badge para participantes do evento",
+  "created_at": "2024-01-10T09:00:00Z",
+  "assets": {
+    "image_url": "https://example.com/badge.png"
+  },
+  "user": {
+    "profile": {
+      "profile_id": "profile_456",
+      "name": "Organizador",
+      "company_name": "Empresa Organizadora"
+    }
+  }
+}
+```
+
+</Response>

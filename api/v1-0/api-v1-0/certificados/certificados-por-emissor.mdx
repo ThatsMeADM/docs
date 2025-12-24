@@ -1,0 +1,81 @@
+---
+api: "GET /api/v1.0/{userCode}/assertions/issuer/{issuerId}"
+title: "Certificados por Emissor"
+---
+
+Retorna certificados emitidas por um emissor específico.
+
+<Request method="GET" url="/api/v1.0/{userCode}/assertions/issuer/{issuerId}" auth="bearer" />
+
+<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
+  Código do usuário usado no path da rota.
+</ParamField>
+
+<ParamField path="issuerId" type="string" required>
+  ID do emissor
+</ParamField>
+
+<ParamField query="limit" type="number">
+  Limite de resultados
+</ParamField>
+
+<ParamField query="offset" type="number">
+  Offset para paginação
+</ParamField>
+
+<Expandable title="properties">
+  <ResponseField name="data" type="array">
+    Lista de certificados emitidas pelo emissor
+  </ResponseField>
+  
+  <ResponseField name="total" type="number">
+    Total de resultados encontrados
+  </ResponseField>
+  
+  <ResponseField name="limit" type="number">
+    Limite de resultados por página
+  </ResponseField>
+  
+  <ResponseField name="offset" type="number">
+    Offset usado na paginação
+  </ResponseField>
+</Expandable>
+
+<Response status="200" type="object">
+
+```json
+{
+  "data": [
+    {
+      "post_id": "post_123",
+      "created_at": "2024-01-15T10:30:00Z",
+      "badge": {
+        "badge_id": "badge_456",
+        "name": "Certificado de Participação",
+        "assets": {
+          "image_url": "https://example.com/badge.png"
+        }
+      },
+      "profile": {
+        "name": "João Silva",
+        "nickname": "joao_silva",
+        "company_name": "Empresa XYZ"
+      },
+      "event": {
+        "event_id": "event_789",
+        "name": "Workshop de Tecnologia",
+        "description": "Workshop sobre desenvolvimento",
+        "category": "TECHNOLOGY"
+      },
+      "winner": {
+        "reason": "Participação completa no evento"
+      }
+    }
+  ],
+  "total": 25,
+  "limit": 50,
+  "offset": 0
+}
+```
+
+</Response>

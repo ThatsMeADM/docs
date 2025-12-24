@@ -3,7 +3,7 @@ api: "POST /api/v1.0/{userCode}/assertions"
 title: "Emitir Certificados"
 ---
 
-Emite uma assertion (certificado).
+Emita certificados.
 
 <Request method="POST" url="/api/v1.0/{userCode}/assertions" auth="bearer" />
 
@@ -33,7 +33,7 @@ Emite uma assertion (certificado).
 
 <Expandable title="properties">
   <ResponseField name="post_id" type="string">
-    ID da assertion criada
+    ID do certificado criado
   </ResponseField>
   
   <ResponseField name="message" type="string">
@@ -58,7 +58,7 @@ Emite uma assertion (certificado).
 ```json
 {
   "post_id": "post_123",
-  "message": "Assertion emitida com sucesso",
+  "message": "Certificado emitida com sucesso",
   "recipient": {
     "email": "usuario@exemplo.com",
     "name": "João Silva"

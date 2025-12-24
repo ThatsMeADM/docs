@@ -1,0 +1,46 @@
+---
+title: "Introdução"
+description: "Visão geral sobre Validação de Certificados na plataforma ThatsMe"
+---
+
+## O que é a Validação de Certificados?
+
+A **Validação de Certificados** permite verificar a autenticidade e validade de um certificado (assertion) emitido na plataforma ThatsMe através do seu ID único.
+
+## Como Funciona a Validação
+
+### Processo de Verificação
+
+Quando você consulta um certificado para validação:
+
+1. O sistema busca o **certificado** pelo ID fornecido
+2. Verifica se o certificado **existe e é válido**
+3. Retorna informações detalhadas sobre o certificado
+4. Indica se o certificado foi **aceito pelo destinatário**
+
+### Resposta de Validação
+
+A API retorna:
+- **Status de validade**: Se o certificado é válido ou não
+- **Informações do certificado**: Badge, evento, destinatário
+- **Detalhes do emissor**: Quem emitiu o certificado
+- **Mensagem de erro**: Se o certificado não for encontrado ou inválido
+
+## Casos de Uso
+
+A validação é útil para:
+- **Verificação pública**: Permitir que terceiros verifiquem certificados
+- **Integração com sistemas externos**: Validar certificados em outras plataformas
+- **Auditoria**: Verificar autenticidade de certificados emitidos
+- **Compartilhamento**: Validar certificados compartilhados em redes sociais
+
+## Importante
+
+- Apenas certificados **aceitos pelo destinatário** são considerados válidos
+- Certificados pendentes (não aceitos) retornam como inválidos
+- O ID do certificado é único e imutável
+
+<Note>
+A validação é pública e não requer autenticação, permitindo que qualquer pessoa verifique a autenticidade de um certificado.
+</Note>
+

@@ -1,0 +1,47 @@
+---
+title: "Introdução"
+description: "Visão geral sobre Certificados (Assertions) na plataforma ThatsMe"
+---
+
+## O que são Certificados?
+
+Os **Certificados** (também chamados de **Assertions**) são documentos digitais emitidos para destinatários, representando conquistas, participações em eventos, conclusões de cursos ou outras realizações.
+
+## Fluxo de Emissão de Certificados
+
+### 1. Emissão do Certificado
+
+Quando um certificado é emitido através da API ou pela plataforma:
+
+1. O sistema cria uma **assertion** (certificado)
+2. Um **convite é enviado automaticamente** ao destinatário
+3. O destinatário recebe uma notificação sobre o certificado disponível
+
+### 2. Aceite do Destinatário
+
+**Importante**: Os certificados emitidos **não se tornam ativos imediatamente**. Eles permanecem como convites até que:
+
+- O destinatário **aceite o convite**
+- O destinatário confirme o recebimento do certificado
+
+### 3. Ativação do Certificado
+
+Após o aceite do destinatário:
+- O certificado se torna **oficial e válido**
+- Aparece no perfil do destinatário
+- Pode ser compartilhado e visualizado publicamente
+- Pode ser verificado através da API de validação
+
+<Warning>
+Certificados não aceitos permanecem como convites pendentes e não aparecem como certificados válidos no perfil do destinatário.
+</Warning>
+
+## Tipos de Certificados
+
+Os certificados podem ser emitidos para:
+- Participação em eventos
+- Conclusão de cursos e treinamentos
+- Reconhecimentos e destaques
+- Competições e premiações
+- Certificações profissionais
+
