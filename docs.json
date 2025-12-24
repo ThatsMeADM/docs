@@ -138,38 +138,36 @@
                     ]
                   },
                   {
-                    "group": "Balance",
+                    "group": "Saldo",
                     "pages": [
-                      "api/v1-0/balance/balance"
+                      "api/v1-0/saldo/saldo"
                     ]
                   },
                   {
-                    "group": "Assertions",
-                    "expanded": false,
+                    "group": "Certificados",
                     "pages": [
-                      "api/v1-0/assertions/assertions-create",
-                      "api/v1-0/api-v1-0/assertions/assertions-get",
-                      "api/v1-0/api-v1-0/assertions/assertions-list",
-                      "api/v1-0/api-v1-0/assertions/assertions-by-recipient",
-                      "api/v1-0/api-v1-0/assertions/assertions-by-issuer"
+                      "api/v1-0/certificados/emitir-certificado",
+                      "api/v1-0/api-v1-0/certificados/detalhes-certificado",
+                      "api/v1-0/api-v1-0/certificados/listar-certificados",
+                      "api/v1-0/api-v1-0/certificados/certificados-por-destinatario",
+                      "api/v1-0/api-v1-0/certificados/certificados-por-emissor"
                     ]
                   },
                   {
-                    "group": "Winners",
-                    "expanded": false,
+                    "group": "Ganhadores",
                     "pages": [
-                      "api/v1-0/winners/winners-list",
-                      "api/v1-0/api-v1-0/winners/winners-by-issuer",
-                      "api/v1-0/api-v1-0/winners/winner-invitations"
+                      "api/v1-0/ganhadores/listar-ganhadores",
+                      "api/v1-0/api-v1-0/ganhadores/ganhadores-por-emissor",
+                      "api/v1-0/api-v1-0/ganhadores/listar-convites"
                     ]
                   },
                   {
                     "group": "Badges",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/api-v1-0/badges/badges-get",
-                      "api/v1-0/api-v1-0/badges/badges-by-issuer",
-                      "api/v1-0/api-v1-0/badges/badges-list"
+                      "api/v1-0/api-v1-0/badges/informacoes-badge",
+                      "api/v1-0/api-v1-0/badges/listar-badges",
+                      "api/v1-0/api-v1-0/badges/badges-emissor"
                     ]
                   },
                   {

@@ -1,11 +1,11 @@
 ---
-api: "GET /api/v1.0/{userCode}/assertions/issuer/{issuerId}"
-title: "Get Assertions by Issuer"
+api: "GET /api/v1.0/{userCode}/winners/issuer/{issuerId}"
+title: "Ganhadores por Emissor"
 ---
 
-Retorna assertions emitidas por um emissor específico.
+Retorna winners de um emissor específico.
 
-<Request method="GET" url="/api/v1.0/{userCode}/assertions/issuer/{issuerId}" auth="bearer" />
+<Request method="GET" url="/api/v1.0/{userCode}/winners/issuer/{issuerId}" auth="bearer" />
 
 <ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
   Código do usuário usado no path da rota.
@@ -15,17 +15,17 @@ Retorna assertions emitidas por um emissor específico.
   ID do emissor
 </ParamField>
 
-<ParamField query="limit" type="number">
+<ParamField path="query.limit" type="number">
   Limite de resultados
 </ParamField>
 
-<ParamField query="offset" type="number">
+<ParamField path="query.offset" type="number">
   Offset para paginação
 </ParamField>
 
 <Expandable title="properties">
   <ResponseField name="data" type="array">
-    Lista de assertions emitidas pelo emissor
+    Lista de winners do emissor
   </ResponseField>
   
   <ResponseField name="total" type="number">
@@ -47,33 +47,31 @@ Retorna assertions emitidas por um emissor específico.
 {
   "data": [
     {
-      "post_id": "post_123",
+      "winner_id": "winner_123",
+      "reason": "Primeiro lugar na competição",
       "created_at": "2024-01-15T10:30:00Z",
-      "badge": {
-        "badge_id": "badge_456",
-        "name": "Certificado de Participação",
-        "assets": {
-          "image_url": "https://example.com/badge.png"
-        }
+      "event": {
+        "event_id": "event_456",
+        "name": "Competição de Programação",
+        "description": "Descrição do evento",
+        "category": "TECHNOLOGY"
       },
       "profile": {
         "name": "João Silva",
         "nickname": "joao_silva",
-        "company_name": "Empresa XYZ"
+        "email": "joao@exemplo.com"
       },
-      "event": {
-        "event_id": "event_789",
-        "name": "Workshop de Tecnologia",
-        "description": "Workshop sobre desenvolvimento",
-        "category": "TECHNOLOGY"
-      },
-      "winner": {
-        "reason": "Participação completa no evento"
+      "badge": {
+        "badge_id": "badge_789",
+        "name": "Campeão",
+        "assets": {
+          "image_url": "https://example.com/badge.png"
+        }
       }
     }
   ],
-  "total": 25,
-  "limit": 50,
+  "total": 10,
+  "limit": 10,
   "offset": 0
 }
 ```
