@@ -11,81 +11,81 @@ Cria um novo evento.
   Código do usuário usado no path da rota.
 </ParamField>
 
-<ParamField path="body.name" type="string" required>
+<ParamField body="name" type="string" required>
   Nome do evento
 </ParamField>
 
-<ParamField path="body.location_type" type="string" required>
+<ParamField body="location_type" type="string" required>
   Tipo de localização do evento. Valores aceitos:
   - "online": Evento online (city e state serão preenchidos automaticamente com "ONLINE")
   - "physical": Evento presencial (city e state são obrigatórios)
 </ParamField>
 
-<ParamField path="body.city" type="string">
+<ParamField body="city" type="string">
   Cidade do evento (obrigatório se location_type for "physical")
 </ParamField>
 
-<ParamField path="body.state" type="string">
+<ParamField body="state" type="string">
   Estado do evento - UF brasileira (obrigatório se location_type for "physical"). Valores aceitos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
 </ParamField>
 
-<ParamField path="body.template_subcategory_id" type="string" required>
+<ParamField body="template_subcategory_id" type="string" required>
   ID da subcategoria do template.  A categoria e o template relacionados serão buscados a partir deste ID. Use a API /subcategories?template={template}&category={category} para obter os IDs disponíveis.
 </ParamField>
 
-<ParamField path="body.description" type="string">
+<ParamField body="description" type="string">
   Descrição do evento
 </ParamField>
 
-<ParamField path="body.initial_date" type="string">
+<ParamField body="initial_date" type="string">
   Data inicial do evento (formato ISO 8601)
 </ParamField>
 
-<ParamField path="body.finish_date" type="string">
+<ParamField body="finish_date" type="string">
   Data final do evento (formato ISO 8601)
 </ParamField>
 
-<ParamField path="body.official_url" type="string">
+<ParamField body="official_url" type="string">
   URL oficial do evento
 </ParamField>
 
-<ParamField path="body.image_url" type="string">
+<ParamField body="image_url" type="string">
   URL da imagem do evento
 </ParamField>
 
-<ParamField path="body.image_key" type="string">
+<ParamField body="image_key" type="string">
   Chave da imagem do evento (S3)
 </ParamField>
 
-<ParamField path="body.location_type" type="string">
+<ParamField body="location_type" type="string">
   Tipo de localização do evento
 </ParamField>
 
-<ParamField path="body.is_private" type="boolean">
+<ParamField body="is_private" type="boolean">
   Se o evento é privado
 </ParamField>
 
-<ParamField path="body.date_mode" type="string">
+<ParamField body="date_mode" type="string">
   Modo de data do evento (single_date, date_range, recurring)
 </ParamField>
 
-<ParamField path="body.start_time" type="string">
+<ParamField body="start_time" type="string">
   Horário de início do evento
 </ParamField>
 
-<ParamField path="body.end_time" type="string">
+<ParamField body="end_time" type="string">
   Horário de término do evento
 </ParamField>
 
-<ParamField path="body.recurrence_type" type="string">
+<ParamField body="recurrence_type" type="string">
   Tipo de recorrência do evento. Valores aceitos: Semanal, Quinzenal, Mensal, Bimestral, Trimestral, Semestral, Anual. O valor será salvo em inglês no banco de dados.
 </ParamField>
 
-<ParamField path="body.recurrence_start_date" type="string">
+<ParamField body="recurrence_start_date" type="string">
   Data de início da recorrência
 </ParamField>
 
-<ParamField path="body.connected_event_ids" type="array">
+<ParamField body="connected_event_ids" type="array">
   IDs de eventos conectados
 </ParamField>
 

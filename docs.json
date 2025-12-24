@@ -176,6 +176,7 @@
                     "group": "Events",
                     "expanded": false,
                     "pages": [
+                      "api/v1-0/api-v1-0/events/listar-subcategorias",
                       "api/v1-0/api-v1-0/events/events-list",
                       "api/v1-0/api-v1-0/events/events-get",
                       "api/v1-0/api-v1-0/events/create-event",

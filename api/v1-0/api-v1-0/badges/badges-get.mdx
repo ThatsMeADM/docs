@@ -7,41 +7,42 @@ Retorna um badge específico.
 
 <Request method="GET" url="/api/v1.0/{userCode}/badges/{id}" auth="bearer" />
 
-<ParamField path="userCode" type="string" required placeholder="8042b96d-a422-41f4-9990-bd9380e61d94">
+<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
   Código do usuário usado no path da rota.
 </ParamField>
 
-<ParamField path="id" type="string" required placeholder="badge_123">
-  ID do badge.
+<ParamField path="id" type="string" required>
+  ID do badge
 </ParamField>
 
-<Expandable title="Response properties">
+<Expandable title="properties">
   <ResponseField name="badge_id" type="string">
-    ID do badge.
+    ID do badge
   </ResponseField>
-
+  
   <ResponseField name="name" type="string">
-    Nome do badge.
+    Nome do badge
   </ResponseField>
-
+  
   <ResponseField name="description" type="string">
-    Descrição do badge.
+    Descrição do badge
   </ResponseField>
-
+  
   <ResponseField name="created_at" type="string">
-    Data de criação do badge (ISO 8601).
+    Data de criação do badge
   </ResponseField>
-
+  
   <ResponseField name="assets" type="object">
-    Assets do badge (imagens, etc).
+    Assets do badge (imagens, etc)
   </ResponseField>
-
+  
   <ResponseField name="user" type="object">
-    Informações do usuário criador do badge.
+    Informações do usuário criador do badge
   </ResponseField>
 </Expandable>
 
 <Response status="200" type="object">
+
 ```json
 {
   "badge_id": "badge_123",
@@ -59,4 +60,6 @@ Retorna um badge específico.
     }
   }
 }
+```
+
 </Response>
