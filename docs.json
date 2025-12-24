@@ -145,23 +145,23 @@
                     ]
                   },
                   {
+                    "group": "Destinatários",
+                    "pages": [
+                      "api/v1-0/api-v1-0/destinatarios/introducao",
+                      "api/v1-0/api-v1-0/destinatarios/listar-destinatarios-1",
+                      "api/v1-0/api-v1-0/destinatarios/listar-convites",
+                      "api/v1-0/api-v1-0/destinatarios/destinatarios-emissor"
+                    ]
+                  },
+                  {
                     "group": "Certificados",
                     "pages": [
                       "api/v1-0/api-v1-0/certificados/introducao",
                       "api/v1-0/api-v1-0/certificados/listar-certificados",
                       "api/v1-0/api-v1-0/certificados/emitir-certificados",
                       "api/v1-0/api-v1-0/certificados/informacoes-certificado",
-                      "api/v1-0/api-v1-0/certificados/certificados-por-emissor",
-                      "api/v1-0/api-v1-0/certificados/certificados-por-destinatarios"
-                    ]
-                  },
-                  {
-                    "group": "Destinatários",
-                    "pages": [
-                      "api/v1-0/api-v1-0/destinatarios/introducao",
-                      "api/v1-0/api-v1-0/destinatarios/listar-destinatarios-1",
-                      "api/v1-0/api-v1-0/destinatarios/listar-convites",
-                      "api/v1-0/api-v1-0/destinatarios/listar-destinatarios"
+                      "api/v1-0/api-v1-0/certificados/certificados-por-destinatarios",
+                      "api/v1-0/api-v1-0/certificados/certificados-por-emissor"
                     ]
                   },
                   {
