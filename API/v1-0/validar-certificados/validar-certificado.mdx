@@ -1,0 +1,72 @@
+---
+api: "GET /api/v1.0/{userCode}/verify/{id}"
+title: "Validar Certificado"
+---
+
+Verifica a autenticidade de uma assertion.
+
+<Request method="GET" url="/api/v1.0/{userCode}/verify/{id}" auth="bearer" />
+
+<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
+  Código do usuário usado no path da rota.
+</ParamField>
+
+<ParamField path="id" type="string" required>
+  ID da assertion a ser verificada
+</ParamField>
+
+<Expandable title="properties">
+  <ResponseField name="valid" type="boolean">
+    Indica se a assertion é válida
+  </ResponseField>
+  
+  <ResponseField name="assertion" type="object">
+    Informações da assertion (quando válida)
+  </ResponseField>
+  
+  <ResponseField name="message" type="string">
+    Mensagem de erro (quando inválida)
+  </ResponseField>
+</Expandable>
+
+<Response status="200" type="object" title="Resposta válida">
+
+```json
+{
+  "valid": true,
+  "assertion": {
+    "post_id": "post_123",
+    "created_at": "2024-01-15T10:30:00Z",
+    "badge": {
+      "badge_id": "badge_456",
+      "name": "Certificado de Participação"
+    },
+    "profile": {
+      "profile_id": "profile_789",
+      "name": "João Silva",
+      "company_name": "Empresa XYZ"
+    },
+    "event": {
+      "event_id": "event_123",
+      "name": "Workshop de Tecnologia",
+      "profile": {
+        "profile_id": "profile_456",
+        "company_name": "Empresa Organizadora"
+      }
+    }
+  }
+}
+```
+
+</Response>
+
+<Response status="200" type="object" title="Resposta inválida">
+
+```json
+{
+  "valid": false,
+  "message": "Assertion não encontrada"
+}
+```
+
+</Response>

@@ -140,60 +140,67 @@
                   {
                     "group": "Saldo",
                     "pages": [
+                      "api/v1-0/saldo/introducao",
                       "api/v1-0/saldo/saldo"
                     ]
                   },
                   {
                     "group": "Certificados",
                     "pages": [
+                      "api/v1-0/certificados/introducao",
                       "api/v1-0/certificados/emitir-certificado",
-                      "api/v1-0/api-v1-0/certificados/detalhes-certificado",
-                      "api/v1-0/api-v1-0/certificados/listar-certificados",
-                      "api/v1-0/api-v1-0/certificados/certificados-por-destinatario",
-                      "api/v1-0/api-v1-0/certificados/certificados-por-emissor"
+                      "api/v1-0/certificados/detalhes-certificado",
+                      "api/v1-0/certificados/listar-certificados",
+                      "api/v1-0/certificados/certificados-por-destinatario",
+                      "api/v1-0/certificados/certificados-por-emissor"
                     ]
                   },
                   {
-                    "group": "Ganhadores",
+                    "group": "Destinatários",
                     "pages": [
-                      "api/v1-0/ganhadores/listar-ganhadores",
-                      "api/v1-0/api-v1-0/ganhadores/ganhadores-por-emissor",
-                      "api/v1-0/api-v1-0/ganhadores/listar-convites"
+                      "api/v1-0/recipients/introducao",
+                      "api/v1-0/recipients/listar-destinatarios",
+                      "api/v1-0/recipients/destinatarios-por-emissor",
+                      "api/v1-0/recipients/listar-convites"
                     ]
                   },
                   {
                     "group": "Badges",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/api-v1-0/badges/informacoes-badge",
-                      "api/v1-0/api-v1-0/badges/listar-badges",
-                      "api/v1-0/api-v1-0/badges/badges-emissor"
+                      "api/v1-0/badges/introducao",
+                      "api/v1-0/badges/informacoes-badge",
+                      "api/v1-0/badges/listar-badges",
+                      "api/v1-0/badges/badges-emissor"
                     ]
                   },
                   {
-                    "group": "Events",
+                    "group": "Eventos",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/api-v1-0/events/listar-subcategorias",
-                      "api/v1-0/api-v1-0/events/events-list",
-                      "api/v1-0/api-v1-0/events/events-get",
-                      "api/v1-0/api-v1-0/events/create-event",
-                      "api/v1-0/api-v1-0/events/update-event",
-                      "api/v1-0/api-v1-0/events/events-badges"
+                      "api/v1-0/eventos/introducao",
+                      "api/v1-0/eventos/listar-subcategorias",
+                      "api/v1-0/eventos/listar-eventos",
+                      "api/v1-0/eventos/informacoes-evento",
+                      "api/v1-0/eventos/criar-evento",
+                      "api/v1-0/eventos/atualizar-evento",
+                      "api/v1-0/eventos/badges-evento"
                     ]
                   },
                   {
-                    "group": "Issuers",
+                    "group": "Emissores",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/issuers/issuers-get"
+                      "api/v1-0/emissores/introducao",
+                      "api/v1-0/emissores/informacoes-emissor"
                     ]
                   },
                   {
-                    "group": "Verify",
+                    "group": "Validar Certificados",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/verify/verify"
+                      "api/v1-0/validar-certificados/introducao",
+                      "api/v1-0/validar-certificados/validar-certificado"
                     ]
                   }
                 ]

@@ -1,0 +1,62 @@
+---
+api: "GET /api/v1.0/{userCode}/issuers/{id}"
+title: "Obter Emissor"
+---
+
+Retorna um emissor específico.
+
+<Request method="GET" url="/api/v1.0/{userCode}/issuers/{id}" auth="bearer" />
+
+<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
+  Código do usuário usado no path da rota.
+</ParamField>
+
+<ParamField path="id" type="string" required>
+  ID do emissor
+</ParamField>
+
+<Expandable title="properties">
+  <ResponseField name="profile_id" type="string">
+    ID do perfil do emissor
+  </ResponseField>
+  
+  <ResponseField name="name" type="string">
+    Nome do emissor
+  </ResponseField>
+  
+  <ResponseField name="nickname" type="string">
+    Apelido do emissor
+  </ResponseField>
+  
+  <ResponseField name="company_name" type="string">
+    Nome da empresa
+  </ResponseField>
+  
+  <ResponseField name="bio" type="string">
+    Biografia/descrição da empresa
+  </ResponseField>
+  
+  <ResponseField name="sector" type="string">
+    Setor da empresa
+  </ResponseField>
+  
+  <ResponseField name="user_id" type="string">
+    ID do usuário
+  </ResponseField>
+</Expandable>
+
+<Response status="200" type="object">
+
+```json
+{
+  "profile_id": "profile_123",
+  "name": "Empresa XYZ",
+  "nickname": "empresa_xyz",
+  "company_name": "Empresa XYZ Ltda",
+  "bio": "Descrição da empresa",
+  "sector": "TECHNOLOGY",
+  "user_id": "user_456"
+}
+```
+
+</Response>

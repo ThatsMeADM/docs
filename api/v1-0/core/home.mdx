@@ -34,42 +34,46 @@ A API Pública v1.0 permite integração com o sistema ThatsMe usando **API Keys
 
 ### Core
 
-- [GET /api/v1.0/](/api/v1.0/core/home)
-- [GET /api/v1.0/](/api/v1.0/core/get-started)
+- [GET /api/v1.0/](/api/v1-0/core/home)
+- [GET /api/v1.0/](/api/v1-0/core/get-started)
 
-### Balance
-- [GET /api/v1.0/balance](/api/v1.0/balance/balance)
+### Saldo
 
-### Winners
+- [GET /api/v1.0/{userCode}/balance](/api/v1-0/saldo/saldo)
 
-- [GET /api/v1.0/winners](/api/v1.0/winners/winners-list)
-- [GET /api/v1.0/winners/issuer](/api/v1.0/winners/winners-by-issuer)
-- [GET /api/v1.0/winner-invitations](/api/v1.0/winners/winner-invitations)
+### Destinatários
 
-### Assertions (certificados emitidos)
+- [GET /api/v1.0/{userCode}/recipients](/api/v1-0/recipients/listar-destinatarios)
+- [GET /api/v1.0/{userCode}/recipients/issuer/{issuerId}](/api/v1-0/recipients/destinatarios-por-emissor)
+- [GET /api/v1.0/{userCode}/recipient-invitations](/api/v1-0/recipients/listar-convites)
 
-- [POST /api/v1.0/assertions](/api/v1.0/assertions/assertions-create)
-- [GET /api/v1.0/assertions](/api/v1.0/assertions/assertions-list)
-- [GET /api/v1.0/assertions](/api/v1.0/assertions/assertions-get)
-- [GET /api/v1.0/assertions/recipient](/api/v1.0/assertions/assertions-by-recipient)
-- [GET /api/v1.0/assertions/issuer](/api/v1.0/assertions/assertions-by-issuer)
+### Certificados
+
+- [POST /api/v1.0/{userCode}/assertions](/api/v1-0/certificados/emitir-certificado)
+- [GET /api/v1.0/{userCode}/assertions](/api/v1-0/certificados/listar-certificados)
+- [GET /api/v1.0/{userCode}/assertions/{id}](/api/v1-0/certificados/detalhes-certificado)
+- [GET /api/v1.0/{userCode}/assertions/recipient/{recipientId}](/api/v1-0/certificados/certificados-por-destinatario)
+- [GET /api/v1.0/{userCode}/assertions/issuer/{issuerId}](/api/v1-0/certificados/certificados-por-emissor)
 
 ### Badges
 
-- [GET /api/v1.0/badges](/api/v1.0/badges/badges-list)
-- [GET /api/v1.0/badges](/api/v1.0/badges/badges-get)
-- [GET /api/v1.0/badgesissuer/](/api/v1.0/badges/badges-by-issuer)
+- [GET /api/v1.0/{userCode}/badges](/api/v1-0/badges/listar-badges)
+- [GET /api/v1.0/{userCode}/badges/{id}](/api/v1-0/badges/informacoes-badge)
+- [GET /api/v1.0/{userCode}/badges/issuer/{issuerId}](/api/v1-0/badges/badges-emissor)
 
-### Issuers
+### Emissores
 
-- [GET /api/v1.0/issuers](/api/v1.0/issuers/issuers-get)
+- [GET /api/v1.0/{userCode}/issuers/{id}](/api/v1-0/emissores/informacoes-emissor)
 
-### Events
+### Eventos
 
-- [GET /api/v1.0/events](/api/v1.0/events/events-list)
-- [GET /api/v1.0/events](/api/v1.0/events/events-get)
-- [GET /api/v1.0/events/badges](/api/v1.0/events/events-badges)
+- [GET /api/v1.0/{userCode}/subcategories](/api/v1-0/eventos/listar-subcategorias)
+- [GET /api/v1.0/{userCode}/events](/api/v1-0/eventos/listar-eventos)
+- [GET /api/v1.0/{userCode}/events/{id}](/api/v1-0/eventos/obter-evento)
+- [POST /api/v1.0/{userCode}/events](/api/v1-0/eventos/criar-evento)
+- [PATCH /api/v1.0/{userCode}/events/{id}](/api/v1-0/eventos/atualizar-evento)
+- [GET /api/v1.0/{userCode}/events/{id}/badges](/api/v1-0/eventos/badges-evento)
 
-### Verify
+### Validar Certificados
 
-- [GET /api/v1.0/verify](/api/v1.0/verify/verify)
+- [GET /api/v1.0/{userCode}/verify/{id}](/api/v1-0/validar-certificados/validar-certificado)
