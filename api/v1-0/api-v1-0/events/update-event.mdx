@@ -1,0 +1,164 @@
+---
+api: "PATCH /api/v1.0/{userCode}/events/{id}"
+title: "Update Event"
+---
+
+Atualiza um evento existente. Todos os campos são opcionais, mas as mesmas validações da criação se aplicam.
+
+<Request method="PATCH" url="/api/v1.0/{userCode}/events/{id}" auth="bearer" />
+
+<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
+  Código do usuário usado no path da rota.
+</ParamField>
+
+<ParamField path="id" type="string" required>
+  ID do evento a ser atualizado
+</ParamField>
+
+<ParamField path="body.name" type="string">
+  Nome do evento
+</ParamField>
+
+<ParamField path="body.location_type" type="string">
+  Tipo de localização do evento. Valores aceitos:
+  - "online": Evento online (city e state serão preenchidos automaticamente com "ONLINE")
+  - "physical": Evento presencial (city e state são obrigatórios)
+</ParamField>
+
+<ParamField path="body.city" type="string">
+  Cidade do evento (obrigatório se location_type for "physical")
+</ParamField>
+
+<ParamField path="body.state" type="string">
+  Estado do evento - UF brasileira (obrigatório se location_type for "physical"). Valores aceitos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
+</ParamField>
+
+<ParamField path="body.template_subcategory_id" type="string">
+  ID da subcategoria do template. A categoria e o template relacionados serão buscados a partir deste ID. Use a API /subcategories?template={template}&category={category} para obter os IDs disponíveis.
+</ParamField>
+
+<ParamField path="body.description" type="string">
+  Descrição do evento
+</ParamField>
+
+<ParamField path="body.initial_date" type="string">
+  Data inicial do evento (formato ISO 8601)
+</ParamField>
+
+<ParamField path="body.finish_date" type="string">
+  Data final do evento (formato ISO 8601)
+</ParamField>
+
+<ParamField path="body.official_url" type="string">
+  URL oficial do evento
+</ParamField>
+
+<ParamField path="body.is_private" type="boolean">
+  Se o evento é privado
+</ParamField>
+
+<ParamField path="body.date_mode" type="string">
+  Modo de data do evento
+</ParamField>
+
+<ParamField path="body.start_time" type="string">
+  Horário de início do evento
+</ParamField>
+
+<ParamField path="body.end_time" type="string">
+  Horário de término do evento
+</ParamField>
+
+<ParamField path="body.recurrence_type" type="string">
+  Tipo de recorrência do evento. Valores aceitos: Semanal, Quinzenal, Mensal, Bimestral, Trimestral, Semestral, Anual. O valor será salvo em inglês no banco de dados.
+</ParamField>
+
+<ParamField path="body.recurrence_start_date" type="string">
+  Data de início da recorrência
+</ParamField>
+
+<ParamField path="body.connected_event_ids" type="array">
+  IDs de eventos conectados
+</ParamField>
+
+<Expandable title="properties">
+  <ResponseField name="event_id" type="string">
+    ID do evento atualizado
+  </ResponseField>
+  
+  <ResponseField name="name" type="string">
+    Nome do evento
+  </ResponseField>
+  
+  <ResponseField name="description" type="string">
+    Descrição do evento
+  </ResponseField>
+  
+  <ResponseField name="category" type="string">
+    Categoria do evento
+  </ResponseField>
+  
+  <ResponseField name="subcategory" type="string">
+    Subcategoria do evento
+  </ResponseField>
+  
+  <ResponseField name="city" type="string">
+    Cidade do evento
+  </ResponseField>
+  
+  <ResponseField name="state" type="string">
+    Estado do evento
+  </ResponseField>
+  
+  <ResponseField name="initial_date" type="string">
+    Data de início do evento
+  </ResponseField>
+  
+  <ResponseField name="finish_date" type="string">
+    Data de término do evento
+  </ResponseField>
+  
+  <ResponseField name="official_url" type="string">
+    URL oficial do evento
+  </ResponseField>
+  
+  <ResponseField name="location_type" type="string">
+    Tipo de localização do evento
+  </ResponseField>
+  
+  <ResponseField name="status" type="string">
+    Status do evento
+  </ResponseField>
+  
+  <ResponseField name="created_at" type="string">
+    Data de criação do evento
+  </ResponseField>
+  
+  <ResponseField name="updated_at" type="string">
+    Data de atualização do evento
+  </ResponseField>
+</Expandable>
+
+<Response status="200" type="object">
+
+```json
+{
+  "event_id": "event_123",
+  "name": "Workshop de Tecnologia Atualizado",
+  "description": "Workshop sobre desenvolvimento web atualizado",
+  "category": "Educação",
+  "subcategory": "Curso Técnico",
+  "city": "São Paulo",
+  "state": "SP",
+  "initial_date": "2024-03-15T09:00:00Z",
+  "finish_date": "2024-03-15T18:00:00Z",
+  "official_url": "https://evento.com.br",
+  "location_type": "physical",
+  "status": "PENDING",
+  "created_at": "2024-01-15T10:30:00Z",
+  "updated_at": "2024-01-20T14:45:00Z"
+}
+```
+
+</Response>
+

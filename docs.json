@@ -176,9 +176,11 @@
                     "group": "Events",
                     "expanded": false,
                     "pages": [
-                      "api/v1-0/api-v1-0/events/events-badges",
                       "api/v1-0/api-v1-0/events/events-list",
-                      "api/v1-0/api-v1-0/events/events-get"
+                      "api/v1-0/api-v1-0/events/events-get",
+                      "api/v1-0/api-v1-0/events/create-event",
+                      "api/v1-0/api-v1-0/events/update-event",
+                      "api/v1-0/api-v1-0/events/events-badges"
                     ]
                   },
                   {
