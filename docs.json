@@ -196,7 +196,7 @@
                     ]
                   },
                   {
-                    "group": "Validar Certificados ",
+                    "group": "Validar Certificados",
                     "expanded": false,
                     "pages": [
                       "api/v1-0/validar-certificados/introducao",
