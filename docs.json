@@ -149,8 +149,7 @@
                     "pages": [
                       "api/v1-0/api-v1-0/destinatarios/introducao",
                       "api/v1-0/api-v1-0/destinatarios/listar-destinatarios",
-                      "api/v1-0/api-v1-0/destinatarios/listar-convites",
-                      "api/v1-0/api-v1-0/destinatarios/destinatarios-emissor"
+                      "api/v1-0/api-v1-0/destinatarios/listar-convites"
                     ]
                   },
                   {
@@ -158,10 +157,7 @@
                     "pages": [
                       "api/v1-0/api-v1-0/certificados/introducao",
                       "api/v1-0/api-v1-0/certificados/listar-certificados",
-                      "api/v1-0/api-v1-0/certificados/emitir-certificados",
-                      "api/v1-0/api-v1-0/certificados/informacoes-certificado",
-                      "api/v1-0/api-v1-0/certificados/certificados-por-destinatarios",
-                      "api/v1-0/api-v1-0/certificados/certificados-por-emissor"
+                      "api/v1-0/api-v1-0/certificados/emitir-certificados"
                     ]
                   },
                   {
@@ -170,8 +166,7 @@
                     "pages": [
                       "api/v1-0/api-v1-0/badges/introducao",
                       "api/v1-0/api-v1-0/badges/listar-badges",
-                      "api/v1-0/api-v1-0/badges/informacoes-badge",
-                      "api/v1-0/api-v1-0/badges/badges-por-emissor"
+                      "api/v1-0/api-v1-0/badges/informacoes-badge"
                     ]
                   },
                   {
@@ -182,13 +177,13 @@
                       "api/v1-0/api-v1-0/eventos/listar-eventos",
                       "api/v1-0/api-v1-0/eventos/informacoes-evento",
                       "api/v1-0/api-v1-0/eventos/criar-evento",
-                      "api/v1-0/api-v1-0/eventos/listar-subcategorias",
                       "api/v1-0/api-v1-0/eventos/atualizar-evento",
                       "api/v1-0/api-v1-0/eventos/badges-evento"
                     ]
                   },
                   {
                     "group": "Emissores",
+                    "hidden": true,
                     "expanded": false,
                     "pages": [
                       "api/v1-0/api-v1-0/emissores/introducao",
@@ -197,6 +192,7 @@
                   },
                   {
                     "group": "Validar Certificados",
+                    "hidden": true,
                     "expanded": false,
                     "pages": [
                       "api/v1-0/api-v1-0/validar-certificados/introducao",

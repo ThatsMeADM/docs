@@ -29,8 +29,8 @@ Cria um novo evento.
   Estado do evento - UF brasileira (obrigatório se location_type for "physical"). Valores aceitos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
 </ParamField>
 
-<ParamField body="template_subcategory_id" type="string" required>
-  ID da subcategoria do template.  A categoria e o template relacionados serão buscados a partir deste ID. Use a API /subcategories?template={template}&category={category} para obter os IDs disponíveis.
+<ParamField body="category" type="string">
+  Categoria do evento. Valores aceitos: Esporte, Educação, Corporativo, Sociocultural
 </ParamField>
 
 <ParamField body="description" type="string">
