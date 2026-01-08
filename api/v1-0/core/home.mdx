@@ -8,11 +8,6 @@ A API Pública v1.0 permite integração com o sistema ThatsMe usando **API Keys
 <Info>
   Todas as rotas requerem autenticação via <code>
    Authorization: Bearer sua_api_key</code>
-
-  e exigem <code>
-   userCode</code>
-
-  no path.
 </Info>
 
 <Columns cols={2}>
@@ -28,7 +23,6 @@ A API Pública v1.0 permite integração com o sistema ThatsMe usando **API Keys
 
 - **Autenticação**: envie o header `Authorization: Bearer sua_api_key`
 - **Base URL**: `https://api.thatsme.com.br`
-- **Path obrigatório**: `{userCode}` (código único da empresa gerado ao criar a primeira API Key)
 
 ## Endpoints
 
@@ -39,41 +33,30 @@ A API Pública v1.0 permite integração com o sistema ThatsMe usando **API Keys
 
 ### Saldo
 
-- [GET /api/v1.0/{userCode}/balance](/api/v1-0/saldo/saldo)
+- [GET /api/v1.0/balance](/api/v1-0/saldo/saldo)
 
 ### Destinatários
 
-- [GET /api/v1.0/{userCode}/recipients](/api/v1-0/api-v1-0/destinatarios/listar-destinatarios)
-- [GET /api/v1.0/{userCode}/recipient-invitations](/api/v1-0/api-v1-0/destinatarios/listar-convites)
+- [GET /api/v1.0/recipients](/api/v1-0/api-v1-0/destinatarios/listar-destinatarios)
+- [GET /api/v1.0/recipient-invitations](/api/v1-0/api-v1-0/destinatarios/listar-convites)
 
 ### Certificados
 
-- [POST /api/v1.0/{userCode}/assertions](/api/v1-0/api-v1-0/certificados/emitir-certificados)
-- [GET /api/v1.0/{userCode}/assertions](/api/v1-0/api-v1-0/certificados/listar-certificados)
-- [GET /api/v1.0/{userCode}/assertions/{id}](/api/v1-0/api-v1-0/certificados/informacoes-certificado)
-- [GET /api/v1.0/{userCode}/assertions/recipient/{recipientId}](/api/v1-0/api-v1-0/certificados/certificados-por-destinatarios)
-- [GET /api/v1.0/{userCode}/assertions/issuer/{issuerId}](/api/v1-0/api-v1-0/certificados/certificados-por-emissor)
+- [POST /api/v1.0/assertions](/api/v1-0/api-v1-0/certificados/emitir-certificados)
+- [GET /api/v1.0/assertions](/api/v1-0/api-v1-0/certificados/listar-certificados)
 
 ### Badges
 
-- [GET /api/v1.0/{userCode}/badges](/api/v1-0/api-v1-0/badges/listar-badges)
-- [GET /api/v1.0/{userCode}/badges/{id}](/api/v1-0/api-v1-0/badges/informacoes-badge)
-- [GET /api/v1.0/{userCode}/badges/issuer/{issuerId}](/api/v1-0/api-v1-0/badges/badges-por-emissor)
+- [GET /api/v1.0/badges](/api/v1-0/api-v1-0/badges/listar-badges)
+- [GET /api/v1.0/badges/{id}](/api/v1-0/api-v1-0/badges/informacoes-badge)
+- [GET /api/v1.0/badges/issuer/{issuerId}](/api/v1-0/api-v1-0/badges/badges-por-emissor)
 
 ### Eventos
 
-- [GET /api/v1.0/{userCode}/events](/api/v1-0/api-v1-0/eventos/listar-eventos)
-- [GET /api/v1.0/{userCode}/events/{id}](/api/v1-0/api-v1-0/eventos/informacoes-evento)
-- [POST /api/v1.0/{userCode}/events](/api/v1-0/api-v1-0/eventos/criar-evento)
-- [GET /api/v1.0/{userCode}/subcategories](/api/v1-0/api-v1-0/eventos/listar-subcategorias)
-- [PATCH /api/v1.0/{userCode}/events/{id}](/api/v1-0/api-v1-0/eventos/atualizar-evento)
-- [GET /api/v1.0/{userCode}/events/{id}/badges](/api/v1-0/api-v1-0/eventos/badges-evento)
+- [GET /api/v1.0/events](/api/v1-0/api-v1-0/eventos/listar-eventos)
+- [GET /api/v1.0/events/{id}](/api/v1-0/api-v1-0/eventos/informacoes-evento)
+- [POST /api/v1.0/events](/api/v1-0/api-v1-0/eventos/criar-evento)
+- [GET /api/v1.0/subcategories](/api/v1-0/api-v1-0/eventos/listar-subcategorias)
+- [PATCH /api/v1.0/events/{id}](/api/v1-0/api-v1-0/eventos/atualizar-evento)
+- [GET /api/v1.0/events/{id}/badges](/api/v1-0/api-v1-0/eventos/badges-evento)
 
-### Emissores
-
-- [GET /api/v1.0/{userCode}/issuers/{id}](/api/v1-0/api-v1-0/emissores/informacoes-emissor)
-
-
-### Validar Certificados
-
-- [GET /api/v1.0/{userCode}/verify/{id}](/api/v1-0/api-v1-0/validar-certificados/validar-certificado)
