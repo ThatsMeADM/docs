@@ -1,15 +1,13 @@
 ---
-api: "POST /api/v1.0/{userCode}/assertions"
+api: "POST /api/v1.0/assertions"
 title: "Emitir Certificados"
 ---
 
-Emita certificados.
+Emite certificados.
 
-<Request method="POST" url="/api/v1.0/{userCode}/assertions" auth="bearer" />
+<Request method="POST" url="/api/v1.0/assertions" auth="bearer" />
 
-<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
-  Código do usuário usado no path da rota.
-</ParamField>
+## Body params
 
 <ParamField body="badge_id" type="string" required>
   ID do badge
@@ -31,34 +29,60 @@ Emita certificados.
   Campos personalizados do certificado
 </ParamField>
 
-<Expandable title="properties">
-  <ResponseField name="post_id" type="string">
-    ID do certificado criado
-  </ResponseField>
-  
-  <ResponseField name="message" type="string">
-    Mensagem de confirmação
-  </ResponseField>
-  
-  <ResponseField name="recipient" type="object">
-    Informações do recebedor
-  </ResponseField>
-  
-  <ResponseField name="badge" type="object">
-    Informações do badge
-  </ResponseField>
-  
-  <ResponseField name="event" type="object">
-    Informações do evento
-  </ResponseField>
-</Expandable>
+## Response
 
-<Response status="201" type="object">
+<ResponseField name="post_id" type="string">
+  ID do certificado criado
+</ResponseField>
 
-```json
+<ResponseField name="message" type="string">
+  Mensagem de confirmação da emissão
+</ResponseField>
+
+<ResponseField name="recipient" type="object">
+  Informações do recebedor
+  <Expandable title="properties">
+    <ResponseField name="email" type="string">
+      Email do recebedor
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Nome do recebedor
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="badge" type="object">
+  Informações do badge
+  <Expandable title="properties">
+    <ResponseField name="badge_id" type="string">
+      ID do badge
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Nome do badge
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="event" type="object">
+  Informações do evento
+  <Expandable title="properties">
+    <ResponseField name="event_id" type="string">
+      ID do evento
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Nome do evento
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+```json Response (201)
 {
   "post_id": "post_123",
-  "message": "Certificado emitida com sucesso",
+  "message": "Certificado emitido com sucesso",
   "recipient": {
     "email": "usuario@exemplo.com",
     "name": "João Silva"
@@ -72,6 +96,3 @@ Emita certificados.
     "name": "Workshop de Tecnologia"
   }
 }
-```
-
-</Response>
