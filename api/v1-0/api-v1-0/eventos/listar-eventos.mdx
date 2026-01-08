@@ -1,15 +1,13 @@
 ---
-api: "GET /api/v1.0/{userCode}/events"
+api: "GET /api/v1.0/events"
 title: "Listar Eventos"
 ---
 
 Lista eventos públicos.
 
-<Request method="GET" url="/api/v1.0/{userCode}/events" auth="bearer" />
+<Request method="GET" url="/api/v1.0/events" auth="bearer" />
 
-<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
-  Código do usuário usado no path da rota.
-</ParamField>
+## Query params
 
 <ParamField query="limit" type="number">
   Limite de resultados
@@ -19,27 +17,102 @@ Lista eventos públicos.
   Offset para paginação
 </ParamField>
 
-<Expandable title="properties">
-  <ResponseField name="data" type="array">
-    Lista de eventos
-  </ResponseField>
-  
-  <ResponseField name="total" type="number">
-    Total de resultados encontrados
-  </ResponseField>
-  
-  <ResponseField name="limit" type="number">
-    Limite de resultados por página
-  </ResponseField>
-  
-  <ResponseField name="offset" type="number">
-    Offset usado na paginação
-  </ResponseField>
-</Expandable>
+## Response
 
-<Response status="200" type="object">
+<ResponseField name="data" type="array">
+  Lista de eventos públicos.
 
-```json
+  <Expandable title="items">
+    <ResponseField name="event_id" type="string">
+      ID do evento
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Nome do evento
+    </ResponseField>
+    <ResponseField name="description" type="string">
+      Descrição do evento
+    </ResponseField>
+    <ResponseField name="category" type="string">
+      Categoria do evento
+    </ResponseField>
+    <ResponseField name="subcategory" type="string">
+      Subcategoria do evento
+    </ResponseField>
+    <ResponseField name="city" type="string">
+      Cidade do evento
+    </ResponseField>
+    <ResponseField name="state" type="string">
+      Estado (UF)
+    </ResponseField>
+    <ResponseField name="initial_date" type="string">
+      Data/hora de início (ISO 8601)
+    </ResponseField>
+    <ResponseField name="finish_date" type="string">
+      Data/hora de término (ISO 8601)
+    </ResponseField>
+    <ResponseField name="image_url" type="string">
+      URL da imagem do evento
+    </ResponseField>
+    <ResponseField name="official_url" type="string">
+      URL oficial do evento
+    </ResponseField>
+    <ResponseField name="status" type="string">
+      Status do evento (ex: ACTIVE, INACTIVE)
+    </ResponseField>
+    <ResponseField name="profile" type="object">
+      Informações do organizador
+
+      <Expandable title="properties">
+        <ResponseField name="name" type="string">
+          Nome do organizador
+        </ResponseField>
+        <ResponseField name="company_name" type="string">
+          Nome da empresa organizadora
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name="badges" type="array">
+      Badges associados ao evento
+
+      <Expandable title="items">
+        <ResponseField name="badge_id" type="string">
+          ID do badge
+        </ResponseField>
+        <ResponseField name="name" type="string">
+          Nome do badge
+        </ResponseField>
+        <ResponseField name="description" type="string">
+          Descrição do badge
+        </ResponseField>
+        <ResponseField name="assets" type="object">
+          Assets do badge
+
+          <Expandable title="properties">
+            <ResponseField name="image_url" type="string">
+              URL da imagem do badge
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="total" type="number">
+  Total de resultados encontrados
+</ResponseField>
+
+<ResponseField name="limit" type="number">
+  Limite de resultados por página
+</ResponseField>
+
+<ResponseField name="offset" type="number">
+  Offset usado na paginação
+</ResponseField>
+
+<ResponseExample>
+
+```json Response (200)
 {
   "data": [
     {
@@ -77,4 +150,4 @@ Lista eventos públicos.
 }
 ```
 
-</Response>
+</ResponseExample>
