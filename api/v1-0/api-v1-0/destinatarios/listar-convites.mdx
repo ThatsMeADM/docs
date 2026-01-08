@@ -1,19 +1,13 @@
 ---
-api: "GET /api/v1.0/{userCode}/recipient-invitations"
+api: "GET /api/v1.0/recipient-invitations"
 title: "Listar Convites"
 ---
 
 Lista convites de destinatários.
 
-<Request method="GET" url="/api/v1.0/{userCode}/recipient-invitations" auth="bearer" />
+<Request method="GET" url="/api/v1.0/recipient-invitations" auth="bearer" />
 
-<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
-  Código do usuário usado no path da rota.
-</ParamField>
-
-<ParamField query="issuerId" type="string">
-  ID do emissor (opcional)
-</ParamField>
+## Query params
 
 <ParamField query="limit" type="number">
   Limite de resultados
@@ -23,27 +17,51 @@ Lista convites de destinatários.
   Offset para paginação
 </ParamField>
 
-<Expandable title="properties">
-  <ResponseField name="data" type="array">
-    Lista de convites de destinatários
-  </ResponseField>
-  
-  <ResponseField name="total" type="number">
-    Total de resultados encontrados
-  </ResponseField>
-  
-  <ResponseField name="limit" type="number">
-    Limite de resultados por página
-  </ResponseField>
-  
-  <ResponseField name="offset" type="number">
-    Offset usado na paginação
-  </ResponseField>
-</Expandable>
+## Response
 
-<Response status="200" type="object">
+<ResponseField name="data" type="array">
+  Lista de convites de destinatários.
+  <Expandable title="items">
+    <ResponseField name="recipient_invitation_id" type="string">
+      ID do convite
+    </ResponseField>
 
-```json
+    <ResponseField name="event_id" type="string">
+      ID do evento associado
+    </ResponseField>
+
+    <ResponseField name="recipient_email" type="string">
+      Email do destinatário convidado
+    </ResponseField>
+
+    <ResponseField name="recipient_name" type="string">
+      Nome do destinatário convidado
+    </ResponseField>
+
+    <ResponseField name="status" type="string">
+      Status do convite (ex: PENDING, ACCEPTED, EXPIRED)
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      Data/hora de criação do convite (ISO 8601)
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="total" type="number">
+  Total de resultados encontrados
+</ResponseField>
+
+<ResponseField name="limit" type="number">
+  Limite de resultados por página
+</ResponseField>
+
+<ResponseField name="offset" type="number">
+  Offset usado na paginação
+</ResponseField>
+
+<ResponseExample>
+```json Response (200)
 {
   "data": [
     {
@@ -60,5 +78,4 @@ Lista convites de destinatários.
   "offset": 0
 }
 ```
-
-</Response>
+</ResponseExample> 
