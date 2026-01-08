@@ -1,15 +1,11 @@
 ---
-api: "GET /api/v1.0/{userCode}/balance"
+api: "GET /api/v1.0/balance"
 title: "Saldo"
 ---
 
 Retorna o saldo de créditos da empresa autenticada.
 
-<Request method="GET" url="/api/v1.0/{userCode}/balance" auth="bearer" />
-
-<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
-  Código do usuário usado no path da rota.
-</ParamField>
+<Request method="GET" url="/api/v1.0/balance" auth="bearer" />
 
 <Expandable title="properties">
   <ResponseField name="balance" type="number">
