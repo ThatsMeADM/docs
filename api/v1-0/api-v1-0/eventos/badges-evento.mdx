@@ -1,19 +1,19 @@
 ---
-api: "GET /api/v1.0/{userCode}/events/{id}/badges"
+api: "GET /api/v1.0/events/{id}/badges"
 title: "Badges do Evento"
 ---
 
 Retorna badges de um evento.
 
-<Request method="GET" url="/api/v1.0/{userCode}/events/{id}/badges" auth="bearer" />
+<Request method="GET" url="/api/v1.0/events/{id}/badges" auth="bearer" />
 
-<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
-  Código do usuário usado no path da rota.
-</ParamField>
+## Path params
 
 <ParamField path="id" type="string" required>
   ID do evento
 </ParamField>
+
+## Query params
 
 <ParamField query="limit" type="number">
   Limite de resultados
@@ -23,27 +23,48 @@ Retorna badges de um evento.
   Offset para paginação
 </ParamField>
 
-<Expandable title="properties">
-  <ResponseField name="data" type="array">
-    Lista de badges do evento
-  </ResponseField>
-  
-  <ResponseField name="total" type="number">
-    Total de resultados encontrados
-  </ResponseField>
-  
-  <ResponseField name="limit" type="number">
-    Limite de resultados por página
-  </ResponseField>
-  
-  <ResponseField name="offset" type="number">
-    Offset usado na paginação
-  </ResponseField>
-</Expandable>
+## Response
 
-<Response status="200" type="object">
+<ResponseField name="data" type="array">
+  Lista de badges do evento.
+  <Expandable title="items">
+    <ResponseField name="badge_id" type="string">
+      ID do badge
+    </ResponseField>
 
-```json
+    <ResponseField name="name" type="string">
+      Nome do badge
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      Data/hora de criação (ISO 8601)
+    </ResponseField>
+
+    <ResponseField name="assets" type="object">
+      Assets do badge
+      <Expandable title="properties">
+        <ResponseField name="image_url" type="string">
+          URL da imagem do badge
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="total" type="number">
+  Total de resultados encontrados
+</ResponseField>
+
+<ResponseField name="limit" type="number">
+  Limite de resultados por página
+</ResponseField>
+
+<ResponseField name="offset" type="number">
+  Offset usado na paginação
+</ResponseField>
+
+<ResponseExample>
+```json Response (200)
 {
   "data": [
     {
@@ -61,4 +82,4 @@ Retorna badges de um evento.
 }
 ```
 
-</Response>
+</ResponseExample>
