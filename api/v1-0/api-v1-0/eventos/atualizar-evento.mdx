@@ -1,19 +1,19 @@
 ---
-api: "PATCH /api/v1.0/{userCode}/events/{id}"
+api: "PATCH /api/v1.0/events/{id}"
 title: "Atualizar Evento"
 ---
 
 Atualiza um evento existente. Todos os campos são opcionais, mas as mesmas validações da criação se aplicam.
 
-<Request method="PATCH" url="/api/v1.0/{userCode}/events/{id}" auth="bearer" />
+<Request method="PATCH" url="/api/v1.0/events/{id}" auth="bearer" />
 
-<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
-  Código do usuário usado no path da rota.
-</ParamField>
+## Path params
 
 <ParamField path="id" type="string" required>
   ID do evento a ser atualizado
 </ParamField>
+
+## Body params
 
 <ParamField body="name" type="string">
   Nome do evento
@@ -81,67 +81,66 @@ Atualiza um evento existente. Todos os campos são opcionais, mas as mesmas vali
   IDs de eventos conectados
 </ParamField>
 
-<Expandable title="properties">
-  <ResponseField name="event_id" type="string">
-    ID do evento atualizado
-  </ResponseField>
-  
-  <ResponseField name="name" type="string">
-    Nome do evento
-  </ResponseField>
-  
-  <ResponseField name="description" type="string">
-    Descrição do evento
-  </ResponseField>
-  
-  <ResponseField name="category" type="string">
-    Categoria do evento
-  </ResponseField>
-  
-  <ResponseField name="subcategory" type="string">
-    Subcategoria do evento
-  </ResponseField>
-  
-  <ResponseField name="city" type="string">
-    Cidade do evento
-  </ResponseField>
-  
-  <ResponseField name="state" type="string">
-    Estado do evento
-  </ResponseField>
-  
-  <ResponseField name="initial_date" type="string">
-    Data de início do evento
-  </ResponseField>
-  
-  <ResponseField name="finish_date" type="string">
-    Data de término do evento
-  </ResponseField>
-  
-  <ResponseField name="official_url" type="string">
-    URL oficial do evento
-  </ResponseField>
-  
-  <ResponseField name="location_type" type="string">
-    Tipo de localização do evento
-  </ResponseField>
-  
-  <ResponseField name="status" type="string">
-    Status do evento
-  </ResponseField>
-  
-  <ResponseField name="created_at" type="string">
-    Data de criação do evento
-  </ResponseField>
-  
-  <ResponseField name="updated_at" type="string">
-    Data de atualização do evento
-  </ResponseField>
-</Expandable>
+## Response
 
-<Response status="200" type="object">
+<ResponseField name="event_id" type="string">
+  ID do evento atualizado
+</ResponseField>
 
-```json
+<ResponseField name="name" type="string">
+  Nome do evento
+</ResponseField>
+
+<ResponseField name="description" type="string">
+  Descrição do evento
+</ResponseField>
+
+<ResponseField name="category" type="string">
+  Categoria do evento
+</ResponseField>
+
+<ResponseField name="subcategory" type="string">
+  Subcategoria do evento
+</ResponseField>
+
+<ResponseField name="city" type="string">
+  Cidade do evento
+</ResponseField>
+
+<ResponseField name="state" type="string">
+  Estado (UF)
+</ResponseField>
+
+<ResponseField name="initial_date" type="string">
+  Data/hora de início (ISO 8601)
+</ResponseField>
+
+<ResponseField name="finish_date" type="string">
+  Data/hora de término (ISO 8601)
+</ResponseField>
+
+<ResponseField name="official_url" type="string">
+  URL oficial do evento
+</ResponseField>
+
+<ResponseField name="location_type" type="string">
+  Tipo de localização do evento
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Status do evento
+</ResponseField>
+
+<ResponseField name="created_at" type="string">
+  Data/hora de criação (ISO 8601)
+</ResponseField>
+
+<ResponseField name="updated_at" type="string">
+  Data/hora de atualização (ISO 8601)
+</ResponseField>
+
+<ResponseExample>
+```json Response (200)
 {
   "event_id": "event_123",
   "name": "Workshop de Tecnologia Atualizado",
@@ -159,6 +158,5 @@ Atualiza um evento existente. Todos os campos são opcionais, mas as mesmas vali
   "updated_at": "2024-01-20T14:45:00Z"
 }
 ```
-
-</Response>
+</ResponseExample>
 
