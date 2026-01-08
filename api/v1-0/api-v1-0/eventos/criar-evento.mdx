@@ -1,15 +1,13 @@
 ---
-api: "POST /api/v1.0/{userCode}/events"
+api: "POST /api/v1.0/events"
 title: "Criar Evento"
 ---
 
 Cria um novo evento.
 
-<Request method="POST" url="/api/v1.0/{userCode}/events" auth="bearer" />
+<Request method="POST" url="/api/v1.0/events" auth="bearer" />
 
-<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
-  Código do usuário usado no path da rota.
-</ParamField>
+## Body params
 
 <ParamField body="name" type="string" required>
   Nome do evento
@@ -57,10 +55,6 @@ Cria um novo evento.
   Chave da imagem do evento (S3)
 </ParamField>
 
-<ParamField body="location_type" type="string">
-  Tipo de localização do evento
-</ParamField>
-
 <ParamField body="is_private" type="boolean">
   Se o evento é privado
 </ParamField>
@@ -89,67 +83,66 @@ Cria um novo evento.
   IDs de eventos conectados
 </ParamField>
 
-<Expandable title="properties">
-  <ResponseField name="event_id" type="string">
-    ID do evento criado
-  </ResponseField>
-  
-  <ResponseField name="name" type="string">
-    Nome do evento
-  </ResponseField>
-  
-  <ResponseField name="description" type="string">
-    Descrição do evento
-  </ResponseField>
-  
-  <ResponseField name="category" type="string">
-    Categoria do evento
-  </ResponseField>
-  
-  <ResponseField name="subcategory" type="string">
-    Subcategoria do evento
-  </ResponseField>
-  
-  <ResponseField name="city" type="string">
-    Cidade do evento
-  </ResponseField>
-  
-  <ResponseField name="state" type="string">
-    Estado do evento
-  </ResponseField>
-  
-  <ResponseField name="initial_date" type="string">
-    Data de início do evento
-  </ResponseField>
-  
-  <ResponseField name="finish_date" type="string">
-    Data de término do evento
-  </ResponseField>
-  
-  <ResponseField name="image_url" type="string">
-    URL da imagem do evento
-  </ResponseField>
-  
-  <ResponseField name="official_url" type="string">
-    URL oficial do evento
-  </ResponseField>
-  
-  <ResponseField name="status" type="string">
-    Status do evento
-  </ResponseField>
-  
-  <ResponseField name="created_at" type="string">
-    Data de criação do evento
-  </ResponseField>
-  
-  <ResponseField name="updated_at" type="string">
-    Data de atualização do evento
-  </ResponseField>
-</Expandable>
+## Response
 
-<Response status="201" type="object">
+<ResponseField name="event_id" type="string">
+  ID do evento criado
+</ResponseField>
 
-```json
+<ResponseField name="name" type="string">
+  Nome do evento
+</ResponseField>
+
+<ResponseField name="description" type="string">
+  Descrição do evento
+</ResponseField>
+
+<ResponseField name="category" type="string">
+  Categoria do evento
+</ResponseField>
+
+<ResponseField name="subcategory" type="string">
+  Subcategoria do evento
+</ResponseField>
+
+<ResponseField name="city" type="string">
+  Cidade do evento
+</ResponseField>
+
+<ResponseField name="state" type="string">
+  Estado (UF)
+</ResponseField>
+
+<ResponseField name="initial_date" type="string">
+  Data/hora de início (ISO 8601)
+</ResponseField>
+
+<ResponseField name="finish_date" type="string">
+  Data/hora de término (ISO 8601)
+</ResponseField>
+
+<ResponseField name="image_url" type="string">
+  URL da imagem do evento
+</ResponseField>
+
+<ResponseField name="official_url" type="string">
+  URL oficial do evento
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Status do evento (ex: PENDING, ACTIVE)
+</ResponseField>
+
+<ResponseField name="created_at" type="string">
+  Data/hora de criação (ISO 8601)
+</ResponseField>
+
+<ResponseField name="updated_at" type="string">
+  Data/hora de atualização (ISO 8601)
+</ResponseField>
+
+<ResponseExample>
+```json Response (201)
 {
   "event_id": "event_123",
   "name": "Workshop de Tecnologia",
@@ -168,5 +161,5 @@ Cria um novo evento.
 }
 ```
 
-</Response>
+</ResponseExample>
 
