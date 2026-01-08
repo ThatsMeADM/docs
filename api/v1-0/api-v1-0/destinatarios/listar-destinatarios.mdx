@@ -1,15 +1,12 @@
 ---
-api: "GET /api/v1.0/{userCode}/recipients"
+api: "GET /api/v1.0/recipients"
 title: "Listar Destinatários"
 ---
 
 Lista destinatários.
 
-<Request method="GET" url="/api/v1.0/{userCode}/recipients" auth="bearer" />
+<Request method="GET" url="/api/v1.0/recipients" auth="bearer" />
 
-<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
-  Código do usuário usado no path da rota.
-</ParamField>
 
 <ParamField query="issuerId" type="string">
   ID do emissor (opcional)
