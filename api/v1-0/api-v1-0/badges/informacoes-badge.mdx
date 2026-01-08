@@ -1,49 +1,69 @@
 ---
-api: "GET /api/v1.0/{userCode}/badges/{id}"
+api: "GET /api/v1.0/badges/{id}"
 title: "Informações de uma Badge"
 ---
 
 Retorna um badge específico.
 
-<Request method="GET" url="/api/v1.0/{userCode}/badges/{id}" auth="bearer" />
+<Request method="GET" url="/api/v1.0/badges/{id}" auth="bearer" />
 
-<ParamField path="userCode" type="string" required placeholder="ABC123XYZ">
-  Código do usuário usado no path da rota.
-</ParamField>
+## Path params
 
 <ParamField path="id" type="string" required>
   ID do badge
 </ParamField>
 
-<Expandable title="properties">
-  <ResponseField name="badge_id" type="string">
-    ID do badge
-  </ResponseField>
-  
-  <ResponseField name="name" type="string">
-    Nome do badge
-  </ResponseField>
-  
-  <ResponseField name="description" type="string">
-    Descrição do badge
-  </ResponseField>
-  
-  <ResponseField name="created_at" type="string">
-    Data de criação do badge
-  </ResponseField>
-  
-  <ResponseField name="assets" type="object">
-    Assets do badge (imagens, etc)
-  </ResponseField>
-  
-  <ResponseField name="user" type="object">
-    Informações do usuário criador do badge
-  </ResponseField>
-</Expandable>
+## Response
 
-<Response status="200" type="object">
+<ResponseField name="badge_id" type="string">
+  ID do badge
+</ResponseField>
 
-```json
+<ResponseField name="name" type="string">
+  Nome do badge
+</ResponseField>
+
+<ResponseField name="description" type="string">
+  Descrição do badge
+</ResponseField>
+
+<ResponseField name="created_at" type="string">
+  Data/hora de criação (ISO 8601)
+</ResponseField>
+
+<ResponseField name="assets" type="object">
+  Assets do badge
+  <Expandable title="properties">
+    <ResponseField name="image_url" type="string">
+      URL da imagem do badge
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="user" type="object">
+  Informações do criador do badge
+  <Expandable title="properties">
+    <ResponseField name="profile" type="object">
+      Perfil do criador
+      <Expandable title="properties">
+        <ResponseField name="profile_id" type="string">
+          ID do perfil
+        </ResponseField>
+
+        <ResponseField name="name" type="string">
+          Nome
+        </ResponseField>
+
+        <ResponseField name="company_name" type="string">
+          Nome da empresa
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+```json Response (200)
 {
   "badge_id": "badge_123",
   "name": "Certificado de Participação",
@@ -61,5 +81,4 @@ Retorna um badge específico.
   }
 }
 ```
-
-</Response>
+</ResponseExample> 
