@@ -7,32 +7,30 @@ Retorna o saldo de créditos da empresa autenticada.
 
 <Request method="GET" url="/api/v1.0/balance" auth="bearer" />
 
-<Expandable title="properties">
-  <ResponseField name="balance" type="number">
-  Saldo atual de créditos da empresa em reais (R$)
-  </ResponseField>
-  
-  <ResponseField name="profile_id" type="string">
-    ID único do perfil da empresa
-  </ResponseField>
-  
-  <ResponseField name="company_name" type="string">
-    Nome da empresa
-  </ResponseField>
-</Expandable>
+<ResponseField name="data" type="object">
+  <Expandable title="properties">
+    <ResponseField name="balance" type="number">
+      Saldo atual de créditos da empresa em reais (R$)
+    </ResponseField>
 
-<Response status="200" type="object">
+    <ResponseField name="profile_id" type="string">
+      ID único do perfil da empresa
+    </ResponseField>
 
-```json
+    <ResponseField name="company_name" type="string">
+      Nome da empresa
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+```json Response (200)
 {
-  "balance": 150.50,
+  "balance": 150.5,
   "profile_id": "profile_123",
   "company_name": "Nome da Empresa"
 }
 ```
+</ResponseExample> 
 
-</Response>
-
-<Info>
-O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0.
-</Info>
+<Info> O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0. </Info> 
