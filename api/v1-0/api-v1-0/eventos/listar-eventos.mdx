@@ -3,112 +3,133 @@ api: "GET /api/v1.0/events"
 title: "Listar Eventos"
 ---
 
-Lista eventos públicos.
+Retorna uma lista **enxuta** de eventos do **próprio emissor autenticado**, com foco em localizar o `event_id` necessário para iniciar emissões de certificados.
+
+Este endpoint exige autenticação via **Bearer Token** e **não** lista eventos de outros emissores.
 
 <Request method="GET" url="/api/v1.0/events" auth="bearer" />
 
-## Query params
+<Note>
+  Uso recomendado: utilize este endpoint para localizar o `event_id`\
+  Para obter informações completas de um evento, utilize`GET /api/v1.0/events/{id}`
+</Note>
+
+---
+
+## Parâmetros de consulta
 
 <ParamField query="limit" type="number">
-  Limite de resultados
+  Quantidade máxima de eventos retornados por página.
 </ParamField>
 
 <ParamField query="offset" type="number">
-  Offset para paginação
+  Posição inicial da listagem para paginação.
 </ParamField>
 
-## Response
+<ParamField query="q" type="string">
+  Busca textual por nome do evento (case-insensitive). Recomendado para localizar rapidamente o evento desejado.
+</ParamField>
+
+<ParamField query="status" type="string">
+  Filtra por status do evento (ex.: `ACTIVE` or `FINISHED`).
+</ParamField>
+
+<ParamField query="category" type="string">
+  Filtra por categoria do evento (ex.: `EDUCATION`, `SPORTS`, `CORPORATE`, `SOCIOCULTURAL`).
+</ParamField>
+
+<ParamField query="created_from" type="string">
+  Filtra eventos criados a partir de uma data (ISO 8601).
+</ParamField>
+
+<ParamField query="created_to" type="string">
+  Filtra eventos criados até uma data (ISO 8601).
+</ParamField>
+
+<ParamField query="sort" type="string">
+  Campo de ordenação. Padrão recomendado: `created_at`.
+</ParamField>
+
+<ParamField query="order" type="string">
+  Ordem de ordenação: `asc` ou `desc`.\
+  Padrão recomendado: `desc`.
+</ParamField>
+
+<Info>
+  `limit` controla quantos eventos retornam por chamada.\
+  `offset` controla a partir de qual posição a listagem começa (paginação).
+
+  Para localizar eventos rapidamente, recomenda-se combinar `q` + `status` e ordenar por `created_at`.
+</Info>
+
+---
+
+## Resposta
 
 <ResponseField name="data" type="array">
-  Lista de eventos públicos.
+  Lista de eventos do emissor autenticado, retornando somente campos essenciais para identificação.
 
   <Expandable title="items">
     <ResponseField name="event_id" type="string">
-      ID do evento
+      Identificador único do evento
     </ResponseField>
     <ResponseField name="name" type="string">
       Nome do evento
     </ResponseField>
-    <ResponseField name="description" type="string">
-      Descrição do evento
+    <ResponseField name="status" type="string">
+      Status atual do evento (ex.: ACTIVE, PENDING, FINISHED)
     </ResponseField>
     <ResponseField name="category" type="string">
       Categoria do evento
     </ResponseField>
-    <ResponseField name="subcategory" type="string">
-      Subcategoria do evento
-    </ResponseField>
-    <ResponseField name="city" type="string">
-      Cidade do evento
-    </ResponseField>
-    <ResponseField name="state" type="string">
-      Estado (UF)
-    </ResponseField>
-    <ResponseField name="initial_date" type="string">
-      Data/hora de início (ISO 8601)
-    </ResponseField>
-    <ResponseField name="finish_date" type="string">
-      Data/hora de término (ISO 8601)
-    </ResponseField>
-    <ResponseField name="image_url" type="string">
-      URL da imagem do evento
-    </ResponseField>
-    <ResponseField name="official_url" type="string">
-      URL oficial do evento
-    </ResponseField>
-    <ResponseField name="status" type="string">
-      Status do evento (ex: ACTIVE, INACTIVE)
-    </ResponseField>
-    <ResponseField name="profile" type="object">
-      Informações do organizador
-
-      <Expandable title="properties">
-        <ResponseField name="name" type="string">
-          Nome do organizador
-        </ResponseField>
-        <ResponseField name="company_name" type="string">
-          Nome da empresa organizadora
-        </ResponseField>
-      </Expandable>
-    </ResponseField>
-    <ResponseField name="badges" type="array">
-      Badges associados ao evento
-
-      <Expandable title="items">
-        <ResponseField name="badge_id" type="string">
-          ID do badge
-        </ResponseField>
-        <ResponseField name="name" type="string">
-          Nome do badge
-        </ResponseField>
-        <ResponseField name="description" type="string">
-          Descrição do badge
-        </ResponseField>
-        <ResponseField name="assets" type="object">
-          Assets do badge
-
-          <Expandable title="properties">
-            <ResponseField name="image_url" type="string">
-              URL da imagem do badge
-            </ResponseField>
-          </Expandable>
-        </ResponseField>
-      </Expandable>
+    <ResponseField name="created_at" type="string">
+      Data de criação do evento (ISO 8601)
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="total" type="number">
-  Total de resultados encontrados
+  Quantidade total de eventos encontrados para os filtros aplicados
 </ResponseField>
 
 <ResponseField name="limit" type="number">
-  Limite de resultados por página
+  Limite aplicado na consulta
 </ResponseField>
 
 <ResponseField name="offset" type="number">
-  Offset usado na paginação
+  Offset aplicado na consulta
 </ResponseField>
+
+---
+
+## Exemplos de uso
+
+<AccordionGroup>
+  <Accordion title="Listar eventos mais recentes">
+    ```http
+    GET /api/v1.0/events?limit=10&offset=0&sort=created_at&order=desc
+    ```
+  </Accordion>
+  <Accordion title="Buscar evento por nome (para obter o event_id)">
+    ```http
+    GET /api/v1.0/events?q=workshop&limit=10&offset=0&sort=created_at&order=desc
+    ```
+  </Accordion>
+  <Accordion title="Filtrar somente eventos ativos">
+    ```http
+    GET /api/v1.0/events?status=ACTIVE&limit=10&offset=0&sort=created_at&order=desc
+    ```
+  </Accordion>
+  <Accordion title="Filtrar por categoria">
+    ```http
+    GET /api/v1.0/events?category=EDUCATION&limit=10&offset=0&sort=created_at&order=desc
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Exemplo de resposta
 
 <ResponseExample>
 
@@ -118,34 +139,13 @@ Lista eventos públicos.
     {
       "event_id": "event_123",
       "name": "Workshop de Tecnologia",
-      "description": "Workshop sobre desenvolvimento web",
-      "category": "TECHNOLOGY",
-      "subcategory": "WEB_DEVELOPMENT",
-      "city": "São Paulo",
-      "state": "SP",
-      "initial_date": "2024-02-01T09:00:00Z",
-      "finish_date": "2024-02-03T18:00:00Z",
-      "image_url": "https://example.com/event.png",
-      "official_url": "https://evento.com.br",
       "status": "ACTIVE",
-      "profile": {
-        "name": "Organizador",
-        "company_name": "Empresa Organizadora"
-      },
-      "badges": [
-        {
-          "badge_id": "badge_456",
-          "name": "Certificado de Participação",
-          "description": "Badge para participantes",
-          "assets": {
-            "image_url": "https://example.com/badge.png"
-          }
-        }
-      ]
+      "category": "EDUCATION",
+      "created_at": "2024-01-15T10:20:00Z"
     }
   ],
   "total": 20,
-  "limit": 50,
+  "limit": 10,
   "offset": 0
 }
 ```

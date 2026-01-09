@@ -1,0 +1,86 @@
+---
+api: "DELETE /api/v1.0/events/{id}"
+title: "Deletar Evento"
+---
+
+Remove um evento do **próprio emissor autenticado**.
+
+A exclusão é permitida **apenas para eventos que ainda não tiveram emissões** e que **`não estejam com status FINISHED`**.
+
+<Request method="DELETE" url="/api/v1.0/events/{id}" auth="bearer" />
+
+<Warning>
+  Eventos que já tiveram **emissões de certificados** ou que estejam com status `FINISHED` não podem ser deletados.
+</Warning>
+
+---
+
+## Parâmetros de rota
+
+<ParamField path="id" type="string" required>
+  ID do evento a ser deletado (`event_id`).
+</ParamField>
+
+---
+
+## Regras de exclusão
+
+Um evento **não pode ser deletado** quando qualquer uma das condições abaixo for verdadeira:
+
+- Possui ao menos uma emissão de certificado associada
+- Está com status `FINISHED`
+
+Essas regras garantem a integridade histórica das emissões e relatórios.
+
+---
+
+## Resposta em caso de sucesso
+
+A exclusão bem-sucedida retorna status **204 No Content** (nenhum corpo é retornado).
+
+---
+
+## Erros comuns
+
+### Evento finalizado
+
+<ResponseExample>
+
+```json Response (409)
+{
+  "error": "EVENT_FINISHED",
+  "message": "Eventos com status FINISHED não podem ser deletados."
+}
+```
+
+</ResponseExample>
+
+---
+
+### Evento com emissões realizadas
+
+<ResponseExample>
+
+```json Response (409)
+{
+  "error": "EVENT_HAS_EMISSIONS",
+  "message": "Eventos que já tiveram emissões de certificados não podem ser deletados."
+}
+```
+
+</ResponseExample>
+
+---
+
+### Evento inexistente ou não pertencente ao emissor
+
+<ResponseExample>
+
+```json Response (404)
+{
+  "error": "EVENT_NOT_FOUND",
+  "message": "Evento não encontrado ou não pertence ao emissor autenticado."
+}
+```
+
+</ResponseExample>

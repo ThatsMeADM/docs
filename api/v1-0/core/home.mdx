@@ -1,62 +1,38 @@
 ---
 title: "API Pública v1.0"
-description: "Integração via API Keys (Bearer Token) — endpoints por página."
+description: "Integração com a plataforma That’s Me via API Keys (Bearer Token)."
 ---
 
-A API Pública v1.0 permite integração com o sistema ThatsMe usando **API Keys**.
+A **API Pública v1.0** permite integrar sistemas externos à plataforma **That’s Me** para criação de eventos, emissão de certificados e consulta de dados operacionais.
+
+Esta API é destinada a:
+
+- Plataformas de eventos
+- Sistemas educacionais
+- ERPs, CRMs e automações
+- Backends próprios que desejam emitir ou consultar conquistas digitais
 
 <Info>
-  Todas as rotas requerem autenticação via <code>
-   Authorization: Bearer sua_api_key</code>
+  Todas as rotas exigem autenticação via API Key utilizando o header:
+
+  <code>
+  Authorization: Bearer sua_api_key</code>
+
+  As API Keys são geradas nas configurações de contas emissoras dentro da plataforma That’s Me.
 </Info>
 
 <Columns cols={2}>
-  <Card title="Começar" icon="rocket-launch" color="#D4A017" href="/api/v1-0/core/get-started">
-    Configure seu projeto com nosso guia de início rápido.
+  <Card title="Primeiros Passos" icon="rocket-launch" color="#D4A017" href="/api/v1-0/core/get-started">
+    Configure sua API Key e execute sua primeira requisição.
   </Card>
   <Card title="Referência da API" icon="code-simple" color="#D4A017" href="/api/v1-0/core/api-publica-v1">
-    Explore endpoints, parâmetros e exemplos para sua API.
+    Consulte endpoints, parâmetros, exemplos e respostas.
   </Card>
 </Columns>
 
-## Comece por aqui
+## Visão rápida
 
-- **Autenticação**: envie o header `Authorization: Bearer sua_api_key`
+- **Autenticação**: Bearer Token via header `Authorization`
 - **Base URL**: `https://api.thatsme.com.br`
-
-## Endpoints
-
-### Core
-
-- [API Pública v1.0](/api/v1-0/core/home)
-- [Get Started](/api/v1-0/core/get-started)
-
-### Saldo
-
-- [GET /api/v1.0/balance](/api/v1-0/saldo/saldo)
-
-### Destinatários
-
-- [GET /api/v1.0/recipients](/api/v1-0/api-v1-0/destinatarios/listar-destinatarios)
-- [GET /api/v1.0/recipient-invitations](/api/v1-0/api-v1-0/destinatarios/listar-convites)
-
-### Certificados
-
-- [POST /api/v1.0/assertions](/api/v1-0/api-v1-0/certificados/emitir-certificados)
-- [GET /api/v1.0/assertions](/api/v1-0/api-v1-0/certificados/listar-certificados)
-
-### Badges
-
-- [GET /api/v1.0/badges](/api/v1-0/api-v1-0/badges/listar-badges)
-- [GET /api/v1.0/badges/{id}](/api/v1-0/api-v1-0/badges/informacoes-badge)
-- [GET /api/v1.0/badges/issuer/{issuerId}](/api/v1-0/api-v1-0/badges/badges-por-emissor)
-
-### Eventos
-
-- [GET /api/v1.0/events](/api/v1-0/api-v1-0/eventos/listar-eventos)
-- [GET /api/v1.0/events/{id}](/api/v1-0/api-v1-0/eventos/informacoes-evento)
-- [POST /api/v1.0/events](/api/v1-0/api-v1-0/eventos/criar-evento)
-- [GET /api/v1.0/subcategories](/api/v1-0/api-v1-0/eventos/listar-subcategorias)
-- [PATCH /api/v1.0/events/{id}](/api/v1-0/api-v1-0/eventos/atualizar-evento)
-- [GET /api/v1.0/events/{id}/badges](/api/v1-0/api-v1-0/eventos/badges-evento)
-
+- **Formato**: JSON
+- **Versionamento**: v1.0

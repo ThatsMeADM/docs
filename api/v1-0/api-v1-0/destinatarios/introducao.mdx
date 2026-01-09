@@ -1,51 +1,60 @@
 ---
 title: "Introdução"
-description: "Visão geral sobre Destinatários na plataforma ThatsMe"
+description: "Suporte operacional aos destinatários de certificados na plataforma ThatsMe"
 ---
 
-## O que são Destinatários?
+## O que é Suporte ao Destinatário?
 
-Os **Destinatários** são os usuários que recebem certificados e badges na plataforma ThatsMe. Na ThatsMe, os destinatários são os mesmos que os **ganhadores de um evento**.
+A seção de **Suporte ao Destinatário** existe para que o **emissor** possa auxiliar seus próprios destinatários em situações relacionadas ao **recebimento e aceite de certificados**.
 
-## Relação com Eventos
+Na ThatsMe, cada certificado é **vinculado exclusivamente ao e-mail informado no momento da emissão** e **só pode ser aceito por uma conta que utilize esse mesmo e-mail**.
 
-Quando um evento é realizado:
-- Participantes podem se tornar **ganhadores**
-- Ganhadores são automaticamente registrados como **destinatários**
-- Destinatários recebem convites para certificados relacionados ao evento
+Por esse motivo, inconsistências nos dados informados na emissão podem impedir que o destinatário visualize ou aceite o certificado.
 
-## Fluxo de Destinatários
+---
 
-### 1. Registro como Ganhador
+## Relação entre Certificado e E-mail
 
-Em um evento:
-- Participantes são identificados como ganhadores
-- Ganhadores são registrados no sistema como destinatários
-- Informações do destinatário são associadas ao evento
+* O e-mail do destinatário é o **identificador principal** do certificado
+* Apenas contas com o **mesmo e-mail informado na emissão** podem aceitar o certificado
+* Não é permitido alterar o e-mail de uma emissão já realizada
 
-### 2. Recebimento de Convites
+Caso o e-mail informado esteja incorreto, o certificado **não poderá ser aceito**, mesmo que o destinatário possua uma conta ativa na plataforma.
 
-Após a emissão de um certificado:
-- O destinatário recebe um **convite** para aceitar o certificado
-- O convite contém informações sobre o certificado e o evento
-- O destinatário pode visualizar o convite pendente
+---
 
-### 3. Aceite e Ativação
+## Quando o Suporte é Necessário
 
-Quando o destinatário aceita o convite:
-- O certificado se torna **oficial e válido**
-- Aparece no perfil do destinatário
-- Pode ser compartilhado e verificado
+O destinatário pode entrar em contato com o emissor nos seguintes casos:
 
-## Informações dos Destinatários
+1. **Não recebi o convite**
+   (nem por e-mail, nem por WhatsApp)
 
-Cada destinatário possui:
-- **Perfil**: Nome, email, nickname
-- **Histórico**: Certificados recebidos e aceitos
-- **Convites pendentes**: Certificados aguardando aceite
-- **Associação com eventos**: Eventos onde foi ganhador
+2. **Entrei na minha conta, mas o certificado não apareceu**
+
+Nessas situações, o emissor pode utilizar os endpoints desta seção para **conferir os dados informados na emissão** e identificar possíveis inconsistências.
+
+---
+
+## Ações Possíveis pelo Emissor
+
+Por meio dos endpoints de Suporte ao Destinatário, o emissor pode:
+
+* Consultar os dados utilizados na emissão do certificado
+* Verificar e-mail, nome e telefone informados
+* Confirmar o status do certificado (pendente ou aceito)
+* Identificar inconsistências relatadas pelo destinatário
 
 <Note>
-Os destinatários podem ser consultados por emissor, permitindo que organizações vejam todos os ganhadores de seus eventos.
+Não é permitido alterar dados de uma emissão existente.  
+Caso seja necessário corrigir informações, o emissor deve realizar uma **nova emissão**.  
+Emissões canceladas não geram reembolso de créditos.
 </Note>
 
+---
+
+## Finalidade dos Endpoints
+
+Os endpoints desta seção têm finalidade **exclusivamente operacional**, voltada ao suporte do emissor aos seus destinatários.
+
+Eles retornam apenas informações associadas às emissões realizadas pelo emissor autenticado e **não devem ser utilizados para listagens gerais ou exploração de dados**.

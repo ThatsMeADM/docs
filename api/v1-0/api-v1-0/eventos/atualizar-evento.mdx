@@ -3,160 +3,228 @@ api: "PATCH /api/v1.0/events/{id}"
 title: "Atualizar Evento"
 ---
 
-Atualiza um evento existente. Todos os campos são opcionais, mas as mesmas validações da criação se aplicam.
+Atualiza um evento existente do **próprio emissor autenticado**. Todos os campos do corpo são opcionais, mas as **mesmas validações da criação** se aplicam.
 
 <Request method="PATCH" url="/api/v1.0/events/{id}" auth="bearer" />
 
-## Path params
+<Note>
+  Envie apenas os campos que deseja alterar.\
+  Para consultar o evento completo após a atualização, use `GET /api/v1.0/events/{id}`.
+</Note>
+
+<Warning>
+  Eventos com status `FINISHED` não podem ser modificados.
+
+  Qualquer tentativa de atualização em um evento finalizado resultará em erro.
+</Warning>
+
+---
+
+## Parâmetros de rota
 
 <ParamField path="id" type="string" required>
-  ID do evento a ser atualizado
+  ID do evento a ser atualizado (`event_id`).
 </ParamField>
 
-## Body params
+---
+
+## Parâmetros do corpo (body)
 
 <ParamField body="name" type="string">
-  Nome do evento
-</ParamField>
-
-<ParamField body="location_type" type="string">
-  Tipo de localização do evento. Valores aceitos:
-  - "online": Evento online (city e state serão preenchidos automaticamente com "ONLINE")
-  - "physical": Evento presencial (city e state são obrigatórios)
-</ParamField>
-
-<ParamField body="city" type="string">
-  Cidade do evento (obrigatório se location_type for "physical")
-</ParamField>
-
-<ParamField body="state" type="string">
-  Estado do evento - UF brasileira (obrigatório se location_type for "physical"). Valores aceitos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
-</ParamField>
-
-<ParamField body="category" type="string">
-  Categoria do evento. Valores aceitos: Esporte, Educação, Corporativo, Sociocultural
+  Nome do evento.
 </ParamField>
 
 <ParamField body="description" type="string">
-  Descrição do evento
+  Descrição do evento.
+</ParamField>
+
+<ParamField body="location_type" type="string">
+  Tipo de localização do evento. Valores aceitos: `online` ou `physical`.
+
+  Regras:
+
+  - `online`: `city` e `state` são definidos como `ONLINE`
+  - `physical`: `city` e `state` tornam-se obrigatórios
+</ParamField>
+
+<ParamField body="city" type="string">
+  Cidade do evento (obrigatório quando `location_type` for `physical`).
+</ParamField>
+
+<ParamField body="state" type="string">
+  Estado (UF) do evento (obrigatório quando `location_type` for `physical`).
+
+  Valores aceitos: `AC`, `AL`, `AP`, `AM`, `BA`, `CE`, `DF`, `ES`, `GO`, `MA`, `MT`, `MS`, `MG`, `PA`, `PB`, `PR`, `PE`, `PI`, `RJ`, `RN`, `RS`, `RO`, `RR`, `SC`, `SP`, `SE`, `TO`.
+</ParamField>
+
+<ParamField body="category" type="string">
+  Categoria do evento. Valores aceitos: `SPORTS`, `EDUCATION`, `CORPORATE`, `SOCIOCULTURAL`.
 </ParamField>
 
 <ParamField body="initial_date" type="string">
-  Data inicial do evento (formato ISO 8601)
+  Data e hora de início (ISO 8601).
 </ParamField>
 
 <ParamField body="finish_date" type="string">
-  Data final do evento (formato ISO 8601)
+  Data e hora de término (ISO 8601).
 </ParamField>
 
 <ParamField body="official_url" type="string">
-  URL oficial do evento
+  URL oficial do evento.
+</ParamField>
+
+<ParamField body="image_url" type="string">
+  URL pública da imagem do evento (opcional).
+</ParamField>
+
+<ParamField body="image_key" type="string">
+  Identificador da imagem no storage da That's Me (ex.: S3) (opcional).
 </ParamField>
 
 <ParamField body="is_private" type="boolean">
-  Se o evento é privado
+  Define se o evento é privado.
 </ParamField>
 
 <ParamField body="date_mode" type="string">
-  Modo de data do evento
+  Modo de datas do evento. Valores aceitos: `single_date`, `date_range`, `recurring`, `always_available`.
+
+  Regras:
+
+  - `always_available`: datas podem ser omitidas
+  - `single_date` e `date_range`: datas devem ser informadas conforme aplicável
+  - `recurring`: exige `recurrence_type` e `recurrence_start_date`
 </ParamField>
 
 <ParamField body="start_time" type="string">
-  Horário de início do evento
+  Horário de início (quando aplicável).
 </ParamField>
 
 <ParamField body="end_time" type="string">
-  Horário de término do evento
+  Horário de término (quando aplicável).
 </ParamField>
 
 <ParamField body="recurrence_type" type="string">
-  Tipo de recorrência do evento. Valores aceitos: Semanal, Quinzenal, Mensal, Bimestral, Trimestral, Semestral, Anual. O valor será salvo em inglês no banco de dados.
+  Tipo de recorrência (quando `date_mode` for `recurring`).\
+  Valores aceitos: `WEEKLY`, `BIWEEKLY`, `MONTHLY`, `BIMONTHLY`, `QUARTERLY`, `SEMIANNUAL`, `ANNUAL`.
 </ParamField>
 
 <ParamField body="recurrence_start_date" type="string">
-  Data de início da recorrência
+  Data de início da recorrência (ISO 8601) (quando `date_mode` for `recurring`).
 </ParamField>
 
 <ParamField body="connected_event_ids" type="array">
-  IDs de eventos conectados
+  Lista de IDs de eventos conectados.
 </ParamField>
 
-## Response
+<Note>
+  Eventos conectados podem ser utilizados pelo motor de recomendações para sugerir próximos eventos após a emissão de certificados.
+</Note>
+
+<Info>
+  Campos condicionais (ex.: `location_type`, `date_mode`) devem respeitar as regras descritas acima para evitar erro de validação.
+</Info>
+
+---
+
+## Resposta
 
 <ResponseField name="event_id" type="string">
-  ID do evento atualizado
+  ID do evento atualizado.
 </ResponseField>
 
 <ResponseField name="name" type="string">
-  Nome do evento
+  Nome do evento.
 </ResponseField>
 
 <ResponseField name="description" type="string">
-  Descrição do evento
+  Descrição do evento.
 </ResponseField>
 
 <ResponseField name="category" type="string">
-  Categoria do evento
+  Categoria do evento.
 </ResponseField>
 
 <ResponseField name="subcategory" type="string">
-  Subcategoria do evento
-</ResponseField>
-
-<ResponseField name="city" type="string">
-  Cidade do evento
-</ResponseField>
-
-<ResponseField name="state" type="string">
-  Estado (UF)
-</ResponseField>
-
-<ResponseField name="initial_date" type="string">
-  Data/hora de início (ISO 8601)
-</ResponseField>
-
-<ResponseField name="finish_date" type="string">
-  Data/hora de término (ISO 8601)
-</ResponseField>
-
-<ResponseField name="official_url" type="string">
-  URL oficial do evento
+  Subcategoria do evento.
 </ResponseField>
 
 <ResponseField name="location_type" type="string">
-  Tipo de localização do evento
+  Tipo de localização do evento.
+</ResponseField>
+
+<ResponseField name="city" type="string">
+  Cidade do evento.
+</ResponseField>
+
+<ResponseField name="state" type="string">
+  Estado (UF).
+</ResponseField>
+
+<ResponseField name="initial_date" type="string">
+  Data e hora de início (ISO 8601).
+</ResponseField>
+
+<ResponseField name="finish_date" type="string">
+  Data e hora de término (ISO 8601).
+</ResponseField>
+
+<ResponseField name="official_url" type="string">
+  URL oficial do evento.
+</ResponseField>
+
+<ResponseField name="image_url" type="string">
+  URL da imagem do evento.
 </ResponseField>
 
 <ResponseField name="status" type="string">
-  Status do evento
+  Status do evento.
 </ResponseField>
 
 <ResponseField name="created_at" type="string">
-  Data/hora de criação (ISO 8601)
+  Data e hora de criação (ISO 8601).
 </ResponseField>
 
 <ResponseField name="updated_at" type="string">
-  Data/hora de atualização (ISO 8601)
+  Data e hora de atualização (ISO 8601).
 </ResponseField>
 
+---
+
+## Exemplo de resposta
+
 <ResponseExample>
+
 ```json Response (200)
 {
   "event_id": "event_123",
   "name": "Workshop de Tecnologia Atualizado",
   "description": "Workshop sobre desenvolvimento web atualizado",
-  "category": "Educação",
-  "subcategory": "Curso Técnico",
+  "category": "EDUCATION",
+  "subcategory": "Oficina ou Workshop",
+  "location_type": "physical",
   "city": "São Paulo",
   "state": "SP",
   "initial_date": "2024-03-15T09:00:00Z",
   "finish_date": "2024-03-15T18:00:00Z",
   "official_url": "https://evento.com.br",
-  "location_type": "physical",
+  "image_url": "https://example.com/event.png",
   "status": "PENDING",
   "created_at": "2024-01-15T10:30:00Z",
   "updated_at": "2024-01-20T14:45:00Z"
 }
 ```
+
 </ResponseExample>
 
+## Erros comuns
+
+<ResponseExample>
+
+```json Response (409)
+{
+  "error": "EVENT_ALREADY_FINISHED",
+  "message": "Eventos com status FINISHED não podem ser modificados."
+}
+```
+
+</ResponseExample>

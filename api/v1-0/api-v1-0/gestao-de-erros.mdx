@@ -1,0 +1,125 @@
+---
+
+title: "Tratamento de Erros"
+description: "Padrões de erro, códigos HTTP e como tratar falhas ao consumir a API Pública v1.0"
+---
+
+## Visão geral
+
+A API Pública v1.0 utiliza **códigos HTTP padrão** para indicar o sucesso ou falha de uma requisição.
+Quando ocorre um erro, a resposta é retornada em formato **JSON**, com informações suficientes para diagnóstico e correção.
+
+---
+
+## Estrutura padrão de erro
+
+Quando uma requisição falha, a API retorna o seguinte formato:
+
+```json
+{
+  "error": true,
+  "code": "UNAUTHORIZED",
+  "message": "Invalid or missing API key"
+}
+```
+
+### Campos
+
+* **error**
+  Indica que a resposta representa uma falha (`true`).
+
+* **code**
+  Código técnico do erro. Deve ser utilizado para tratamento programático.
+
+* **message**
+  Mensagem descritiva, voltada ao entendimento humano.
+
+---
+
+## Códigos HTTP utilizados
+
+| Status | Descrição                  |
+| ------ | -------------------------- |
+| 200    | Requisição bem-sucedida    |
+| 201    | Recurso criado com sucesso |
+| 400    | Requisição inválida        |
+| 401    | Token ausente ou inválido  |
+| 403    | Acesso não permitido       |
+| 404    | Recurso não encontrado     |
+| 409    | Conflito de estado         |
+| 422    | Erro de validação          |
+| 500    | Erro interno da API        |
+
+---
+
+## Erros mais comuns
+
+### 401 — Unauthorized
+
+Ocorre quando o header de autenticação está ausente ou inválido.
+
+Possíveis causas:
+
+* Header `Authorization` não enviado
+* Token incorreto ou revogado
+
+Solução:
+
+* Verifique se o header está presente
+* Gere uma nova API Key, se necessário
+
+---
+
+### 422 — Validation Error
+
+Ocorre quando os dados enviados não atendem às regras do endpoint.
+
+Possíveis causas:
+
+* Campos obrigatórios ausentes
+* Tipos de dados inválidos
+* Valores fora do padrão esperado
+
+Solução:
+
+* Revise os parâmetros enviados
+* Consulte a documentação do endpoint específico
+
+---
+
+### 404 — Not Found
+
+O recurso solicitado não foi encontrado.
+
+Possíveis causas:
+
+* ID inexistente
+* Recurso removido ou inacessível
+
+---
+
+### 500 — Internal Server Error
+
+Erro inesperado no servidor.
+
+Solução:
+
+* Tente novamente após alguns instantes
+* Caso persista, entre em contato com o suporte técnico
+
+---
+
+## Boas práticas
+
+* Trate erros utilizando o campo **code**, não apenas a mensagem
+* Implemente logs para capturar respostas de erro
+* Evite retries automáticos em erros de validação (4xx)
+* Em erros 5xx, recomenda-se retry com backoff progressivo
+
+---
+
+## Próximo passo
+
+Compreender o padrão de erros facilita a integração e o tratamento adequado das respostas da API.
+
+Agora você pode avançar para a documentação dos **endpoints**, começando por Eventos ou Badges.

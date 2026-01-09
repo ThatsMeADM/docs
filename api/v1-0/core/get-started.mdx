@@ -1,45 +1,56 @@
 ---
-title: "Get Started"
-description: "Guia rápido para começar a usar a API Pública v1.0"
+title: "Primeiros Passos"
+description: "Guia rápido para autenticar e executar sua primeira requisição na API Pública v1.0"
 ---
 
-## Como obter seu primeiro token e user code
+## Gerando sua API Key
 
-Para começar a usar a API, você precisa gerar sua primeira API Key através do painel administrativo do ThatsMe:
+Para utilizar a API Pública, é necessário criar uma **API Key** no painel administrativo do That’s Me.
 
-1. **Acesse o painel administrativo**: Faça login na sua conta empresa no ThatsMe
-2. **Navegue até Integrações**: Acesse a seção de **Integrações** no menu lateral
-3. **Gere sua primeira API Key**: 
-   - Clique em "Gerar nova API Key"
-   - Informe um nome descritivo (ex: "Integração Produção")
-   - Clique em "Gerar"
+1. Acesse sua conta **Emissora** no That’s Me
+2. Vá até **Configurações → Integrações**
+3. Clique em **Gerar nova API Key**
+4. Informe um nome identificável (ex: `Integracao Producao`)
+5. Confirme a criação
 
-4. **Copie suas credenciais**: Após a geração, você receberá:
-   - **API Key (Token)**: Sua chave de autenticação (ex: `tm_abc123.eyJ...`)
-   
-   <Warning>
-   **Importante**: Guarde sua API Key em local seguro. Ela não será exibida novamente após a criação. Se você perder a chave, será necessário revogá-la e gerar uma nova.
-   </Warning>
+Após a geração, a API Key será exibida **uma única vez**.
 
-5. **Use nas requisições**: 
-   - Use a **API Key** no header `Authorization: Bearer sua_api_key`
+<Warning>
+Guarde sua API Key em local seguro.  
+Por motivos de segurança, ela não poderá ser visualizada novamente.  
+Caso perca a chave, será necessário revogá-la e gerar uma nova.
+</Warning>
 
-<Note>
-Se você já possui uma API Key criada anteriormente, pode visualizá-la na lista de API Keys na seção de Integrações.
-</Note>
+Se você já possui chaves criadas, elas ficam listadas na seção **Integrações**.
+
+---
 
 ## Autenticação
 
-Todas as requisições devem incluir o header de autenticação:
+Todas as requisições devem incluir o header abaixo:
 
 ```bash
-Authorization: Bearer sua_api_key_aqui
+Authorization: Bearer sua_api_key
 ```
+
+* O token deve ser enviado em **todas** as rotas
+* Tokens inválidos ou ausentes retornam erro **401 Unauthorized**
+
+---
 
 ## Base URL
 
-Todas as requisições devem ser feitas para:
+Todas as chamadas da API v1.0 utilizam a seguinte base:
 
-```
+```text
 https://api.thatsme.com.br
 ```
+
+Os endpoints documentados assumem essa URL como padrão.
+
+---
+
+## Próximo passo
+
+Com a API Key configurada, você já pode executar sua primeira requisição.
+Recomendamos começar listando eventos ou consultando seu saldo disponível.

@@ -1,0 +1,104 @@
+---
+
+title: "Convenções da API"
+description: "Regras globais de formato, versionamento e comportamento da API Pública v1.0"
+---
+
+## Visão geral
+
+Esta página descreve **convenções globais** aplicáveis a todos os endpoints da API Pública v1.0.
+Essas regras definem como a API se comporta de forma consistente, independentemente do recurso acessado.
+
+---
+
+## Formato das respostas
+
+* Todas as respostas são retornadas em **JSON**
+* Encoding: **UTF-8**
+* Header padrão:
+
+```http
+Content-Type: application/json
+```
+
+---
+
+## Versionamento
+
+* A versão da API é definida na URL:
+
+```text
+/api/v1.0
+```
+
+* Mudanças incompatíveis resultarão em uma **nova versão**
+* Alterações compatíveis podem ocorrer dentro da mesma versão
+
+---
+
+## Datas e horários
+
+* Datas e horários seguem o padrão **ISO 8601**
+* Exemplo:
+
+```text
+2025-01-09T14:30:00Z
+```
+
+* Sempre considere timezone UTC, salvo indicação explícita em contrário
+
+---
+
+## Paginação
+
+Alguns endpoints retornam listas paginadas.
+
+### Parâmetros comuns
+
+| Parâmetro | Descrição                          |
+| --------- | ---------------------------------- |
+| limit     | Quantidade de registros por página |
+| offset    | Posição inicial da listagem        |
+
+### Exemplo
+
+```http
+GET /api/v1.0/events?limit=10&offset=20
+```
+
+Se não informados, valores padrão podem ser aplicados pelo sistema.
+
+---
+
+## Campos obrigatórios e opcionais
+
+* Campos **obrigatórios** estarão sempre presentes nas respostas
+* Campos **opcionais** podem:
+
+  * não existir no objeto
+  * ou retornar como `null`
+
+Implemente verificações defensivas ao consumir a API.
+
+---
+
+## Idioma e mensagens
+
+* Mensagens de erro (`message`) são descritivas e voltadas a leitura humana
+* O campo `code` deve ser utilizado para lógica de tratamento
+* Não utilize textos de erro para controle de fluxo da aplicação
+
+---
+
+## Boas práticas de consumo
+
+* Sempre valide respostas antes de processar os dados
+* Implemente logs para erros e respostas inesperadas
+* Evite múltiplas requisições redundantes
+* Em falhas 5xx, utilize retry com backoff progressivo
+
+---
+
+## Próximo passo
+
+Compreendidas as convenções globais, você pode avançar para a documentação dos **endpoints**, começando por Eventos, Badges ou Certificados.

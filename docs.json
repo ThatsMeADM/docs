@@ -129,76 +129,52 @@
                 "group": "API (V1.0)",
                 "expanded": true,
                 "pages": [
-                  {
-                    "group": "Core",
-                    "expanded": false,
-                    "pages": [
-                      "api/v1-0/core/home",
-                      "api/v1-0/core/get-started"
-                    ]
-                  },
-                  {
-                    "group": "Saldo",
-                    "pages": [
-                      "api/v1-0/api-v1-0/saldo/introducao",
-                      "api/v1-0/saldo/saldo"
-                    ]
-                  },
-                  {
-                    "group": "Destinatários",
-                    "pages": [
-                      "api/v1-0/api-v1-0/destinatarios/introducao",
-                      "api/v1-0/api-v1-0/destinatarios/listar-destinatarios",
-                      "api/v1-0/api-v1-0/destinatarios/listar-convites"
-                    ]
-                  },
-                  {
-                    "group": "Certificados",
-                    "pages": [
-                      "api/v1-0/api-v1-0/certificados/introducao",
-                      "api/v1-0/api-v1-0/certificados/listar-certificados",
-                      "api/v1-0/api-v1-0/certificados/emitir-certificados"
-                    ]
-                  },
-                  {
-                    "group": "Badges",
-                    "expanded": false,
-                    "pages": [
-                      "api/v1-0/api-v1-0/badges/introducao",
-                      "api/v1-0/api-v1-0/badges/listar-badges",
-                      "api/v1-0/api-v1-0/badges/informacoes-badge"
-                    ]
-                  },
-                  {
-                    "group": "Eventos",
-                    "expanded": false,
-                    "pages": [
-                      "api/v1-0/api-v1-0/eventos/introducao",
-                      "api/v1-0/api-v1-0/eventos/listar-eventos",
-                      "api/v1-0/api-v1-0/eventos/informacoes-evento",
-                      "api/v1-0/api-v1-0/eventos/criar-evento",
-                      "api/v1-0/api-v1-0/eventos/atualizar-evento",
-                      "api/v1-0/api-v1-0/eventos/badges-evento"
-                    ]
-                  },
-                  {
-                    "group": "Emissores",
-                    "hidden": true,
-                    "expanded": false,
-                    "pages": [
-                      "api/v1-0/api-v1-0/emissores/introducao",
-                      "api/v1-0/api-v1-0/emissores/informacoes-emissor"
-                    ]
-                  },
-                  {
-                    "group": "Validar Certificados",
-                    "hidden": true,
-                    "expanded": false,
-                    "pages": [
-                      "api/v1-0/api-v1-0/validar-certificados/introducao",
-                      "api/v1-0/api-v1-0/validar-certificados/validar-certificado"
-                    ]
-                  }
+                  "api/v1-0/core/home",
+                  "api/v1-0/core/get-started",
+                  "api/v1-0/api-v1-0/gestao-de-erros",
+                  "api/v1-0/api-v1-0/x"
+                ]
+              },
+              {
+                "group": "Eventos",
+                "expanded": false,
+                "pages": [
+                  "api/v1-0/api-v1-0/eventos/introducao",
+                  "api/v1-0/api-v1-0/eventos/listar-eventos",
+                  "api/v1-0/api-v1-0/eventos/informacoes-evento",
+                  "api/v1-0/api-v1-0/eventos/criar-evento",
+                  "api/v1-0/api-v1-0/eventos/atualizar-evento",
+                  "api/v1-0/eventos/del"
+                ]
+              },
+              {
+                "group": "Badges (TM's)",
+                "pages": [
+                  "api/v1-0/api-v1-0/badges/introducao",
+                  "api/v1-0/api-v1-0/badges/listar-badges",
+                  "api/v1-0/api-v1-0/badges/informacoes-badge"
+                ]
+              },
+              {
+                "group": "Certificados",
+                "pages": [
+                  "api/v1-0/api-v1-0/certificados/introducao",
+                  "api/v1-0/api-v1-0/certificados/listar-certificados",
+                  "api/v1-0/api-v1-0/certificados/emitir-certificados"
+                ]
+              },
+              {
+                "group": "Suporte ao Destinatário",
+                "pages": [
+                  "api/v1-0/api-v1-0/destinatarios/introducao",
+                  "api/v1-0/api-v1-0/destinatarios/listar-destinatarios"
+                ]
+              },
+              {
+                "group": "Saldo",
+                "pages": [
+                  "api/v1-0/api-v1-0/saldo/introducao",
+                  "api/v1-0/saldo/saldo"
                 ]
               }
             ]

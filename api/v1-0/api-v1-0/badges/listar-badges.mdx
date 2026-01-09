@@ -3,68 +3,33 @@ api: "GET /api/v1.0/badges"
 title: "Listar Badges"
 ---
 
-Lista badges (modelos de badges).
+Retorna uma lista **enxuta** de Badges (TM’s) do **emissor autenticado**, ideal para localizar rapidamente o `badge_id` para emissão.
 
 <Request method="GET" url="/api/v1.0/badges" auth="bearer" />
 
-## Query params
+---
 
-<ParamField query="limit" type="number">
-  Limite de resultados
-</ParamField>
-
-<ParamField query="offset" type="number">
-  Offset para paginação
-</ParamField>
-
-## Response
+## Resposta
 
 <ResponseField name="data" type="array">
-  Lista de badges.
+  Lista de badges do emissor autenticado.
+
   <Expandable title="items">
     <ResponseField name="badge_id" type="string">
-      ID do badge
+      Identificador único do badge
     </ResponseField>
-
     <ResponseField name="name" type="string">
       Nome do badge
     </ResponseField>
-
     <ResponseField name="description" type="string">
       Descrição do badge
     </ResponseField>
-
-    <ResponseField name="created_at" type="string">
-      Data/hora de criação (ISO 8601)
-    </ResponseField>
-
     <ResponseField name="assets" type="object">
-      Assets do badge
+      Assets visuais do badge
+
       <Expandable title="properties">
         <ResponseField name="image_url" type="string">
           URL da imagem do badge
-        </ResponseField>
-      </Expandable>
-    </ResponseField>
-
-    <ResponseField name="user" type="object">
-      Informações do criador
-      <Expandable title="properties">
-        <ResponseField name="profile" type="object">
-          Perfil do criador
-          <Expandable title="properties">
-            <ResponseField name="profile_id" type="string">
-              ID do perfil
-            </ResponseField>
-
-            <ResponseField name="name" type="string">
-              Nome
-            </ResponseField>
-
-            <ResponseField name="company_name" type="string">
-              Nome da empresa
-            </ResponseField>
-          </Expandable>
         </ResponseField>
       </Expandable>
     </ResponseField>
@@ -72,35 +37,32 @@ Lista badges (modelos de badges).
 </ResponseField>
 
 <ResponseField name="total" type="number">
-  Total de resultados encontrados
+  Quantidade total de badges encontrados
 </ResponseField>
 
 <ResponseField name="limit" type="number">
-  Limite de resultados por página
+  Limite aplicado na consulta
 </ResponseField>
 
 <ResponseField name="offset" type="number">
-  Offset usado na paginação
+  Offset aplicado na consulta
 </ResponseField>
 
+---
+
+## Exemplo de resposta
+
 <ResponseExample>
+
 ```json Response (200)
 {
   "data": [
     {
       "badge_id": "badge_123",
       "name": "Certificado de Participação",
-      "description": "Badge para participantes do evento",
-      "created_at": "2024-01-10T09:00:00Z",
+      "description": "Badge para participantes",
       "assets": {
         "image_url": "https://example.com/badge.png"
-      },
-      "user": {
-        "profile": {
-          "profile_id": "profile_456",
-          "name": "Organizador",
-          "company_name": "Empresa Organizadora"
-        }
       }
     }
   ],
@@ -109,4 +71,5 @@ Lista badges (modelos de badges).
   "offset": 0
 }
 ```
-</ResponseExample> 
+
+</ResponseExample>

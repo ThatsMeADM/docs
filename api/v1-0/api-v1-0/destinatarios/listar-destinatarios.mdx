@@ -1,120 +1,215 @@
 ---
 api: "GET /api/v1.0/recipients"
-title: "Listar Destinatários"
+title: "Buscar Destinatário"
 ---
 
-Lista destinatários.
+Endpoint de **suporte operacional** para localizar **dados sensíveis informados no momento da emissão** de certificados.
+
+Este endpoint **não realiza listagem geral de destinatários** e deve ser utilizado **exclusivamente** para conferência de informações quando um destinatário entra em contato com o emissor.
 
 <Request method="GET" url="/api/v1.0/recipients" auth="bearer" />
 
-## Query params
+<Warning>
+  Este endpoint retorna dados sensíveis e possui regras restritivas de uso.\
+  Não utilize para exploração, listagens amplas ou automações em massa.
+</Warning>
 
-<ParamField query="limit" type="number">
-  Limite de resultados
+---
+
+## Regras de uso
+
+Para realizar uma busca válida, é obrigatório informar:
+
+- **um contexto de emissão**
+  - `event_id` **ou**
+  - `badge_id`
+
+**e**
+
+- **ao menos um identificador do destinatário**
+  - `recipient_email`
+  - `recipient_number`
+  - `assertion_id`
+
+Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unicidade.
+
+---
+
+## Parâmetros de consulta
+
+### Contexto (obrigatório)
+
+<ParamField query="event_id" type="string">
+  ID do evento associado à emissão.
 </ParamField>
 
-<ParamField query="offset" type="number">
-  Offset para paginação
+<ParamField query="badge_id" type="string">
+  ID do badge utilizado na emissão.
 </ParamField>
 
-## Response
+---
+
+### Identificadores do destinatário (ao menos um obrigatório)
+
+<ParamField query="assertion_id" type="string">
+  ID do certificado emitido.
+</ParamField>
+
+<ParamField query="recipient_email" type="string">
+  E-mail informado no momento da emissão.
+</ParamField>
+
+<ParamField query="recipient_number" type="string">
+  Telefone informado no momento da emissão (formato E.164).
+
+  _Exemplo:_ +5531987654321
+</ParamField>
+
+---
+
+### Campos auxiliares (opcionais)
+
+<ParamField query="recipient_name" type="string">
+  Nome informado no momento da emissão.
+</ParamField>
+
+<ParamField query="reason" type="string">
+  Motivo da emissão do certificado.
+</ParamField>
+
+---
+
+## Resposta
 
 <ResponseField name="data" type="array">
-  Lista de destinatários.
+  Lista restrita de destinatários encontrados com base nos filtros informados.
+
   <Expandable title="items">
-    <ResponseField name="recipient_id" type="string">
-      ID do destinatário
+    <ResponseField name="assertion_id" type="string">
+      ID do certificado emitido
     </ResponseField>
-
-    <ResponseField name="reason" type="string">
-      Motivo/justificativa do recebimento
+    <ResponseField name="status" type="string">
+      Status do certificado (`PENDING` ou `ACCEPTED`)
     </ResponseField>
-
     <ResponseField name="created_at" type="string">
-      Data/hora de criação (ISO 8601)
+      Data e hora da emissão (ISO 8601)
     </ResponseField>
+    <ResponseField name="recipient" type="object">
+      Dados informados na emissão
 
-    <ResponseField name="event" type="object">
-      Evento relacionado
       <Expandable title="properties">
-        <ResponseField name="event_id" type="string">ID do evento</ResponseField>
-        <ResponseField name="name" type="string">Nome do evento</ResponseField>
-        <ResponseField name="description" type="string">Descrição do evento</ResponseField>
-        <ResponseField name="category" type="string">Categoria do evento</ResponseField>
-      </Expandable>
-    </ResponseField>
-
-    <ResponseField name="profile" type="object">
-      Dados do perfil do destinatário
-      <Expandable title="properties">
-        <ResponseField name="name" type="string">Nome</ResponseField>
-        <ResponseField name="nickname" type="string">Apelido/username</ResponseField>
-        <ResponseField name="email" type="string">Email</ResponseField>
-      </Expandable>
-    </ResponseField>
-
-    <ResponseField name="badge" type="object">
-      Badge/conquista vinculada
-      <Expandable title="properties">
-        <ResponseField name="badge_id" type="string">ID do badge</ResponseField>
-        <ResponseField name="name" type="string">Nome do badge</ResponseField>
-
-        <ResponseField name="assets" type="object">
-          Assets do badge
-          <Expandable title="properties">
-            <ResponseField name="image_url" type="string">
-              URL da imagem do badge
-            </ResponseField>
-          </Expandable>
+        <ResponseField name="name" type="string">
+          Nome do destinatário
+        </ResponseField>
+        <ResponseField name="email" type="string">
+          E-mail do destinatário
+        </ResponseField>
+        <ResponseField name="number" type="string">
+          Telefone do destinatário (quando informado)
         </ResponseField>
       </Expandable>
+    </ResponseField>
+    <ResponseField name="event_id" type="string">
+      ID do evento associado
+    </ResponseField>
+    <ResponseField name="badge_id" type="string">
+      ID do badge utilizado
+    </ResponseField>
+    <ResponseField name="reason" type="string">
+      Motivo da emissão
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-<ResponseField name="total" type="number">
-  Total de resultados encontrados
+<ResponseField name="count" type="number">
+  Quantidade de registros retornados
 </ResponseField>
 
-<ResponseField name="limit" type="number">
-  Limite de resultados por página
-</ResponseField>
+<Info>
+  O número de resultados é intencionalmente limitado para evitar exposição indevida de dados.
+</Info>
 
-<ResponseField name="offset" type="number">
-  Offset usado na paginação
-</ResponseField>
+---
+
+## Exemplo de resposta
 
 <ResponseExample>
+
 ```json Response (200)
 {
   "data": [
     {
-      "recipient_id": "recipient_123",
-      "reason": "Primeiro lugar na competição",
-      "created_at": "2024-01-15T10:30:00Z",
-      "event": {
-        "event_id": "event_456",
-        "name": "Competição de Programação",
-        "description": "Descrição do evento",
-        "category": "TECHNOLOGY"
-      },
-      "profile": {
+      "assertion_id": "assert_123",
+      "status": "PENDING",
+      "created_at": "2024-02-01T10:30:00Z",
+      "recipient": {
         "name": "João Silva",
-        "nickname": "joao_silva",
-        "email": "joao@exemplo.com"
+        "email": "joao@exemplo.com",
+        "number": "+5531987654321"
       },
-      "badge": {
-        "badge_id": "badge_789",
-        "name": "Campeão",
-        "assets": {
-          "image_url": "https://example.com/badge.png"
-        }
-      }
+      "event_id": "event_456",
+      "badge_id": "badge_789",
+      "reason": "Curso de Python para Data Science com duração de 40 horas no nível Intermediário"
     }
   ],
-  "total": 10,
-  "limit": 10,
-  "offset": 0
+  "count": 1
 }
 ```
-</ResponseExample> 
+
+</ResponseExample>
+
+---
+
+## Exemplos de erro
+
+### Filtros insuficientes (faltou contexto e/ou identificador)
+
+<ResponseExample>
+
+```json Response (400)
+{
+  "error": "INVALID_SEARCH",
+  "message": "Informe event_id ou badge_id e pelo menos um dos seguintes: recipient_email, recipient_number ou assertion_id."
+}
+```
+
+</ResponseExample>
+
+### Nenhum resultado encontrado
+
+<ResponseExample>
+
+```json Response (404)
+{
+  "error": "NOT_FOUND",
+  "message": "Nenhum destinatário encontrado para os filtros informados."
+}
+```
+
+</ResponseExample>
+
+### Rate limit (proteção contra uso indevido)
+
+<ResponseExample>
+
+```json Response (429)
+{
+  "error": "RATE_LIMITED",
+  "message": "Muitas requisições. Aguarde alguns instantes e tente novamente."
+}
+```
+
+</ResponseExample>
+
+### Acesso não autorizado
+
+<ResponseExample>
+
+```json Response (401)
+{
+  "error": "UNAUTHORIZED",
+  "message": "Token inválido ou ausente."
+}
+```
+
+</ResponseExample>

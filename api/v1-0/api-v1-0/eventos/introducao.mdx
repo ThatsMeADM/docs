@@ -1,47 +1,77 @@
 ---
+
 title: "Introdução"
-description: "Visão geral sobre Eventos na plataforma ThatsMe"
+description: "Visão geral do recurso Eventos na API Pública v1.0"
 ---
 
-## O que são Eventos?
+## Visão geral
 
-Os **Eventos** representam atividades, competições, cursos, workshops ou qualquer ocasião onde certificados podem ser emitidos para participantes.
+**Eventos** são o recurso central da API Pública da That’s Me.
+Eles representam qualquer contexto no qual **certificados e badges (TM's)** podem ser emitidos, como competições, cursos, treinamentos, workshops ou premiações.
 
-## Características dos Eventos
+Todo certificado emitido pela API está **sempre associado a um evento**.
 
-Cada evento possui:
-- **Informações básicas**: Nome, descrição, datas
-- **Localização**: Online ou presencial (com cidade e estado)
-- **Categoria**: Classificação do tipo de evento
-- **Badges associados**: TM's que serão usados para emitir certificados
-- **Status**: Pending, Active, Finished, etc.
+---
+
+## O que um Evento representa
+
+Cada evento reúne as informações necessárias para organizar e emitir conquistas digitais, incluindo:
+
+* **Identificação**: nome, descrição e período
+* **Localização**: online ou presencial (cidade e estado)
+* **Classificação**: classificação do tipo de evento
+* **Badges (TM's)**: Insignias que poderão ser emitidas
+* **Status**: estado atual do evento (`Active` ou `Concluído`)
+
+Esses dados são utilizados tanto para emissão de certificados quanto para indexação e recomendação dentro da plataforma.
+
+---
 
 ## Tipos de Eventos
 
-Os eventos podem ser classificados em diferentes categorias:
-- **Esporte**: Competições esportivas e e-sports
-- **Educação**: Cursos, treinamentos, workshops
-- **Corporativo**: Eventos empresariais e profissionais
-- **Sociocultural**: Eventos culturais e sociais
+Os eventos podem pertencer a diferentes categorias, de acordo com seu contexto:
 
-## Criação e Gerenciamento
+* **Esporte**
+  Competições esportivas, corridas, torneios e e-sports
 
-Através da API, você pode:
-- **Criar eventos** com todas as informações necessárias
-- **Atualizar eventos** existentes
-- **Listar eventos** públicos ou privados
-- **Obter detalhes** de um evento específico
-- **Gerenciar badges** associados ao evento
-- **Listar subcategorias** disponíveis por template e categoria
+* **Educação**
+  Cursos, treinamentos, workshops e formações
 
-## Eventos e Certificados
+* **Corporativo**
+  Eventos empresariais e reconhecimento profissional
 
-Os eventos são a base para emissão de certificados:
-- Badges são associados aos eventos
-- Certificados são emitidos para participantes do evento
-- Destinatários (ganhadores) são vinculados aos eventos
+* **Sociocultural**
+  Eventos culturais, sociais e comunitários
+
+---
+
+## Operações disponíveis na API
+
+Através da API, é possível:
+
+* Criar novos eventos
+* Atualizar eventos existentes
+* Consultar detalhes operacionais
+* Emitir certificados
+
+Cada operação está documentada nos endpoints desta seção.
+
+---
+
+## Eventos e certificados
+
+Os eventos funcionam como a **base para emissão de certificados**:
+
+* Badges (TM's) são vinculados a eventos
+* Certificados são emitidos a partir dessas associações
+* Destinatários (ganhadores) sempre pertencem a um evento específico
 
 <Note>
-Eventos podem ser públicos (visíveis para todos) ou privados (apenas para o emissor).
+Eventos podem ser **públicos** (visíveis na plataforma) ou **privados** (visíveis apenas para o emissor).
 </Note>
 
+---
+
+## Próximo passo
+
+Após compreender o conceito de eventos, avance para os endpoints para listar, criar ou atualizar eventos via API.

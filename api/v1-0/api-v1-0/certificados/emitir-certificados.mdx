@@ -3,98 +3,158 @@ api: "POST /api/v1.0/assertions"
 title: "Emitir Certificados"
 ---
 
-Emite certificados.
+Emite um certificado, vinculado a um **evento**, para um destinatário.
+
+O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o destinatário aceitar.
 
 <Request method="POST" url="/api/v1.0/assertions" auth="bearer" />
 
-## Body params
+<Note>
+  Toda emissão está vinculada a um evento e a uma badge.
 
-<ParamField body="badge_id" type="string" required>
-  ID do badge
-</ParamField>
+  - Use `GET /api/v1.0/events` para localizar o `event_id`
+  - Use `GET /api/v1.0/badges` para localizar o `badge_id`
+</Note>
+
+---
+
+## Parâmetros do corpo (body)
 
 <ParamField body="event_id" type="string" required>
-  ID do evento
+  ID do evento vinculado à emissão.
 </ParamField>
 
-<ParamField body="recipient_email" type="string" required>
-  Email do recebedor
+<ParamField body="badge_id" type="string" required>
+  ID do badge utilizado na emissão.
 </ParamField>
 
 <ParamField body="recipient_name" type="string" required>
-  Nome do recebedor
+  Nome completo do destinatário.
 </ParamField>
 
-<ParamField body="fields" type="object">
-  Campos personalizados do certificado
+<ParamField body="recipient_email" type="string" required>
+  E-mail do destinatário que receberá o convite.
 </ParamField>
 
-## Response
+<ParamField body="recipient_number" type="string">
+  Número do destinatário para notificações por SMS ou WhatsApp (formato E.164).
 
-<ResponseField name="post_id" type="string">
-  ID do certificado criado
+  _Exemplo:_ +5531987654321
+</ParamField>
+
+<ParamField body="reason" type="string">
+  Motivo pelo qual o destinatário está recebendo o certificado.
+
+  _Exemplo:_ Curso de Python para Data Science com duração de 40 horas no nível Intermediário
+</ParamField>
+
+---
+
+## Resposta
+
+<ResponseField name="assertion_id" type="string">
+  Identificador único do certificado criado.
 </ResponseField>
 
 <ResponseField name="message" type="string">
-  Mensagem de confirmação da emissão
+  Mensagem de confirmação da emissão.
 </ResponseField>
 
-<ResponseField name="recipient" type="object">
-  Informações do recebedor
-  <Expandable title="properties">
-    <ResponseField name="email" type="string">
-      Email do recebedor
-    </ResponseField>
-
-    <ResponseField name="name" type="string">
-      Nome do recebedor
-    </ResponseField>
-  </Expandable>
+<ResponseField name="created_at" type="string">
+  Data e hora da emissão (ISO 8601).
 </ResponseField>
 
-<ResponseField name="badge" type="object">
-  Informações do badge
-  <Expandable title="properties">
-    <ResponseField name="badge_id" type="string">
-      ID do badge
-    </ResponseField>
+<Info>
+  Por privacidade, a resposta não retorna dados pessoais do destinatário.\
+  O acompanhamento do aceite deve ser feito via `GET /api/v1.0/assertions`.
+</Info>
 
-    <ResponseField name="name" type="string">
-      Nome do badge
-    </ResponseField>
-  </Expandable>
-</ResponseField>
+---
 
-<ResponseField name="event" type="object">
-  Informações do evento
-  <Expandable title="properties">
-    <ResponseField name="event_id" type="string">
-      ID do evento
-    </ResponseField>
-
-    <ResponseField name="name" type="string">
-      Nome do evento
-    </ResponseField>
-  </Expandable>
-</ResponseField>
+## Exemplo de resposta
 
 <ResponseExample>
+
 ```json Response (201)
 {
-  "post_id": "post_123",
+  "assertion_id": "assert_123",
   "message": "Certificado emitido com sucesso",
-  "recipient": {
-    "email": "usuario@exemplo.com",
-    "name": "João Silva"
-  },
-  "badge": {
-    "badge_id": "badge_456",
-    "name": "Certificado de Participação"
-  },
-  "event": {
-    "event_id": "event_789",
-    "name": "Workshop de Tecnologia"
-  }
+  "created_at": "2024-02-01T10:30:00Z"
 }
 ```
+
 </ResponseExample>
+
+---
+
+## Erros comuns
+
+### Evento inexistente, finalizado ou não pertencente ao emissor
+
+<ResponseExample>
+
+```json Response (404)
+{
+  "error": "EVENT_NOT_FOUND",
+  "message": "Evento não encontrado, finalizado ou não pertence ao emissor autenticado."
+}
+```
+
+</ResponseExample>
+
+### Badge inexistente ou não pertencente ao emissor
+
+<ResponseExample>
+
+```json Response (404)
+{
+  "error": "BADGE_NOT_FOUND",
+  "message": "Badge não encontrado ou não pertence ao emissor autenticado."
+}
+```
+
+</ResponseExample>
+
+### Certificado já emitido para o mesmo destinatário
+
+<ResponseExample>
+
+```json Response (409)
+{
+  "error": "ASSERTION_ALREADY_EXISTS",
+  "message": "Já existe uma emissão para este destinatário neste evento com esta badge."
+}
+```
+
+</ResponseExample>
+
+### Dados inválidos ou ausentes
+
+<ResponseExample>
+
+```json Response (400)
+{
+  "error": "VALIDATION_ERROR",
+  "message": "Campos obrigatórios ausentes ou inválidos."
+}
+```
+
+</ResponseExample>
+
+### Saldo insuficiente para emissão
+
+<ResponseExample>
+
+```json Response (402)
+{
+  "error": "INSUFFICIENT_BALANCE",
+  "message": "Saldo insuficiente para realizar a emissão do certificado."
+}
+```
+
+</ResponseExample>
+
+<Note>
+  A emissão consome créditos no momento da criação do certificado.\
+  Caso o saldo seja insuficiente, a emissão não é realizada.
+</Note>

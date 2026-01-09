@@ -3,17 +3,25 @@ api: "GET /api/v1.0/badges/{id}"
 title: "Informações de uma Badge"
 ---
 
-Retorna um badge específico.
+Retorna os detalhes completos de uma Badge (TM) específica do **emissor autenticado**.
 
 <Request method="GET" url="/api/v1.0/badges/{id}" auth="bearer" />
 
-## Path params
+<Note>
+  Uso recomendado: após localizar o `badge_id` em **Listar Badges**, utilize este endpoint para carregar informações completas.
+</Note>
+
+---
+
+## Parâmetros de rota
 
 <ParamField path="id" type="string" required>
-  ID do badge
+  ID do badge (`badge_id`).
 </ParamField>
 
-## Response
+---
+
+## Resposta
 
 <ResponseField name="badge_id" type="string">
   ID do badge
@@ -28,11 +36,12 @@ Retorna um badge específico.
 </ResponseField>
 
 <ResponseField name="created_at" type="string">
-  Data/hora de criação (ISO 8601)
+  Data e hora de criação (ISO 8601)
 </ResponseField>
 
 <ResponseField name="assets" type="object">
-  Assets do badge
+  Assets visuais do badge
+
   <Expandable title="properties">
     <ResponseField name="image_url" type="string">
       URL da imagem do badge
@@ -41,28 +50,32 @@ Retorna um badge específico.
 </ResponseField>
 
 <ResponseField name="user" type="object">
-  Informações do criador do badge
+  Informações do criador
+
   <Expandable title="properties">
     <ResponseField name="profile" type="object">
       Perfil do criador
+
       <Expandable title="properties">
         <ResponseField name="profile_id" type="string">
           ID do perfil
         </ResponseField>
-
-        <ResponseField name="name" type="string">
-          Nome
-        </ResponseField>
-
+        ```
         <ResponseField name="company_name" type="string">
-          Nome da empresa
+        Nome da empresa
         </ResponseField>
+        ```
       </Expandable>
     </ResponseField>
   </Expandable>
 </ResponseField>
 
+---
+
+## Exemplo de resposta
+
 <ResponseExample>
+
 ```json Response (200)
 {
   "badge_id": "badge_123",
@@ -75,10 +88,10 @@ Retorna um badge específico.
   "user": {
     "profile": {
       "profile_id": "profile_456",
-      "name": "Organizador",
       "company_name": "Empresa Organizadora"
     }
   }
 }
 ```
-</ResponseExample> 
+
+</ResponseExample>

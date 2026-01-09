@@ -3,17 +3,27 @@ api: "GET /api/v1.0/events/{id}"
 title: "Informações de um Evento"
 ---
 
-Retorna um evento específico.
+Retorna os **detalhes completos** de um evento específico do **próprio emissor autenticado**.
+
+Este endpoint exige autenticação via **Bearer Token** e não permite acessar eventos de outros emissores.
 
 <Request method="GET" url="/api/v1.0/events/{id}" auth="bearer" />
 
-## Path params
+<Note>
+  Uso recomendado: após localizar o `event_id` em **Listar Eventos**, utilize este endpoint para carregar os detalhes completos do evento.
+</Note>
+
+---
+
+## Parâmetros de rota
 
 <ParamField path="id" type="string" required>
-  ID do evento
+  ID do evento (`event_id`).
 </ParamField>
 
-## Response
+---
+
+## Resposta
 
 <ResponseField name="event_id" type="string">
   ID do evento
@@ -44,11 +54,11 @@ Retorna um evento específico.
 </ResponseField>
 
 <ResponseField name="initial_date" type="string">
-  Data/hora de início (ISO 8601)
+  Data e hora de início (ISO 8601)
 </ResponseField>
 
 <ResponseField name="finish_date" type="string">
-  Data/hora de término (ISO 8601)
+  Data e hora de término (ISO 8601)
 </ResponseField>
 
 <ResponseField name="image_url" type="string">
@@ -60,16 +70,16 @@ Retorna um evento específico.
 </ResponseField>
 
 <ResponseField name="status" type="string">
-  Status do evento (ex: ACTIVE, INACTIVE)
+  Status do evento (ex.: ACTIVE or FINISHED)
 </ResponseField>
 
 <ResponseField name="profile" type="object">
   Informações do organizador
+
   <Expandable title="properties">
     <ResponseField name="name" type="string">
       Nome do organizador
     </ResponseField>
-
     <ResponseField name="company_name" type="string">
       Nome da empresa organizadora
     </ResponseField>
@@ -78,17 +88,20 @@ Retorna um evento específico.
 
 <ResponseField name="badges" type="array">
   Badges associados ao evento
+
   <Expandable title="items">
     <ResponseField name="badge_id" type="string">
       ID do badge
     </ResponseField>
-
     <ResponseField name="name" type="string">
       Nome do badge
     </ResponseField>
-
+    <ResponseField name="description" type="string">
+      Descrição do badge
+    </ResponseField>
     <ResponseField name="assets" type="object">
       Assets do badge
+
       <Expandable title="properties">
         <ResponseField name="image_url" type="string">
           URL da imagem do badge
@@ -96,16 +109,25 @@ Retorna um evento específico.
       </Expandable>
     </ResponseField>
   </Expandable>
+  <Note>
+    Os badges associados ao evento são retornados no campo `badges` desta resposta.\
+    Não é necessário chamar um endpoint separado para obter essa informação.
+  </Note>
 </ResponseField>
 
+---
+
+## Exemplo de resposta
+
 <ResponseExample>
+
 ```json Response (200)
 {
   "event_id": "event_123",
   "name": "Workshop de Tecnologia",
   "description": "Workshop sobre desenvolvimento web",
-  "category": "TECHNOLOGY",
-  "subcategory": "WEB_DEVELOPMENT",
+  "category": "EDUCATION",
+  "subcategory": "Oficina ou Workshop",
   "city": "São Paulo",
   "state": "SP",
   "initial_date": "2024-02-01T09:00:00Z",
@@ -121,6 +143,7 @@ Retorna um evento específico.
     {
       "badge_id": "badge_456",
       "name": "Certificado de Participação",
+      "description": "Badge para participantes do evento",
       "assets": {
         "image_url": "https://example.com/badge.png"
       }
@@ -128,4 +151,5 @@ Retorna um evento específico.
   ]
 }
 ```
+
 </ResponseExample>

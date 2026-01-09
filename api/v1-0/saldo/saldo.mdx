@@ -3,25 +3,32 @@ api: "GET /api/v1.0/balance"
 title: "Saldo"
 ---
 
-Retorna o saldo de créditos da empresa autenticada.
+Retorna o **saldo atual de créditos** da conta emissora autenticada.
 
 <Request method="GET" url="/api/v1.0/balance" auth="bearer" />
 
-## Response
+---
+
+## Resposta
 
 <ResponseField name="balance" type="number">
-  Saldo atual de créditos da empresa em reais (R$)
+  Saldo atual de créditos disponíveis para emissão de certificados.
 </ResponseField>
 
 <ResponseField name="profile_id" type="string">
-  ID único do perfil da empresa
+  Identificador único do perfil do emissor.
 </ResponseField>
 
 <ResponseField name="company_name" type="string">
-  Nome da empresa
+  Nome da empresa emissora.
 </ResponseField>
 
+---
+
+## Exemplo de resposta
+
 <ResponseExample>
+
 ```json Response (200)
 {
   "balance": 150.5,
@@ -29,4 +36,9 @@ Retorna o saldo de créditos da empresa autenticada.
   "company_name": "Nome da Empresa"
 }
 ```
-</ResponseExample> <Info> O saldo retornado é o saldo atual de créditos da empresa. Se a empresa não tiver registro de créditos, o saldo será 0. </Info>
+
+</ResponseExample>
+
+<Info>
+  Caso a empresa não possua créditos disponíveis, o valor retornado em balance será 0.
+</Info>

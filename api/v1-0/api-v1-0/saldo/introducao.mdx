@@ -1,47 +1,40 @@
 ---
+
 title: "Introdução"
 description: "Visão geral sobre Saldo de Créditos na plataforma ThatsMe"
----
+------------------------------------------------------------------------
 
 ## O que é o Saldo?
 
-O **Saldo** representa os créditos disponíveis na conta do emissor para aquisição de Badges (TM's) na Loja de TM's da plataforma ThatsMe.
+O **Saldo** representa os créditos disponíveis na conta do emissor para a **emissão de certificados** na plataforma ThatsMe.
 
-## Como Funciona o Saldo
+Cada emissão de certificado consome créditos do saldo conforme as regras vigentes.
 
-### Adição de Créditos
+---
 
-O saldo é **adicionado diretamente pela plataforma** através de:
-- Processos administrativos internos
-- Sistema de gestão de créditos da ThatsMe
-- Integrações com sistemas de pagamento
+## Como o Saldo funciona
 
-<Note>
-O saldo não pode ser adicionado diretamente via API. Todas as adições são gerenciadas pela plataforma.
-</Note>
+* O saldo é **gerenciado exclusivamente pela plataforma ThatsMe**
+* Não é possível adicionar créditos via API
+* O saldo é **consumido somente no momento da emissão do certificado**
 
-### Uso do Saldo
-
-Os créditos do saldo são utilizados para:
-- **Aquisição de Badges (TM's)** na Loja de TM's
-- **Emissões de certificados e badges** de acordo com os valores pré-estabelecidos
-- Cada Badge adquirido consome créditos do saldo
-- O saldo é debitado automaticamente ao realizar uma compra ou emissão
+---
 
 ## Consulta do Saldo
 
-Através da API, você pode:
-- **Consultar o saldo atual** disponível
-- **Verificar créditos** antes de adquirir Badges
-- **Monitorar o uso** de créditos ao longo do tempo
+A API permite que o emissor:
+
+* Consulte o saldo atual disponível
+* Verifique se há créditos suficientes antes de realizar emissões
+
+---
 
 ## Importante
 
-- Cada emissor possui seu próprio saldo independente
-- O saldo é atualizado em tempo real após cada transação
-- Saldo insuficiente impede a aquisição de novos Badges
+* Cada emissor possui seu próprio saldo
+* O saldo é atualizado em tempo real após cada emissão
+* Emissões não são realizadas quando o saldo é insuficiente
 
 <Warning>
-Certifique-se de ter saldo suficiente antes de tentar adquirir Badges na Loja de TM's.
+Tentativas de emissão sem saldo disponível resultam em erro e não consomem créditos.
 </Warning>
-

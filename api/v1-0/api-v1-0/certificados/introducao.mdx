@@ -1,47 +1,45 @@
 ---
+
 title: "Introdução"
-description: "Visão geral sobre Certificados (Assertions) na plataforma ThatsMe"
+description: "Visão geral sobre Certificados na API Pública v1.0"
+-----------------------------------------------------------------
+
+## Visão geral
+
+**Certificados** são registros digitais emitidos para destinatários, representando conquistas, participações, reconhecimentos ou outras realizações.
+
+Na That’s Me, a emissão cria um **convite**. O certificado só se torna **válido e ativo** após o destinatário **aceitar** o recebimento.
+
 ---
 
-## O que são Certificados?
+## Fluxo de emissão
 
-Os **Certificados** (também chamados de **Assertions**) são documentos digitais emitidos para destinatários, representando conquistas, participações em eventos, conclusões de cursos ou outras realizações.
+### 1) Emissão (cria convite)
 
-## Fluxo de Emissão de Certificados
+Ao emitir um certificado via API ou plataforma:
 
-### 1. Emissão do Certificado
-
-Quando um certificado é emitido através da API ou pela plataforma:
-
-1. O sistema cria uma **assertion** (certificado)
+1. O sistema cria o registro do certificado (em estado de convite)
 2. Um **convite é enviado automaticamente** ao destinatário
-3. O destinatário recebe uma notificação sobre o certificado disponível
+3. O destinatário deve acessar a plataforma e **aceitar** o recebimento
 
-### 2. Aceite do Destinatário
+### 2) Ativação
 
-**Importante**: Os certificados emitidos **não se tornam ativos imediatamente**. Eles permanecem como convites até que:
+Após a confirmação do destinatário:
 
-- O destinatário **aceite o convite**
-- O destinatário confirme o recebimento do certificado
-
-### 3. Ativação do Certificado
-
-Após o aceite do destinatário:
-- O certificado se torna **oficial e válido**
-- Aparece no perfil do destinatário
-- Pode ser compartilhado e visualizado publicamente
-- Pode ser verificado através da API de validação
+* O certificado torna-se **oficial e válido**
+* Pode ser verificado via mecanismos de validação
+* Passa a aparecer no perfil do destinatário
+* Pode ser compartilhado e visualizado publicamente
 
 <Warning>
-Certificados não aceitos permanecem como convites pendentes e não aparecem como certificados válidos no perfil do destinatário.
+Os perfis possuem controle total sobre a privacidade de cada conquista, podendo limitar ou impedir a visualização pública dos certificados.
 </Warning>
 
-## Tipos de Certificados
+---
 
-Os certificados podem ser emitidos para:
-- Participação em eventos
-- Conclusão de cursos e treinamentos
-- Reconhecimentos e destaques
-- Competições e premiações
-- Certificações profissionais
+## Próximo passo
 
+Nos próximos endpoints desta seção, você poderá:
+
+* Listar certificados e acompanhar o status de aceite
+* Emitir novos certificados
