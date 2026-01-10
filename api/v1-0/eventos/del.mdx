@@ -42,6 +42,36 @@ A exclusão bem-sucedida retorna status **204 No Content** (nenhum corpo é reto
 
 ## Erros comuns
 
+### API Key inválida ou ausente
+
+<ResponseExample>
+
+```json Response (401)
+{
+  "error": "UNAUTHORIZED",
+  "message": "Token inválido ou ausente."
+}
+```
+
+</ResponseExample>
+
+---
+
+### Evento inexistente ou não pertencente ao emissor
+
+<ResponseExample>
+
+```json Response (404)
+{
+  "error": "EVENT_NOT_FOUND",
+  "message": "Evento não encontrado ou não pertence ao emissor autenticado."
+}
+```
+
+</ResponseExample>
+
+---
+
 ### Evento finalizado
 
 <ResponseExample>
@@ -65,21 +95,6 @@ A exclusão bem-sucedida retorna status **204 No Content** (nenhum corpo é reto
 {
   "error": "EVENT_HAS_EMISSIONS",
   "message": "Eventos que já tiveram emissões de certificados não podem ser deletados."
-}
-```
-
-</ResponseExample>
-
----
-
-### Evento inexistente ou não pertencente ao emissor
-
-<ResponseExample>
-
-```json Response (404)
-{
-  "error": "EVENT_NOT_FOUND",
-  "message": "Evento não encontrado ou não pertence ao emissor autenticado."
 }
 ```
 
