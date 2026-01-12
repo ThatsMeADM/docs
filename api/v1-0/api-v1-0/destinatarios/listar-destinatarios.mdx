@@ -28,8 +28,9 @@ Para realizar uma busca válida, é obrigatório informar:
 
 - **ao menos um identificador do destinatário**
   - `recipient_email`
+  - `recipient_name`
   - `recipient_number`
-  - `assertion_id`
+  - `invitation_id`
 
 Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unicidade.
 
@@ -51,7 +52,7 @@ Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unic
 
 ### Identificadores do destinatário (ao menos um obrigatório)
 
-<ParamField query="assertion_id" type="string">
+<ParamField query="invitation_id" type="string">
   ID do certificado emitido.
 </ParamField>
 
@@ -85,7 +86,7 @@ Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unic
   Lista restrita de destinatários encontrados com base nos filtros informados.
 
   <Expandable title="items">
-    <ResponseField name="assertion_id" type="string">
+    <ResponseField name="invitation_id" type="string">
       ID do certificado emitido
     </ResponseField>
     <ResponseField name="status" type="string">
@@ -139,7 +140,7 @@ Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unic
 {
   "data": [
     {
-      "assertion_id": "assert_123",
+      "invitation_id": "invite_123",
       "status": "PENDING",
       "created_at": "2024-02-01T10:30:00Z",
       "recipient": {
@@ -169,7 +170,7 @@ Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unic
 ```json Response (400)
 {
   "error": "INVALID_SEARCH",
-  "message": "Informe event_id ou badge_id e pelo menos um dos seguintes: recipient_email, recipient_number ou assertion_id."
+  "message": "Informe event_id ou badge_id e pelo menos um dos seguintes: recipient_email, recipient_name, recipient_number ou invitation_id."
 }
 ```
 
