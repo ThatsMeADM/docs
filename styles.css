@@ -1,12 +1,10 @@
-/* Sidebar group header — Helvetica Now Display Bold */
+/* 1) Sidebar group header — fixa fonte e peso só no elemento */
 .sidebar-group-header {
     font-family: "Helvetica Now Display", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 700;
   }
   
-  /* Force real bold (700) for body text emphasis only */
-  main strong,
-  main b,
+  /* 2) Bold no body — restringe ao conteúdo (prose) e NÃO ao site todo */
   .prose strong,
   .prose b {
     font-weight: 700;
