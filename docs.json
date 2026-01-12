@@ -124,61 +124,109 @@
           {
             "version": "V1.0",
             "default": true,
-            "products": [
+            "groups": [
               {
-                "product": "API (V1.0)",
-                "groups": [
+                "group": "Manual da API",
+                "pages": [
+                  "api/v1-0/core/home",
+                  "api/v1-0/core/get-started",
+                  "api/v1-0/api-v1-0/gestao-de-erros",
+                  "api/v1-0/api-v1-0/x"
+                ]
+              },
+              {
+                "group": "Eventos",
+                "pages": [
+                  "api/v1-0/api-v1-0/eventos/introducao",
                   {
-                    "group": "Manual da API",
+                    "group": "Informações",
                     "expanded": true,
                     "pages": [
-                      "api/v1-0/core/home",
-                      "api/v1-0/core/get-started",
-                      "api/v1-0/api-v1-0/gestao-de-erros",
-                      "api/v1-0/api-v1-0/x"
+                      "api/v1-0/api-v1-0/eventos/listar-eventos",
+                      "api/v1-0/api-v1-0/eventos/informacoes-evento"
+                    ]
+                  },
+                  {
+                    "group": "Criar",
+                    "expanded": true,
+                    "pages": [
+                      "api/v1-0/api-v1-0/eventos/criar-evento"
+                    ]
+                  },
+                  {
+                    "group": "Atualizar",
+                    "expanded": true,
+                    "pages": [
+                      "api/v1-0/api-v1-0/eventos/atualizar-evento"
+                    ]
+                  },
+                  {
+                    "group": "Deletar",
+                    "expanded": true,
+                    "pages": [
+                      "api/v1-0/eventos/del"
                     ]
                   }
                 ]
               },
               {
-                "product": "Eventos",
-                "pages": [
-                  "api/v1-0/api-v1-0/eventos/introducao",
-                  "api/v1-0/api-v1-0/eventos/listar-eventos",
-                  "api/v1-0/api-v1-0/eventos/informacoes-evento",
-                  "api/v1-0/api-v1-0/eventos/criar-evento",
-                  "api/v1-0/api-v1-0/eventos/atualizar-evento",
-                  "api/v1-0/eventos/del"
-                ]
-              },
-              {
-                "product": "Badges (TM's)",
+                "group": "Badges (TM's)",
                 "pages": [
                   "api/v1-0/api-v1-0/badges/introducao",
-                  "api/v1-0/api-v1-0/badges/listar-badges",
-                  "api/v1-0/api-v1-0/badges/informacoes-badge"
+                  {
+                    "group": "Informações",
+                    "expanded": true,
+                    "pages": [
+                      "api/v1-0/api-v1-0/badges/listar-badges",
+                      "api/v1-0/api-v1-0/badges/informacoes-badge"
+                    ]
+                  }
                 ]
               },
               {
-                "product": "Certificados",
+                "group": "Certificados",
                 "pages": [
                   "api/v1-0/api-v1-0/certificados/introducao",
-                  "api/v1-0/api-v1-0/certificados/listar-certificados",
-                  "api/v1-0/api-v1-0/certificados/emitir-certificados"
+                  {
+                    "group": "Informações",
+                    "expanded": true,
+                    "pages": [
+                      "api/v1-0/api-v1-0/certificados/listar-certificados"
+                    ]
+                  },
+                  {
+                    "group": "Emissão",
+                    "expanded": true,
+                    "pages": [
+                      "api/v1-0/api-v1-0/certificados/emitir-certificados"
+                    ]
+                  }
                 ]
               },
               {
-                "product": "Suporte ao Destinatário",
+                "group": "Suporte ao Destinatário",
                 "pages": [
                   "api/v1-0/api-v1-0/destinatarios/introducao",
-                  "api/v1-0/api-v1-0/destinatarios/listar-destinatarios"
+                  {
+                    "group": "Informações",
+                    "expanded": true,
+                    "pages": [
+                      "api/v1-0/api-v1-0/destinatarios/listar-destinatarios"
+                    ]
+                  }
                 ]
               },
               {
-                "product": "Saldo",
+                "group": "Saldo",
                 "pages": [
                   "api/v1-0/api-v1-0/saldo/introducao",
-                  "api/v1-0/saldo/saldo"
+                  {
+                    "group": "Informações",
+                    "expanded": true,
+                    "pages": [
+                      "api/v1-0/saldo/saldo"
+                    ]
+                  }
                 ]
               }
             ]
@@ -191,7 +239,7 @@
     "socials": {
       "instagram": "https://www.instagram.com/app.thatsme/",
       "linkedin": "https://www.linkedin.com/company/that-sme/",
-      "website": "https://thatsme.com.br/"
+      "website": "https://www.thatsme.com.br/"
     }
   },
   "contextual": {
