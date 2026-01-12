@@ -130,6 +130,7 @@
                 "groups": [
                   {
                     "group": "Manual da API",
+                    "expanded": true,
                     "pages": [
                       "api/v1-0/core/home",
                       "api/v1-0/core/get-started",
