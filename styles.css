@@ -1,12 +1,19 @@
-/* 1) Sidebar group header — fixa fonte e peso só no elemento */
+/* Sidebar group header: força peso correto via variável do Mintlify */
 .sidebar-group-header {
+    --font-weight-headings-custom: 700;
     font-family: "Helvetica Now Display", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  /* Garante que o título interno herde corretamente */
+  .sidebar-group-header h5 {
     font-weight: 700;
   }
   
-  /* 2) Bold no body — restringe ao conteúdo (prose) e NÃO ao site todo */
+  /* Corrige bold no conteúdo sem afetar sidebar */
   .prose strong,
-  .prose b {
+  .prose b,
+  main strong,
+  main b {
     font-weight: 700;
   }
   
