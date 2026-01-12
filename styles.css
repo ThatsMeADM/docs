@@ -1,6 +1,17 @@
-/* Sidebar group header */
-.sidebar-group-header {
-    font-family: "Helvetica Now Display", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+/* 1. Corrige bold inline no body (strong / b) */
+:root {
+    --font-weight-body-custom: 400;
+  }
+  
+  /* Bold real apenas onde é semanticamente bold */
+  main strong,
+  main b,
+  .prose strong,
+  .prose b {
     font-weight: 700;
   }
   
+  /* 2. Força peso correto nos headings (inclui sidebar h5) */
+  :root {
+    --font-weight-headings-custom: 700;
+  }  
