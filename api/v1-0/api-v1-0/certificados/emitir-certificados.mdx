@@ -1,5 +1,5 @@
 ---
-api: "POST /api/v1.0/assertions"
+api: "POST /api/v1.0/invitations"
 title: "Emitir Certificados"
 ---
 
@@ -7,7 +7,7 @@ Emite um certificado, vinculado a um **evento**, para um destinatário.
 
 O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o destinatário aceitar.
 
-<Request method="POST" url="/api/v1.0/assertions" auth="bearer" />
+<Request method="POST" url="/api/v1.0/invitations" auth="bearer" />
 
 <Note>
   Toda emissão está vinculada a um evento e a uma badge.
@@ -52,7 +52,7 @@ O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o desti
 
 ## Resposta
 
-<ResponseField name="assertion_id" type="string">
+<ResponseField name="invitation_id" type="string">
   Identificador único do certificado criado.
 </ResponseField>
 
@@ -77,7 +77,7 @@ O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o desti
 
 ```json Response (201)
 {
-  "assertion_id": "assert_123",
+  "invitation_id": "invite_123",
   "message": "Certificado emitido com sucesso",
   "created_at": "2024-02-01T10:30:00Z"
 }

@@ -1,11 +1,11 @@
 ---
-api: "GET /api/v1.0/assertions"
+api: "GET /api/v1.0/invitations"
 title: "Listar Certificados"
 ---
 
 Retorna certificados emitidos pelo **emissor autenticado**, permitindo acompanhar o status de aceite e localizar emissões sem expor dados sensíveis de destinatários.
 
-<Request method="GET" url="/api/v1.0/assertions" auth="bearer" />
+<Request method="GET" url="/api/v1.0/invitations" auth="bearer" />
 
 <Note>
   Este endpoint não retorna dados pessoais do destinatário (ex.: nome, e-mail, nickname).
@@ -59,7 +59,7 @@ Retorna certificados emitidos pelo **emissor autenticado**, permitindo acompanha
   Lista de certificados emitidos pelo emissor autenticado.
 
   <Expandable title="items">
-    <ResponseField name="assertion_id" type="string">
+    <ResponseField name="invitation_id" type="string">
       Identificador único do certificado
     </ResponseField>
     <ResponseField name="status" type="string">
