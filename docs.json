@@ -159,7 +159,6 @@
                   "api/v1-0/api-v1-0/eventos/introducao",
                   {
                     "group": "Informações",
-                    "expanded": true,
                     "pages": [
                       "api/v1-0/api-v1-0/eventos/listar-eventos",
                       "api/v1-0/api-v1-0/eventos/informacoes-evento"
@@ -167,7 +166,6 @@
                   },
                   {
                     "group": "Criar",
-                    "expanded": true,
                     "pages": [
                       "api/v1-0/api-v1-0/eventos/criar-evento"
                     ]
@@ -181,7 +179,6 @@
                   },
                   {
                     "group": "Deletar",
-                    "expanded": true,
                     "pages": [
                       "api/v1-0/eventos/del"
                     ]
@@ -195,7 +192,6 @@
                   "api/v1-0/api-v1-0/badges/introducao",
                   {
                     "group": "Informações",
-                    "expanded": true,
                     "pages": [
                       "api/v1-0/api-v1-0/badges/listar-badges",
                       "api/v1-0/api-v1-0/badges/informacoes-badge"
@@ -210,14 +206,12 @@
                   "api/v1-0/api-v1-0/certificados/introducao",
                   {
                     "group": "Informações",
-                    "expanded": true,
                     "pages": [
                       "api/v1-0/api-v1-0/certificados/listar-certificados"
                     ]
                   },
                   {
                     "group": "Emissão",
-                    "expanded": true,
                     "pages": [
                       "api/v1-0/api-v1-0/certificados/emitir-certificados"
                     ]
@@ -231,7 +225,6 @@
                   "api/v1-0/api-v1-0/destinatarios/introducao",
                   {
                     "group": "Informações",
-                    "expanded": true,
                     "pages": [
                       "api/v1-0/api-v1-0/destinatarios/listar-destinatarios"
                     ]
@@ -245,7 +238,6 @@
                   "api/v1-0/api-v1-0/saldo/introducao",
                   {
                     "group": "Informações",
-                    "expanded": true,
                     "pages": [
                       "api/v1-0/saldo/saldo"
                     ]
