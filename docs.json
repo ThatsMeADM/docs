@@ -144,6 +144,7 @@
             "groups": [
               {
                 "group": "Manual da API",
+                "icon": "code",
                 "pages": [
                   "api/v1-0/core/home",
                   "api/v1-0/core/get-started",
@@ -153,6 +154,7 @@
               },
               {
                 "group": "Eventos",
+                "icon": "calendar",
                 "pages": [
                   "api/v1-0/api-v1-0/eventos/introducao",
                   {
@@ -188,6 +190,7 @@
               },
               {
                 "group": "Badges (TM's)",
+                "icon": "medal",
                 "pages": [
                   "api/v1-0/api-v1-0/badges/introducao",
                   {
@@ -202,6 +205,7 @@
               },
               {
                 "group": "Certificados",
+                "icon": "badge-check",
                 "pages": [
                   "api/v1-0/api-v1-0/certificados/introducao",
                   {
@@ -222,6 +226,7 @@
               },
               {
                 "group": "Suporte ao Destinatário",
+                "icon": "user",
                 "pages": [
                   "api/v1-0/api-v1-0/destinatarios/introducao",
                   {
@@ -235,6 +240,7 @@
               },
               {
                 "group": "Saldo",
+                "icon": "coin-front",
                 "pages": [
                   "api/v1-0/api-v1-0/saldo/introducao",
                   {
