@@ -231,7 +231,7 @@
                 ]
               },
               {
-                "group": "Guia",
+                "group": "Saldo",
                 "icon": "coin-front",
                 "pages": [
                   "api/v1-0/api-v1-0/saldo/introducao",
