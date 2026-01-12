@@ -1,16 +1,6 @@
-/* Sidebar group header: só o header do grupo */
-.sidebar-group-header {
+/* Sidebar group header apenas */
+#sidebar-content .sidebar-group-header {
     font-family: "Helvetica Now Display", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 700;
-  }
-  
-  /* Conteúdo (markdown): só o negrito real dentro do conteúdo */
-  main .prose :is(strong, b) {
-    font-weight: 700;
-  }
-  
-  /* (opcional, se algo “vazou” e deixou tudo bold) garante peso normal no conteúdo */
-  main .prose {
-    font-weight: 400;
   }
   
