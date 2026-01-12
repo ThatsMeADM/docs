@@ -9,9 +9,9 @@
   },
   "fonts": {
     "family": "Helvetica Now Display",
-    "source": "/fonts/HelveticaNowDisplay-Medium.woff2",
+    "source": "/fonts/HelveticaNowDisplay-Regular.woff2",
     "format": "woff2",
-    "weight": 500,
+    "weight": 400,
     "heading": {
       "family": "Helvetica Now Display",
       "source": "/fonts/HelveticaNowDisplay-Bold.woff2",
