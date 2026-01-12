@@ -1,19 +1,16 @@
-/* Sidebar group header: força peso correto via variável do Mintlify */
+/* Sidebar group header: só o header do grupo */
 .sidebar-group-header {
-    --font-weight-headings-custom: 700;
     font-family: "Helvetica Now Display", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-  
-  /* Garante que o título interno herde corretamente */
-  .sidebar-group-header h5 {
     font-weight: 700;
   }
   
-  /* Corrige bold no conteúdo sem afetar sidebar */
-  .prose strong,
-  .prose b,
-  main strong,
-  main b {
+  /* Conteúdo (markdown): só o negrito real dentro do conteúdo */
+  main .prose :is(strong, b) {
     font-weight: 700;
+  }
+  
+  /* (opcional, se algo “vazou” e deixou tudo bold) garante peso normal no conteúdo */
+  main .prose {
+    font-weight: 400;
   }
   
