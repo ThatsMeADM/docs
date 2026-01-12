@@ -101,7 +101,6 @@
             "pages": [
               "integracoes/linkedin",
               "integracoes/compartilhamento",
-              "integracoes/home",
               "integracoes/api"
             ]
           }
