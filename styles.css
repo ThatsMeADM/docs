@@ -1,41 +1,14 @@
-/* 1) Load font weights explicitly */
-@font-face {
-    font-family: "Helvetica Now Display";
-    src: url("/fonts/HelveticaNowDisplay-Regular.woff2") format("woff2");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "Helvetica Now Display";
-    src: url("/fonts/HelveticaNowDisplay-Medium.woff2") format("woff2");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "Helvetica Now Display";
-    src: url("/fonts/HelveticaNowDisplay-Bold.woff2") format("woff2");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  /* 2) Sidebar group header: Helvetica Now Display Bold */
-  .sidebar-group-header,
-  .sidebar-group-header * {
+/* Sidebar group header — Helvetica Now Display Bold */
+.sidebar-group-header {
     font-family: "Helvetica Now Display", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 700;
   }
   
-  /* 3) Fix "bold in body" contrast: force real 700 for bold text */
+  /* Force real bold (700) for body text emphasis only */
   main strong,
   main b,
   .prose strong,
   .prose b {
-    font-family: "Helvetica Now Display", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 700;
   }
   
