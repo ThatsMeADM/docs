@@ -124,10 +124,9 @@
           {
             "version": "V1.0",
             "default": true,
-            "groups": [
+            "dropdowns": [
               {
-                "group": "API (V1.0)",
-                "expanded": true,
+                "dropdown": "API (V1.0)",
                 "pages": [
                   "api/v1-0/core/home",
                   "api/v1-0/core/get-started",
@@ -136,8 +135,7 @@
                 ]
               },
               {
-                "group": "Eventos",
-                "expanded": false,
+                "dropdown": "Eventos",
                 "pages": [
                   "api/v1-0/api-v1-0/eventos/introducao",
                   "api/v1-0/api-v1-0/eventos/listar-eventos",
@@ -148,7 +146,7 @@
                 ]
               },
               {
-                "group": "Badges (TM's)",
+                "dropdown": "Badges (TM's)",
                 "pages": [
                   "api/v1-0/api-v1-0/badges/introducao",
                   "api/v1-0/api-v1-0/badges/listar-badges",
@@ -156,7 +154,7 @@
                 ]
               },
               {
-                "group": "Certificados",
+                "dropdown": "Certificados",
                 "pages": [
                   "api/v1-0/api-v1-0/certificados/introducao",
                   "api/v1-0/api-v1-0/certificados/listar-certificados",
@@ -164,14 +162,14 @@
                 ]
               },
               {
-                "group": "Suporte ao Destinatário",
+                "dropdown": "Suporte ao Destinatário",
                 "pages": [
                   "api/v1-0/api-v1-0/destinatarios/introducao",
                   "api/v1-0/api-v1-0/destinatarios/listar-destinatarios"
                 ]
               },
               {
-                "group": "Saldo",
+                "dropdown": "Saldo",
                 "pages": [
                   "api/v1-0/api-v1-0/saldo/introducao",
                   "api/v1-0/saldo/saldo"
