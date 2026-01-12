@@ -172,7 +172,6 @@
                   },
                   {
                     "group": "Atualizar",
-                    "expanded": true,
                     "pages": [
                       "api/v1-0/api-v1-0/eventos/atualizar-evento"
                     ]
