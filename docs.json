@@ -25,6 +25,9 @@
       "weight": 400
     }
   },
+  "styles": {
+    "global": "/styles.css"
+  },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
