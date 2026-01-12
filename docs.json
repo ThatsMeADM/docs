@@ -148,6 +148,7 @@
               {
                 "group": "Manual da API",
                 "icon": "code",
+                "expanded": false,
                 "pages": [
                   "api/v1-0/core/home",
                   "api/v1-0/core/get-started",
@@ -158,10 +159,12 @@
               {
                 "group": "Eventos",
                 "icon": "calendar",
+                "expanded": false,
                 "pages": [
                   "api/v1-0/api-v1-0/eventos/introducao",
                   {
                     "group": "Informações",
+                    "expanded": false,
                     "pages": [
                       "api/v1-0/api-v1-0/eventos/listar-eventos",
                       "api/v1-0/api-v1-0/eventos/informacoes-evento"
@@ -169,31 +172,30 @@
                   },
                   {
                     "group": "Criar",
-                    "pages": [
-                      "api/v1-0/api-v1-0/eventos/criar-evento"
-                    ]
+                    "expanded": false,
+                    "pages": ["api/v1-0/api-v1-0/eventos/criar-evento"]
                   },
                   {
                     "group": "Atualizar",
-                    "pages": [
-                      "api/v1-0/api-v1-0/eventos/atualizar-evento"
-                    ]
+                    "expanded": false,
+                    "pages": ["api/v1-0/api-v1-0/eventos/atualizar-evento"]
                   },
                   {
                     "group": "Deletar",
-                    "pages": [
-                      "api/v1-0/eventos/del"
-                    ]
+                    "expanded": false,
+                    "pages": ["api/v1-0/eventos/del"]
                   }
                 ]
               },
               {
                 "group": "Badges (TM's)",
                 "icon": "medal",
+                "expanded": false,
                 "pages": [
                   "api/v1-0/api-v1-0/badges/introducao",
                   {
                     "group": "Informações",
+                    "expanded": false,
                     "pages": [
                       "api/v1-0/api-v1-0/badges/listar-badges",
                       "api/v1-0/api-v1-0/badges/informacoes-badge"
@@ -204,52 +206,51 @@
               {
                 "group": "Certificados",
                 "icon": "badge-check",
+                "expanded": false,
                 "pages": [
                   "api/v1-0/api-v1-0/certificados/introducao",
                   {
                     "group": "Informações",
-                    "pages": [
-                      "api/v1-0/api-v1-0/certificados/listar-certificados"
-                    ]
+                    "expanded": false,
+                    "pages": ["api/v1-0/api-v1-0/certificados/listar-certificados"]
                   },
                   {
                     "group": "Emissão",
-                    "pages": [
-                      "api/v1-0/api-v1-0/certificados/emitir-certificados"
-                    ]
+                    "expanded": false,
+                    "pages": ["api/v1-0/api-v1-0/certificados/emitir-certificados"]
                   }
                 ]
               },
               {
                 "group": "Suporte ao Destinatário",
                 "icon": "user",
+                "expanded": false,
                 "pages": [
                   "api/v1-0/api-v1-0/destinatarios/introducao",
                   {
                     "group": "Informações",
-                    "pages": [
-                      "api/v1-0/api-v1-0/destinatarios/listar-destinatarios"
-                    ]
+                    "expanded": false,
+                    "pages": ["api/v1-0/api-v1-0/destinatarios/listar-destinatarios"]
                   }
                 ]
               },
               {
                 "group": "Saldo",
                 "icon": "coin-front",
+                "expanded": false,
                 "pages": [
                   "api/v1-0/api-v1-0/saldo/introducao",
                   {
                     "group": "Informações",
-                    "pages": [
-                      "api/v1-0/saldo/saldo"
-                    ]
+                    "expanded": false,
+                    "pages": ["api/v1-0/saldo/saldo"]
                   }
                 ]
               }
             ]
           }
         ]
-      }
+      }      
     ]
   },
   "footer": {
