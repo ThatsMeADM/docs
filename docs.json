@@ -9,9 +9,9 @@
   },
   "fonts": {
     "family": "Helvetica Now Display",
-    "source": "/fonts/HelveticaNowDisplay-Regular.woff2",
+    "source": "/fonts/HelveticaNowDisplay-Medium.woff2",
     "format": "woff2",
-    "weight": 400,
+    "weight": 500,
     "heading": {
       "family": "Helvetica Now Display",
       "source": "/fonts/HelveticaNowDisplay-Bold.woff2",
@@ -172,7 +172,6 @@
                   },
                   {
                     "group": "Atualizar",
-                    "expanded": true,
                     "pages": [
                       "api/v1-0/api-v1-0/eventos/atualizar-evento"
                     ]
@@ -232,7 +231,7 @@
                 ]
               },
               {
-                "group": "Saldo",
+                "group": "Guia",
                 "icon": "coin-front",
                 "pages": [
                   "api/v1-0/api-v1-0/saldo/introducao",
