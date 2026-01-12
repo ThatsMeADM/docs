@@ -127,11 +127,16 @@
             "dropdowns": [
               {
                 "dropdown": "API (V1.0)",
-                "pages": [
-                  "api/v1-0/core/home",
-                  "api/v1-0/core/get-started",
-                  "api/v1-0/api-v1-0/gestao-de-erros",
-                  "api/v1-0/api-v1-0/x"
+                "groups": [
+                  {
+                    "group": "Manual da API",
+                    "pages": [
+                      "api/v1-0/core/home",
+                      "api/v1-0/core/get-started",
+                      "api/v1-0/api-v1-0/gestao-de-erros",
+                      "api/v1-0/api-v1-0/x"
+                    ]
+                  }
                 ]
               },
               {
