@@ -124,9 +124,9 @@
           {
             "version": "V1.0",
             "default": true,
-            "dropdowns": [
+            "products": [
               {
-                "dropdown": "API (V1.0)",
+                "product": "API (V1.0)",
                 "groups": [
                   {
                     "group": "Manual da API",
@@ -141,7 +141,7 @@
                 ]
               },
               {
-                "dropdown": "Eventos",
+                "product": "Eventos",
                 "pages": [
                   "api/v1-0/api-v1-0/eventos/introducao",
                   "api/v1-0/api-v1-0/eventos/listar-eventos",
@@ -152,7 +152,7 @@
                 ]
               },
               {
-                "dropdown": "Badges (TM's)",
+                "product": "Badges (TM's)",
                 "pages": [
                   "api/v1-0/api-v1-0/badges/introducao",
                   "api/v1-0/api-v1-0/badges/listar-badges",
@@ -160,7 +160,7 @@
                 ]
               },
               {
-                "dropdown": "Certificados",
+                "product": "Certificados",
                 "pages": [
                   "api/v1-0/api-v1-0/certificados/introducao",
                   "api/v1-0/api-v1-0/certificados/listar-certificados",
@@ -168,14 +168,14 @@
                 ]
               },
               {
-                "dropdown": "Suporte ao Destinatário",
+                "product": "Suporte ao Destinatário",
                 "pages": [
                   "api/v1-0/api-v1-0/destinatarios/introducao",
                   "api/v1-0/api-v1-0/destinatarios/listar-destinatarios"
                 ]
               },
               {
-                "dropdown": "Saldo",
+                "product": "Saldo",
                 "pages": [
                   "api/v1-0/api-v1-0/saldo/introducao",
                   "api/v1-0/saldo/saldo"
