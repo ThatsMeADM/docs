@@ -49,11 +49,7 @@ Cria um novo evento para o **emissor autenticado**.
 </ParamField>
 
 <ParamField body="image_url" type="string">
-  URL da imagem do evento.
-</ParamField>
-
-<ParamField body="image_key" type="string">
-  Chave da imagem do evento (S3).
+  URL pública da imagem do evento.
 </ParamField>
 
 <ParamField body="is_private" type="boolean">
@@ -86,12 +82,12 @@ Cria um novo evento para o **emissor autenticado**.
 </ParamField>
 
 <ParamField body="recurrence_type" type="string">
-  Tipo de recorrência do evento (quando `date_mode` for `recurring`).\
+  Tipo de recorrência do evento (quando `date_mode` for `RECURRING`).\
   Valores aceitos: `WEEKLY`, `BIWEEKLY`, `MONTHLY`, `BIMONTHLY`, `QUARTERLY`, `SEMIANNUAL`, `ANNUAL`.
 </ParamField>
 
 <ParamField body="recurrence_start_date" type="string">
-  Data de início da recorrência (ISO 8601) (quando `date_mode` for `recurring`).
+  Data de início da recorrência (ISO 8601) (quando `date_mode` for `RECURRING`).
 </ParamField>
 
 <Info>
