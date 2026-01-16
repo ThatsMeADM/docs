@@ -29,7 +29,6 @@ Para realizar uma busca válida, é obrigatório informar:
 - **ao menos um identificador do destinatário**
   - `recipient_email`
   - `recipient_name`
-  - `recipient_number`
   - `invitation_id`
 
 Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unicidade.
@@ -58,12 +57,6 @@ Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unic
 
 <ParamField query="recipient_email" type="string">
   E-mail informado no momento da emissão.
-</ParamField>
-
-<ParamField query="recipient_number" type="string">
-  Telefone informado no momento da emissão (formato E.164).
-
-  _Exemplo:_ +5531987654321
 </ParamField>
 
 ---
@@ -105,9 +98,6 @@ Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unic
         <ResponseField name="email" type="string">
           E-mail do destinatário
         </ResponseField>
-        <ResponseField name="number" type="string">
-          Telefone do destinatário (quando informado)
-        </ResponseField>
       </Expandable>
     </ResponseField>
     <ResponseField name="event_id" type="string">
@@ -146,7 +136,6 @@ Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unic
       "recipient": {
         "name": "João Silva",
         "email": "joao@exemplo.com",
-        "number": "+5531987654321"
       },
       "event_id": "event_456",
       "badge_id": "badge_789",
@@ -170,7 +159,7 @@ Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unic
 ```json Response (400)
 {
   "error": "INVALID_SEARCH",
-  "message": "Informe event_id ou badge_id e pelo menos um dos seguintes: recipient_email, recipient_name, recipient_number ou invitation_id."
+  "message": "Informe event_id ou badge_id e pelo menos um dos seguintes: recipient_email, recipient_name ou invitation_id."
 }
 ```
 
