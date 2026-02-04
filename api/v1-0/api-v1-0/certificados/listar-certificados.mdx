@@ -44,11 +44,11 @@ Retorna certificados emitidos pelo **emissor autenticado**, permitindo acompanha
 </ParamField>
 
 <ParamField query="sort" type="string">
-  Campo de ordenação. Padrão recomendado: `created_at`.
+  Campo de ordenação. Padrão: `created_at`.
 </ParamField>
 
 <ParamField query="order" type="string">
-  Ordem de ordenação: `asc` ou `desc`. Padrão recomendado: `desc`.
+  Ordem de ordenação: `asc` ou `desc`. Padrão: `desc`.
 </ParamField>
 
 ---
@@ -60,33 +60,39 @@ Retorna certificados emitidos pelo **emissor autenticado**, permitindo acompanha
 
   <Expandable title="items">
     <ResponseField name="invitation_id" type="string">
-      Identificador único do certificado
+      Identificador do convite (winner invitation). Preenchido quando o item for um convite pendente; `null` quando for certificado aceito ou pedido de badge.
+    </ResponseField>
+    <ResponseField name="certificate_id" type="string">
+      Identificador do certificado (post). Preenchido quando o certificado foi aceito; `null` quando estiver pendente.
+    </ResponseField>
+        <ResponseField name="issue_id" type="string">
+      ID dp Emissor.
     </ResponseField>
     <ResponseField name="status" type="string">
-      Status de aceite (`PENDING` ou `ACCEPTED`)
+      Status de aceite: `PENDING` ou `ACCEPTED`.
     </ResponseField>
     <ResponseField name="created_at" type="string">
-      Data e hora da emissão (ISO 8601)
+      Data e hora da emissão (ISO 8601).
     </ResponseField>
     <ResponseField name="event_id" type="string">
-      ID do evento associado à emissão
+      ID do evento associado à emissão.
     </ResponseField>
     <ResponseField name="badge_id" type="string">
-      ID do badge utilizado na emissão
+      ID do badge utilizado na emissão.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="total" type="number">
-  Quantidade total de certificados encontrados
+  Quantidade total de certificados encontrados (antes da paginação).
 </ResponseField>
 
 <ResponseField name="limit" type="number">
-  Limite aplicado na consulta
+  Limite aplicado na consulta.
 </ResponseField>
 
 <ResponseField name="offset" type="number">
-  Offset aplicado na consulta
+  Offset aplicado na consulta.
 </ResponseField>
 
 ---
@@ -100,8 +106,19 @@ Retorna certificados emitidos pelo **emissor autenticado**, permitindo acompanha
   "data": [
     {
       "invitation_id": "invite_123",
+      "certificate_id": null,
+      "issue_id": "issuer_123",
       "status": "PENDING",
       "created_at": "2024-02-01T10:30:00Z",
+      "event_id": "event_456",
+      "badge_id": "badge_789"
+    },
+    {
+      "invitation_id": null,
+      "certificate_id": "post_abc",
+      "issue_id": issuer_123,
+      "status": "ACCEPTED",
+      "created_at": "2024-01-28T14:00:00Z",
       "event_id": "event_456",
       "badge_id": "badge_789"
     }
