@@ -30,7 +30,6 @@ Para realizar uma busca válida, é obrigatório informar:
   - `invitation_id`
   - `recipient_email`
   - `recipient_name`
-  - `recipient_phone`
 
 Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unicidade.
 
@@ -58,11 +57,6 @@ Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unic
 
 <ParamField query="recipient_email" type="string">
   E-mail informado no momento da emissão.
-</ParamField>
-
-<ParamField query="recipient_phone" type="string">
-  Telefone informado no momento da emissão. (UIT E.164)
-  Ex: +5531987654321
 </ParamField>
 
 ---
@@ -165,7 +159,7 @@ Campos como `recipient_name` e `reason` são **auxiliares** e não garantem unic
 ```json Response (400)
 {
   "error": "INVALID_SEARCH",
-  "message": "Informe event_id ou badge_id e pelo menos um dos seguintes: recipient_email, recipient_phone ou invitation_id."
+  "message": "Informe event_id ou badge_id e pelo menos um dos seguintes: recipient_email, invitation_id."
 }
 ```
 
