@@ -3,7 +3,7 @@ api: "POST /api/v1.0/invitations"
 title: "Emitir Certificados"
 ---
 
-Emite um certificado, vinculado a um **evento**, para um destinatário.
+Emite um ou mais certificados, vinculados a um **evento** e a uma **badge**, para um ou vários destinatários.
 
 O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o destinatário aceitar.
 
@@ -28,32 +28,41 @@ O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o desti
   ID do badge utilizado na emissão.
 </ParamField>
 
-<ParamField body="recipient_name" type="string" required>
-  Nome completo do destinatário.
+<ParamField body="recipient" type="object">
+  Destinatário único ou array de destinatários. Quando informado, `recipient_name` e `recipient_email` no nível raiz não são obrigatórios.
+
+  Cada item pode conter: `recipient_name` (obrigatório), `recipient_email` (obrigatório), `recipient_number` (opcional, E.164), `reason` (opcional).
 </ParamField>
 
-<ParamField body="recipient_email" type="string" required>
-  E-mail do destinatário que receberá o convite.
+<ParamField body="recipient_name" type="string">
+  Nome completo do destinatário. Obrigatório quando `recipient` não for informado.
+</ParamField>
+
+<ParamField body="recipient_email" type="string">
+  E-mail do destinatário que receberá o convite. Obrigatório quando `recipient` não for informado.
 </ParamField>
 
 <ParamField body="recipient_number" type="string">
-  Número do destinatário para notificações por SMS ou WhatsApp (formato E.164).
-
-  _Exemplo:_ +5531987654321
+  Número do destinatário para notificações por SMS ou WhatsApp (formato E.164). 
+  _Exemplo:_ +5531987654321.
 </ParamField>
 
-<ParamField body="reason" type="string" required>
-  Motivo pelo qual o destinatário está recebendo o certificado.
-
-  _Exemplo:_ Curso de Python para Data Science com duração de 40 horas no nível Intermediário
+<ParamField body="reason" type="string">
+  Motivo pelo qual o destinatário está recebendo o certificado. Opcional. Quando usado com `recipient`, pode ser definido por destinatário dentro de cada item.
 </ParamField>
+
+<Info>
+  É obrigatório informar **recipient** (objeto ou array) **ou** o par **recipient_name** e **recipient_email**. A emissão de múltiplos certificados consome créditos por destinatário.
+</Info>
 
 ---
 
 ## Resposta
 
+**Emissão de um único destinatário (sem erros):**
+
 <ResponseField name="invitation_id" type="string">
-  Identificador único do certificado criado.
+  Identificador único do certificado/convite criado.
 </ResponseField>
 
 <ResponseField name="message" type="string">
@@ -64,14 +73,40 @@ O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o desti
   Data e hora da emissão (ISO 8601).
 </ResponseField>
 
+**Emissão de múltiplos destinatários ou com erros parciais:**
+
+<ResponseField name="invitations" type="array">
+  Lista dos certificados emitidos com sucesso. Cada item contém `invitation_id` e `created_at`.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Mensagem de confirmação (inclui quantidade de sucessos e, se houver, de falhas).
+</ResponseField>
+
+<ResponseField name="total" type="number">
+  Quantidade de certificados emitidos com sucesso.
+</ResponseField>
+
+<ResponseField name="success_count" type="number">
+  Quantidade de certificados emitidos com sucesso.
+</ResponseField>
+
+<ResponseField name="errors" type="array">
+  Quando há falhas por destinatário: lista com `recipient_email` e `error` por item.
+</ResponseField>
+
+<ResponseField name="error_count" type="number">
+  Quantidade de destinatários que falharam (presente quando `errors` existe).
+</ResponseField>
+
 <Info>
-  Por privacidade, a resposta não retorna dados pessoais do destinatário.\
-  O acompanhamento do aceite deve ser feito via `GET /api/v1.0/assertions`.
+  Por privacidade, a resposta não retorna dados pessoais do destinatário. 
+  O acompanhamento do aceite deve ser feito via `GET /api/v1.0/invitations`.
 </Info>
 
 ---
 
-## Exemplo de resposta
+## Exemplo de resposta (um destinatário)
 
 <ResponseExample>
 
@@ -80,6 +115,49 @@ O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o desti
   "invitation_id": "invite_123",
   "message": "Certificado emitido com sucesso",
   "created_at": "2024-02-01T10:30:00Z"
+}
+```
+
+</ResponseExample>
+
+---
+
+## Exemplo de resposta (múltiplos destinatários)
+
+<ResponseExample>
+
+```json Response (201)
+{
+  "invitations": [
+    { "invitation_id": "invite_123", "created_at": "2024-02-01T10:30:00Z" },
+    { "invitation_id": "invite_456", "created_at": "2024-02-01T10:31:00Z" }
+  ],
+  "message": "2 certificado(s) emitido(s) com sucesso",
+  "total": 2,
+  "success_count": 2
+}
+```
+
+</ResponseExample>
+
+---
+
+## Exemplo de resposta (sucesso parcial)
+
+<ResponseExample>
+
+```json Response (201)
+{
+  "invitations": [
+    { "invitation_id": "invite_123", "created_at": "2024-02-01T10:30:00Z" }
+  ],
+  "message": "1 certificado(s) emitido(s) com sucesso. 1 destinatário(s) falharam.",
+  "total": 1,
+  "success_count": 1,
+  "errors": [
+    { "recipient_email": "duplicado@email.com", "error": "Já existe uma emissão para este destinatário neste evento com esta badge e motivo." }
+  ],
+  "error_count": 1
 }
 ```
 
@@ -121,8 +199,8 @@ O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o desti
 
 ```json Response (409)
 {
-  "error": "ASSERTION_ALREADY_EXISTS",
-  "message": "Já existe uma emissão para este destinatário neste evento com esta badge."
+  "error": "INVITATION_ALREADY_EXISTS",
+  "message": "Já existe uma emissão para este destinatário neste evento com esta badge e motivo."
 }
 ```
 
@@ -135,7 +213,23 @@ O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o desti
 ```json Response (400)
 {
   "error": "VALIDATION_ERROR",
-  "message": "Campos obrigatórios ausentes ou inválidos."
+  "message": "Campos obrigatórios ausentes: recipient ou recipient_name/recipient_email são obrigatórios."
+}
+```
+
+</ResponseExample>
+
+### Erro ao processar todos os destinatários
+
+<ResponseExample>
+
+```json Response (400)
+{
+  "error": "PROCESSING_ERROR",
+  "message": "Erro ao processar todos os destinatários",
+  "errors": [
+    { "recipient_email": "email@exemplo.com", "error": "Mensagem do erro" }
+  ]
 }
 ```
 
@@ -148,7 +242,7 @@ O certificado é criado com status `PENDING` e se torna `ACCEPTED` após o desti
 ```json Response (402)
 {
   "error": "INSUFFICIENT_BALANCE",
-  "message": "Saldo insuficiente para realizar a emissão do certificado."
+  "message": "Saldo insuficiente para realizar a emissão de N certificado(s)."
 }
 ```
 
