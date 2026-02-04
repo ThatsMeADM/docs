@@ -3,7 +3,7 @@ api: "POST /api/v1.0/events"
 title: "Criar Evento"
 ---
 
-Cria um novo evento para o **emissor autenticado**.
+Cria um ou mais eventos para o **emissor autenticado**. O corpo da requisição pode ser um **objeto** (um evento) ou um **array de objetos** (vários eventos).
 
 <Request method="POST" url="/api/v1.0/events" auth="bearer" />
 
@@ -15,16 +15,16 @@ Cria um novo evento para o **emissor autenticado**.
 
 ## Parâmetros do corpo (body)
 
-<ParamField body="category" type="string" required>
-  Categoria do evento. Valores aceitos: `SPORTS`, `EDUCATION`, `CORPORATE`, `SOCIOCULTURAL`.
-</ParamField>
-
 <ParamField body="name" type="string" required>
   Nome do evento.
 </ParamField>
 
 <ParamField body="description" type="string" required>
   Descrição do evento.
+</ParamField>
+
+<ParamField body="category" type="string" required>
+  Categoria do evento. Valores aceitos: `SPORTS`, `EDUCATION`, `CORPORATE`, `SOCIOCULTURAL`.
 </ParamField>
 
 <ParamField body="location_type" type="string" required>
@@ -42,6 +42,14 @@ Cria um novo evento para o **emissor autenticado**.
 
 <ParamField body="city" type="string">
   Cidade do evento (obrigatório quando `location_type` for `PHYSICAL`).
+</ParamField>
+
+<ParamField body="initial_date" type="string">
+  Data de início (ISO 8601). Obrigatório para `date_mode` `SINGLE_DATE` ou `DATE_RANGE`.
+</ParamField>
+
+<ParamField body="finish_date" type="string">
+  Data de término (ISO 8601). Obrigatório para `date_mode` `DATE_RANGE`.
 </ParamField>
 
 <ParamField body="official_url" type="string">
@@ -62,15 +70,8 @@ Cria um novo evento para o **emissor autenticado**.
   Regras:
 
   - `ALWAYS_AVAILABLE`: datas não são obrigatórias
-  - `SINGLE_DATE` e `DATE_RANGE`: `initial_date` é obrigatório (e `finish_date` quando aplicável)
+  - `SINGLE_DATE` e `DATE_RANGE`: `initial_date` é obrigatório (e `finish_date` quando for `DATE_RANGE`)
   - `RECURRING`: exige `recurrence_type` e `recurrence_start_date`
-
-  <ParamField body="initial_date" type="string">
-    Data de início (ISO 8601).
-  </ParamField>
-  <ParamField body="finish_date" type="string">
-    Data de término (ISO 8601).
-  </ParamField>
 </ParamField>
 
 <ParamField body="start_time" type="string">
@@ -82,12 +83,12 @@ Cria um novo evento para o **emissor autenticado**.
 </ParamField>
 
 <ParamField body="recurrence_type" type="string">
-  Tipo de recorrência do evento (quando `date_mode` for `RECURRING`).\
+  Tipo de recorrência (obrigatório quando `date_mode` for `RECURRING`). 
   Valores aceitos: `WEEKLY`, `BIWEEKLY`, `MONTHLY`, `BIMONTHLY`, `QUARTERLY`, `SEMIANNUAL`, `ANNUAL`.
 </ParamField>
 
 <ParamField body="recurrence_start_date" type="string">
-  Data de início da recorrência (ISO 8601) (quando `date_mode` for `RECURRING`).
+  Data de início da recorrência (ISO 8601). Obrigatório quando `date_mode` for `RECURRING`.
 </ParamField>
 
 <Info>
