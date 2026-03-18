@@ -1,0 +1,43 @@
+---
+title: "Use Case: Sports Events & Race Results"
+description: "Automatically issue finisher certificates from race timing systems or spreadsheets"
+---
+
+## The scenario
+
+A race organizer runs 200+ events per year. After each race, finishers
+receive a digital certificate with their finish time and position.
+Previously this was manual — now it's automated.
+
+## The setup
+
+**Tools:** Google Sheets (race results) + N8N + That's Me API + Webhooks
+
+**Result:** Certificate issued within 5 minutes of finish time being logged.
+The recipient receives an email. When they claim it, the organizer's CRM is updated.
+
+## The flow
+
+```
+Race timing system exports results to Google Sheets
+    ↓
+N8N monitors sheet — new row with status "Official"
+    ↓
+POST /api/v1.0/invitations
+  reason: "Completed 42km in {{ finish_time }} — Position #{{ position }}"
+    ↓
+Recipient receives certificate email
+    ↓
+Webhook: certificate.accepted
+    ↓
+N8N updates CRM record with certificate URL
+    ↓
+N8N sends WhatsApp message: "Your certificate is ready"
+```
+
+## Why it works
+
+The certificate's `reason` field becomes the personal achievement text on the certificate.
+Include finish time, category, position — the more specific, the more meaningful.
+
+See the full N8N setup in [N8N: Emit from Spreadsheet](/automations/n8n/emit-from-spreadsheet).

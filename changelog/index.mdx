@@ -1,0 +1,36 @@
+---
+title: "Changelog"
+description: "What's new in That's Me"
+---
+
+## March 2026
+
+### API & Webhooks
+- **NEW** Outbound webhooks — receive real-time events for certificate.issued, certificate.accepted, certificate.rejected, certificate.expired, recipient.registered
+- **FIXED** Certificate emission via API (`POST /v1.0/invitations`) now correctly enforces plan tier
+- **FIXED** `GET /v1.0/balance` now returns real quota data
+- **NEW** `POST /v1.0/webhooks/:id/test` — test your webhook endpoint before going live
+
+### Recommendation Engine
+- Weighted additive scoring (replaced multiplicative model)
+- EventSimilarEvents auto-populated via Jaccard similarity
+- ProfileIntelligenceService — recommendations now use certificate history
+- Destination goals (e.g. "I want to pass TOEFL") score 3.0 match for target event
+
+### Learning Trails
+- EventConnection model — connect your events in a sequence
+- "Next step" shown on certificate page and in certificate emails
+- Trail conversion metrics in the Emitter Dashboard
+
+### Public Directory
+- Public event pages at `thatsme.com.br/e/[event_id]`
+- Schema.org JSON-LD on every event page (EducationEvent / SportsEvent)
+- Dynamic sitemap for search engine indexing
+- MCP server published: `npx @thatsme/mcp`
+
+### Identity & Auth
+- Multi-device sessions with active session management
+- Magic link authentication
+- LinkedIn OAuth
+- Multiple emails per account (certificates auto-resolve)
+- Account merge, KYB verification, LGPD-compliant account deletion

@@ -1,0 +1,48 @@
+---
+title: "MCP for AI Assistants"
+description: "Let Claude, ChatGPT, and other AI assistants recommend your events"
+---
+
+The That's Me MCP server lets AI assistants search the event directory
+and recommend real learning paths to users — directly from their conversation.
+
+## What this enables
+
+When a user asks their AI assistant:
+> "What course should I take after finishing my English B2 certificate?"
+
+With the That's Me MCP installed, the AI:
+1. Calls `search_thatsme_events` with the context
+2. Receives real events with skills, level, and issuer information
+3. Recommends the most relevant option with a direct enrollment link
+
+## Install
+
+```bash
+npx @thatsme/mcp
+```
+
+Or add to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "thatsme": {
+      "command": "npx",
+      "args": ["@thatsme/mcp"]
+    }
+  }
+}
+```
+
+## Available tools
+
+| Tool | Description |
+|---|---|
+| `search_thatsme_events` | Search the event directory by query, category, level, or location |
+| `get_event_next_steps` | Given a completed event, find what comes next |
+
+<Note>
+  Only events from issuers on a paid plan appear in the MCP results.
+  Keep your event descriptions detailed to maximize visibility.
+</Note>

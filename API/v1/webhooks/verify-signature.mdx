@@ -1,0 +1,77 @@
+---
+title: "Verifying Signatures"
+description: "How to verify That's Me webhook signatures in Node.js, Python, and more"
+---
+
+That's Me signs every webhook payload using HMAC-SHA256.
+Always verify the signature before processing the payload.
+
+## Signature format
+
+The `X-TM-Signature` header contains:
+```
+t=1711234567,v1=abc123def456...
+```
+
+- `t` — Unix timestamp of the delivery
+- `v1` — HMAC-SHA256 of `timestamp.payload_body` using your endpoint secret
+
+## Verification examples
+
+<CodeGroup>
+
+```typescript Node.js / TypeScript
+import { createHmac, timingSafeEqual } from 'crypto';
+
+function verifyWebhookSignature(
+  payload: string,
+  signature: string,
+  secret: string,
+): boolean {
+  const parts = Object.fromEntries(
+    signature.split(',').map(p => p.split('='))
+  );
+  const timestamp = parts['t'];
+  const expected = createHmac('sha256', secret)
+    .update(`${timestamp}.${payload}`)
+    .digest('hex');
+
+  return timingSafeEqual(
+    Buffer.from(`v1=${expected}`),
+    Buffer.from(`v1=${parts['v1']}`)
+  );
+}
+```
+
+```python Python
+import hmac
+import hashlib
+
+def verify_webhook_signature(payload: str, signature: str, secret: str) -> bool:
+    parts = dict(p.split('=', 1) for p in signature.split(','))
+    timestamp = parts.get('t', '')
+    to_sign = f"{timestamp}.{payload}"
+    expected = hmac.new(
+        secret.encode(), to_sign.encode(), hashlib.sha256
+    ).hexdigest()
+    return hmac.compare_digest(f"v1={expected}", f"v1={parts.get('v1', '')}")
+```
+
+```php PHP
+function verifyWebhookSignature(string $payload, string $signature, string $secret): bool {
+    $parts = [];
+    foreach (explode(',', $signature) as $part) {
+        [$k, $v] = explode('=', $part, 2);
+        $parts[$k] = $v;
+    }
+    $expected = hash_hmac('sha256', "{$parts['t']}.{$payload}", $secret);
+    return hash_equals("v1={$expected}", "v1={$parts['v1']}");
+}
+```
+
+</CodeGroup>
+
+<Warning>
+  Always use a timing-safe comparison (`timingSafeEqual` / `hmac.compare_digest`)
+  to prevent timing attacks.
+</Warning>

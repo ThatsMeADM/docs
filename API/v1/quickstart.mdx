@@ -1,0 +1,47 @@
+---
+title: "API Quickstart"
+description: "Issue your first certificate via API in under 5 minutes"
+---
+
+<Steps>
+  <Step title="Get your API key">
+    Log in to app.thatsme.com.br → Settings → Integrations → Generate API Key.
+    Copy the key — it's shown only once.
+  </Step>
+
+  <Step title="Find your event ID">
+    ```bash
+    curl https://api.thatsme.com.br/api/v1.0/events \
+      -H "Authorization: Bearer YOUR_API_KEY"
+    ```
+    Copy the `event_id` from the response.
+  </Step>
+
+  <Step title="Find your badge ID">
+    ```bash
+    curl https://api.thatsme.com.br/api/v1.0/badges \
+      -H "Authorization: Bearer YOUR_API_KEY"
+    ```
+    Copy the `badge_id` from the response.
+  </Step>
+
+  <Step title="Issue a certificate">
+    ```bash
+    curl -X POST https://api.thatsme.com.br/api/v1.0/invitations \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "event_id": "your-event-id",
+        "badge_id": "your-badge-id",
+        "recipient_name": "Leonardo Silva",
+        "recipient_email": "leonardo@email.com",
+        "reason": "Completed the 42km marathon in 1:42:32"
+      }'
+    ```
+  </Step>
+</Steps>
+
+<Info>
+  The recipient receives an email immediately. If they don't have an account yet,
+  the certificate waits for them — it appears automatically when they sign up.
+</Info>

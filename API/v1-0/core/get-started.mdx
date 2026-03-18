@@ -1,0 +1,56 @@
+---
+title: "Primeiros Passos"
+description: "Guia rápido para autenticar e executar sua primeira requisição na API Pública v1.0"
+---
+
+## Gerando sua API Key
+
+Para utilizar a API Pública, é necessário criar uma **API Key** no painel administrativo do That’s Me.
+
+1. Acesse sua conta **Emissora** no That’s Me
+2. Vá até **Configurações → Integrações**
+3. Clique em **Gerar nova API Key**
+4. Informe um nome identificável (ex: `Integracao Producao`)
+5. Confirme a criação
+
+Após a geração, a API Key será exibida **uma única vez**.
+
+<Warning>
+Guarde sua API Key em local seguro.  
+Por motivos de segurança, ela não poderá ser visualizada novamente.  
+Caso perca a chave, será necessário revogá-la e gerar uma nova.
+</Warning>
+
+Se você já possui chaves criadas, elas ficam listadas na seção **Integrações**.
+
+---
+
+## Autenticação
+
+Todas as requisições devem incluir o header abaixo:
+
+```bash
+Authorization: Bearer sua_api_key
+```
+
+* O token deve ser enviado em **todas** as rotas
+* Tokens inválidos ou ausentes retornam erro **401 Unauthorized**
+
+---
+
+## Base URL
+
+Todas as chamadas da API v1.0 utilizam a seguinte base:
+
+```text
+https://api.thatsme.com.br
+```
+
+Os endpoints documentados assumem essa URL como padrão.
+
+---
+
+## Próximo passo
+
+Com a API Key configurada, você já pode executar sua primeira requisição.
+Recomendamos começar listando eventos ou consultando seu saldo disponível.

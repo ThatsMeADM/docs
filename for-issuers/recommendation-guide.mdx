@@ -1,0 +1,53 @@
+---
+title: "Maximizing Recommendation Rate"
+description: "How to fill event data so the AI recommends your events to the right people"
+---
+
+That's Me's recommendation engine reads your event description and extracts
+skills, keywords, level, and audience automatically. Better descriptions = better matches.
+
+## How the AI reads your event
+
+When you create or update an event, the platform automatically:
+1. Extracts `skills` (e.g. "inglês", "liderança", "corrida de rua")
+2. Extracts `keywords` (e.g. "certificação", "maratona", "B2")
+3. Determines `level` (beginner / intermediate / advanced)
+4. Determines `step_type` (theory / practice / experience)
+
+These are used to match your event with users whose Goals align.
+
+## Writing a good event name
+
+<CodeGroup>
+```text Good
+"English Level 2 — Intermediate Conversation"
+"42km Marathon Training Program — Advanced"
+"Agile Project Management Certification"
+```
+
+```text Bad
+"Course 2"
+"Training"
+"Event March"
+```
+</CodeGroup>
+
+## Writing a good description
+
+Include:
+- **What the participant will learn or achieve** ("After completing this course, participants will...")
+- **Skills developed** (name them explicitly)
+- **Audience** ("Designed for intermediate English speakers...")
+- **Format** (online / in-person / hybrid)
+
+The AI re-reads your description every time you emit certificates — keep it updated.
+
+## Connecting events in a trail
+
+Connect your events at **Event → Edit → Learning Trail**.
+When a user completes Event A, Event B appears as their "Next Step" on their certificate page
+and in recommendation emails — driving upsell automatically.
+
+```
+English Level 1 ──→ English Level 2 ──→ English Level 3 ──→ [TOEFL — curated by That's Me]
+```

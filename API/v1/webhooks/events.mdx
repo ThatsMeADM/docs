@@ -1,0 +1,110 @@
+---
+title: "Webhook Event Reference"
+description: "Complete payload for every webhook event type"
+---
+
+## certificate.issued
+
+Fires when a certificate is emitted to a recipient (via API or platform).
+
+```json
+{
+  "event": "certificate.issued",
+  "created_at": "2026-03-18T10:30:00Z",
+  "data": {
+    "invitation_id": "inv_abc123",
+    "event_id": "evt_xyz789",
+    "event_name": "English Level 2",
+    "badge_id": "badge_def456",
+    "badge_name": "English Level 2 Certificate",
+    "recipient_email": "leonardo@email.com",
+    "recipient_name": "Leonardo Silva",
+    "certificate_url": null,
+    "certificate_hash": null,
+    "issued_at": "2026-03-18T10:30:00Z"
+  }
+}
+```
+
+<Note>
+  `certificate_url` and `certificate_hash` are `null` at this stage.
+  They become available after the recipient accepts the certificate (`certificate.accepted`).
+</Note>
+
+## certificate.accepted
+
+Fires when the recipient accepts the certificate. The certificate is now on their public profile.
+
+```json
+{
+  "event": "certificate.accepted",
+  "created_at": "2026-03-18T11:00:00Z",
+  "data": {
+    "invitation_id": "inv_abc123",
+    "event_id": "evt_xyz789",
+    "event_name": "English Level 2",
+    "badge_id": "badge_def456",
+    "badge_name": "English Level 2 Certificate",
+    "recipient_email": "leonardo@email.com",
+    "recipient_name": "Leonardo Silva",
+    "certificate_url": "https://thatsme.com.br/c/post_ghi012",
+    "certificate_hash": "a3f9b2c1d4e5...",
+    "issued_at": "2026-03-18T10:30:00Z",
+    "accepted_at": "2026-03-18T11:00:00Z"
+  }
+}
+```
+
+## certificate.rejected
+
+Fires when the recipient declines the certificate.
+
+```json
+{
+  "event": "certificate.rejected",
+  "created_at": "2026-03-18T11:05:00Z",
+  "data": {
+    "invitation_id": "inv_abc123",
+    "event_id": "evt_xyz789",
+    "recipient_email": "leonardo@email.com",
+    "rejected_at": "2026-03-18T11:05:00Z"
+  }
+}
+```
+
+## certificate.expired
+
+Fires when a certificate passes its expiration date (checked daily).
+
+```json
+{
+  "event": "certificate.expired",
+  "created_at": "2026-03-18T07:00:00Z",
+  "data": {
+    "invitation_id": "inv_abc123",
+    "event_id": "evt_xyz789",
+    "event_name": "English Level 2",
+    "recipient_email": "leonardo@email.com",
+    "expired_at": "2026-03-18T00:00:00Z"
+  }
+}
+```
+
+## recipient.registered
+
+Fires when a recipient who had pending certificates creates a That's Me account.
+The certificates are automatically added to their profile at this moment.
+
+```json
+{
+  "event": "recipient.registered",
+  "created_at": "2026-03-18T12:00:00Z",
+  "data": {
+    "recipient_email": "leonardo@email.com",
+    "recipient_name": "Leonardo Silva",
+    "profile_url": "https://thatsme.com.br/@leonardosilva",
+    "registered_at": "2026-03-18T12:00:00Z",
+    "pending_certificates_resolved": 3
+  }
+}
+```

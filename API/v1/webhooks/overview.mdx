@@ -1,0 +1,53 @@
+---
+title: "Webhooks Overview"
+description: "Receive real-time events to automate your workflows with N8N, Make, Zapier, or your own system"
+---
+
+Webhooks let That's Me notify your system when something happens — no polling required.
+
+## How it works
+
+1. You register an endpoint URL (your N8N/Make/Zapier webhook URL, or your server)
+2. You choose which events to receive
+3. When the event occurs, That's Me sends an HTTP POST to your URL within seconds
+4. If delivery fails, That's Me retries automatically (3 attempts: 1min, 5min, 30min)
+
+## Supported events
+
+| Event | When it fires |
+|---|---|
+| `certificate.issued` | A certificate is emitted to a recipient |
+| `certificate.accepted` | A recipient accepts their certificate |
+| `certificate.rejected` | A recipient declines their certificate |
+| `certificate.expired` | A certificate passes its expiration date |
+| `recipient.registered` | A recipient who had a pending certificate creates an account |
+
+## Payload structure
+
+Every webhook delivery has the same envelope:
+
+```json
+{
+  "event": "certificate.issued",
+  "created_at": "2026-03-18T10:30:00Z",
+  "data": {
+    // event-specific fields
+  }
+}
+```
+
+## Verifying signatures
+
+Every request includes the header `X-TM-Signature`.
+You should verify this to confirm the request came from That's Me.
+
+See [Verify Signatures](/api/v1/webhooks/verify-signature) for implementation examples.
+
+## Delivery headers
+
+| Header | Value |
+|---|---|
+| `X-TM-Signature` | `t=timestamp,v1=hmac_sha256_signature` |
+| `X-TM-Event` | Event type (e.g. `certificate.issued`) |
+| `X-TM-Delivery` | Unique delivery UUID |
+| `Content-Type` | `application/json` |

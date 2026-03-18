@@ -1,0 +1,34 @@
+---
+title: "Certificate Verification & KYB"
+description: "How anti-fraud works and what the Verified badge means"
+---
+
+## Certificate integrity
+
+Every certificate has a SHA-256 hash generated at emission time.
+Verify any certificate at:
+
+```
+https://thatsme.com.br/certificate/verify/[hash]
+```
+
+The hash is computed from: `post_id | event_id | badge_id | profile_id | user_id | created_at | kyb_verification_id`
+
+This means:
+- The hash is **immutable** — any tampering invalidates it
+- Certificates from **verified issuers** include the KYB verification ID — proof the issuer was verified at emission time
+- Even if an issuer loses verification later, previously issued certificates remain valid and auditable
+
+## KYB — Know Your Business
+
+Organizations can apply for verification in Settings → Verification.
+
+Two paths to get verified:
+
+| Path | Method | Time |
+|---|---|---|
+| Domain verification | Add a TXT record to your DNS | Immediate (BASIC status) |
+| Document upload | Submit official registration document | 1–3 business days (VERIFIED status) |
+
+**BASIC** status confirms domain control.
+**VERIFIED** status appears as a checkmark on the issuer's profile and on every certificate they issue.

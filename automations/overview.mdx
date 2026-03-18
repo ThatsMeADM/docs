@@ -1,0 +1,48 @@
+---
+title: "Automations Overview"
+description: "Connect That's Me with your existing tools — no code required"
+---
+
+That's Me integrates with any automation platform via REST API and webhooks.
+
+## The two directions
+
+**Inbound (trigger → emit):**
+Your system detects an event (spreadsheet update, LMS completion, CRM status change)
+and calls the That's Me API to issue a certificate.
+
+**Outbound (emit → notify):**
+That's Me notifies your system when something happens (certificate accepted, recipient registered)
+so you can update your records, send follow-up messages, or trigger other workflows.
+
+## Recommended stack
+
+| Tool | Best for |
+|---|---|
+| **N8N** | Self-hosted, most flexible, best for Google Sheets integration |
+| **Make** | Visual, easy to start, great for non-technical teams |
+| **Zapier** | Largest integration library, best for CRM sync |
+| **Direct API** | Developers integrating from LMS, ERP, or CRM systems |
+| **MCP** | AI assistants recommending your events to users |
+
+## The marathon example
+
+Leonardo completes a 42km marathon. The race organizer uses Google Sheets
+to track finishers. Here's the complete automated flow:
+
+```
+Google Sheets: column "Status" changes to "Completed"
+    ↓ N8N trigger: Google Sheets → row updated
+    ↓ N8N action: POST /api/v1.0/invitations
+         event_id: [marathon event ID]
+         badge_id: [finisher badge ID]
+         recipient_name: "Leonardo Silva"
+         recipient_email: "leonardo@email.com"
+         reason: "Completed 42km in 1:42:32"
+    ↓ That's Me: certificate issued, email sent to Leonardo
+    ↓ That's Me webhook: certificate.accepted fires when Leonardo claims it
+    ↓ N8N trigger: webhook received
+    ↓ N8N action: update Google Sheets row with certificate URL
+```
+
+See the full step-by-step in [N8N: Emit from Spreadsheet](/automations/n8n/emit-from-spreadsheet).

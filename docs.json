@@ -38,7 +38,7 @@
       "auth": {
         "method": "bearer"
       },
-      "server": "https://service.thatsme.com.br"
+      "server": "https://api.thatsme.com.br"
     }
   },
   "navbar": {
@@ -49,210 +49,44 @@
       }
     ]
   },
-  "navigation": {
-    "tabs": [
-      {
-        "tab": "Introdução",
-        "groups": [
-          {
-            "group": " ",
-            "pages": [
-              "introducao/bem-vindo",
-              "introducao/sobre-nos",
-              "introducao/faq",
-              "introducao/3d-e-ar"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Funcionalidades",
-        "groups": [
-          {
-            "group": " ",
-            "pages": [
-              "funcionalidades/mural-de-conquistas",
-              "funcionalidades/receber-visualizar-compartilhar",
-              "funcionalidades/ecossistema-social",
-              "funcionalidades/one-page-certificate"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Para emissores",
-        "groups": [
-          {
-            "group": " ",
-            "pages": [
-              "para-emissores/loja",
-              "para-emissores/galeria-de-tms",
-              "para-emissores/creditos",
-              "para-emissores/criar-evento",
-              "para-emissores/emitir-e-acompanhar-conquistas",
-              "para-emissores/administradores",
-              "para-emissores/verificacao-e-seguranca"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Integrações",
-        "groups": [
-          {
-            "group": " ",
-            "pages": [
-              "integracoes/linkedin",
-              "integracoes/compartilhamento",
-              "integracoes/api"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Casos de Uso",
-        "groups": [
-          {
-            "group": " ",
-            "pages": [
-              "casos-de-uso/corporativo-e-rh",
-              "casos-de-uso/educacao-e-cursos",
-              "casos-de-uso/eventos-esportivos-e-e-esportivos",
-              "casos-de-uso/causas-sociais-e-ongs",
-              "casos-de-uso/comunidades-e-influencia",
-              "casos-de-uso/premiacoes-b2b-e-certificacoes",
-              "casos-de-uso/arte-e-cultura",
-              "casos-de-uso/membro"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Glossário",
-        "groups": [
-          {
-            "group": " ",
-            "pages": [
-              "glossario"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API",
-        "versions": [
-          {
-            "version": "V1.0",
-            "default": true,
-            "groups": [
-              {
-                "group": "Manual da API",
-                "icon": "code",
-                "expanded": false,
-                "pages": [
-                  "api/v1-0/core/home",
-                  "api/v1-0/core/get-started",
-                  "api/v1-0/api-v1-0/gestao-de-erros",
-                  "api/v1-0/api-v1-0/x"
-                ]
-              },
-              {
-                "group": "Eventos",
-                "icon": "calendar",
-                "expanded": false,
-                "pages": [
-                  "api/v1-0/api-v1-0/eventos/introducao",
-                  {
-                    "group": "Informações",
-                    "expanded": false,
-                    "pages": [
-                      "api/v1-0/api-v1-0/eventos/listar-eventos",
-                      "api/v1-0/api-v1-0/eventos/informacoes-evento"
-                    ]
-                  },
-                  {
-                    "group": "Criar",
-                    "expanded": false,
-                    "pages": ["api/v1-0/api-v1-0/eventos/criar-evento"]
-                  },
-                  {
-                    "group": "Atualizar",
-                    "expanded": false,
-                    "pages": ["api/v1-0/api-v1-0/eventos/atualizar-evento"]
-                  },
-                  {
-                    "group": "Deletar",
-                    "expanded": false,
-                    "pages": ["api/v1-0/eventos/del"]
-                  }
-                ]
-              },
-              {
-                "group": "Badges (TM's)",
-                "icon": "medal",
-                "expanded": false,
-                "pages": [
-                  "api/v1-0/api-v1-0/badges/introducao",
-                  {
-                    "group": "Informações",
-                    "expanded": false,
-                    "pages": [
-                      "api/v1-0/api-v1-0/badges/listar-badges",
-                      "api/v1-0/api-v1-0/badges/informacoes-badge"
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Certificados",
-                "icon": "badge-check",
-                "expanded": false,
-                "pages": [
-                  "api/v1-0/api-v1-0/certificados/introducao",
-                  {
-                    "group": "Informações",
-                    "expanded": false,
-                    "pages": ["api/v1-0/api-v1-0/certificados/listar-certificados"]
-                  },
-                  {
-                    "group": "Emissão",
-                    "expanded": false,
-                    "pages": ["api/v1-0/api-v1-0/certificados/emitir-certificados"]
-                  }
-                ]
-              },
-              {
-                "group": "Suporte ao Destinatário",
-                "icon": "user",
-                "expanded": false,
-                "pages": [
-                  "api/v1-0/api-v1-0/destinatarios/introducao",
-                  {
-                    "group": "Informações",
-                    "expanded": false,
-                    "pages": ["api/v1-0/api-v1-0/destinatarios/listar-destinatarios"]
-                  }
-                ]
-              },
-              {
-                "group": "Saldo",
-                "icon": "coin-front",
-                "expanded": false,
-                "pages": [
-                  "api/v1-0/api-v1-0/saldo/introducao",
-                  {
-                    "group": "Informações",
-                    "expanded": false,
-                    "pages": ["api/v1-0/saldo/saldo"]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }      
-    ]
-  },
+  "tabs": [
+    { "name": "Platform", "url": "platform" },
+    { "name": "For Issuers", "url": "for-issuers" },
+    { "name": "API Reference", "url": "api/v1" },
+    { "name": "Public API", "url": "public-api" },
+    { "name": "Automations", "url": "automations" },
+    { "name": "Changelog", "url": "changelog" }
+  ],
+  "navigation": [
+    {
+      "group": "Platform",
+      "pages": ["platform/welcome", "platform/how-it-works", "platform/verification", "platform/plans"]
+    },
+    {
+      "group": "For Issuers",
+      "pages": ["for-issuers/quickstart", "for-issuers/recommendation-guide"]
+    },
+    {
+      "group": "API Overview",
+      "pages": ["api/v1/overview", "api/v1/quickstart"]
+    },
+    {
+      "group": "Webhooks",
+      "pages": ["api/v1/webhooks/overview", "api/v1/webhooks/verify-signature", "api/v1/webhooks/events"]
+    },
+    {
+      "group": "Public API",
+      "pages": ["public-api/overview"]
+    },
+    {
+      "group": "Automations",
+      "pages": ["automations/overview", "automations/n8n/emit-from-spreadsheet", "automations/mcp/overview", "automations/use-cases/marathon"]
+    },
+    {
+      "group": "Changelog",
+      "pages": ["changelog/index"]
+    }
+  ],
   "footer": {
     "socials": {
       "instagram": "https://www.instagram.com/app.thatsme/",

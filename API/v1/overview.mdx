@@ -1,0 +1,48 @@
+---
+title: "API Overview"
+description: "Authentication, base URL, rate limits and plan requirements"
+---
+
+## Base URL
+
+```
+https://api.thatsme.com.br
+```
+
+## Authentication
+
+All API v1 endpoints require an API key sent as a Bearer token:
+
+```bash
+Authorization: Bearer your_api_key
+```
+
+Generate your API key at **Settings → Integrations → Generate API Key**.
+The key is shown once at creation — store it securely.
+
+<Warning>
+  A FREE plan API key can read data but **cannot emit certificates**.
+  Certificate emission requires STARTER plan or above.
+</Warning>
+
+## Rate limits
+
+| Endpoint | Limit |
+|---|---|
+| `POST /v1.0/invitations` | 100 req/min |
+| `GET` endpoints | 300 req/min |
+| Webhook test | 10 req/min |
+
+Rate limit responses return HTTP 429 with `Retry-After` header.
+
+## Plan requirements by endpoint
+
+| Endpoint | FREE | STARTER+ |
+|---|---|---|
+| `GET /v1.0/events` | ✅ | ✅ |
+| `GET /v1.0/badges` | ✅ | ✅ |
+| `GET /v1.0/invitations` | ✅ | ✅ |
+| `GET /v1.0/balance` | ✅ | ✅ |
+| `POST /v1.0/invitations` | ❌ | ✅ |
+| `POST /v1.0/webhooks` | ❌ | ✅ |
+| `GET /api/v1/events` (public) | — | — (no auth required) |

@@ -1,0 +1,35 @@
+---
+title: "Public API"
+description: "Search the event directory without authentication — built for LLMs, search engines, and integrations"
+---
+
+The Public API provides read-only access to That's Me's event directory.
+**No authentication required.**
+
+This API is designed for:
+- AI assistants and LLMs (via MCP or direct HTTP)
+- Search engine indexing
+- Third-party directories and aggregators
+- Developer tools and integrations
+
+## Base URL
+
+```
+https://api.thatsme.com.br/api/v1
+```
+
+## Rate limits
+
+100 requests per minute per IP. No API key required.
+
+## What's included
+
+Only events from issuers on paid plans with `is_private: false` appear in results.
+Every event in the public API includes AI-extracted skills and keywords —
+making it semantically searchable.
+
+<Info>
+  Want your events to appear here? You need a STARTER plan or above and
+  `is_private` set to false on your events.
+  See [Maximizing Recommendation Rate](/for-issuers/recommendation-guide).
+</Info>

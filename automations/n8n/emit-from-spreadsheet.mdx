@@ -1,0 +1,95 @@
+---
+title: "N8N: Emit from Spreadsheet"
+description: "Automatically issue certificates when a row is marked complete in Google Sheets or Excel"
+---
+
+This template monitors a Google Sheet and issues a certificate whenever
+a row's Status column changes to "Completed".
+
+## What you need
+
+- That's Me account on STARTER plan or above
+- That's Me API key (Settings → Integrations)
+- N8N account (cloud or self-hosted)
+- Google Sheets with columns: Name, Email, Status (and optionally: Phone, Reason)
+- Your `event_id` and `badge_id` from the That's Me API
+
+## Step 1 — Get your IDs
+
+```bash
+# Get event IDs
+curl https://api.thatsme.com.br/api/v1.0/events \
+  -H "Authorization: Bearer YOUR_API_KEY"
+
+# Get badge IDs
+curl https://api.thatsme.com.br/api/v1.0/badges \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+## Step 2 — Build the N8N workflow
+
+<Steps>
+  <Step title="Add trigger: Google Sheets">
+    - Node: **Google Sheets Trigger**
+    - Event: **Row Added or Updated**
+    - Sheet: your spreadsheet
+    - Poll every: 5 minutes (or use webhook if available in your N8N plan)
+  </Step>
+
+  <Step title="Add filter: check Status = Completed">
+    - Node: **IF**
+    - Condition: `{{ $json.Status }}` equals `Completed`
+  </Step>
+
+  <Step title="Add action: HTTP Request to That's Me">
+    - Node: **HTTP Request**
+    - Method: `POST`
+    - URL: `https://api.thatsme.com.br/api/v1.0/invitations`
+    - Headers:
+      - `Authorization`: `Bearer YOUR_API_KEY`
+      - `Content-Type`: `application/json`
+    - Body (JSON):
+    ```json
+    {
+      "event_id": "YOUR_EVENT_ID",
+      "badge_id": "YOUR_BADGE_ID",
+      "recipient_name": "{{ $json.Name }}",
+      "recipient_email": "{{ $json.Email }}",
+      "reason": "{{ $json.Reason }}"
+    }
+    ```
+  </Step>
+
+  <Step title="(Optional) Update the row with certificate status">
+    - Node: **Google Sheets** (update)
+    - Update column "Certificate" with `{{ $json.invitation_id }}`
+  </Step>
+</Steps>
+
+## Step 3 — Receive the certificate URL back (via webhook)
+
+When the recipient accepts the certificate, set up a webhook to get the URL:
+
+1. In N8N, add a **Webhook** node — copy the URL
+2. In That's Me API, register the webhook:
+
+```bash
+curl -X POST https://api.thatsme.com.br/api/v1.0/webhooks \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "YOUR_N8N_WEBHOOK_URL",
+    "events": ["certificate.accepted"],
+    "description": "Google Sheets sync"
+  }'
+```
+
+3. In N8N, add a **Google Sheets (update)** node after the webhook trigger
+   — write the `certificate_url` back to the spreadsheet row.
+
+<Tip>
+  Save the `invitation_id` returned by the issue endpoint in your spreadsheet.
+  Use it to match webhook deliveries back to the correct row.
+</Tip>
+
+For more details on webhook events, payloads, and signature verification, see [Webhooks Overview](/api/v1/webhooks/overview).
