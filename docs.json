@@ -8,19 +8,15 @@
     "dark": "#1E2025"
   },
   "fonts": {
-    "family": "Helvetica Now Display",
-    "source": "/fonts/HelveticaNowDisplay-Medium.woff2",
-    "format": "woff2",
-    "weight": 500,
     "heading": {
       "family": "Helvetica Now Display",
-      "source": "/fonts/HelveticaNowDisplay-Bold.woff2",
+      "source": "https://app.thatsme.com.br/fonts/HelveticaNow/HelveticaNowDisplay-Bold.woff2",
       "format": "woff2",
       "weight": 700
     },
     "body": {
       "family": "Helvetica Now Display",
-      "source": "/fonts/HelveticaNowDisplay-Regular.woff2",
+      "source": "https://app.thatsme.com.br/fonts/HelveticaNow/HelveticaNowDisplay-Regular.woff2",
       "format": "woff2",
       "weight": 400
     }
@@ -49,44 +45,68 @@
       }
     ]
   },
-  "tabs": [
-    { "name": "Platform", "url": "platform" },
-    { "name": "For Issuers", "url": "for-issuers" },
-    { "name": "API Reference", "url": "api/v1" },
-    { "name": "Public API", "url": "public-api" },
-    { "name": "Automations", "url": "automations" },
-    { "name": "Changelog", "url": "changelog" }
-  ],
-  "navigation": [
-    {
-      "group": "Platform",
-      "pages": ["platform/welcome", "platform/how-it-works", "platform/verification", "platform/plans"]
-    },
-    {
-      "group": "For Issuers",
-      "pages": ["for-issuers/quickstart", "for-issuers/recommendation-guide"]
-    },
-    {
-      "group": "API Overview",
-      "pages": ["api/v1/overview", "api/v1/quickstart"]
-    },
-    {
-      "group": "Webhooks",
-      "pages": ["api/v1/webhooks/overview", "api/v1/webhooks/verify-signature", "api/v1/webhooks/events"]
-    },
-    {
-      "group": "Public API",
-      "pages": ["public-api/overview"]
-    },
-    {
-      "group": "Automations",
-      "pages": ["automations/overview", "automations/n8n/emit-from-spreadsheet", "automations/mcp/overview", "automations/use-cases/marathon"]
-    },
-    {
-      "group": "Changelog",
-      "pages": ["changelog/index"]
-    }
-  ],
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Platform",
+        "groups": [
+          {
+            "group": "Platform",
+            "pages": ["platform/welcome", "platform/how-it-works", "platform/verification", "platform/plans"]
+          }
+        ]
+      },
+      {
+        "tab": "For Issuers",
+        "groups": [
+          {
+            "group": "For Issuers",
+            "pages": ["for-issuers/quickstart", "for-issuers/recommendation-guide"]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API Overview",
+            "pages": ["api/v1/overview", "api/v1/quickstart"]
+          },
+          {
+            "group": "Webhooks",
+            "pages": ["api/v1/webhooks/overview", "api/v1/webhooks/verify-signature", "api/v1/webhooks/events"]
+          }
+        ]
+      },
+      {
+        "tab": "Public API",
+        "groups": [
+          {
+            "group": "Public API",
+            "pages": ["public-api/overview"]
+          }
+        ]
+      },
+      {
+        "tab": "Automations",
+        "groups": [
+          {
+            "group": "Automations",
+            "pages": ["automations/overview", "automations/n8n/emit-from-spreadsheet", "automations/mcp/overview", "automations/use-cases/marathon"]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Changelog",
+            "pages": ["changelog/index"]
+          }
+        ]
+      }
+    ]
+  },
   "footer": {
     "socials": {
       "instagram": "https://www.instagram.com/app.thatsme/",
