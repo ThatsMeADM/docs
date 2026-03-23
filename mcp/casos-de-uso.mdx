@@ -1,0 +1,72 @@
+---
+title: "Casos de Uso — MCP"
+description: "Tres cenarios reais de uso do MCP Emissor com assistentes de IA"
+---
+
+## 1. RH automatiza emissao apos treinamento
+
+**Cenario:** Uma empresa usa um LMS (Learning Management System) para treinamentos internos. Ao concluir um modulo, o RH precisa emitir certificados na That's Me.
+
+**Fluxo com MCP:**
+
+1. Funcionario conclui o treinamento no LMS
+2. RH abre o Claude Desktop e diz:
+
+> "Emita certificados do treinamento 'Compliance 2025' para os seguintes funcionarios que concluiram hoje: Ana Costa (ana.costa@empresa.com), Carlos Souza (carlos.souza@empresa.com), Fernanda Lima (fernanda.lima@empresa.com)"
+
+3. O Claude usa `search_events` para encontrar o evento "Compliance 2025"
+4. Depois usa `issue_certificates` com os dados dos 3 funcionarios
+5. Cada funcionario recebe o certificado por email e WhatsApp
+
+**Resultado:** Emissao que levava 15 minutos no painel agora leva 30 segundos via chat.
+
+---
+
+## 2. Escola de idiomas emite certificados em lote
+
+**Cenario:** Uma escola de ingles conclui uma turma de 40 alunos e precisa emitir certificados para todos.
+
+**Fluxo com MCP:**
+
+1. Coordenador cola a lista de alunos no chat:
+
+> "Emita certificados do curso 'Ingles B2 — Turma Março 2026' para estes alunos: [lista com nome e email]"
+
+2. O Claude usa `search_events` para encontrar o evento
+3. Usa `issue_certificates` com os 40 destinatarios em uma unica chamada
+4. Coordenador pede o status:
+
+> "Quantos ja aceitaram o certificado?"
+
+5. O Claude usa `get_engagement_funnel` para mostrar o funil
+
+**Resultado:** Emissao em lote + acompanhamento de aceitacao, tudo via chat.
+
+---
+
+## 3. Organizador de maratona consulta analytics
+
+**Cenario:** Organizador de uma corrida de rua emitiu 2.000 certificados de conclusao e quer entender o engajamento.
+
+**Fluxo com MCP:**
+
+1. Organizador pergunta:
+
+> "Mostre o funil de engajamento da Maratona SP 2026"
+
+2. O Claude usa `get_engagement_funnel` e retorna:
+   - 2.000 emitidos → 1.847 aceitos (92%) → 1.523 visualizados (76%) → 412 compartilhados (21%)
+
+3. Organizador pede mais detalhes:
+
+> "Quem ainda nao aceitou o certificado?"
+
+4. O Claude usa `list_recipients` com `status: "pending"` e lista os 153 pendentes
+
+5. Organizador decide exportar:
+
+> "Exporte todos os dados de emissao deste mes em CSV"
+
+6. O Claude usa `export_csv` e retorna o CSV completo
+
+**Resultado:** Analytics completo e exportacao de dados sem sair do chat.

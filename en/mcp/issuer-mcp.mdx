@@ -1,0 +1,151 @@
+---
+title: "MCP Issuer"
+description: "Issue certificates, check analytics, and export data via AI with the MCP Issuer server"
+---
+
+## What is the MCP Issuer?
+
+`thatsme-mcp-issuer` is an MCP server that connects AI assistants (Claude, Cursor, etc.) to your issuer account on That's Me. Issue certificates, check engagement funnels, and export data — all through natural language.
+
+**Minimum plan:** PRO (4 of 5 tools require PRO or higher).
+
+## Installation (local stdio)
+
+```bash
+npx -y thatsme-mcp-issuer
+```
+
+Requires the `THATSME_API_KEY` environment variable.
+
+### Claude Desktop
+
+Add to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "thatsme-issuer": {
+      "command": "npx",
+      "args": ["-y", "thatsme-mcp-issuer"],
+      "env": {
+        "THATSME_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+### Cursor
+
+Add to `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "thatsme-issuer": {
+      "command": "npx",
+      "args": ["-y", "thatsme-mcp-issuer"],
+      "env": {
+        "THATSME_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+## Remote connection (HTTP/SSE)
+
+For clients that support remote MCP:
+
+```
+URL: https://mcp.thatsme.com.br/mcp
+Transport: Streamable HTTP
+```
+
+Include the `Authorization: Bearer YOUR_API_KEY` header in every request.
+
+## Available tools
+
+### 1. `search_events`
+
+Search events created by your organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `query` | string | Yes | Event name to search |
+| `limit` | number | No | Max results (default 10, max 50) |
+
+**Example prompt:** "List my organization's events containing 'DevFest'"
+
+**Minimum plan:** Starter
+
+---
+
+### 2. `issue_certificates`
+
+Issue digital certificates to a list of recipients.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `event_id` | string | Yes | Event ID |
+| `badge_id` | string | Yes | Badge/TM ID |
+| `recipients` | array | Yes | List of recipients (max 500) |
+| `recipients[].email` | string | Yes | Recipient email |
+| `recipients[].name` | string | Yes | Full name |
+| `recipients[].reason` | string | No | Certification reason |
+
+**Example prompt:** "Issue DevFest 2025 certificates to the 3 speakers: john@email.com (John Smith), maria@email.com (Maria Santos), pedro@email.com (Pedro Lima)"
+
+**Minimum plan:** PRO
+
+---
+
+### 3. `get_engagement_funnel`
+
+Returns the engagement funnel: issued → accepted → viewed → shared.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `event_id` | string | Yes | Event ID |
+
+**Example prompt:** "Show the engagement funnel for DevFest 2025"
+
+**Minimum plan:** PRO
+
+---
+
+### 4. `list_recipients`
+
+List recipients for an event with certificate status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `event_id` | string | Yes | Event ID |
+| `page` | number | No | Page number (default 1) |
+| `status` | enum | No | Filter: `all`, `accepted`, `pending`, `refused` |
+
+**Example prompt:** "Who hasn't accepted their DevFest 2025 certificate yet?"
+
+**Minimum plan:** PRO
+
+---
+
+### 5. `export_csv`
+
+Export emission data as CSV.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `period` | enum | No | `30d`, `90d`, `all` (default: 30d) |
+
+**Example prompt:** "Export the last 90 days of emission data as CSV"
+
+**Minimum plan:** PRO
+
+## Getting your API Key
+
+1. Go to [app.thatsme.com.br/settings/integrations](https://app.thatsme.com.br/settings/integrations)
+2. Click **New API Key**
+3. Copy the key — it won't be shown again
+
+[Full authentication documentation →](/en/api/v1/overview)

@@ -29,14 +29,6 @@
     "dark": "/logo/dark.svg"
   },
   "favicon": "/favicon.svg",
-  "api": {
-    "mdx": {
-      "auth": {
-        "method": "bearer"
-      },
-      "server": "https://api.thatsme.com.br"
-    }
-  },
   "navbar": {
     "links": [
       {
@@ -46,66 +38,247 @@
     ]
   },
   "navigation": {
-    "tabs": [
+    "languages": [
       {
-        "tab": "Platform",
-        "groups": [
+        "language": "pt",
+        "tabs": [
           {
-            "group": "Platform",
-            "pages": ["platform/welcome", "platform/how-it-works", "platform/verification", "platform/certificate-permanence", "platform/plans"]
+            "tab": "Plataforma",
+            "groups": [
+              {
+                "group": "Introducao",
+                "pages": [
+                  "introducao/bem-vindo",
+                  "introducao/sobre-nos",
+                  "introducao/faq",
+                  "introducao/3d-e-ar"
+                ]
+              },
+              {
+                "group": "Funcionalidades",
+                "pages": [
+                  "funcionalidades/mural-de-conquistas",
+                  "funcionalidades/receber-visualizar-compartilhar",
+                  "funcionalidades/one-page-certificate",
+                  "funcionalidades/ecossistema-social"
+                ]
+              },
+              {
+                "group": "Casos de Uso",
+                "pages": [
+                  "casos-de-uso/educacao-e-cursos",
+                  "casos-de-uso/corporativo-e-rh",
+                  "casos-de-uso/premiacoes-b2b-e-certificacoes",
+                  "casos-de-uso/eventos-esportivos-e-e-esportivos",
+                  "casos-de-uso/comunidades-e-influencia",
+                  "casos-de-uso/arte-e-cultura",
+                  "casos-de-uso/causas-sociais-e-ongs",
+                  "casos-de-uso/membro"
+                ]
+              }
+            ]
           },
           {
-            "group": "Plans & Billing",
-            "pages": ["plans/overview", "plans/overage", "plans/whatsapp", "plans/sla"]
-          }
-        ]
-      },
-      {
-        "tab": "For Issuers",
-        "groups": [
-          {
-            "group": "For Issuers",
-            "pages": ["for-issuers/quickstart", "for-issuers/recommendation-guide"]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Overview",
-            "pages": ["api/v1/overview", "api/v1/quickstart", "api/v1/tiers"]
+            "tab": "Para Emissores",
+            "groups": [
+              {
+                "group": "Guia do Emissor",
+                "pages": [
+                  "para-emissores/criar-evento",
+                  "para-emissores/emitir-e-acompanhar-conquistas",
+                  "para-emissores/galeria-de-tms",
+                  "para-emissores/creditos",
+                  "para-emissores/administradores",
+                  "para-emissores/loja",
+                  "para-emissores/verificacao-e-seguranca"
+                ]
+              },
+              {
+                "group": "Integracoes",
+                "pages": [
+                  "integracoes/api",
+                  "integracoes/linkedin",
+                  "integracoes/compartilhamento"
+                ]
+              }
+            ]
           },
           {
-            "group": "Webhooks",
-            "pages": ["api/v1/webhooks/overview", "api/v1/webhooks/verify-signature", "api/v1/webhooks/events"]
+            "tab": "API",
+            "groups": [
+              {
+                "group": "Guias",
+                "pages": [
+                  "api/autenticacao"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "openapi": "openapi.json"
+              }
+            ]
+          },
+          {
+            "tab": "MCP / IA",
+            "groups": [
+              {
+                "group": "MCP",
+                "pages": [
+                  "mcp/visao-geral",
+                  "mcp/mcp-emissor",
+                  "mcp/casos-de-uso"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Planos",
+            "groups": [
+              {
+                "group": "Planos e Cobranca",
+                "pages": [
+                  "planos/visao-geral",
+                  "planos/excedente",
+                  "planos/whatsapp",
+                  "planos/sla"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Glossario",
+            "groups": [
+              {
+                "group": "Glossario",
+                "pages": [
+                  "glossario"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Changelog",
+            "groups": [
+              {
+                "group": "Changelog",
+                "pages": [
+                  "changelog/index"
+                ]
+              }
+            ]
           }
         ]
       },
       {
-        "tab": "Public API",
-        "groups": [
+        "language": "en",
+        "tabs": [
           {
-            "group": "Public API",
-            "pages": ["public-api/overview"]
-          }
-        ]
-      },
-      {
-        "tab": "Automations",
-        "groups": [
+            "tab": "Platform",
+            "groups": [
+              {
+                "group": "Platform",
+                "pages": [
+                  "en/platform/welcome",
+                  "en/platform/how-it-works",
+                  "en/platform/verification",
+                  "en/platform/certificate-permanence",
+                  "en/platform/plans"
+                ]
+              }
+            ]
+          },
           {
-            "group": "Automations",
-            "pages": ["automations/overview", "automations/n8n/emit-from-spreadsheet", "automations/mcp/overview", "automations/use-cases/marathon"]
-          }
-        ]
-      },
-      {
-        "tab": "Changelog",
-        "groups": [
+            "tab": "For Issuers",
+            "groups": [
+              {
+                "group": "For Issuers",
+                "pages": [
+                  "en/for-issuers/quickstart",
+                  "en/for-issuers/recommendation-guide"
+                ]
+              }
+            ]
+          },
           {
-            "group": "Changelog",
-            "pages": ["changelog/index"]
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "API Overview",
+                "pages": [
+                  "en/api/v1/overview",
+                  "en/api/v1/quickstart",
+                  "en/api/v1/tiers"
+                ]
+              },
+              {
+                "group": "Webhooks",
+                "pages": [
+                  "en/api/v1/webhooks/overview",
+                  "en/api/v1/webhooks/verify-signature",
+                  "en/api/v1/webhooks/events"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "openapi": "openapi.json"
+              }
+            ]
+          },
+          {
+            "tab": "MCP / AI",
+            "groups": [
+              {
+                "group": "MCP",
+                "pages": [
+                  "en/mcp/issuer-mcp"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Plans",
+            "groups": [
+              {
+                "group": "Plans & Billing",
+                "pages": [
+                  "en/plans/overview",
+                  "en/plans/overage",
+                  "en/plans/whatsapp",
+                  "en/plans/sla"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Automations",
+            "groups": [
+              {
+                "group": "Automations",
+                "pages": [
+                  "en/automations/overview",
+                  "en/automations/n8n/emit-from-spreadsheet",
+                  "en/automations/mcp/overview",
+                  "en/automations/use-cases/marathon"
+                ]
+              },
+              {
+                "group": "Public API",
+                "pages": [
+                  "en/public-api/overview"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Changelog",
+            "groups": [
+              {
+                "group": "Changelog",
+                "pages": [
+                  "changelog/index"
+                ]
+              }
+            ]
           }
         ]
       }

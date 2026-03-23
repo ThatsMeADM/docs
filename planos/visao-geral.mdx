@@ -1,0 +1,50 @@
+---
+title: "Visao Geral dos Planos"
+description: "O que cada plano inclui, precos e como funciona o ciclo de cobranca"
+---
+
+## Planos
+
+| Plano | Emissoes/mes | Preco (BRL) | Preco (USD) | Tier API |
+|---|---|---|---|---|
+| **Free** | 0 | R$ 0 | $0 | — |
+| **Starter** | 200 | R$ 149/mes | $29/mes | Basic |
+| **Pro** | 1.000 | R$ 749/mes | $129/mes | Advanced |
+| **Business** | 5.000 | R$ 2.499/mes | $449/mes | Advanced |
+| **Enterprise** | Negociado | Sob consulta | Sob consulta | Advanced |
+
+Plano anual da **2 meses gratis** (desconto de 17%). O valor e cobrado em pagamento unico anual.
+
+## O que e uma emissao?
+
+Uma **emissao** e um certificado enviado para um destinatario. Cada emissao:
+
+- Gera um hash SHA-256 unico para verificacao
+- Entrega o certificado por email (e WhatsApp, se habilitado)
+- Conta no seu limite mensal
+- E **permanente** — nunca expira, mesmo se voce cancelar o plano
+
+Um evento com 50 destinatarios = 50 emissoes.
+
+## Ciclo de cobranca
+
+Sua cota renova na **data do ciclo de cobranca** — o dia em que voce assinou — nao no dia 1 de cada mes.
+
+Exemplo: se voce assinou em 15 de marco, sua cota renova todo dia 15.
+
+<Tip>
+  Confira seu uso atual e data do ciclo em **Configuracoes → Cobranca**.
+</Tip>
+
+## O que acontece ao cancelar
+
+- **Certificados existentes** continuam ativos e verificaveis para sempre
+- **Novas emissoes** sao bloqueadas imediatamente
+- **Eventos** permanecem visiveis no diretorio publico por 90 dias (periodo de graca)
+- Sua conta volta ao plano Free
+
+## Saiba mais
+
+- [Excedente — emitir alem da cota](/planos/excedente)
+- [Entrega via WhatsApp](/planos/whatsapp)
+- [SLA e suporte](/planos/sla)

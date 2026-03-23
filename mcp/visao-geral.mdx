@@ -1,0 +1,53 @@
+---
+title: "MCP — Model Context Protocol"
+description: "Conecte assistentes de IA a plataforma That's Me via MCP"
+---
+
+## O que e MCP?
+
+MCP (Model Context Protocol) e um protocolo aberto que permite que assistentes de IA (Claude, ChatGPT, Cursor, etc.) acessem ferramentas externas de forma padronizada.
+
+A That's Me oferece dois servidores MCP:
+
+| Servidor | Publico | Funcao |
+|---|---|---|
+| **@thatsme/mcp** | Sim | Buscar eventos e recomendar proximos passos |
+| **thatsme-mcp-issuer** | API Key necessaria | Emitir certificados, consultar analytics, exportar dados |
+
+## MCP Publico — @thatsme/mcp
+
+O MCP publico permite que qualquer assistente de IA busque eventos da plataforma. Nao requer autenticacao.
+
+### Instalacao
+
+```bash
+npx -y @thatsme/mcp
+```
+
+### Tools disponiveis
+
+| Tool | Descricao |
+|---|---|
+| `search_thatsme_events` | Busca eventos por nome, categoria, nivel, localizacao |
+| `get_event_next_steps` | Dado um evento ou skill, sugere proximos passos |
+
+### Exemplo de prompt
+
+> "Encontre cursos de Python para iniciantes no That's Me"
+
+O assistente usa `search_thatsme_events` para buscar eventos com `query: "Python"`, `level: "beginner"`, `category: "EDUCATION"`.
+
+## MCP Emissor — thatsme-mcp-issuer
+
+Para emissores que querem gerenciar certificados via IA. Requer API Key.
+
+[Documentacao completa do MCP Emissor →](/mcp/mcp-emissor)
+
+## Compatibilidade
+
+| Assistente | MCP Publico | MCP Emissor |
+|---|---|---|
+| Claude Desktop | stdio | stdio |
+| Claude Code | stdio | stdio |
+| Cursor | stdio | stdio |
+| Remoto (qualquer) | — | HTTP/SSE via `https://mcp.thatsme.com.br/mcp` |

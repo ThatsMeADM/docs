@@ -1,0 +1,160 @@
+---
+title: "MCP Emissor"
+description: "Emita certificados, consulte analytics e exporte dados via IA com o MCP Emissor"
+---
+
+## O que e o MCP Emissor?
+
+O `thatsme-mcp-issuer` e um servidor MCP que conecta assistentes de IA (Claude, Cursor, etc.) a sua conta de emissor na That's Me. Com ele, voce pode emitir certificados, consultar funil de engajamento e exportar dados — tudo via linguagem natural.
+
+**Plano minimo:** PRO (4 de 5 tools requerem PRO ou superior).
+
+## Instalacao (stdio local)
+
+```bash
+npx -y thatsme-mcp-issuer
+```
+
+Requer a variavel de ambiente `THATSME_API_KEY` configurada.
+
+### Claude Desktop
+
+Adicione ao seu `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "thatsme-issuer": {
+      "command": "npx",
+      "args": ["-y", "thatsme-mcp-issuer"],
+      "env": {
+        "THATSME_API_KEY": "sua_api_key_aqui"
+      }
+    }
+  }
+}
+```
+
+### Cursor
+
+Adicione ao `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "thatsme-issuer": {
+      "command": "npx",
+      "args": ["-y", "thatsme-mcp-issuer"],
+      "env": {
+        "THATSME_API_KEY": "sua_api_key_aqui"
+      }
+    }
+  }
+}
+```
+
+## Conexao remota (HTTP/SSE)
+
+Para clientes que suportam MCP remoto:
+
+```
+URL: https://mcp.thatsme.com.br/mcp
+Transport: Streamable HTTP
+```
+
+Envie o header `Authorization: Bearer SUA_API_KEY` em cada requisicao.
+
+## Tools disponiveis
+
+### 1. `search_events`
+
+Busca eventos criados pela sua organizacao.
+
+| Parametro | Tipo | Obrigatorio | Descricao |
+|---|---|---|---|
+| `query` | string | Sim | Nome do evento |
+| `limit` | number | Nao | Max resultados (padrao 10, max 50) |
+
+**Exemplo de prompt:**
+> "Liste os eventos da minha organizacao que contem 'DevFest'"
+
+**Plano minimo:** Starter
+
+---
+
+### 2. `issue_certificates`
+
+Emite certificados digitais para uma lista de destinatarios.
+
+| Parametro | Tipo | Obrigatorio | Descricao |
+|---|---|---|---|
+| `event_id` | string | Sim | ID do evento |
+| `badge_id` | string | Sim | ID do badge/TM |
+| `recipients` | array | Sim | Lista de destinatarios (max 500) |
+| `recipients[].email` | string | Sim | Email do destinatario |
+| `recipients[].name` | string | Sim | Nome completo |
+| `recipients[].reason` | string | Nao | Motivo da certificacao |
+
+**Exemplo de prompt:**
+> "Emita certificados do DevFest 2025 para os 3 palestrantes: joao@email.com (Joao Silva), maria@email.com (Maria Santos), pedro@email.com (Pedro Lima)"
+
+**Plano minimo:** PRO
+
+---
+
+### 3. `get_engagement_funnel`
+
+Retorna o funil de engajamento de um evento: emitidos → aceitos → visualizados → compartilhados.
+
+| Parametro | Tipo | Obrigatorio | Descricao |
+|---|---|---|---|
+| `event_id` | string | Sim | ID do evento |
+
+**Exemplo de prompt:**
+> "Mostre o funil de engajamento do evento DevFest 2025"
+
+**Resposta inclui:** contagens + taxas calculadas (acceptance_rate, view_rate, share_rate).
+
+**Plano minimo:** PRO
+
+---
+
+### 4. `list_recipients`
+
+Lista destinatarios de um evento com status do certificado (pendente, aceito, recusado).
+
+| Parametro | Tipo | Obrigatorio | Descricao |
+|---|---|---|---|
+| `event_id` | string | Sim | ID do evento |
+| `page` | number | Nao | Pagina (padrao 1) |
+| `status` | enum | Nao | Filtro: `all`, `accepted`, `pending`, `refused` |
+
+**Exemplo de prompt:**
+> "Quem ainda nao aceitou o certificado do evento DevFest 2025?"
+
+**Nota:** Emails sao parcialmente mascarados por privacidade (ex: `jo***@email.com`).
+
+**Plano minimo:** PRO
+
+---
+
+### 5. `export_csv`
+
+Exporta dados de emissao como CSV.
+
+| Parametro | Tipo | Obrigatorio | Descricao |
+|---|---|---|---|
+| `period` | enum | Nao | `30d`, `90d`, `all` (padrao: 30d) |
+
+**Exemplo de prompt:**
+> "Exporte os dados de emissao dos ultimos 90 dias em CSV"
+
+**Plano minimo:** PRO
+
+## Obtendo sua API Key
+
+1. Acesse [app.thatsme.com.br/settings/integrations](https://app.thatsme.com.br/settings/integrations)
+2. Clique em **Nova chave de API**
+3. Copie a chave — ela nao sera exibida novamente
+
+[Documentacao completa de autenticacao →](/api/autenticacao)

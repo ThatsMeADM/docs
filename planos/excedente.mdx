@@ -1,0 +1,59 @@
+---
+title: "Excedente"
+description: "Como funciona o excedente quando voce emite alem da cota mensal"
+---
+
+## O que e excedente?
+
+Excedente permite continuar emitindo certificados apos a cota mensal ser atingida. Cada emissao extra e cobrada por unidade na proxima fatura.
+
+O excedente e **ativo por padrao** em todos os planos pagos. Voce pode desativar ou definir um limite mensal em **Configuracoes → Cobranca → Excedente**.
+
+## Preco por emissao
+
+| Plano | Sem WhatsApp | Com WhatsApp |
+|---|---|---|
+| **Starter** | R$ 0,25 / $0,05 | R$ 0,40 / $0,08 |
+| **Pro** | Incluso no plano | R$ 0,40 / $0,08 |
+| **Business** | Incluso no plano | R$ 0,35 / $0,07 |
+| **Enterprise** | Sob consulta | Sob consulta |
+
+<Tip>
+  No Pro e acima, WhatsApp esta incluso em todas as emissoes — dentro da cota e no excedente.
+  A coluna "Sem WhatsApp" so se aplica ao Starter.
+</Tip>
+
+## Definindo um limite de gastos
+
+Em **Configuracoes → Cobranca → Excedente**, voce pode:
+
+1. **Ativar/desativar** o excedente
+2. **Definir um teto mensal** — ex: R$ 200/mes
+
+Quando o gasto de excedente atinge o teto:
+- Novas emissoes sao **bloqueadas** ate o proximo ciclo
+- Voce recebe um **alerta por email** em 80% e 100% do teto
+- Emissoes voltam quando o ciclo renova
+
+## Como funciona o ciclo
+
+O excedente zera na sua **data de ciclo** — o dia em que voce assinou, nao o dia 1.
+
+Todas as cobracas de excedente sao adicionadas automaticamente a proxima fatura no Stripe.
+
+## Exemplo pratico
+
+> Voce esta no plano **Pro** (1.000 emissoes/mes).
+> Em agosto, voce emitiu **1.247** certificados.
+> As 247 emissoes extras custam R$ 0,40 cada = **R$ 98,80** adicionados a fatura de setembro.
+
+## Desativando o excedente
+
+Se voce desativar o excedente:
+- Emissoes param ao atingir a cota
+- Nenhuma cobranca extra e gerada
+- Voce pode reativar a qualquer momento
+
+<Warning>
+  Se o excedente estiver desativado e voce atingir a cota no meio de um evento, os destinatarios restantes nao receberao certificados ate o proximo ciclo ou ate fazer upgrade do plano.
+</Warning>

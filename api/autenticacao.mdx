@@ -1,0 +1,88 @@
+---
+title: "Autenticacao"
+description: "Como autenticar suas requisicoes na API da That's Me"
+---
+
+## Autenticacao
+
+Todas as requisicoes autenticadas usam Bearer token no header:
+
+```bash
+Authorization: Bearer SUA_API_KEY
+```
+
+## Obtendo sua API Key
+
+1. Acesse [app.thatsme.com.br/settings/integrations](https://app.thatsme.com.br/settings/integrations)
+2. Clique em **Nova chave de API**
+3. De um nome descritivo (ex: "MCP Server", "N8N Producao")
+4. Copie e guarde em local seguro — a chave **nao e exibida novamente**
+
+<Warning>
+  Trate sua API Key como uma senha. Nao compartilhe, nao commite no git, nao exponha no frontend.
+</Warning>
+
+## Ambientes
+
+| Ambiente | URL base |
+|---|---|
+| Producao | `https://api.thatsme.com.br/api` |
+| Sandbox | `https://servicetest.thatsme.com.br/api` |
+
+## Tiers de acesso
+
+| Plano | Tier API | Acesso |
+|---|---|---|
+| Free | — | Sem acesso a API |
+| Starter | Basic | Leitura (listar eventos, badges, destinatarios) |
+| Pro | Advanced | Leitura + escrita (emitir certificados, webhooks) |
+| Business | Advanced | Mesmo que Pro, com rate limits maiores |
+| Enterprise | Advanced | Rate limits customizados |
+
+## Exemplos
+
+<CodeGroup>
+
+```bash cURL
+curl -H "Authorization: Bearer SUA_API_KEY" \
+  https://api.thatsme.com.br/api/v1.0/events
+```
+
+```javascript Node.js
+const res = await fetch('https://api.thatsme.com.br/api/v1.0/events', {
+  headers: { Authorization: 'Bearer SUA_API_KEY' },
+});
+const data = await res.json();
+```
+
+```python Python
+import requests
+
+res = requests.get(
+    'https://api.thatsme.com.br/api/v1.0/events',
+    headers={'Authorization': 'Bearer SUA_API_KEY'},
+)
+data = res.json()
+```
+
+</CodeGroup>
+
+## Rate limits
+
+| Tier | Requisicoes/min |
+|---|---|
+| Basic (Starter) | 60 |
+| Advanced (Pro) | 120 |
+| Advanced (Business) | 300 |
+| Advanced (Enterprise) | Customizado |
+
+Quando o rate limit e excedido, a API retorna `429 Too Many Requests` com o header `Retry-After`.
+
+## Erros comuns
+
+| Status | Significado |
+|---|---|
+| `401 Unauthorized` | API Key ausente, invalida ou expirada |
+| `402 Payment Required` | Saldo insuficiente para emissao |
+| `403 Forbidden` | Tier insuficiente para essa operacao |
+| `429 Too Many Requests` | Rate limit excedido |
