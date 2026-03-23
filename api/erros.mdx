@@ -1,0 +1,106 @@
+---
+title: "Erros"
+description: "Referência de códigos de erro da API That's Me"
+---
+
+## Tratamento de erros
+
+A API usa códigos HTTP padrão. Todos os erros retornam JSON:
+
+```json
+{
+  "statusCode": 400,
+  "message": "Descrição do erro",
+  "error": "Bad Request"
+}
+```
+
+## Códigos de erro
+
+| Código | Nome | Quando ocorre |
+|---|---|---|
+| `400` | Bad Request | Parâmetros inválidos ou ausentes |
+| `401` | Unauthorized | API key ausente ou inválida |
+| `402` | Payment Required | Saldo insuficiente para emissão |
+| `403` | Forbidden | Plano insuficiente para o endpoint |
+| `404` | Not Found | Recurso não encontrado |
+| `422` | Unprocessable Entity | Dados válidos mas não processáveis |
+| `429` | Too Many Requests | Rate limit atingido |
+| `500` | Internal Server Error | Erro interno — contate o suporte |
+
+## Exemplos de resposta
+
+### 401 — API Key inválida
+
+```json
+{
+  "statusCode": 401,
+  "message": "Invalid API key",
+  "error": "Unauthorized"
+}
+```
+
+### 403 — Plano insuficiente
+
+```json
+{
+  "statusCode": 403,
+  "message": "This endpoint requires an Advanced tier API key",
+  "error": "Forbidden"
+}
+```
+
+### 429 — Rate limit
+
+```json
+{
+  "statusCode": 429,
+  "message": "Too Many Requests",
+  "error": "Too Many Requests"
+}
+```
+
+O header `Retry-After` indica quantos segundos aguardar antes de tentar novamente.
+
+## Boas práticas
+
+- Sempre verifique o `statusCode` antes de processar a resposta
+- Implemente retry com backoff exponencial para erros `429` e `500`
+- Registre o body completo do erro para facilitar debugging
+- Para `401`, verifique se a API key não foi revogada em **Configurações → Integrações**
+
+### Exemplo de retry com backoff
+
+<CodeGroup>
+
+```javascript Node.js
+async function apiCall(url, options, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    const res = await fetch(url, options);
+    if (res.status === 429) {
+      const retryAfter = parseInt(res.headers.get('Retry-After') || '5');
+      await new Promise(r => setTimeout(r, retryAfter * 1000));
+      continue;
+    }
+    return res;
+  }
+  throw new Error('Rate limit exceeded after retries');
+}
+```
+
+```python Python
+import time
+import requests
+
+def api_call(url, headers, max_retries=3):
+    for i in range(max_retries):
+        res = requests.get(url, headers=headers)
+        if res.status_code == 429:
+            retry_after = int(res.headers.get('Retry-After', 5))
+            time.sleep(retry_after)
+            continue
+        return res
+    raise Exception('Rate limit exceeded after retries')
+```
+
+</CodeGroup>

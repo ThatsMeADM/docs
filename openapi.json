@@ -3,12 +3,12 @@
   "info": {
     "title": "That's Me API",
     "version": "1.0",
-    "description": "API p\u00fablica da That's Me \u2014 emita certificados digitais, consulte eventos e analytics via API."
+    "description": "API pública da That's Me — emita certificados digitais, consulte eventos e analytics via API."
   },
   "servers": [
     {
       "url": "https://api.thatsme.com.br/api",
-      "description": "Produ\u00e7\u00e3o"
+      "description": "Produção"
     },
     {
       "url": "https://servicetest.thatsme.com.br/api",
@@ -26,73 +26,88 @@
     "schemas": {
       "RecipientDto": {
         "type": "object",
-        "required": ["recipient_name", "recipient_email"],
+        "required": [
+          "recipient_name",
+          "recipient_email"
+        ],
         "properties": {
           "recipient_name": {
             "type": "string",
-            "description": "Nome completo do destinat\u00e1rio"
+            "description": "Nome completo do destinatário"
           },
           "recipient_email": {
             "type": "string",
             "format": "email",
-            "description": "E-mail do destinat\u00e1rio que receber\u00e1 o convite"
+            "description": "E-mail do destinatário que receberá o convite"
           },
           "recipient_number": {
             "type": "string",
-            "description": "N\u00famero do destinat\u00e1rio para notifica\u00e7\u00f5es por SMS ou WhatsApp (formato E.164). Exemplo: +5531987654321"
+            "description": "Número do destinatário para notificações por SMS ou WhatsApp (formato E.164). Exemplo: +5531987654321"
           },
           "reason": {
             "type": "string",
-            "description": "Motivo pelo qual o destinat\u00e1rio est\u00e1 recebendo o certificado. Exemplo: Curso de Python para Data Science com dura\u00e7\u00e3o de 40 horas no n\u00edvel Intermedi\u00e1rio"
+            "description": "Motivo pelo qual o destinatário está recebendo o certificado. Exemplo: Curso de Python para Data Science com duração de 40 horas no nível Intermediário"
           }
         }
       },
       "IssueInvitationDto": {
         "type": "object",
-        "required": ["event_id", "badge_id"],
+        "required": [
+          "event_id",
+          "badge_id"
+        ],
         "properties": {
           "event_id": {
             "type": "string",
             "format": "uuid",
-            "description": "ID do evento vinculado \u00e0 emiss\u00e3o"
+            "description": "ID do evento vinculado à emissão"
           },
           "badge_id": {
             "type": "string",
             "format": "uuid",
-            "description": "ID do badge utilizado na emiss\u00e3o"
+            "description": "ID do badge utilizado na emissão"
           },
           "recipient": {
-            "description": "Destinat\u00e1rio \u00fanico ou array de destinat\u00e1rios",
+            "description": "Destinatário único ou array de destinatários",
             "oneOf": [
-              { "$ref": "#/components/schemas/RecipientDto" },
+              {
+                "$ref": "#/components/schemas/RecipientDto"
+              },
               {
                 "type": "array",
-                "items": { "$ref": "#/components/schemas/RecipientDto" }
+                "items": {
+                  "$ref": "#/components/schemas/RecipientDto"
+                }
               }
             ]
           },
           "recipient_name": {
             "type": "string",
-            "description": "Nome completo do destinat\u00e1rio (obrigat\u00f3rio se recipient n\u00e3o for fornecido)"
+            "description": "Nome completo do destinatário (obrigatório se recipient não for fornecido)"
           },
           "recipient_email": {
             "type": "string",
             "format": "email",
-            "description": "E-mail do destinat\u00e1rio que receber\u00e1 o convite (obrigat\u00f3rio se recipient n\u00e3o for fornecido)"
+            "description": "E-mail do destinatário que receberá o convite (obrigatório se recipient não for fornecido)"
           },
           "recipient_number": {
             "type": "string",
-            "description": "N\u00famero do destinat\u00e1rio para notifica\u00e7\u00f5es por SMS ou WhatsApp (formato E.164). Exemplo: +5531987654321"
+            "description": "Número do destinatário para notificações por SMS ou WhatsApp (formato E.164). Exemplo: +5531987654321"
           },
           "reason": {
             "type": "string",
-            "description": "Motivo pelo qual o destinat\u00e1rio est\u00e1 recebendo o certificado"
+            "description": "Motivo pelo qual o destinatário está recebendo o certificado"
           }
         }
       },
       "CreateEventDto": {
         "type": "object",
-        "required": ["name", "description", "category", "location_type"],
+        "required": [
+          "name",
+          "description",
+          "category",
+          "location_type"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -100,34 +115,70 @@
           },
           "description": {
             "type": "string",
-            "description": "Descri\u00e7\u00e3o do evento"
+            "description": "Descrição do evento"
           },
           "category": {
             "type": "string",
-            "enum": ["SPORTS", "EDUCATION", "CORPORATE", "SOCIOCULTURAL"],
+            "enum": [
+              "SPORTS",
+              "EDUCATION",
+              "CORPORATE",
+              "SOCIOCULTURAL"
+            ],
             "description": "Categoria do evento"
           },
           "location_type": {
             "type": "string",
-            "enum": ["PHYSICAL", "ONLINE"],
-            "description": "Tipo de localiza\u00e7\u00e3o do evento"
+            "enum": [
+              "PHYSICAL",
+              "ONLINE"
+            ],
+            "description": "Tipo de localização do evento"
           },
           "state": {
             "type": "string",
-            "enum": ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"],
-            "description": "Estado do evento - UF brasileira (obrigat\u00f3rio quando location_type for physical)"
+            "enum": [
+              "AC",
+              "AL",
+              "AP",
+              "AM",
+              "BA",
+              "CE",
+              "DF",
+              "ES",
+              "GO",
+              "MA",
+              "MT",
+              "MS",
+              "MG",
+              "PA",
+              "PB",
+              "PR",
+              "PE",
+              "PI",
+              "RJ",
+              "RN",
+              "RS",
+              "RO",
+              "RR",
+              "SC",
+              "SP",
+              "SE",
+              "TO"
+            ],
+            "description": "Estado do evento - UF brasileira (obrigatório quando location_type for physical)"
           },
           "city": {
             "type": "string",
-            "description": "Cidade do evento (obrigat\u00f3rio quando location_type for physical)"
+            "description": "Cidade do evento (obrigatório quando location_type for physical)"
           },
           "initial_date": {
             "type": "string",
-            "description": "Data de in\u00edcio em formato ISO 8601. Salva em dd/mm/aaaa. Obrigat\u00f3rio para date_mode SINGLE_DATE ou DATE_RANGE."
+            "description": "Data de início em formato ISO 8601. Salva em dd/mm/aaaa. Obrigatório para date_mode SINGLE_DATE ou DATE_RANGE."
           },
           "finish_date": {
             "type": "string",
-            "description": "Data de t\u00e9rmino em formato ISO 8601. Salva em dd/mm/aaaa. Obrigat\u00f3rio para date_mode DATE_RANGE."
+            "description": "Data de término em formato ISO 8601. Salva em dd/mm/aaaa. Obrigatório para date_mode DATE_RANGE."
           },
           "official_url": {
             "type": "string",
@@ -143,46 +194,65 @@
           },
           "is_private": {
             "type": "boolean",
-            "description": "Define se o evento \u00e9 privado"
+            "description": "Define se o evento é privado"
           },
           "date_mode": {
             "type": "string",
-            "enum": ["SINGLE_DATE", "DATE_RANGE", "RECURRING", "ALWAYS_AVAILABLE"],
+            "enum": [
+              "SINGLE_DATE",
+              "DATE_RANGE",
+              "RECURRING",
+              "ALWAYS_AVAILABLE"
+            ],
             "description": "Modo de datas do evento"
           },
           "start_time": {
             "type": "string",
-            "description": "Hor\u00e1rio de in\u00edcio do evento (quando aplic\u00e1vel)"
+            "description": "Horário de início do evento (quando aplicável)"
           },
           "end_time": {
             "type": "string",
-            "description": "Hor\u00e1rio de t\u00e9rmino do evento (quando aplic\u00e1vel)"
+            "description": "Horário de término do evento (quando aplicável)"
           },
           "recurrence_type": {
             "type": "string",
-            "enum": ["WEEKLY", "BIWEEKLY", "MONTHLY", "BIMONTHLY", "QUARTERLY", "SEMIANNUAL", "ANNUAL"],
-            "description": "Tipo de recorr\u00eancia. Obrigat\u00f3rio para date_mode RECURRING."
+            "enum": [
+              "WEEKLY",
+              "BIWEEKLY",
+              "MONTHLY",
+              "BIMONTHLY",
+              "QUARTERLY",
+              "SEMIANNUAL",
+              "ANNUAL"
+            ],
+            "description": "Tipo de recorrência. Obrigatório para date_mode RECURRING."
           },
           "recurrence_start_date": {
             "type": "string",
-            "description": "Data de in\u00edcio da recorr\u00eancia em formato ISO 8601. Salva em dd/mm/aaaa. Obrigat\u00f3rio para date_mode RECURRING."
+            "description": "Data de início da recorrência em formato ISO 8601. Salva em dd/mm/aaaa. Obrigatório para date_mode RECURRING."
           },
           "connected_event_ids": {
             "type": "array",
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "Lista de IDs de eventos conectados"
           }
         }
       },
       "CreateEventsBodyDto": {
         "type": "object",
-        "required": ["events"],
+        "required": [
+          "events"
+        ],
         "properties": {
           "events": {
             "type": "array",
-            "items": { "$ref": "#/components/schemas/CreateEventDto" },
+            "items": {
+              "$ref": "#/components/schemas/CreateEventDto"
+            },
             "minItems": 1,
-            "description": "Um evento ou array de eventos para cria\u00e7\u00e3o"
+            "description": "Um evento ou array de eventos para criação"
           }
         }
       },
@@ -195,21 +265,57 @@
           },
           "description": {
             "type": "string",
-            "description": "Descri\u00e7\u00e3o do evento"
+            "description": "Descrição do evento"
           },
           "category": {
             "type": "string",
-            "enum": ["SPORTS", "EDUCATION", "CORPORATE", "SOCIOCULTURAL"],
+            "enum": [
+              "SPORTS",
+              "EDUCATION",
+              "CORPORATE",
+              "SOCIOCULTURAL"
+            ],
             "description": "Categoria do evento"
           },
           "location_type": {
             "type": "string",
-            "enum": ["PHYSICAL", "ONLINE"],
-            "description": "Tipo de localiza\u00e7\u00e3o do evento"
+            "enum": [
+              "PHYSICAL",
+              "ONLINE"
+            ],
+            "description": "Tipo de localização do evento"
           },
           "state": {
             "type": "string",
-            "enum": ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"],
+            "enum": [
+              "AC",
+              "AL",
+              "AP",
+              "AM",
+              "BA",
+              "CE",
+              "DF",
+              "ES",
+              "GO",
+              "MA",
+              "MT",
+              "MS",
+              "MG",
+              "PA",
+              "PB",
+              "PR",
+              "PE",
+              "PI",
+              "RJ",
+              "RN",
+              "RS",
+              "RO",
+              "RR",
+              "SC",
+              "SP",
+              "SE",
+              "TO"
+            ],
             "description": "Estado do evento - UF brasileira"
           },
           "city": {
@@ -218,11 +324,11 @@
           },
           "initial_date": {
             "type": "string",
-            "description": "Data de in\u00edcio em formato ISO 8601"
+            "description": "Data de início em formato ISO 8601"
           },
           "finish_date": {
             "type": "string",
-            "description": "Data de t\u00e9rmino em formato ISO 8601"
+            "description": "Data de término em formato ISO 8601"
           },
           "official_url": {
             "type": "string",
@@ -230,7 +336,7 @@
           },
           "image_url": {
             "type": "string",
-            "description": "URL p\u00fablica da imagem do evento"
+            "description": "URL pública da imagem do evento"
           },
           "image_key": {
             "type": "string",
@@ -238,40 +344,58 @@
           },
           "is_private": {
             "type": "boolean",
-            "description": "Define se o evento \u00e9 privado"
+            "description": "Define se o evento é privado"
           },
           "date_mode": {
             "type": "string",
-            "enum": ["SINGLE_DATE", "DATE_RANGE", "RECURRING", "ALWAYS_AVAILABLE"],
+            "enum": [
+              "SINGLE_DATE",
+              "DATE_RANGE",
+              "RECURRING",
+              "ALWAYS_AVAILABLE"
+            ],
             "description": "Modo de datas do evento"
           },
           "start_time": {
             "type": "string",
-            "description": "Hor\u00e1rio de in\u00edcio (quando aplic\u00e1vel)"
+            "description": "Horário de início (quando aplicável)"
           },
           "end_time": {
             "type": "string",
-            "description": "Hor\u00e1rio de t\u00e9rmino (quando aplic\u00e1vel)"
+            "description": "Horário de término (quando aplicável)"
           },
           "recurrence_type": {
             "type": "string",
-            "enum": ["WEEKLY", "BIWEEKLY", "MONTHLY", "BIMONTHLY", "QUARTERLY", "SEMIANNUAL", "ANNUAL"],
-            "description": "Tipo de recorr\u00eancia"
+            "enum": [
+              "WEEKLY",
+              "BIWEEKLY",
+              "MONTHLY",
+              "BIMONTHLY",
+              "QUARTERLY",
+              "SEMIANNUAL",
+              "ANNUAL"
+            ],
+            "description": "Tipo de recorrência"
           },
           "recurrence_start_date": {
             "type": "string",
-            "description": "Data de in\u00edcio da recorr\u00eancia em formato ISO 8601"
+            "description": "Data de início da recorrência em formato ISO 8601"
           },
           "connected_event_ids": {
             "type": "array",
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "Lista de IDs de eventos conectados"
           }
         }
       },
       "CreateWebhookEndpointDto": {
         "type": "object",
-        "required": ["url", "events"],
+        "required": [
+          "url",
+          "events"
+        ],
         "properties": {
           "url": {
             "type": "string",
@@ -280,7 +404,9 @@
           },
           "events": {
             "type": "array",
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "List of event types to subscribe to"
           },
           "description": {
@@ -299,7 +425,9 @@
           },
           "events": {
             "type": "array",
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "List of event types to subscribe to"
           },
           "description": {
@@ -314,17 +442,19 @@
       },
       "GenerateApiKeyDto": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Nome descritivo para a API Key",
-            "example": "Integra\u00e7\u00e3o Produ\u00e7\u00e3o"
+            "example": "Integração Produção"
           },
           "expiresAt": {
             "type": "string",
             "format": "date-time",
-            "description": "Data de expira\u00e7\u00e3o (opcional)",
+            "description": "Data de expiração (opcional)",
             "example": "2025-12-31T23:59:59Z"
           }
         }
@@ -334,8 +464,10 @@
   "paths": {
     "/v1.0": {
       "get": {
-        "tags": ["v1.0"],
-        "summary": "Informa\u00e7\u00f5es da API v1.0",
+        "tags": [
+          "Eventos"
+        ],
+        "summary": "Informações da API v1.0",
         "operationId": "getApiInfo",
         "responses": {
           "200": {
@@ -346,438 +478,1125 @@
     },
     "/v1.0/recipients": {
       "get": {
-        "tags": ["v1.0"],
-        "summary": "Buscar Destinat\u00e1rio",
+        "tags": [
+          "Emissões"
+        ],
+        "summary": "Buscar Destinatário",
         "operationId": "getRecipients",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "event_id", "in": "query", "required": false, "schema": { "type": "string" }, "description": "ID do evento associado \u00e0 emiss\u00e3o" },
-          { "name": "badge_id", "in": "query", "required": false, "schema": { "type": "string" }, "description": "ID do badge utilizado na emiss\u00e3o" },
-          { "name": "invitation_id", "in": "query", "required": false, "schema": { "type": "string" }, "description": "ID do certificado emitido" },
-          { "name": "recipient_email", "in": "query", "required": false, "schema": { "type": "string" }, "description": "E-mail informado no momento da emiss\u00e3o" },
-          { "name": "recipient_name", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Nome informado no momento da emiss\u00e3o" },
-          { "name": "reason", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Motivo da emiss\u00e3o do certificado" }
+          {
+            "name": "event_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do evento associado à emissão"
+          },
+          {
+            "name": "badge_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do badge utilizado na emissão"
+          },
+          {
+            "name": "invitation_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do certificado emitido"
+          },
+          {
+            "name": "recipient_email",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "E-mail informado no momento da emissão"
+          },
+          {
+            "name": "recipient_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Nome informado no momento da emissão"
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Motivo da emissão do certificado"
+          }
         ],
         "responses": {
-          "200": { "description": "Lista restrita de destinat\u00e1rios encontrados com base nos filtros informados" },
-          "400": { "description": "Filtros insuficientes (faltou contexto e/ou identificador)" },
-          "401": { "description": "Acesso n\u00e3o autorizado" },
-          "404": { "description": "Nenhum resultado encontrado" },
-          "429": { "description": "Rate limit (prote\u00e7\u00e3o contra uso indevido)" }
+          "200": {
+            "description": "Lista restrita de destinatários encontrados com base nos filtros informados"
+          },
+          "400": {
+            "description": "Filtros insuficientes (faltou contexto e/ou identificador)"
+          },
+          "401": {
+            "description": "Acesso não autorizado"
+          },
+          "404": {
+            "description": "Nenhum resultado encontrado"
+          },
+          "429": {
+            "description": "Rate limit (proteção contra uso indevido)"
+          }
         }
       }
     },
     "/v1.0/recipient-invitations": {
       "get": {
-        "tags": ["v1.0"],
-        "summary": "Listar Convites de Destinat\u00e1rios",
+        "tags": [
+          "Emissões"
+        ],
+        "summary": "Listar Convites de Destinatários",
         "operationId": "getRecipientInvitations",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "limit", "in": "query", "required": false, "schema": { "type": "integer" }, "description": "Limite de resultados" },
-          { "name": "offset", "in": "query", "required": false, "schema": { "type": "integer" }, "description": "Offset para pagina\u00e7\u00e3o" }
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Limite de resultados"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Offset para paginação"
+          }
         ],
         "responses": {
-          "200": { "description": "Lista de convites de destinat\u00e1rios retornada com sucesso" }
+          "200": {
+            "description": "Lista de convites de destinatários retornada com sucesso"
+          }
         }
       }
     },
     "/v1.0/invitations": {
       "post": {
-        "tags": ["v1.0"],
+        "tags": [
+          "Emissões"
+        ],
         "summary": "Emitir Certificados",
         "operationId": "issueInvitation",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/IssueInvitationDto" }
+              "schema": {
+                "$ref": "#/components/schemas/IssueInvitationDto"
+              }
             }
           }
         },
         "responses": {
-          "201": { "description": "Certificado emitido com sucesso" },
-          "400": { "description": "Dados inv\u00e1lidos ou ausentes" },
-          "401": { "description": "API Key inv\u00e1lida" },
-          "402": { "description": "Saldo insuficiente para emiss\u00e3o" },
-          "404": { "description": "Evento inexistente, finalizado ou n\u00e3o pertencente ao emissor / Badge inexistente ou n\u00e3o pertencente ao emissor" },
-          "409": { "description": "Certificado j\u00e1 emitido para o mesmo destinat\u00e1rio" }
+          "201": {
+            "description": "Certificado emitido com sucesso"
+          },
+          "400": {
+            "description": "Dados inválidos ou ausentes"
+          },
+          "401": {
+            "description": "API Key inválida"
+          },
+          "402": {
+            "description": "Saldo insuficiente para emissão"
+          },
+          "404": {
+            "description": "Evento inexistente, finalizado ou não pertencente ao emissor / Badge inexistente ou não pertencente ao emissor"
+          },
+          "409": {
+            "description": "Certificado já emitido para o mesmo destinatário"
+          }
         }
       },
       "get": {
-        "tags": ["v1.0"],
+        "tags": [
+          "Emissões"
+        ],
         "summary": "Listar Certificados",
         "operationId": "getInvitations",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "limit", "in": "query", "required": false, "schema": { "type": "integer" }, "description": "Quantidade m\u00e1xima de certificados retornados por p\u00e1gina" },
-          { "name": "offset", "in": "query", "required": false, "schema": { "type": "integer" }, "description": "Posi\u00e7\u00e3o inicial da listagem para pagina\u00e7\u00e3o" },
-          { "name": "status", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Filtra pelo status de aceite do certificado (PENDING, ACCEPTED)" },
-          { "name": "event_id", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Filtra certificados emitidos para um evento espec\u00edfico" },
-          { "name": "badge_id", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Filtra certificados emitidos utilizando um badge espec\u00edfico" },
-          { "name": "created_from", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Filtra certificados emitidos a partir de uma data (ISO 8601)" },
-          { "name": "created_to", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Filtra certificados emitidos at\u00e9 uma data (ISO 8601)" },
-          { "name": "sort", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Campo de ordena\u00e7\u00e3o (padr\u00e3o: created_at)" },
-          { "name": "order", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Ordem de ordena\u00e7\u00e3o: asc ou desc (padr\u00e3o: desc)" }
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Quantidade máxima de certificados retornados por página"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Posição inicial da listagem para paginação"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtra pelo status de aceite do certificado (PENDING, ACCEPTED)"
+          },
+          {
+            "name": "event_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtra certificados emitidos para um evento específico"
+          },
+          {
+            "name": "badge_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtra certificados emitidos utilizando um badge específico"
+          },
+          {
+            "name": "created_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtra certificados emitidos a partir de uma data (ISO 8601)"
+          },
+          {
+            "name": "created_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtra certificados emitidos até uma data (ISO 8601)"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Campo de ordenação (padrão: created_at)"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Ordem de ordenação: asc ou desc (padrão: desc)"
+          }
         ],
         "responses": {
-          "200": { "description": "Lista de certificados retornada com sucesso" },
-          "401": { "description": "API Key inv\u00e1lida" }
+          "200": {
+            "description": "Lista de certificados retornada com sucesso"
+          },
+          "401": {
+            "description": "API Key inválida"
+          }
         }
       }
     },
     "/v1.0/badges": {
       "get": {
-        "tags": ["v1.0"],
+        "tags": [
+          "Badges"
+        ],
         "summary": "Listar Badges",
         "operationId": "getBadges",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "limit", "in": "query", "required": false, "schema": { "type": "integer" }, "description": "Quantidade m\u00e1xima de badges retornados por p\u00e1gina" },
-          { "name": "offset", "in": "query", "required": false, "schema": { "type": "integer" }, "description": "Posi\u00e7\u00e3o inicial da listagem para pagina\u00e7\u00e3o" }
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Quantidade máxima de badges retornados por página"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Posição inicial da listagem para paginação"
+          }
         ],
         "responses": {
-          "200": { "description": "Lista de badges retornada com sucesso" },
-          "401": { "description": "API Key inv\u00e1lida" }
+          "200": {
+            "description": "Lista de badges retornada com sucesso"
+          },
+          "401": {
+            "description": "API Key inválida"
+          }
         }
       }
     },
     "/v1.0/badges/{id}": {
       "get": {
-        "tags": ["v1.0"],
-        "summary": "Informa\u00e7\u00f5es de uma Badge",
+        "tags": [
+          "Badges"
+        ],
+        "summary": "Informações de uma Badge",
         "operationId": "getBadgeById",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do badge (badge_id)" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do badge (badge_id)"
+          }
         ],
         "responses": {
-          "200": { "description": "Badge retornado com sucesso" },
-          "401": { "description": "API Key inv\u00e1lida" },
-          "404": { "description": "Badge n\u00e3o encontrado" }
+          "200": {
+            "description": "Badge retornado com sucesso"
+          },
+          "401": {
+            "description": "API Key inválida"
+          },
+          "404": {
+            "description": "Badge não encontrado"
+          }
         }
       }
     },
     "/v1.0/events": {
       "get": {
-        "tags": ["v1.0"],
+        "tags": [
+          "Eventos"
+        ],
         "summary": "Listar Eventos",
         "operationId": "getEvents",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "limit", "in": "query", "required": false, "schema": { "type": "integer" }, "description": "Quantidade m\u00e1xima de eventos retornados por p\u00e1gina" },
-          { "name": "offset", "in": "query", "required": false, "schema": { "type": "integer" }, "description": "Posi\u00e7\u00e3o inicial da listagem para pagina\u00e7\u00e3o" },
-          { "name": "q", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Busca textual por nome do evento (case-insensitive)" },
-          { "name": "status", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Filtra por status do evento (ex.: ACTIVE, FINISHED, PENDING, COMPLETED)" },
-          { "name": "category", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Filtra por categoria do evento (ex.: EDUCATION, SPORTS, CORPORATE, SOCIOCULTURAL)" },
-          { "name": "created_from", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Filtra eventos criados a partir de uma data (ISO 8601)" },
-          { "name": "created_to", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Filtra eventos criados at\u00e9 uma data (ISO 8601)" },
-          { "name": "sort", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Campo de ordena\u00e7\u00e3o (padr\u00e3o: created_at)" },
-          { "name": "order", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Ordem de ordena\u00e7\u00e3o: asc ou desc (padr\u00e3o: desc)" }
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Quantidade máxima de eventos retornados por página"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Posição inicial da listagem para paginação"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Busca textual por nome do evento (case-insensitive)"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtra por status do evento (ex.: ACTIVE, FINISHED, PENDING, COMPLETED)"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtra por categoria do evento (ex.: EDUCATION, SPORTS, CORPORATE, SOCIOCULTURAL)"
+          },
+          {
+            "name": "created_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtra eventos criados a partir de uma data (ISO 8601)"
+          },
+          {
+            "name": "created_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtra eventos criados até uma data (ISO 8601)"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Campo de ordenação (padrão: created_at)"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Ordem de ordenação: asc ou desc (padrão: desc)"
+          }
         ],
         "responses": {
-          "200": { "description": "Lista de eventos retornada com sucesso" },
-          "401": { "description": "API Key inv\u00e1lida" }
+          "200": {
+            "description": "Lista de eventos retornada com sucesso"
+          },
+          "401": {
+            "description": "API Key inválida"
+          }
         }
       },
       "post": {
-        "tags": ["v1.0"],
+        "tags": [
+          "Eventos"
+        ],
         "summary": "Criar um ou mais eventos",
         "operationId": "createEvent",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "description": "Objeto com os atributos de um evento ou array de eventos",
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/CreateEventsBodyDto" }
+              "schema": {
+                "$ref": "#/components/schemas/CreateEventsBodyDto"
+              }
             }
           }
         },
         "responses": {
-          "201": { "description": "Evento(s) criado(s) com sucesso" },
-          "400": { "description": "Dados inv\u00e1lidos" },
-          "401": { "description": "API Key inv\u00e1lida" },
-          "403": { "description": "Acesso negado" }
+          "201": {
+            "description": "Evento(s) criado(s) com sucesso"
+          },
+          "400": {
+            "description": "Dados inválidos"
+          },
+          "401": {
+            "description": "API Key inválida"
+          },
+          "403": {
+            "description": "Acesso negado"
+          }
         }
       }
     },
     "/v1.0/events/{id}": {
       "patch": {
-        "tags": ["v1.0"],
-        "summary": "Atualizar um evento espec\u00edfico",
+        "tags": [
+          "Eventos"
+        ],
+        "summary": "Atualizar um evento específico",
         "operationId": "updateEvent",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do evento" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do evento"
+          }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/UpdateEventDto" }
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEventDto"
+              }
             }
           }
         },
         "responses": {
-          "200": { "description": "Evento atualizado com sucesso" },
-          "400": { "description": "Dados inv\u00e1lidos" },
-          "401": { "description": "API Key inv\u00e1lida" },
-          "403": { "description": "Acesso negado" },
-          "404": { "description": "Evento n\u00e3o encontrado" },
-          "409": { "description": "Evento j\u00e1 finalizado (n\u00e3o pode ser modificado)" }
+          "200": {
+            "description": "Evento atualizado com sucesso"
+          },
+          "400": {
+            "description": "Dados inválidos"
+          },
+          "401": {
+            "description": "API Key inválida"
+          },
+          "403": {
+            "description": "Acesso negado"
+          },
+          "404": {
+            "description": "Evento não encontrado"
+          },
+          "409": {
+            "description": "Evento já finalizado (não pode ser modificado)"
+          }
         }
       },
       "delete": {
-        "tags": ["v1.0"],
+        "tags": [
+          "Eventos"
+        ],
         "summary": "Deletar Evento",
         "operationId": "deleteEvent",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do evento a ser deletado (event_id)" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do evento a ser deletado (event_id)"
+          }
         ],
         "responses": {
-          "204": { "description": "Evento deletado com sucesso (sem conte\u00fado no corpo)" },
-          "401": { "description": "API Key inv\u00e1lida" },
-          "404": { "description": "Evento n\u00e3o encontrado ou n\u00e3o pertence ao emissor autenticado" },
-          "409": { "description": "Evento n\u00e3o pode ser deletado (emiss\u00f5es ou est\u00e1 finalizado)" }
+          "204": {
+            "description": "Evento deletado com sucesso (sem conteúdo no corpo)"
+          },
+          "401": {
+            "description": "API Key inválida"
+          },
+          "404": {
+            "description": "Evento não encontrado ou não pertence ao emissor autenticado"
+          },
+          "409": {
+            "description": "Evento não pode ser deletado (emissões ou está finalizado)"
+          }
         }
       },
       "get": {
-        "tags": ["v1.0"],
-        "summary": "Obter um evento espec\u00edfico",
+        "tags": [
+          "Eventos"
+        ],
+        "summary": "Obter um evento específico",
         "operationId": "getEventById",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do evento" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do evento"
+          }
         ],
         "responses": {
-          "200": { "description": "Evento retornado com sucesso" },
-          "401": { "description": "API Key inv\u00e1lida" },
-          "404": { "description": "Evento n\u00e3o encontrado" }
+          "200": {
+            "description": "Evento retornado com sucesso"
+          },
+          "401": {
+            "description": "API Key inválida"
+          },
+          "404": {
+            "description": "Evento não encontrado"
+          }
         }
       }
     },
     "/v1.0/events/{id}/badges": {
       "get": {
-        "tags": ["v1.0"],
+        "tags": [
+          "Eventos"
+        ],
         "summary": "Obter badges de um evento",
         "operationId": "getEventBadges",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do evento" },
-          { "name": "limit", "in": "query", "required": false, "schema": { "type": "integer" }, "description": "Limite de resultados" },
-          { "name": "offset", "in": "query", "required": false, "schema": { "type": "integer" }, "description": "Offset para pagina\u00e7\u00e3o" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do evento"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Limite de resultados"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Offset para paginação"
+          }
         ],
         "responses": {
-          "200": { "description": "Badges do evento retornados com sucesso" }
+          "200": {
+            "description": "Badges do evento retornados com sucesso"
+          }
         }
       }
     },
     "/v1.0/balance": {
       "get": {
-        "tags": ["v1.0"],
+        "tags": [
+          "Saldo"
+        ],
         "summary": "Saldo",
         "operationId": "getBalance",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
-          "200": { "description": "Saldo atual de cr\u00e9ditos retornado com sucesso" },
-          "401": { "description": "API Key inv\u00e1lida ou ausente" }
+          "200": {
+            "description": "Saldo atual de créditos retornado com sucesso"
+          },
+          "401": {
+            "description": "API Key inválida ou ausente"
+          }
         }
       }
     },
     "/v1.0/emissions": {
       "post": {
-        "tags": ["v1.0"],
+        "tags": [
+          "Emissões"
+        ],
         "summary": "Emitir Certificados (alias)",
         "operationId": "issueEmission",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/IssueInvitationDto" }
+              "schema": {
+                "$ref": "#/components/schemas/IssueInvitationDto"
+              }
             }
           }
         },
         "responses": {
-          "201": { "description": "Certificado emitido com sucesso" },
-          "400": { "description": "Dados inv\u00e1lidos ou ausentes" },
-          "401": { "description": "API Key inv\u00e1lida" },
-          "402": { "description": "Saldo insuficiente para emiss\u00e3o" },
-          "404": { "description": "Evento ou badge n\u00e3o encontrado" },
-          "409": { "description": "Certificado j\u00e1 emitido para o mesmo destinat\u00e1rio" }
+          "201": {
+            "description": "Certificado emitido com sucesso"
+          },
+          "400": {
+            "description": "Dados inválidos ou ausentes"
+          },
+          "401": {
+            "description": "API Key inválida"
+          },
+          "402": {
+            "description": "Saldo insuficiente para emissão"
+          },
+          "404": {
+            "description": "Evento ou badge não encontrado"
+          },
+          "409": {
+            "description": "Certificado já emitido para o mesmo destinatário"
+          }
         }
       }
     },
     "/v1.0/webhooks": {
       "post": {
-        "tags": ["webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Create a webhook endpoint",
         "operationId": "createWebhookEndpoint",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/CreateWebhookEndpointDto" }
+              "schema": {
+                "$ref": "#/components/schemas/CreateWebhookEndpointDto"
+              }
             }
           }
         },
         "responses": {
-          "201": { "description": "Webhook endpoint created" }
+          "201": {
+            "description": "Webhook endpoint created"
+          }
         }
       },
       "get": {
-        "tags": ["webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "List webhook endpoints",
         "operationId": "listWebhookEndpoints",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
-          "200": { "description": "List of webhook endpoints" }
+          "200": {
+            "description": "List of webhook endpoints"
+          }
         }
       }
     },
     "/v1.0/webhooks/{id}": {
       "get": {
-        "tags": ["webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Get a webhook endpoint",
         "operationId": "getWebhookEndpoint",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do webhook endpoint" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do webhook endpoint"
+          }
         ],
         "responses": {
-          "200": { "description": "Webhook endpoint details" },
-          "404": { "description": "Webhook endpoint not found" }
+          "200": {
+            "description": "Webhook endpoint details"
+          },
+          "404": {
+            "description": "Webhook endpoint not found"
+          }
         }
       },
       "patch": {
-        "tags": ["webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Update a webhook endpoint",
         "operationId": "updateWebhookEndpoint",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do webhook endpoint" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do webhook endpoint"
+          }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/UpdateWebhookEndpointDto" }
+              "schema": {
+                "$ref": "#/components/schemas/UpdateWebhookEndpointDto"
+              }
             }
           }
         },
         "responses": {
-          "200": { "description": "Webhook endpoint updated" },
-          "404": { "description": "Webhook endpoint not found" }
+          "200": {
+            "description": "Webhook endpoint updated"
+          },
+          "404": {
+            "description": "Webhook endpoint not found"
+          }
         }
       },
       "delete": {
-        "tags": ["webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Delete a webhook endpoint",
         "operationId": "deleteWebhookEndpoint",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do webhook endpoint" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do webhook endpoint"
+          }
         ],
         "responses": {
-          "204": { "description": "Webhook endpoint deleted" },
-          "404": { "description": "Webhook endpoint not found" }
+          "204": {
+            "description": "Webhook endpoint deleted"
+          },
+          "404": {
+            "description": "Webhook endpoint not found"
+          }
         }
       }
     },
     "/v1.0/webhooks/{id}/deliveries": {
       "get": {
-        "tags": ["webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "List deliveries for a webhook endpoint",
         "operationId": "listWebhookDeliveries",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do webhook endpoint" },
-          { "name": "page", "in": "query", "required": false, "schema": { "type": "integer", "default": 1 }, "description": "Page number" },
-          { "name": "limit", "in": "query", "required": false, "schema": { "type": "integer", "default": 20 }, "description": "Items per page" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do webhook endpoint"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Page number"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20
+            },
+            "description": "Items per page"
+          }
         ],
         "responses": {
-          "200": { "description": "Paginated list of deliveries" },
-          "404": { "description": "Webhook endpoint not found" }
+          "200": {
+            "description": "Paginated list of deliveries"
+          },
+          "404": {
+            "description": "Webhook endpoint not found"
+          }
         }
       }
     },
     "/v1.0/webhooks/{id}/test": {
       "post": {
-        "tags": ["webhooks"],
+        "tags": [
+          "Webhooks"
+        ],
         "summary": "Send a test webhook event",
         "operationId": "testWebhookEndpoint",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do webhook endpoint" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do webhook endpoint"
+          }
         ],
         "responses": {
-          "200": { "description": "Test event dispatched" },
-          "404": { "description": "Webhook endpoint not found" }
+          "200": {
+            "description": "Test event dispatched"
+          },
+          "404": {
+            "description": "Webhook endpoint not found"
+          }
         }
       }
     },
     "/dashboard/events/list": {
       "get": {
-        "tags": ["Dashboard"],
+        "tags": [
+          "Dashboard"
+        ],
         "summary": "Listar eventos do dashboard",
         "operationId": "listEvents",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "search", "in": "query", "required": false, "schema": { "type": "string" }, "description": "Busca textual por nome do evento" },
-          { "name": "page", "in": "query", "required": false, "schema": { "type": "integer", "default": 1 }, "description": "N\u00famero da p\u00e1gina" },
-          { "name": "limit", "in": "query", "required": false, "schema": { "type": "integer", "default": 20 }, "description": "Itens por p\u00e1gina" }
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Busca textual por nome do evento"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Número da página"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20
+            },
+            "description": "Itens por página"
+          }
         ],
         "responses": {
-          "200": { "description": "Lista de eventos retornada com sucesso" }
+          "200": {
+            "description": "Lista de eventos retornada com sucesso"
+          }
         }
       }
     },
     "/dashboard/funnel/{event_id}": {
       "get": {
-        "tags": ["Dashboard"],
+        "tags": [
+          "Dashboard"
+        ],
         "summary": "Obter funil de um evento",
         "operationId": "getFunnel",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "event_id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do evento" }
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do evento"
+          }
         ],
         "responses": {
-          "200": { "description": "Dados do funil retornados com sucesso" }
+          "200": {
+            "description": "Dados do funil retornados com sucesso"
+          }
         }
       }
     },
     "/dashboard/winners/{event_id}": {
       "get": {
-        "tags": ["Dashboard"],
+        "tags": [
+          "Dashboard"
+        ],
         "summary": "Listar vencedores de um evento",
         "operationId": "getWinners",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "event_id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID do evento" },
-          { "name": "page", "in": "query", "required": false, "schema": { "type": "integer", "default": 1 }, "description": "N\u00famero da p\u00e1gina" },
-          { "name": "limit", "in": "query", "required": false, "schema": { "type": "integer", "default": 50 }, "description": "Itens por p\u00e1gina (m\u00e1ximo 50)" }
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID do evento"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Número da página"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50
+            },
+            "description": "Itens por página (máximo 50)"
+          }
         ],
         "responses": {
-          "200": { "description": "Lista de vencedores retornada com sucesso" }
+          "200": {
+            "description": "Lista de vencedores retornada com sucesso"
+          }
         }
       }
     },
     "/dashboard/export/csv": {
       "get": {
-        "tags": ["Dashboard"],
+        "tags": [
+          "Dashboard"
+        ],
         "summary": "Exportar dados em CSV",
         "operationId": "exportCsv",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Arquivo CSV gerado com sucesso",
             "content": {
               "text/csv": {
-                "schema": { "type": "string", "format": "binary" }
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
               }
             }
           }
@@ -786,74 +1605,163 @@
     },
     "/certificate/verify/{hash}": {
       "get": {
-        "tags": ["Certificate"],
+        "tags": [
+          "Verificação"
+        ],
         "summary": "Verificar autenticidade de um certificado",
         "operationId": "verifyCertificate",
         "parameters": [
-          { "name": "hash", "in": "path", "required": true, "schema": { "type": "string" }, "description": "Hash \u00fanico do certificado" }
+          {
+            "name": "hash",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Hash único do certificado"
+          }
         ],
         "responses": {
-          "200": { "description": "Dados de verifica\u00e7\u00e3o do certificado retornados com sucesso" },
-          "404": { "description": "Certificado n\u00e3o encontrado" }
+          "200": {
+            "description": "Dados de verificação do certificado retornados com sucesso"
+          },
+          "404": {
+            "description": "Certificado não encontrado"
+          }
         }
       }
     },
     "/api-keys": {
       "post": {
-        "tags": ["API Keys"],
+        "tags": [
+          "API Keys"
+        ],
         "summary": "Gerar nova API Key",
-        "description": "Gera uma nova API Key para autentica\u00e7\u00e3o na API p\u00fablica v1.0. A autentica\u00e7\u00e3o \u00e9 feita apenas atrav\u00e9s do token fornecido.",
+        "description": "Gera uma nova API Key para autenticação na API pública v1.0. A autenticação é feita apenas através do token fornecido.",
         "operationId": "generateApiKey",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/GenerateApiKeyDto" }
+              "schema": {
+                "$ref": "#/components/schemas/GenerateApiKeyDto"
+              }
             }
           }
         },
         "responses": {
-          "201": { "description": "API Key gerada com sucesso. O token retornado deve ser usado no header Authorization: Bearer {token} para acessar as rotas da API v1.0." },
-          "401": { "description": "N\u00e3o autorizado" },
-          "403": { "description": "Acesso negado" }
+          "201": {
+            "description": "API Key gerada com sucesso. O token retornado deve ser usado no header Authorization: Bearer {token} para acessar as rotas da API v1.0."
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso negado"
+          }
         }
       },
       "get": {
-        "tags": ["API Keys"],
+        "tags": [
+          "API Keys"
+        ],
         "summary": "Listar API Keys da empresa",
         "operationId": "listApiKeys",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
-          "200": { "description": "Lista de API Keys" },
-          "401": { "description": "N\u00e3o autorizado" },
-          "403": { "description": "Acesso negado" }
+          "200": {
+            "description": "Lista de API Keys"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso negado"
+          }
         }
       }
     },
     "/api-keys/{id}/revoke": {
       "patch": {
-        "tags": ["API Keys"],
+        "tags": [
+          "API Keys"
+        ],
         "summary": "Inativar (revogar) uma API Key",
         "operationId": "revokeApiKey",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "ID da API Key" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID da API Key"
+          }
         ],
         "responses": {
-          "200": { "description": "API Key inativada com sucesso" },
-          "401": { "description": "N\u00e3o autorizado" },
-          "403": { "description": "Acesso negado" },
-          "404": { "description": "API Key n\u00e3o encontrada" }
+          "200": {
+            "description": "API Key inativada com sucesso"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso negado"
+          },
+          "404": {
+            "description": "API Key não encontrada"
+          }
         }
       }
     }
   },
   "tags": [
-    { "name": "v1.0", "description": "API p\u00fablica v1.0 \u2014 certificados, eventos, badges e saldo" },
-    { "name": "webhooks", "description": "Gerenciamento de webhook endpoints" },
-    { "name": "Dashboard", "description": "Analytics e exporta\u00e7\u00e3o de dados do dashboard" },
-    { "name": "Certificate", "description": "Verifica\u00e7\u00e3o p\u00fablica de certificados" },
-    { "name": "API Keys", "description": "Gerenciamento de API Keys (requer JWT com role COMPANY)" }
+    {
+      "name": "Emissões",
+      "description": "Emitir certificados e gerenciar destinatários"
+    },
+    {
+      "name": "Eventos",
+      "description": "Criar e gerenciar eventos"
+    },
+    {
+      "name": "Badges",
+      "description": "Gerenciar badges/TMs"
+    },
+    {
+      "name": "Saldo",
+      "description": "Consultar saldo de emissões"
+    },
+    {
+      "name": "Dashboard",
+      "description": "Analytics e exportação de dados"
+    },
+    {
+      "name": "Webhooks",
+      "description": "Configurar notificações em tempo real"
+    },
+    {
+      "name": "API Keys",
+      "description": "Gerenciar chaves de API"
+    },
+    {
+      "name": "Verificação",
+      "description": "Verificar autenticidade de certificados"
+    }
   ]
 }

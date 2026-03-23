@@ -1,0 +1,91 @@
+---
+title: "Paginação"
+description: "Como paginar resultados na API That's Me"
+---
+
+## Paginação
+
+Endpoints que retornam listas usam paginação via query parameters.
+
+| Parâmetro | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `page` | number | 1 | Número da página |
+| `limit` | number | 20 | Itens por página (máx: 50) |
+
+## Exemplo
+
+```bash
+curl "https://api.thatsme.com.br/api/v1.0/events?page=2&limit=10" \
+  -H "Authorization: Bearer SUA_API_KEY"
+```
+
+## Resposta paginada
+
+```json
+{
+  "data": [...],
+  "total": 150,
+  "page": 2,
+  "limit": 10,
+  "hasMore": true
+}
+```
+
+## Percorrendo todas as páginas
+
+<CodeGroup>
+
+```javascript Node.js
+async function fetchAll(baseUrl, apiKey) {
+  const results = [];
+  let page = 1;
+  let hasMore = true;
+
+  while (hasMore) {
+    const res = await fetch(`${baseUrl}?page=${page}&limit=50`, {
+      headers: { Authorization: `Bearer ${apiKey}` },
+    });
+    const json = await res.json();
+    results.push(...json.data);
+    hasMore = json.hasMore;
+    page++;
+  }
+
+  return results;
+}
+```
+
+```python Python
+import requests
+
+def fetch_all(base_url, api_key):
+    results = []
+    page = 1
+    has_more = True
+
+    while has_more:
+        res = requests.get(
+            f'{base_url}?page={page}&limit=50',
+            headers={'Authorization': f'Bearer {api_key}'}
+        )
+        data = res.json()
+        results.extend(data['data'])
+        has_more = data['hasMore']
+        page += 1
+
+    return results
+```
+
+</CodeGroup>
+
+## Endpoints que suportam paginação
+
+| Endpoint | Padrão de itens |
+|---|---|
+| `GET /v1.0/events` | 20 |
+| `GET /v1.0/badges` | 20 |
+| `GET /v1.0/invitations` | 20 |
+| `GET /v1.0/recipients` | 20 |
+| `GET /v1.0/recipient-invitations` | 20 |
+| `GET /v1.0/webhooks` | 20 |
+| `GET /dashboard/winners/{event_id}` | 20 |

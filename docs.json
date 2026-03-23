@@ -40,13 +40,13 @@
   "navigation": {
     "languages": [
       {
-        "language": "pt",
+        "language": "pt-BR",
         "tabs": [
           {
             "tab": "Plataforma",
             "groups": [
               {
-                "group": "Introducao",
+                "group": "Introdução",
                 "pages": [
                   "introducao/bem-vindo",
                   "introducao/sobre-nos",
@@ -94,7 +94,7 @@
                 ]
               },
               {
-                "group": "Integracoes",
+                "group": "Integrações",
                 "pages": [
                   "integracoes/api",
                   "integracoes/linkedin",
@@ -109,7 +109,9 @@
               {
                 "group": "Guias",
                 "pages": [
-                  "api/autenticacao"
+                  "api/autenticacao",
+                  "api/erros",
+                  "api/paginacao"
                 ]
               },
               {
@@ -135,7 +137,7 @@
             "tab": "Planos",
             "groups": [
               {
-                "group": "Planos e Cobranca",
+                "group": "Planos e Cobrança",
                 "pages": [
                   "planos/visao-geral",
                   "planos/excedente",
@@ -146,10 +148,10 @@
             ]
           },
           {
-            "tab": "Glossario",
+            "tab": "Glossário",
             "groups": [
               {
-                "group": "Glossario",
+                "group": "Glossário",
                 "pages": [
                   "glossario"
                 ]
