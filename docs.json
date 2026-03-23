@@ -52,7 +52,11 @@
         "groups": [
           {
             "group": "Platform",
-            "pages": ["platform/welcome", "platform/how-it-works", "platform/verification", "platform/plans"]
+            "pages": ["platform/welcome", "platform/how-it-works", "platform/verification", "platform/certificate-permanence", "platform/plans"]
+          },
+          {
+            "group": "Plans & Billing",
+            "pages": ["plans/overview", "plans/overage", "plans/whatsapp", "plans/sla"]
           }
         ]
       },
@@ -70,7 +74,7 @@
         "groups": [
           {
             "group": "API Overview",
-            "pages": ["api/v1/overview", "api/v1/quickstart"]
+            "pages": ["api/v1/overview", "api/v1/quickstart", "api/v1/tiers"]
           },
           {
             "group": "Webhooks",

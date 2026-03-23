@@ -1,0 +1,69 @@
+---
+title: "Certificate Permanence"
+description: "How certificates remain active forever, regardless of your plan"
+---
+
+## Certificates never expire
+
+Every certificate issued on That's Me is **permanent**. Once emitted, it remains active and verifiable forever — regardless of whether you:
+
+- Downgrade your plan
+- Cancel your subscription entirely
+- Delete the event that originated it
+
+This is a core design principle: a certificate represents a real achievement, and that achievement doesn't disappear because of a billing change.
+
+## What happens when you cancel
+
+| What | Status after cancellation |
+|---|---|
+| Existing certificates | ✅ Active and verifiable |
+| Certificate pages | ✅ Accessible via direct link |
+| SHA-256 verification | ✅ Works permanently |
+| Recipient profiles | ✅ Certificates remain visible |
+| New issuances | ❌ Blocked (requires active plan) |
+| 3D badge editor | ❌ Reverts to Free plan (watermark) |
+| Public directory listing | ⏳ Active for 90-day grace period |
+
+## SHA-256 verification
+
+Every certificate gets a unique SHA-256 hash at emission time. This hash is computed from:
+
+```
+post_id | event_id | badge_id | profile_id | user_id | created_at | kyb_verification_id
+```
+
+Anyone can verify a certificate's authenticity by visiting:
+
+```
+https://thatsme.com.br/certificate/verify/[hash]
+```
+
+The verification confirms:
+- The certificate was issued by That's Me
+- The data hasn't been tampered with
+- Whether the issuer was verified (KYB) at the time of issuance
+
+<Tip>
+  The hash is immutable. Even if an issuer loses their KYB verification later, certificates issued during the verified period retain the verification ID in their hash — providing permanent proof.
+</Tip>
+
+## Why this is different
+
+Most certificate and LMS platforms store certificates as PDFs or in proprietary databases. This creates problems:
+
+| Traditional approach | That's Me |
+|---|---|
+| PDF can be forged | SHA-256 hash prevents tampering |
+| Certificate breaks if platform shuts down | Hashes are stored independently |
+| No way to verify issuer legitimacy | KYB verification is embedded in the hash |
+| Certificate exists in isolation | Connected to recipient's profile and recommendation engine |
+
+## For recipients
+
+If you received a certificate on That's Me:
+- It's yours permanently
+- It appears on your public profile
+- It feeds the AI recommendation engine
+- You can share it on LinkedIn with one click
+- Anyone who views it can verify its authenticity

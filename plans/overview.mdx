@@ -1,0 +1,52 @@
+---
+title: "Plans Overview"
+description: "What each plan includes, pricing, and how the billing cycle works"
+---
+
+## Plans at a glance
+
+| Plan | Issuances/mo | Price (BRL) | Price (USD) | API tier |
+|---|---|---|---|---|
+| **Free** | 0 | R$ 0 | $0 | — |
+| **Starter** | 200 | R$ 149/mo | $29/mo | Basic |
+| **Pro** | 1,000 | R$ 749/mo | $129/mo | Advanced |
+| **Business** | 5,000 | R$ 2,499/mo | $449/mo | Advanced |
+| **Enterprise** | Negotiated | Custom | Custom | Advanced |
+
+Annual billing gives you **2 months free** (17% discount). The amount is charged as a single annual payment.
+
+## What is an issuance?
+
+An **issuance** is a single certificate emitted to a recipient. Each issuance:
+
+- Creates a unique SHA-256 hash for verification
+- Delivers the certificate via email (and WhatsApp, if enabled)
+- Counts toward your monthly quota
+- Is **permanent** — it never expires, even if you cancel your plan
+
+One event with 50 recipients = 50 issuances.
+
+## Billing cycle
+
+Your quota resets on your **billing cycle date** — the day you subscribed — not on the 1st of every month.
+
+Example: if you subscribed on March 15th, your quota resets on the 15th of each month.
+
+<Tip>
+  You can check your current usage and billing cycle date at **Settings → Billing**.
+</Tip>
+
+## What happens when you cancel
+
+- **Existing certificates** remain active and verifiable forever
+- **New issuances** are blocked immediately
+- **Events** remain visible in the public directory for 90 days (grace period)
+- Your account reverts to the Free plan
+
+## Learn more
+
+- [Overage — emitting beyond your quota](/plans/overage)
+- [WhatsApp delivery](/plans/whatsapp)
+- [API access by tier](/api/v1/tiers)
+- [SLA & support](/plans/sla)
+- [Certificate permanence](/platform/certificate-permanence)

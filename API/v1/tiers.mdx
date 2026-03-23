@@ -1,0 +1,106 @@
+---
+title: "API Access by Tier"
+description: "Which endpoints are available on each plan, rate limits, and authentication"
+---
+
+## API tiers
+
+That's Me offers two levels of API access depending on your plan:
+
+| Tier | Plans | Rate limit | Access |
+|---|---|---|---|
+| **No access** | Free | — | API keys can be generated but all endpoints return 403 |
+| **Basic** | Starter | 100 req/min | Read-only endpoints |
+| **Advanced** | Pro, Business, Enterprise | 1,000 req/min (10,000 for Enterprise) | Read + write + webhooks |
+
+## Endpoints by tier
+
+| Endpoint | Basic | Advanced |
+|---|---|---|
+| `GET /v1.0/events` | ✅ | ✅ |
+| `GET /v1.0/events/:id` | ✅ | ✅ |
+| `GET /v1.0/invitations` | ✅ | ✅ |
+| `GET /v1.0/recipients` | ✅ | ✅ |
+| `GET /v1.0/badges` | ✅ | ✅ |
+| `GET /v1.0/balance` | ✅ | ✅ |
+| `POST /v1.0/events` | ❌ | ✅ |
+| `PATCH /v1.0/events/:id` | ❌ | ✅ |
+| `DELETE /v1.0/events/:id` | ❌ | ✅ |
+| `POST /v1.0/invitations` | ❌ | ✅ |
+| `POST /v1.0/webhooks` | ❌ | ✅ |
+| `GET /v1.0/webhooks` | ❌ | ✅ |
+| `PATCH /v1.0/webhooks/:id` | ❌ | ✅ |
+| `DELETE /v1.0/webhooks/:id` | ❌ | ✅ |
+
+## Authentication
+
+All API requests require a Bearer token:
+
+```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+  https://api.thatsme.com.br/v1.0/events
+```
+
+```javascript
+const res = await fetch('https://api.thatsme.com.br/v1.0/events', {
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json',
+  },
+});
+const data = await res.json();
+```
+
+## Getting your API key
+
+1. Go to **Settings → Integrations → API Keys**
+2. Click **Generate API Key**
+3. Copy the key — it's shown **only once**
+4. Store it securely (environment variable, secrets manager)
+
+<Warning>
+  API keys have the same access level as your plan. If you upgrade or downgrade, existing keys automatically gain or lose access to endpoints.
+</Warning>
+
+## Rate limiting
+
+Rate limits are applied **per organization**, not per IP address. This means all API keys from the same organization share the same rate limit window.
+
+When you exceed the rate limit:
+- The API returns **HTTP 429 Too Many Requests**
+- The `Retry-After` header indicates when you can retry
+- Requests are not queued — they are dropped
+
+### Handling 429 responses
+
+```javascript
+async function apiCall(url, options, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    const res = await fetch(url, options);
+    if (res.status === 429) {
+      const retryAfter = parseInt(res.headers.get('Retry-After') || '5');
+      await new Promise(r => setTimeout(r, retryAfter * 1000));
+      continue;
+    }
+    return res;
+  }
+  throw new Error('Rate limit exceeded after retries');
+}
+```
+
+## Checking your API status
+
+Use `GET /billing/api-status` (authenticated via JWT, not API key) to check your current tier and available endpoints:
+
+```json
+{
+  "tier": "advanced",
+  "rateLimit": 1000,
+  "endpoints": [
+    "GET /v1.0/events",
+    "POST /v1.0/events",
+    "POST /v1.0/invitations",
+    ...
+  ]
+}
+```
