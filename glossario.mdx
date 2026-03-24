@@ -10,8 +10,8 @@ description: "Conheça os principais termos da plataforma That’s Me, organizad
 - **Plataforma** — Serviço digital que centraliza a criação, emissão, exibição e compartilhamento de conquistas e certificados.
 - **Conquista** — Registro de um reconhecimento (vitória, mérito, participação, meta atingida etc.) emitido por um **Emissor**, com dados de data, local e motivo.
 - **Reconhecimento** — Ato de valorizar formalmente alguém por um feito; na That’s Me, vira uma **Conquista**acompanhada de **Certificado Digital** e **TM 3D**.
-- **Certificado Digital** — Página dedicada e verificável da conquista ("Página da Conquista") com dados do evento, emissor, motivo, TM 3D e botões de AR/compartilhamento.
-- **Experiência Digital** — Conjunto de interações do usuário com a conquista: visualização 3D/WebGL, AR nativa, página dedicada, feed social e metadados de compartilhamento.
+- **Certificado Digital** — Página dedicada e verificável da conquista ("Página da Conquista") com dados do evento, emissor, motivo, TM 3D e botões de compartilhamento.
+- **Experiência Digital** — Conjunto de interações do usuário com a conquista: visualização 3D/WebGL, página dedicada, feed social e metadados de compartilhamento.
 - **Validação** — Processo técnico e operacional que garante autenticidade (selo de verificação de emissor/KYB, logs, IDs únicos e checagens antifraude).
 - **ID da Conquista** — Identificador único e rastreável usado para verificação e auditoria.
 - **Link único (público/verificável)** — URL da Página da Conquista com metadados sociais (Open Graph/Twitter Cards) para preview rico.
@@ -21,7 +21,7 @@ description: "Conheça os principais termos da plataforma That’s Me, organizad
 ## Usuários
 
 - **Emissor** — Pessoa/empresa que cria **Eventos**, escolhe **TMs** e emite **Conquistas**.
-- **Administrador** — Membro com permissões de gestão (eventos, emissões, TMs e créditos). Todas as ações são logadas para **Auditoria**.
+- **Administrador** — Membro com permissões de gestão (eventos, emissões e TMs). Todas as ações são logadas para **Auditoria**.
 - **Membro / Usuário comum** — Quem recebe, guarda e compartilha conquistas; mantém um **Mural de Conquistas**.
 
 ---
@@ -50,13 +50,10 @@ description: "Conheça os principais termos da plataforma That’s Me, organizad
 
 ---
 
-## Visualização 3D e AR
+## Visualização 3D
 
-- **3D **— Modelo digital interativo.
-- **AR **— Realidade Aumentada (sigla inspirada por Augmented Reality)
-- **Visualização 3D (WebGL)** — Renderização interativa do TM no navegador (atualmente via Sketchfab incorporado).
-- **Ver em AR** — Abre a visualização nativa do sistema para colocar o TM no mundo real (iOS: Quick Look/.usdz; Android: ARCore/.glb), sem app extra.
-- **Requisitos de AR** — iPhone 6S\+/iPad 5ª gen com iOS 12\+ ou Android 8.0\+ com ARCore 1.9\+.
+- **3D** — Modelo digital interativo renderizado no navegador.
+- **Visualização 3D (WebGL)** — Renderização interativa do TM no navegador via embed próprio da That's Me.
 - **Tela Cheia** — Modo de visualização do TM que prioriza imersão durante apreciação/compartilhamento.
 
 ---
@@ -81,18 +78,18 @@ description: "Conheça os principais termos da plataforma That’s Me, organizad
 - **Compartilhar** — Botões nativos para LinkedIn (Add ao Perfil), WhatsApp, X/Twitter, Pinterest, E‑mail e copiar link.
 - **Metadados Sociais** — Informações (og:title, og:description, imagem do TM) que geram o cartão/preview ao postar links.
 - **Integração com LinkedIn** — Preenche automaticamente o formulário de “Licenças e Certificados” com dados da conquista.
-- **Página da Conquista (Certificado em Página Única)** — Link público permanente da conquista com TM 3D, AR e contexto do evento.
+- **Página da Conquista (Certificado em Página Única)** — Link público permanente da conquista com TM 3D e contexto do evento.
 
 ---
 
-## Loja, ativos e créditos
+## Loja, ativos e planos
 
-- **Loja de TMs** — Aquisição de TMs (Essencial, Exclusivo ou Importar Modelo) e abertura de pedidos.
+- **Criador de TMs** — Criação de TMs (Essencial, Exclusivo ou Importar Modelo). TMs são gratuitos em todos os planos.
 - **Meus Pedidos** — Acompanhamento dos projetos de TMs (Pedido Recebido → Em Produção → Prova Pronta → Concluído).
 - **Galeria de TMs** — Repositório do emissor; visualizar, renomear, descrever, aceitar TMs novos ou **Solicitar Revisão** (para Exclusivo ou problemas técnicos).
-- **Créditos** — Moeda interna usada somente para **Emissões** (cada certificado enviado consome 1 crédito).
-- **Saldo de Créditos** — Quantidade disponível para novas emissões.
-- **Pacotes de Créditos** — Opções progressivas de volume com desconto por unidade.
+- **Plano / Assinatura** — Modelo de cobrança mensal por emissões. Cada plano inclui uma cota de emissões/mês.
+- **Cota mensal** — Número de emissões incluídas no plano contratado.
+- **Excedente** — Emissões além da cota mensal, cobradas por unidade na próxima fatura.
 
 ---
 
@@ -107,11 +104,8 @@ description: "Conheça os principais termos da plataforma That’s Me, organizad
 
 ## Tecnologias e arquivos
 
-- **Sketchfab** — Serviço de incorporação/visualização 3D usado atualmente na plataforma.
 - **WebGL** — Padrão web para gráficos 3D no navegador.
-- **ARCore / Quick Look** — Tecnologias nativas de AR para Android e iOS, respectivamente.
 - **.glb / .fbx / texturas** — Formatos aceitos para importação de modelos 3D.
-- **.usdz** — Formato otimizado para AR no iOS (Quick Look).
 - **Open Graph / Twitter Cards** — Esquemas de metadados usados para previews sociais.
 
 ---
@@ -125,9 +119,9 @@ description: "Conheça os principais termos da plataforma That’s Me, organizad
 
 ## Referências cruzadas
 
-- **Página da Conquista** ↔ **Certificado Digital**, **Metadados Sociais**, **Ver em AR**
+- **Página da Conquista** ↔ **Certificado Digital**, **Metadados Sociais**
 - **Evento** ↔ **TMs e Emissões**, **Painel de Emissões**, **Finalizar Evento**
-- **Galeria de TMs** ↔ **Aceitar** / **Solicitar Revisão**, **Ver em AR**
-- **Créditos** ↔ **Emissão** (1 crédito por e‑mail)
+- **Galeria de TMs** ↔ **Aceitar** / **Solicitar Revisão**
+- **Cota mensal** ↔ **Emissão** (1 emissão por destinatário)
 
 ---
