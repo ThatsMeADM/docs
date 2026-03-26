@@ -24,9 +24,10 @@ A página principal de eventos lista todos os eventos da conta do emissor com no
     | **Certificações Profissionais** | Técnicas, corporativas, avaliações |
     | **Reconhecimento e Destaque** | Programas internos, incentivos, campanhas |
     | **Comunidades** | Meetups, eventos sociais, networking |
-    | **Evento Personalizado** | Experiencial, corporativo, entretenimento |
+    | **Evento Personalizado** | Crie do seu jeito |
 
-    O template selecionado define as categorias e subcategorias disponíveis no próximo passo.
+    A escolha do template e subcategoria serve apenas para te auxiliar no preenchimento os campos de emissão de forma mais direta e completa.
+    Criação via API tem o template "Evento Personalizado" como obrigatório
   </Step>
   <Step title="Preencha os detalhes">
     Configure o evento com todos os campos disponíveis (veja abaixo).
@@ -39,16 +40,16 @@ A página principal de eventos lista todos os eventos da conta do emissor com no
 
 | Campo | Obrigatório | Descrição |
 |-------|-------------|-----------|
-| **Categoria** | Sim | Filtrada pelo template selecionado |
+| **Categoria** | Sim | 4 categorias macro |
 | **Subcategoria** | Não | Filtrada pela categoria escolhida |
 | **Nome** | Sim | Nome do evento (sugestões de IA disponíveis) |
 | **Descrição** | Não | Detalhes, objetivo, público-alvo, regras (sugestões de IA disponíveis) |
-| **URL oficial** | Não | Link externo do evento |
+| **URL oficial** | Não | Link externo para aquisição ou inscrição do evento |
 | **Imagem** | Não | JPEG, PNG ou WebP (máx. 5 MB) |
-| **Evento privado** | Não | Se ativado, o evento não aparece no diretório público |
+| **Evento privado** | Não | Se ativado, o evento não aparece no diretório público e nem é distribuido pela nossa IA |
 
 <Tip>
-A IA da plataforma extrai automaticamente habilidades, nível e palavras-chave da descrição do evento. Quanto mais detalhada a descrição, melhores serão as recomendações geradas para os participantes.
+A IA da plataforma extrai automaticamente habilidades, nível e palavras-chave da descrição do evento. Quanto mais detalhada a descrição, melhores serão as recomendações geradas para os participantes e melhor é a distribuição do evento.
 </Tip>
 
 ### Localização
@@ -59,7 +60,7 @@ Escolha entre:
 
 ### Data e período
 
-Quatro modos de data disponíveis:
+Quatro modalidade de data para atender qualquer evento:
 
 | Modo | Campos | Uso |
 |------|--------|-----|
@@ -85,9 +86,13 @@ Após criar o evento, vá até a aba **"TMs e Emissões"**:
 Use múltiplos TMs para reconhecer diferentes níveis dentro do mesmo evento: 1°, 2° e 3° lugar, destaque técnico, melhor projeto, participação, etc.
 </Info>
 
+<Warning>
+Quando um TM (Troféu 3D) é utilizado em uma emissão, ele não pode mais ser desvinculado daquele evento e nem excluído de sua galeria.
+</Warning>
+
 ## Conectar eventos (Trilhas de Aprendizado)
 
-Vincule eventos relacionados para criar trilhas de aprendizado. As conexões aparecem na página do certificado como **"Próximo passo"** e alimentam o motor de recomendação da IA.
+Vincule eventos relacionados para gerar trilhas de aprendizado personalizadas aos participantes. As conexões aparecem na página do certificado como **"Próximo passo"** e alimentam o motor de recomendação da IA.
 
 Tipos de relação disponíveis:
 
@@ -97,9 +102,10 @@ Tipos de relação disponíveis:
 | **Preparatório** | O evento prepara para o próximo |
 | **Aprofundamento** | O evento aprofunda conhecimento do anterior |
 | **Alternativo** | Caminho alternativo pelo mesmo tema |
+| **Sugestivo** | Apresente opções complementamente diferentes do tema atual |
 
 <Note>
-Trilhas de Aprendizado ficam disponíveis apenas após salvar o evento (modo de edição).
+Após adicionar, alterar ou remover algum detalhe do evento, aperte o botão 'Salvar' para confirmar e aplicar alterações.
 </Note>
 
 ## Estados do evento
@@ -110,3 +116,7 @@ Trilhas de Aprendizado ficam disponíveis apenas após salvar o evento (modo de 
 | **Concluído** | Bloqueado para edições e novas emissões |
 
 Para finalizar um evento, clique em **"Finalizar Evento"** na página de detalhes. Essa ação é irreversível e garante a integridade do histórico.
+
+<Info>
+Apesar de que cada emissão de certificado cria dados imutáveis, recomendamos que eventos que encerraram, com data fim passada, e sem expectativa de novas emissões, sejam finalizados (status Concluído) para evitar uso por má fé.
+</Info>

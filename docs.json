@@ -60,7 +60,9 @@
                   "funcionalidades/mural-de-conquistas",
                   "funcionalidades/receber-visualizar-compartilhar",
                   "funcionalidades/one-page-certificate",
-                  "funcionalidades/ecossistema-social"
+                  "funcionalidades/ecossistema-social",
+                  "integracoes/linkedin",
+                  "integracoes/compartilhamento"
                 ]
               }
             ]
@@ -84,8 +86,7 @@
                 "group": "Integrações",
                 "pages": [
                   "integracoes/api",
-                  "integracoes/linkedin",
-                  "integracoes/compartilhamento"
+                  "integracoes/linkedin"
                 ]
               }
             ]
@@ -179,7 +180,9 @@
                   "en/features/achievement-wall",
                   "en/features/receive-view-share",
                   "en/features/certificate-page",
-                  "en/features/social-ecosystem"
+                  "en/features/social-ecosystem",
+                  "en/features/linkedin",
+                  "en/features/social-sharing"
                 ]
               }
             ]
