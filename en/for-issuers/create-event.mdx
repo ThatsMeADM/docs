@@ -1,0 +1,112 @@
+---
+title: "Create Event"
+sidebarTitle: "Create Event"
+description: "How to create events to issue achievements — templates, fields, dates, location, and learning trails."
+icon: "calendar-plus"
+---
+
+Events are the foundation of every issuance on That's Me. Each event defines the **context**, **schedule**, and **location** for the achievements that will be issued.
+
+## Events page
+
+The main events page lists all events on the issuer's account with name, dates, category, and status. You can search by name and create new events via the **"+ Create Event"** button.
+
+## Two-step creation
+
+<Steps>
+  <Step title="Choose a template">
+    Select the event type that best fits:
+
+    | Template | Examples |
+    |----------|---------|
+    | **Competitions & Awards** | Hackathons, tournaments, awards |
+    | **Courses & Training** | Workshops, bootcamps, training programs |
+    | **Professional Certifications** | Technical, corporate, assessments |
+    | **Recognition & Highlights** | Internal programs, incentives, campaigns |
+    | **Communities** | Meetups, social events, networking |
+    | **Custom Event** | Experiential, corporate, entertainment |
+
+    The selected template determines the categories and subcategories available in the next step.
+  </Step>
+  <Step title="Fill in the details">
+    Configure the event with all available fields (see below).
+  </Step>
+</Steps>
+
+## Event fields
+
+### Details
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Category** | Yes | Filtered by the selected template |
+| **Subcategory** | No | Filtered by the chosen category |
+| **Name** | Yes | Event name (AI suggestions available) |
+| **Description** | No | Details, objective, target audience, rules (AI suggestions available) |
+| **Official URL** | No | External event link |
+| **Image** | No | JPEG, PNG, or WebP (max 5 MB) |
+| **Private event** | No | When enabled, the event doesn't appear in the public directory |
+
+<Tip>
+The platform's AI automatically extracts skills, level, and keywords from the event description. The more detailed the description, the better the recommendations generated for participants.
+</Tip>
+
+### Location
+
+Choose between:
+- **Online** — no physical location
+- **In-person** — select state (IBGE list) and enter the city
+
+### Date and period
+
+Four date modes available:
+
+| Mode | Fields | Use case |
+|------|--------|----------|
+| **Single date** | Date + start time (optional) | One-day events |
+| **Date range** | Start date, end date + times (optional) | Multi-day events |
+| **Recurring** | Frequency + start date | Weekly, biweekly, monthly, bimonthly, quarterly, semiannual, or annual |
+| **Always available** | None | On-demand courses, permanent trails |
+
+## Add TMs to the event
+
+After creating the event, go to the **"TMs & Emissions"** tab:
+
+<Steps>
+  <Step title="Click 'Add TMs'">
+    Select the 3D trophies from your Gallery to be used as awards.
+  </Step>
+  <Step title="Confirm the selection">
+    Each added TM can be used to award participants individually or in batch.
+  </Step>
+</Steps>
+
+<Info>
+Use multiple TMs to recognize different levels within the same event: 1st, 2nd, and 3rd place, technical highlight, best project, participation, etc.
+</Info>
+
+## Connect events (Learning Trails)
+
+Link related events to create learning trails. Connections appear on the certificate page as **"Next step"** and feed the AI recommendation engine.
+
+Available relation types:
+
+| Relation | Meaning |
+|----------|---------|
+| **Continuation** | The event follows sequentially from the previous one |
+| **Preparatory** | The event prepares for the next one |
+| **Deepening** | The event deepens knowledge from the previous one |
+| **Alternative** | Alternate path through the same topic |
+
+<Note>
+Learning Trails are available only after saving the event (edit mode).
+</Note>
+
+## Event states
+
+| State | Permissions |
+|-------|------------|
+| **In progress** | Full editing, achievement issuance, TM addition |
+| **Completed** | Locked for edits and new issuances |
+
+To finish an event, click **"Finish Event"** on the details page. This action is irreversible and ensures the integrity of the historical record.

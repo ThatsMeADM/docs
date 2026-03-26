@@ -1,54 +1,87 @@
 ---
-title: "Emissão e acompanhamento"
-description: "Após criar o evento e adicionar os TMs (troféus ou medalhas), você pode iniciar as premiações."
+title: "Emissão e Acompanhamento"
+sidebarTitle: "Emitir e Acompanhar"
+description: "Como emitir conquistas para participantes e acompanhar o status de cada certificado em tempo real."
+icon: "paper-plane"
 ---
 
-### **Iniciar Premiação**
+Após [criar o evento](/para-emissores/criar-evento) e adicionar os TMs, você pode iniciar a emissão de conquistas.
 
-Ao clicar em “Iniciar premiação” para um TM, será exibida a tela de emissão.
+## Fluxo de emissão
 
-**Etapas:**
+<Steps>
+  <Step title="Selecione o TM">
+    Na aba **"TMs e Emissões"** do evento, clique em **"Iniciar Premiação"** no TM que deseja usar.
+  </Step>
+  <Step title="Descreva o motivo">
+    Preencha o campo livre com o motivo do reconhecimento. Esse texto aparecerá na página do certificado.
 
-1. **Motivo da conquista**
+    Exemplos:
+    - Básico: *1° Lugar*
+    - Intermediário: *1° Lugar na categoria feminino sub-21*
+    - Detalhado: *Por sua dedicação, desempenho acima da média e contribuição direta para os resultados do time no primeiro semestre de 2025*
 
-   Campo livre onde você descreve o motivo pelo qual o membro está sendo reconhecido.
+    <Tip>
+    Sugestões de IA estão disponíveis para ajudar a redigir o motivo. Quanto mais contexto, melhor o certificado final.
+    </Tip>
+  </Step>
+  <Step title="Adicione os ganhadores">
+    Duas opções:
+    - **Manual** — digite nome, e-mail e campos personalizados (até 7 campos extras)
+    - **CSV** — faça upload de uma planilha com todos os participantes de uma vez
 
-   Exemplos:
-   - Básico: 1º Lugar
-   - Intermediário: 1º Lugar na categoria feminino sub-21
-   - Avançado: 2º colocado na categoria masculino 18-25 anos amador
-   - Corporativo: "Por sua dedicação, desempenho acima da média e contribuição direta para os resultados do time no primeiro semestre de 2025, reforçando os valores e a cultura da nossa empresa."
-2. **Adicionar ganhadores**
-
-   Você pode inserir manualmente os e-mails ou carregar uma lista via arquivo .CSV. Cada e-mail inserido equivale a uma emissão.
-3. **Emitir certificados**
-
-   Após adicionar todos os ganhadores, clique em “Emitir Certificados”.
-
-   Um pop-up de confirmação será exibido com:
-   - Quantidade de certificados que serão emitidos
-   - Emissões restantes na cota mensal
-   - Botões para **Confirmar** ou **Cancelar**
+    Cada e-mail inserido equivale a **1 emissão** da sua cota mensal.
+  </Step>
+  <Step title="Confirme e emita">
+    Clique em **"Emitir Certificados"**. Um pop-up mostra:
+    - Quantidade de certificados que serão emitidos
+    - Emissões restantes na cota mensal
+    - Botões para **Confirmar** ou **Cancelar**
+  </Step>
+</Steps>
 
 <Warning>
-  Cada emissão conta no seu **limite mensal**. A quantidade de e-mails adicionados = quantidade de emissões consumidas da cota.
+Cada emissão conta no seu **limite mensal**. A quantidade de e-mails adicionados = quantidade de emissões consumidas da cota. Consulte [Emissões e Cota](/para-emissores/emissoes-e-cota) para detalhes.
 </Warning>
 
-### **Painel de Emissões**
+## Auto-save
 
-Todas as conquistas emitidas ficam registradas no **Painel de Emissões** do evento.
+O formulário de emissão salva automaticamente seu progresso a cada alteração (debounce de 800ms). Se você sair da página e voltar, os dados preenchidos estarão preservados.
 
-**Campos exibidos:**
+## Campos personalizados
 
-- **TM emitido** (imagem visual do troféu ou medalha)
-- **Responsável pela emissão**
-- **Motivo da conquista**
-- **E-mail do ganhador**
-- **Situação**:
-  - Aceita: O ganhador aceitou a conquista
-  - Pendente: Ainda não aceitou
-  - Recusada: O ganhador rejeitou a conquista
+Além de nome e e-mail, o formulário suporta até **7 campos extras** configuráveis por emissão. Esses campos podem ser usados para informações específicas do evento, como:
+- Número de inscrição
+- Categoria ou nível
+- Resultado ou pontuação
+- Departamento ou turma
+
+O sistema sugere preenchimentos com base na configuração da emissão.
+
+## Painel de acompanhamento
+
+Todas as conquistas emitidas ficam no **Painel de Emissões** do evento, com as seguintes informações:
+
+| Campo | Descrição |
+|-------|-----------|
+| **TM emitido** | Imagem do troféu ou medalha |
+| **Responsável** | Administrador que realizou a emissão |
+| **Motivo** | Texto do reconhecimento |
+| **E-mail** | Endereço do ganhador |
+| **Status** | Situação atual do certificado |
+
+### Status possíveis
+
+| Status | Significado |
+|--------|-------------|
+| **Aceita** | O ganhador aceitou a conquista — certificado criado |
+| **Pendente** | Notificação enviada, aguardando resposta |
+| **Recusada** | O ganhador rejeitou a conquista |
 
 <Info>
-  Você pode filtrar emissões por e-mail e acompanhar em tempo real o status de cada uma.
+Filtre emissões por e-mail e acompanhe em tempo real o status de cada uma. Emissões pendentes podem ser reenviadas se necessário.
 </Info>
+
+## Histórico de emissões anteriores
+
+A página de emissão exibe também um histórico das emissões anteriores do mesmo TM, permitindo consultar rapidamente quem já foi premiado e com qual motivo.

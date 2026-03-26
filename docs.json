@@ -50,8 +50,8 @@
                 "pages": [
                   "introducao/bem-vindo",
                   "introducao/sobre-nos",
-                  "introducao/faq",
-                  "introducao/trofeus-3d"
+                  "introducao/trofeus-3d",
+                  "introducao/faq"
                 ]
               },
               {
@@ -61,19 +61,6 @@
                   "funcionalidades/receber-visualizar-compartilhar",
                   "funcionalidades/one-page-certificate",
                   "funcionalidades/ecossistema-social"
-                ]
-              },
-              {
-                "group": "Casos de Uso",
-                "pages": [
-                  "casos-de-uso/educacao-e-cursos",
-                  "casos-de-uso/corporativo-e-rh",
-                  "casos-de-uso/premiacoes-b2b-e-certificacoes",
-                  "casos-de-uso/eventos-esportivos-e-e-esportivos",
-                  "casos-de-uso/comunidades-e-influencia",
-                  "casos-de-uso/arte-e-cultura",
-                  "casos-de-uso/causas-sociais-e-ongs",
-                  "casos-de-uso/membro"
                 ]
               }
             ]
@@ -178,13 +165,21 @@
             "tab": "Platform",
             "groups": [
               {
-                "group": "Platform",
+                "group": "Introduction",
                 "pages": [
-                  "en/platform/welcome",
-                  "en/platform/how-it-works",
-                  "en/platform/verification",
-                  "en/platform/certificate-permanence",
-                  "en/platform/plans"
+                  "en/introduction/welcome",
+                  "en/introduction/about-us",
+                  "en/introduction/3d-trophies",
+                  "en/introduction/faq"
+                ]
+              },
+              {
+                "group": "Features",
+                "pages": [
+                  "en/features/achievement-wall",
+                  "en/features/receive-view-share",
+                  "en/features/certificate-page",
+                  "en/features/social-ecosystem"
                 ]
               }
             ]
@@ -193,9 +188,15 @@
             "tab": "For Issuers",
             "groups": [
               {
-                "group": "For Issuers",
+                "group": "Issuer Guide",
                 "pages": [
-                  "en/for-issuers/quickstart",
+                  "en/for-issuers/create-event",
+                  "en/for-issuers/issue-and-track",
+                  "en/for-issuers/badge-gallery",
+                  "en/for-issuers/emissions-and-quota",
+                  "en/for-issuers/administrators",
+                  "en/for-issuers/badge-creator",
+                  "en/for-issuers/verification",
                   "en/for-issuers/recommendation-guide"
                 ]
               }
@@ -259,8 +260,7 @@
                 "pages": [
                   "en/automations/overview",
                   "en/automations/n8n/emit-from-spreadsheet",
-                  "en/automations/mcp/overview",
-                  "en/automations/use-cases/marathon"
+                  "en/automations/mcp/overview"
                 ]
               },
               {

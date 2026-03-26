@@ -1,85 +1,112 @@
 ---
-title: "Eventos"
-description: "Organize e conduza emissões com contexto, data e local definidos. Crie eventos únicos para reunir suas emissões em uma experiência personalizada e rastreável."
+title: "Criar Evento"
+sidebarTitle: "Criar Evento"
+description: "Como criar eventos para emitir conquistas — templates, campos, datas, localização e trilhas de aprendizado."
+icon: "calendar-plus"
 ---
 
-## **Visão Geral**
+Eventos são a base de toda emissão na That's Me. Cada evento define o **contexto**, **cronograma** e **localização** das conquistas que serão emitidas.
 
-A seção **Eventos** permite que emissores criem, organizem e acompanhem todas as ações relacionadas a um evento. 
+## Tela de eventos
 
-<Note>
-  Eventos podem estar em dois estados:
+A página principal de eventos lista todos os eventos da conta do emissor com nome, datas, categoria e status. É possível buscar por nome e criar novos eventos pelo botão **"+ Criar Evento"**.
 
-  - **Em andamento** (pode emitir, editar ou adicionar TMs)
-  - **Concluído** (bloqueado para edições e novas premiações)
-</Note>
+## Criação em duas etapas
 
-## **Tela Inicial de Eventos**
+<Steps>
+  <Step title="Escolha um template">
+    Selecione o tipo de evento que melhor se encaixa:
 
-Cada evento define **contexto**, **cronograma** e **localização** para as premiações emitidas. \
-A tela principal exibe uma lista com todos os eventos da conta do emissor. É possível:
+    | Template | Exemplos |
+    |----------|----------|
+    | **Competições e Premiações** | Hackathons, torneios, premiações |
+    | **Cursos e Formação** | Workshops, bootcamps, treinamentos |
+    | **Certificações Profissionais** | Técnicas, corporativas, avaliações |
+    | **Reconhecimento e Destaque** | Programas internos, incentivos, campanhas |
+    | **Comunidades** | Meetups, eventos sociais, networking |
+    | **Evento Personalizado** | Experiencial, corporativo, entretenimento |
 
-- Visualizar **nome, datas, categoria e status** de cada evento
-- Usar o campo de busca para filtrar eventos por nome
-- Criar um novo evento clicando no botão **“\+ Criar Evento”**
-- Acessar as ações de gerenciamento através do menu lateral de cada linha
+    O template selecionado define as categorias e subcategorias disponíveis no próximo passo.
+  </Step>
+  <Step title="Preencha os detalhes">
+    Configure o evento com todos os campos disponíveis (veja abaixo).
+  </Step>
+</Steps>
 
-## **Criando um Novo Evento**
+## Campos do evento
 
-Após clicar em **“\+ Criar Evento”**, o emissor será levado à página de criação. Os seguintes campos devem ser preenchidos:
+### Detalhes
 
-### **Detalhes do Evento**
-
-- **Nome **\
-  (ex: Hackathon XPTO)
-- **Descrição do Evento:  **Detalhe informações gerais do evento, objetivo, público-alvo, regras, ou o que você achar necessário.
-
-  (Ex: _Hackathon XPTO é uma iniciativa da Acme Corp para desafiar programadores em 48 horas de inovação...)_
-- **Categoria: **Escolha a opção que melhor se encaixa ao evento
-
-  (Ex: Educação)
-- **Período: **Data de início e fim do evento
-
-  (Ex: 30 de Outubro - 31 de Outubro)
-- **Localidade: **Cidade e estado vinculados ao evento
-
-  (Ex: Belo Horizonte - MG)
-
-<Info>
-  Essas informações ajudam a contextualizar as conquistas emitidas e serão exibidas nas páginas públicas dos reconhecimentos.
-</Info>
-
-## **Selecionar TMs do Evento**
-
-Após criar o evento, vá até a aba **“TMs e Emissões”**. Aqui, o emissor deve vincular os TMs (trophy models) que serão usados como prêmiação neste evento.
-
-### **Passos:**
-
-1. Clique em **“Adicionar TMs”**
-2. Escolha os TMs desejados da sua **Galeria de TMs**
-3. Confirme clicando em **“Adicionar Seleção”**
-
-Cada TM adicionado poderá ser usado para premiar participantes específicos, em lotes ou individualmente.
+| Campo | Obrigatório | Descrição |
+|-------|-------------|-----------|
+| **Categoria** | Sim | Filtrada pelo template selecionado |
+| **Subcategoria** | Não | Filtrada pela categoria escolhida |
+| **Nome** | Sim | Nome do evento (sugestões de IA disponíveis) |
+| **Descrição** | Não | Detalhes, objetivo, público-alvo, regras (sugestões de IA disponíveis) |
+| **URL oficial** | Não | Link externo do evento |
+| **Imagem** | Não | JPEG, PNG ou WebP (máx. 5 MB) |
+| **Evento privado** | Não | Se ativado, o evento não aparece no diretório público |
 
 <Tip>
-  A diversidade de TMs permite reconhecer diferentes níveis ou categorias dentro do mesmo evento, como: 
-
-  - Primeiro, segundo e terceiro lugar; 
-  - 'Campeão', 'vice-campeão' e 'participação'; 
-  - 'Melhor projeto', 'Destaque técnico' e 'Inovação e Criatividade'.
+A IA da plataforma extrai automaticamente habilidades, nível e palavras-chave da descrição do evento. Quanto mais detalhada a descrição, melhores serão as recomendações geradas para os participantes.
 </Tip>
 
-## **Iniciar Premiação**
+### Localização
 
-Após escolher os TMs do evento, cada item terá o botão **“Iniciar Premiação”**. A partir dele, o emissor pode começar a emitir conquistas personalizadas para os participantes.
+Escolha entre:
+- **Online** — sem local físico
+- **Presencial** — selecione estado (lista IBGE) e digite a cidade
 
-### **Emissão por TM:**
+### Data e período
 
-- Cada TM representa um **tipo de reconhecimento**.
-- A premiação é feita individualmente ou por lote, a partir dessa interface.
+Quatro modos de data disponíveis:
 
-## **Finalizar Evento**
+| Modo | Campos | Uso |
+|------|--------|-----|
+| **Data única** | Data + horário de início (opcional) | Eventos de um dia |
+| **Período** | Data início, data fim + horários (opcionais) | Eventos com duração |
+| **Recorrente** | Frequência + data de início | Semanal, quinzenal, mensal, bimestral, trimestral, semestral ou anual |
+| **Sempre disponível** | Nenhum | Cursos on-demand, trilhas permanentes |
 
-Quando todas as premiações forem feitas, clique em **“Finalizar Evento”**. Isso bloqueia qualquer nova edição ou emissão, garantindo a integridade do histórico.
+## Adicionar TMs ao evento
 
----
+Após criar o evento, vá até a aba **"TMs e Emissões"**:
+
+<Steps>
+  <Step title="Clique em 'Adicionar TMs'">
+    Selecione os troféus 3D da sua Galeria que serão usados como premiação.
+  </Step>
+  <Step title="Confirme a seleção">
+    Cada TM adicionado poderá ser usado para premiar participantes individualmente ou em lote.
+  </Step>
+</Steps>
+
+<Info>
+Use múltiplos TMs para reconhecer diferentes níveis dentro do mesmo evento: 1°, 2° e 3° lugar, destaque técnico, melhor projeto, participação, etc.
+</Info>
+
+## Conectar eventos (Trilhas de Aprendizado)
+
+Vincule eventos relacionados para criar trilhas de aprendizado. As conexões aparecem na página do certificado como **"Próximo passo"** e alimentam o motor de recomendação da IA.
+
+Tipos de relação disponíveis:
+
+| Relação | Significado |
+|---------|-------------|
+| **Continuação** | O evento segue sequencialmente o anterior |
+| **Preparatório** | O evento prepara para o próximo |
+| **Aprofundamento** | O evento aprofunda conhecimento do anterior |
+| **Alternativo** | Caminho alternativo pelo mesmo tema |
+
+<Note>
+Trilhas de Aprendizado ficam disponíveis apenas após salvar o evento (modo de edição).
+</Note>
+
+## Estados do evento
+
+| Estado | Permissões |
+|--------|-----------|
+| **Em andamento** | Edição completa, emissão de conquistas, adição de TMs |
+| **Concluído** | Bloqueado para edições e novas emissões |
+
+Para finalizar um evento, clique em **"Finalizar Evento"** na página de detalhes. Essa ação é irreversível e garante a integridade do histórico.

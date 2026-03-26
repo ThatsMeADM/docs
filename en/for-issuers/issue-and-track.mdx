@@ -1,0 +1,87 @@
+---
+title: "Issue & Track Achievements"
+sidebarTitle: "Issue & Track"
+description: "How to issue achievements to participants and track each certificate's status in real time."
+icon: "paper-plane"
+---
+
+After [creating the event](/en/for-issuers/create-event) and adding TMs, you can start issuing achievements.
+
+## Issuance flow
+
+<Steps>
+  <Step title="Select the TM">
+    In the event's **"TMs & Emissions"** tab, click **"Start Award"** on the TM you want to use.
+  </Step>
+  <Step title="Describe the reason">
+    Fill in the free-text field with the reason for recognition. This text will appear on the certificate page.
+
+    Examples:
+    - Basic: *1st Place*
+    - Intermediate: *1st Place in the women's under-21 category*
+    - Detailed: *For outstanding dedication, above-average performance, and direct contribution to the team's results in the first half of 2025*
+
+    <Tip>
+    AI suggestions are available to help write the reason. The more context you provide, the better the final certificate.
+    </Tip>
+  </Step>
+  <Step title="Add recipients">
+    Two options:
+    - **Manual** — enter name, email, and custom fields (up to 7 extra fields)
+    - **CSV** — upload a spreadsheet with all participants at once
+
+    Each email entered counts as **1 issuance** from your monthly quota.
+  </Step>
+  <Step title="Confirm and issue">
+    Click **"Issue Certificates"**. A confirmation popup shows:
+    - Number of certificates to be issued
+    - Remaining issuances in the monthly quota
+    - **Confirm** or **Cancel** buttons
+  </Step>
+</Steps>
+
+<Warning>
+Each issuance counts toward your **monthly limit**. The number of emails added equals the number of issuances consumed from your quota. See [Emissions & Quota](/en/for-issuers/emissions-and-quota) for details.
+</Warning>
+
+## Auto-save
+
+The issuance form automatically saves your progress on every change (800ms debounce). If you leave the page and come back, your data will be preserved.
+
+## Custom fields
+
+Besides name and email, the form supports up to **7 extra configurable fields** per issuance. These can be used for event-specific information such as:
+- Registration number
+- Category or level
+- Result or score
+- Department or class
+
+The system suggests fill values based on the emission configuration.
+
+## Tracking panel
+
+All issued achievements are listed in the event's **Emissions Panel** with the following information:
+
+| Field | Description |
+|-------|-------------|
+| **Issued TM** | Trophy or badge image |
+| **Responsible** | Administrator who performed the issuance |
+| **Reason** | Recognition text |
+| **Email** | Recipient's address |
+| **Status** | Current certificate status |
+
+### Possible statuses
+
+| Status | Meaning |
+|--------|---------|
+| **Accepted** | The recipient accepted the achievement — certificate created |
+| **Pending** | Notification sent, awaiting response |
+| **Declined** | The recipient rejected the achievement |
+
+<Info>
+Filter emissions by email and track each one's status in real time. Pending issuances can be resent if needed.
+</Info>
+
+## Previous issuance history
+
+The issuance page also displays a history of previous issuances for the same TM, allowing you to quickly check who has already been awarded and with what reason.
