@@ -1,5 +1,5 @@
 ---
-title: "Issue & Track Achievements"
+title: "Issuance and Tracking"
 sidebarTitle: "Issue & Track"
 description: "How to issue achievements to participants and track each certificate's status in real time."
 icon: "paper-plane"
@@ -17,15 +17,15 @@ After [creating the event](/en/for-issuers/create-event) and adding TMs, you can
     Fill in the free-text field with the reason for recognition. This text will appear on the certificate page.
 
     Examples:
-    - Basic: *1st Place*
-    - Intermediate: *1st Place in the women's under-21 category*
+    - Basic: *1st place*
+    - Intermediate: *1st place in the women's under-21 category*
     - Detailed: *For outstanding dedication, above-average performance, and direct contribution to the team's results in the first half of 2025*
 
     <Tip>
-    AI suggestions are available to help write the reason. The more context you provide, the better the final certificate.
+    The platform's AI can organize the information you provide to generate a smoother text with grammatical corrections and greater clarity. The more context you provide, the better the final certificate presentation tends to be.
     </Tip>
   </Step>
-  <Step title="Select achievement type">
+  <Step title="Select the achievement type">
     Indicate how the participant engaged with the event:
 
     | Type | Meaning | Effect |
@@ -37,14 +37,14 @@ After [creating the event](/en/for-issuers/create-event) and adding TMs, you can
     The default type is **"Completed"**. This distinction allows the recommendation engine to respect each participant's real progression.
   </Step>
   <Step title="Add recipients">
-    Two options:
-    - **Manual** — enter name, email, and custom fields (up to 7 extra fields)
-    - **CSV** — upload a spreadsheet with all participants at once
+    You can do this in two ways:
+    - **Manual** — enter name, email, and phone number. The phone number is optional but important for WhatsApp notifications.
+    - **CSV** — upload a spreadsheet with the participants' data. Name and email are required.
 
     Each email entered counts as **1 issuance** from your monthly quota.
   </Step>
   <Step title="Confirm and issue">
-    Click **"Issue Certificates"**. A confirmation popup shows:
+    Click **"Issue Certificates"**. A popup will display:
     - Number of certificates to be issued
     - Remaining issuances in the monthly quota
     - **Confirm** or **Cancel** buttons
@@ -57,17 +57,25 @@ Each issuance counts toward your **monthly limit**. The number of emails added e
 
 ## Auto-save
 
-The issuance form automatically saves your progress on every change (800ms debounce). If you leave the page and come back, your data will be preserved.
+The issuance form automatically saves your progress on every change. If you leave the page and come back later, the data you entered will still be available.
 
 ## Custom fields
 
-Besides name and email, the form supports up to **7 extra configurable fields** per issuance. These can be used for event-specific information such as:
-- Registration number
+When describing the reason, you may find up to **7 extra configurable fields**. These are used to record event-specific information, such as:
+
+- Modality
 - Category or level
+- Gender and age
 - Result or score
 - Department or class
+- Free-text field for a more detailed recognition
+- Expiration date
 
-The system suggests fill values based on the emission configuration.
+The platform's AI can use this information to compose a clearer and grammatically correct text.
+
+## Previously filled fields history
+
+The issuance page also displays a history of previously filled fields for the same event. This speeds up recurring issuances with similar modalities, levels, categories, or scores.
 
 ## Tracking panel
 
@@ -85,14 +93,10 @@ All issued achievements are listed in the event's **Emissions Panel** with the f
 
 | Status | Meaning |
 |--------|---------|
-| **Accepted** | The recipient accepted the achievement — certificate created |
-| **Pending** | Notification sent, awaiting response |
-| **Declined** | The recipient rejected the achievement |
+| **Accepted** | The recipient accepted the achievement and the certificate was created |
+| **Pending** | The notification was sent and is awaiting a response |
+| **Declined** | The recipient declined the achievement |
 
 <Info>
-Filter emissions by email and track each one's status in real time. Pending issuances can be resent if needed.
+Filter issuances by email and track each one's status in real time. Pending issuances can be resent when needed.
 </Info>
-
-## Previous issuance history
-
-The issuance page also displays a history of previous issuances for the same TM, allowing you to quickly check who has already been awarded and with what reason.

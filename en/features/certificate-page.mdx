@@ -5,41 +5,41 @@ description: "Every achievement generates a public, permanent, and verifiable pa
 icon: "file-certificate"
 ---
 
-Every achievement on That's Me automatically generates a **unique, permanent page** at `thatsme.com.br/c/[id]`. This link can be shared on resumes, social media, or anywhere you want to display an achievement with context and authenticity.
+Every achievement on That's Me automatically generates a **unique, permanent page** at `app.thatsme.com.br/c/[id]`. This link can be shared on resumes, social media, or any channel where you want to present an achievement with context and authenticity.
 
 ## Page structure
 
-### Hero section
+### Main section
 
-The top section displays the 3D trophy as a visual backdrop, with the core achievement information:
+The top section of the page displays the 3D trophy as a visual highlight, along with the key achievement information:
 
-- **Recipient name** — with link to their profile
+- **Recipient name** — with a link to the profile
 - **Event name** — the context of the achievement
 - **Date, location, and category** — issuance metadata
 - **Celebrate button** — any visitor can send a confetti animation and register a like
-- **Share button** — direct access to all sharing channels
+- **Share button** — direct access to sharing channels
 
 ### Issuer card
 
-Panel with the issuer's avatar, name, and bio. If the issuer has KYB verification, a **verification badge** appears next to their name — proof the organization was verified at the time of issuance.
+Panel with the issuer's avatar, name, and bio. If the issuer has KYB verification, a **verification badge** appears next to their name, indicating that the organization was verified at the time of issuance.
 
 ### Reason for recognition
 
-Text written by the issuer explaining why the achievement was granted. The section is expandable for longer texts.
+Text written by the issuer explaining the reason for the achievement.
 
 ### Certificate details
 
-Grid with technical information:
+Grid with the certificate's technical information:
 
 | Field | Content |
 |-------|---------|
-| Recipient | Name with profile link |
+| Recipient | Name with a link to the profile |
 | Achievement | Event name |
 | Date | Issuance date |
 | Location | City and state |
 | Category | Event category |
 | Digital TM | Button to open the interactive 3D trophy in fullscreen |
-| Validity | Permanent or with expiration date |
+| Validity | Permanent or with an expiration date |
 
 ### Authenticity
 
@@ -54,46 +54,32 @@ Anyone can verify a certificate's authenticity via the hash or QR code, without 
 
 ### Next step
 
-If the event has **connections to other events** (learning trails), the page displays the recommended next step with a direct link.
+If the event has connections to other events or learning trails, the page may display a recommended next step with a direct link.
 
-### Event details
+### About the event
 
-Detailed event information, including AI-powered recommendations for similar events.
+Detailed event information, including recommendations for similar events based on the platform's recommendation engine.
 
 ### Other recipients
 
-Avatar grid of other participants awarded in the same event.
+Grid with avatars of other participants recognized in the same event.
 
 ## Permanence
 
-Certificates on That's Me are **permanent**. Once issued, they remain active and verifiable forever — even if:
+Certificates issued on That's Me are permanent. Once issued, they remain active and verifiable, even if:
 
-- The plan is downgraded or cancelled
-- The event is deleted
-- The issuer loses their KYB verification
+- The issuer's plan is downgraded or cancelled
+- The event is no longer active
+- The issuer loses KYB verification
 
-| What | Status after cancellation |
-|------|--------------------------|
-| Existing certificates | Active and verifiable |
-| Certificate pages | Accessible via direct link |
-| SHA-256 verification | Works permanently |
-| Recipient profiles | Certificates remain visible |
-| New issuances | Blocked (requires active plan) |
-| Public directory listing | Active for 90-day grace period |
-
-The SHA-256 hash is immutable. Certificates issued during a KYB verification period retain the verification ID in the hash — permanent proof the issuer was verified at the time of issuance.
-
-### Why this matters
-
-| Traditional approach | That's Me |
-|---------------------|-----------|
-| PDF can be forged | SHA-256 hash prevents tampering |
-| Certificate breaks if platform shuts down | Hashes are stored independently |
-| No way to verify issuer legitimacy | KYB verification embedded in the hash |
-| Certificate exists in isolation | Connected to profile and recommendation engine |
+The SHA-256 hash is immutable. Certificates issued during a period when the issuer was verified retain that record associated with the issuance.
 
 ## Use as portfolio
 
 <Tip>
-Use the achievement link on resumes, proposals, LinkedIn, online portfolios, or anywhere you need to prove a skill or experience with verifiable credibility.
+Use the achievement link on resumes, proposals, LinkedIn, online portfolios, or anywhere you need to prove a skill, participation, or experience with greater credibility.
 </Tip>
+
+## Coming soon
+
+It will be possible to embed achievements on external websites via embed.

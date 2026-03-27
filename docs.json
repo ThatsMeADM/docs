@@ -203,8 +203,14 @@
                   "en/for-issuers/emissions-and-quota",
                   "en/for-issuers/administrators",
                   "en/for-issuers/badge-creator",
-                  "en/for-issuers/verification",
-                  "en/for-issuers/recommendation-guide"
+                  "en/for-issuers/verification"
+                ]
+              },
+              {
+                "group": "Integrations",
+                "pages": [
+                  "en/integrations/api",
+                  "en/integrations/linkedin"
                 ]
               }
             ]
@@ -240,7 +246,9 @@
               {
                 "group": "MCP",
                 "pages": [
-                  "en/mcp/issuer-mcp"
+                  "en/mcp/overview",
+                  "en/mcp/issuer-mcp",
+                  "en/mcp/use-cases"
                 ]
               }
             ]
@@ -274,6 +282,17 @@
                 "group": "Public API",
                 "pages": [
                   "en/public-api/overview"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Glossary",
+            "groups": [
+              {
+                "group": "Glossary",
+                "pages": [
+                  "en/glossary"
                 ]
               }
             ]

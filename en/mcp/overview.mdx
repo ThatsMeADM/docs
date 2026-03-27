@@ -1,0 +1,53 @@
+---
+title: "MCP — Model Context Protocol"
+description: "Connect AI assistants to the That's Me platform via MCP."
+---
+
+## What is MCP?
+
+MCP (*Model Context Protocol*) is an open protocol that lets AI assistants such as Claude, ChatGPT, and Cursor access external tools in a standardized way.
+
+That's Me offers two MCP servers:
+
+| Server | Public | Purpose |
+|---|---|---|
+| **@thatsme/mcp** | Yes | Search events and recommend next steps |
+| **thatsme-mcp-issuer** | Requires API Key | Issue certificates, query analytics, and export data |
+
+## Public MCP — @thatsme/mcp
+
+The public MCP lets any AI assistant search events on the platform. No authentication required.
+
+### Installation
+
+```bash
+npx -y @thatsme/mcp
+```
+
+### Available tools
+
+| Tool | Description |
+|---|---|
+| `search_thatsme_events` | Search events by name, category, level, and location |
+| `get_event_next_steps` | Given an event or skill, suggest next steps |
+
+### Example prompt
+
+> "Find beginner Python courses on That's Me"
+
+The assistant uses `search_thatsme_events` to search events with `query: "Python"`, `level: "beginner"`, and `category: "EDUCATION"`.
+
+## Issuer MCP — thatsme-mcp-issuer
+
+Designed for issuers who want to manage certificates through AI. Requires an API Key.
+
+[Full Issuer MCP documentation →](/en/mcp/issuer-mcp)
+
+## Compatibility
+
+| Assistant | Public MCP | Issuer MCP |
+|---|---|---|
+| Claude Desktop | stdio | stdio |
+| Claude Code | stdio | stdio |
+| Cursor | stdio | stdio |
+| Remote (any) | — | HTTP/SSE via `https://mcp.thatsme.com.br/mcp` |

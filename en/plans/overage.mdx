@@ -1,59 +1,61 @@
 ---
 title: "Overage"
-description: "How overage works when you emit beyond your monthly quota"
+description: "How overage works when you issue beyond your monthly quota."
 ---
 
 ## What is overage?
 
-Overage lets you keep emitting certificates after your monthly quota is used up. Each extra issuance is charged per unit on your next invoice.
+Overage lets you keep issuing certificates after your monthly quota is reached. Each extra issuance is charged per unit on your next invoice.
 
-Overage is **active by default** on all paid plans. You can disable it or set a monthly spend limit at **Settings → Billing → Overage**.
+Overage is **enabled by default** on all paid plans. You can disable it or set a monthly limit at **Settings → Billing → Overage**.
 
-## Pricing per issuance
+## Price per issuance
 
 | Plan | Without WhatsApp | With WhatsApp |
 |---|---|---|
-| **Starter** | R\$ 0.25 / \$0.05 | R\$ 0.40 / \$0.08 |
-| **Pro** | Included in plan | R\$ 0.40 / \$0.08 |
-| **Business** | Included in plan | R\$ 0.35 / \$0.07 |
-| **Enterprise** | Custom | Custom |
+| **Starter** | R\$0.25 / \$0.05 | R\$0.40 / \$0.08 |
+| **Pro** | — | R\$0.40 / \$0.08 |
+| **Business** | — | R\$0.35 / \$0.07 |
+| **Enterprise** | — | Custom |
 
 <Tip>
-  On Pro and above, WhatsApp is included in all issuances — both within quota and overage.
-  The "Without WhatsApp" column only applies to Starter.
+On the Pro plan and above, WhatsApp is included in all issuances, both within quota and in overage. The **"Without WhatsApp"** column applies only to the Starter plan.
 </Tip>
 
 ## Setting a spend limit
 
 In **Settings → Billing → Overage**, you can:
 
-1. **Enable/disable** overage entirely
-2. **Set a monthly cap** — e.g., R\$ 200/month
+1. **Enable or disable** overage
+2. **Set a monthly spending cap**, such as `R\$20/month`
 
-When your overage spend hits the cap:
-- New issuances are **blocked** for the rest of the billing cycle
-- You receive an **email alert** when you reach 80% and 100% of the cap
-- Issuances resume when the billing cycle resets
+When overage spending reaches that cap:
 
-## How the billing cycle works
+- New issuances are **blocked** until the next cycle
+- You receive an **email alert** when you hit 80% and 100% of the limit
+- Issuances resume when the cycle renews
 
-Overage resets on your **billing cycle date** — the day you subscribed, not the 1st of the month.
+## How the cycle works
 
-All overage charges are added to your next Stripe invoice automatically.
+Overage resets on your **billing cycle date** — that is, the day your subscription started, not the first day of the month.
+
+All overage charges are automatically added to your next Stripe invoice.
 
 ## Practical example
 
-> You're on the **Pro** plan (1,000 issuances/month).
-> In August, you emitted **1,247** certificates.
-> The 247 extra issuances cost R\$ 0.40 each = **R\$ 98.80** added to your September invoice.
+> You are on the **Pro** plan, with **1,000 issuances per month**.
+> In August, you issued **1,247** certificates.
+> The **247 overage issuances** cost **R\$0.40** each.
+> Total overage for the period: **R\$98.80**.
 
 ## Disabling overage
 
-If you disable overage in settings:
-- Issuances stop when you hit your quota
+If you disable overage:
+
+- Issuances stop when the quota is reached
 - No extra charges are incurred
-- You can re-enable overage at any time
+- Overage can be re-enabled at any time
 
 <Warning>
-  If overage is disabled and you hit your quota mid-event, remaining recipients won't receive certificates until the next billing cycle or until you upgrade your plan.
+If overage is disabled and the quota is reached during an event, the remaining recipients will not receive certificates until the next cycle or until the plan is changed.
 </Warning>

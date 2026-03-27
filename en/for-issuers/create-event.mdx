@@ -5,31 +5,33 @@ description: "How to create events to issue achievements — templates, fields, 
 icon: "calendar-plus"
 ---
 
-Events are the foundation of every issuance on That's Me. Each event defines the **context**, **schedule**, and **location** for the achievements that will be issued.
+Events are the foundation of every issuance on That's Me. Each event defines the **context**, **schedule**, and **location** of the achievements that will be issued.
 
 ## Events page
 
-The main events page lists all events on the issuer's account with name, dates, category, and status. You can search by name and create new events via the **"+ Create Event"** button.
+The main events page lists all events on the issuer's account, showing name, dates, category, and status. From here, you can search by name and create new events using the **"+ Create Event"** button.
 
 ## Two-step creation
 
 <Steps>
   <Step title="Choose a template">
-    Select the event type that best fits:
+    Select the event type that best fits your use case:
 
     | Template | Examples |
-    |----------|---------|
-    | **Competitions & Awards** | Hackathons, tournaments, awards |
-    | **Courses & Training** | Workshops, bootcamps, training programs |
-    | **Professional Certifications** | Technical, corporate, assessments |
-    | **Recognition & Highlights** | Internal programs, incentives, campaigns |
-    | **Communities** | Meetups, social events, networking |
-    | **Custom Event** | Experiential, corporate, entertainment |
+    |----------|----------|
+    | **Competitions & Awards** | Hackathons, tournaments, and awards |
+    | **Courses & Training** | Workshops, bootcamps, and training programs |
+    | **Professional Certifications** | Technical certifications, corporate certifications, and assessments |
+    | **Recognition & Highlights** | Internal programs, incentives, and campaigns |
+    | **Communities** | Meetups, social events, and networking |
+    | **Custom Event** | Create it your way |
 
-    The selected template determines the categories and subcategories available in the next step.
+    The template and subcategory you choose are simply meant to make filling out the fields more straightforward and thorough.
+
+    When creating via API, the required template is **"Custom Event"**.
   </Step>
   <Step title="Fill in the details">
-    Configure the event with all available fields (see below).
+    Configure the event with all available fields, as described below.
   </Step>
 </Steps>
 
@@ -39,34 +41,34 @@ The main events page lists all events on the issuer's account with name, dates, 
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| **Category** | Yes | Filtered by the selected template |
-| **Subcategory** | No | Filtered by the chosen category |
-| **Name** | Yes | Event name (AI suggestions available) |
-| **Description** | No | Details, objective, target audience, rules (AI suggestions available) |
-| **Official URL** | No | External event link |
-| **Image** | No | JPEG, PNG, or WebP (max 5 MB) |
-| **Private event** | No | When enabled, the event doesn't appear in the public directory |
+| **Category** | Yes | One of the 4 main categories |
+| **Subcategory** | No | Filtered list based on the chosen category |
+| **Name** | Yes | Event name, with AI suggestions |
+| **Description** | No | Details, objective, target audience, and rules, with AI suggestions |
+| **Official URL** | No | External link for registration, purchase, or the event's official page |
+| **Image** | No | JPEG, PNG, or WebP, up to 5 MB |
+| **Private event** | No | When enabled, the event does not appear in the public directory and is not distributed by the platform's AI |
 
 <Tip>
-The platform's AI automatically extracts skills, level, and keywords from the event description. The more detailed the description, the better the recommendations generated for participants.
+The platform's AI automatically extracts skills, level, and keywords from the event description. The more detailed the description, the better the recommendations for participants and the event's distribution tend to be.
 </Tip>
 
 ### Location
 
 Choose between:
 - **Online** — no physical location
-- **In-person** — select state (IBGE list) and enter the city
+- **In-person** — select the state and enter the city
 
 ### Date and period
 
-Four date modes available:
+Four date modes are available to accommodate different types of events:
 
 | Mode | Fields | Use case |
 |------|--------|----------|
 | **Single date** | Date + start time (optional) | One-day events |
-| **Date range** | Start date, end date + times (optional) | Multi-day events |
-| **Recurring** | Frequency + start date | Weekly, biweekly, monthly, bimonthly, quarterly, semiannual, or annual |
-| **Always available** | None | On-demand courses, permanent trails |
+| **Date range** | Start date, end date, and times (optional) | Events with a defined duration |
+| **Recurring** | Frequency + start date | Weekly, biweekly, monthly, bimonthly, quarterly, semiannual, or annual events |
+| **Always available** | None | On-demand courses and permanent trails |
 
 ## Add TMs to the event
 
@@ -74,7 +76,7 @@ After creating the event, go to the **"TMs & Emissions"** tab:
 
 <Steps>
   <Step title="Click 'Add TMs'">
-    Select the 3D trophies from your Gallery to be used as awards.
+    Select the 3D trophies from your Gallery to be used in the event.
   </Step>
   <Step title="Confirm the selection">
     Each added TM can be used to award participants individually or in batch.
@@ -82,12 +84,16 @@ After creating the event, go to the **"TMs & Emissions"** tab:
 </Steps>
 
 <Info>
-Use multiple TMs to recognize different levels within the same event: 1st, 2nd, and 3rd place, technical highlight, best project, participation, etc.
+Use multiple TMs to recognize different levels within the same event, such as 1st, 2nd, and 3rd place, technical highlight, best project, or participation.
 </Info>
+
+<Warning>
+Once a TM (3D Trophy) is used in an issuance, it can no longer be unlinked from that event or deleted from the gallery.
+</Warning>
 
 ## Connect events (Learning Trails)
 
-Link related events to create learning trails. Connections appear on the certificate page as **"Next step"** and feed the AI recommendation engine.
+Link related events to create personalized learning trails for participants. These connections appear on the certificate page as **"Next step"** and also feed the AI recommendation engine.
 
 Available relation types:
 
@@ -95,17 +101,17 @@ Available relation types:
 |----------|---------|
 | **Continuation** | The event follows sequentially from the previous one |
 | **Preparatory** | The event prepares for the next one |
-| **Deepening** | The event deepens knowledge from the previous one |
-| **Alternative** | Alternate path through the same topic |
-| **Suggestive** | Complementary options related to the current topic |
+| **Deepening** | The event deepens the content of the previous one |
+| **Alternative** | The event offers an alternate path within the same topic |
+| **Suggestive** | The event presents complementary options related to the current topic |
 
 <Note>
-Learning Trails are available only after saving the event (edit mode).
+After adding, changing, or removing any event detail, click the **"Save"** button to confirm and apply the changes.
 </Note>
 
 ## Prerequisites
 
-Define prerequisites for your event to ensure participants have the necessary foundation. Three types are available:
+Define prerequisites to ensure participants have the necessary foundation before joining the event. Three types are available:
 
 | Type | Description |
 |------|-------------|
@@ -113,13 +119,17 @@ Define prerequisites for your event to ensure participants have the necessary fo
 | **Category level** | Requires a minimum level in a category (e.g., intermediate in Education) |
 | **Discipline level** | Requires a minimum level in a specific discipline (e.g., intermediate in machine_learning) |
 
-Events with unmet prerequisites are deprioritized in recommendations, naturally guiding participants toward the preparatory steps first.
+Events with unmet prerequisites receive significantly lower priority in recommendations, naturally guiding participants toward the preparatory steps first.
 
 ## Event states
 
 | State | Permissions |
 |-------|------------|
-| **In progress** | Full editing, achievement issuance, TM addition |
+| **In progress** | Full editing, achievement issuance, and TM addition |
 | **Completed** | Locked for edits and new issuances |
 
-To finish an event, click **"Finish Event"** on the details page. This action is irreversible and ensures the integrity of the historical record.
+To finish an event, click **"Finish Event"** on the details page. This action is irreversible and preserves the integrity of the historical record.
+
+<Info>
+Although each certificate issuance already generates immutable data, we recommend finishing events that have ended, whose end date has passed, and for which no further issuances are expected. This reduces the risk of misuse.
+</Info>

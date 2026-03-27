@@ -1,52 +1,50 @@
 ---
 title: "Plans Overview"
-description: "What each plan includes, pricing, and how the billing cycle works"
+description: "What each plan includes, pricing, and how the billing cycle works."
 ---
 
-## Plans at a glance
+## Plans
 
-| Plan | Issuances/mo | Price (BRL) | Price (USD) | API tier |
-|---|---|---|---|---|
-| **Free** | 0 | R\$ 0 | \$0 | — |
-| **Starter** | 200 | R\$ 149/mo | \$29/mo | Basic |
-| **Pro** | 1,000 | R\$ 749/mo | \$129/mo | Advanced |
-| **Business** | 5,000 | R\$ 2,499/mo | \$449/mo | Advanced |
+| Plan | Issuances/month | Price (BRL) | Price (USD) | API Tier |
+|---|---:|---|---|---|
+| **Free** | 0 | R\$0 | \$0 | — |
+| **Starter** | 200 | R\$149/mo | \$29/mo | Basic |
+| **Pro** | 1,000 | R\$749/mo | \$129/mo | Advanced |
+| **Business** | 5,000 | R\$2,499/mo | \$449/mo | Advanced |
 | **Enterprise** | Negotiated | Custom | Custom | Advanced |
 
-Annual billing gives you **2 months free** (17% discount). The amount is charged as a single annual payment.
+The annual plan gives you **2 months free**, equivalent to a 17% discount. The amount is charged as a single annual payment.
 
 ## What is an issuance?
 
-An **issuance** is a single certificate emitted to a recipient. Each issuance:
+An **issuance** is a certificate sent to a recipient. Each issuance:
 
-- Creates a unique SHA-256 hash for verification
-- Delivers the certificate via email (and WhatsApp, if enabled)
-- Counts toward your monthly quota
-- Is **permanent** — it never expires, even if you cancel your plan
+- Generates a unique SHA-256 hash for verification
+- Delivers the certificate by email and, when enabled, by WhatsApp
+- Counts toward your monthly limit
+- Remains active after issuance
 
-One event with 50 recipients = 50 issuances.
+An event with 50 recipients consumes 50 issuances.
 
 ## Billing cycle
 
-Your quota resets on your **billing cycle date** — the day you subscribed — not on the 1st of every month.
+Your quota renews on your **billing cycle date** — that is, the day your subscription started, not the first day of each month.
 
-Example: if you subscribed on March 15th, your quota resets on the 15th of each month.
+Example: if you subscribed on March 15, your quota renews on the 15th of every month.
 
 <Tip>
-  You can check your current usage and billing cycle date at **Settings → Billing**.
+Check your current usage and billing cycle date at **Settings → Billing**.
 </Tip>
 
 ## What happens when you cancel
 
-- **Existing certificates** remain active and verifiable forever
+- **Already-issued certificates** remain active and verifiable
 - **New issuances** are blocked immediately
-- **Events** remain visible in the public directory for 90 days (grace period)
+- **Events** remain visible in the public directory for 30 days
 - Your account reverts to the Free plan
 
 ## Learn more
 
-- [Overage — emitting beyond your quota](/en/plans/overage)
+- [Overage — issuing beyond your quota](/en/plans/overage)
 - [WhatsApp delivery](/en/plans/whatsapp)
-- [API access by tier](/en/api/v1/tiers)
 - [SLA & support](/en/plans/sla)
-- [Certificate permanence](/en/features/certificate-page)

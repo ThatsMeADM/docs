@@ -7,150 +7,92 @@ icon: "cube"
 
 ## What are Trophy Models (TMs)?
 
-TMs are interactive 3D digital trophies that represent achievements in a visual, memorable, and verifiable way. Each TM is fully interactive — recipients can rotate, zoom, and explore every detail of the model directly in the browser, on any device.
+TMs are 3D digital trophies that represent achievements in a visual, memorable, and verifiable way. Each TM is interactive: the recipient can rotate, zoom, and explore the model directly in the browser, on any device.
 
-Unlike a PDF or a static image, a TM turns recognition into an experience people actually want to share.
+Unlike a PDF or a static image, a TM turns recognition into a more visual, engaging, and shareable experience.
 
 <Tip>
-TMs are **free on every plan**. Create, customize, or import as many models as you want at no additional cost.
+TMs are **free on every plan**. Create or customize as many models as you want at no additional cost.
 </Tip>
 
 ## How to create a TM
 
-That's Me offers three paths to create your digital trophy:
-
-<Tabs>
-  <Tab title="Essential TM">
-    ### Self-service editor
-
-    The platform's 3D editor lets you create custom trophies in minutes:
-
-    <Steps>
-      <Step title="Upload an image">
-        Upload a 2D image (JPG, SVG, or PDF). The editor automatically converts it into a 3D model with real-time preview.
-      </Step>
-      <Step title="Customize">
-        Adjust geometry, materials, textures, animations, and lighting. Everything updates instantly.
-      </Step>
-      <Step title="Publish">
-        Approve the result and publish. The TM is immediately available in your Gallery for issuance.
-      </Step>
-    </Steps>
-
-    Delivery within **2 business days** after approval.
-  </Tab>
-  <Tab title="Exclusive TM">
-    ### Custom design
-
-    For trophies that require a higher level of customization:
-
-    <Steps>
-      <Step title="Guided brief">
-        Fill out the form with your desired style, materials, effects, and concept.
-      </Step>
-      <Step title="Design team creates">
-        Our team builds the model from scratch. First version within **5 business days**.
-      </Step>
-      <Step title="Review">
-        2 revision rounds included. The final TM is published to your Gallery.
-      </Step>
-    </Steps>
-  </Tab>
-  <Tab title="Import Model">
-    ### Bring your own 3D
-
-    If you already have a 3D model ready:
-
-    <Steps>
-      <Step title="Upload the file">
-        Send a .ZIP containing .GLB, .FBX, or textures.
-      </Step>
-      <Step title="Technical integration">
-        Our team handles integration within **2-3 business days**. The model becomes available in your Gallery.
-      </Step>
-    </Steps>
-
-    <Warning>
-      The model must meet technical requirements: corrected normals, applied textures, and a complete file. The team does not edit the original design.
-    </Warning>
-  </Tab>
-</Tabs>
-
-## Editor capabilities
-
-The Essential TM editor offers advanced customization with real-time preview:
+Our 3D editor offers advanced customization with real-time preview:
 
 ### Geometry
-- **Extrusion depth** (0 to 3 units)
+- **Extrusion** depth
 - Configurable **bevel**: size and thickness
 - Per-layer or per-path group adjustments
 
-### Materials (3 modes)
+### Materials (2 modes)
 
 | Mode | Description |
 |------|-------------|
-| **Realistic** | Full PBR: solid or gradient color, roughness, metallic, clearcoat, and iridescence |
-| **Glass** | Full transmission with refraction (IOR 1.5). Crystal-clear effect |
-| **Prism** | Chromatic dispersion, variable thickness, and anisotropic blur. Rainbow effect |
+| **Realistic** | Full PBR material with solid or gradient color, roughness, metallic, clearcoat, and iridescence |
+| **Glass** | Material with transmission and refraction, ideal for a crystalline effect |
 
 ### Textures
-15+ built-in presets: fabric, leather, light/dark marble, gold, silver, copper, holographic, wood, and more. Each texture is adjustable in intensity, scale, and tint — and can be animated.
+You can use over 15 ready-made presets or import your own texture. Each texture can be adjusted in intensity, scale, and tint for more personalized results.
 
 ### Lighting and effects
 - HDR environments with configurable intensity
-- Contact shadows (position, opacity, blur)
-- Bloom/neon (low, medium, high)
+- Contact shadows with position, opacity, and blur controls
+- Bloom/neon
 
 ### Animations
-5 animation presets for export and display:
+There are 5 animation presets for export and display:
 
 | Preset | Effect |
 |--------|--------|
-| None | Static, interactive orbit only |
-| Forward rotate | Continuous spin (vertical or horizontal axis) |
-| Ease spin | Rotation with easing |
+| None | Static model with orbital interaction |
+| Continuous rotation | Front spin on the vertical or horizontal axis |
+| Smooth spin | Rotation with easing |
 | Bounce | Oscillation with squash/stretch |
 | Breath | Scale pulse, no rotation |
 
-### Circular text
-Add curved text around the trophy with custom font, spacing, inclination, and independent material settings.
+### 3D Text
+Add text to the trophy with custom font, spacing, inclination, and independent material.
 
 ## Drafts
 
-The editor automatically saves your work on every change (auto-save with 800ms debounce). Drafts remain available for **24 hours** and are listed on the editor page, sorted most recent first.
+The editor automatically saves your work on every change. Drafts remain available for **24 hours** and appear on the editor page, sorted from most recent to oldest.
 
-When a trophy is published, the draft is finalized automatically.
+When a trophy is published, the corresponding draft is finalized automatically.
 
 ## Export formats
 
-| Format | Use |
-|--------|-----|
-| **GLB** | Complete 3D model with embedded materials, textures, and animations |
-| **USDZ** | Augmented reality on iPhone and Mac (AR Quick Look) |
-| **Video** | MP4/WebM of the animated trophy — ideal for social media |
-| **Thumbnail** | Static PNG for previews and cards |
+| Item | Detail |
+|------|--------|
+| **Format** | MP4 |
+| **Watermark** | Present for issuers on the FREE plan |
+| **Resolution** | 2K at 30 fps |
+| **Aspect ratio** | 1:1, 16:9, and 9:16 |
+| **Animation** | 4 presets available |
 
-## 3D Viewer
+## 3D Viewer and external embed
 
-Trophies are rendered via WebGL with Three.js directly in the browser. The experience is smooth on desktop, tablet, and mobile.
+Trophies are rendered in the browser via WebGL with Three.js and can be displayed on external websites through iframe embedding. The experience is compatible with desktop, tablet, and mobile.
 
-The public viewer (`/b/[badgeId]`) supports customization parameters via URL:
-- Background: badge color, transparent, or custom color
-- Animation: any preset or disabled
-- Watermark: full, mark, or off
+The public viewer (`/e/[eventId]/b/[badgeId]`) supports customization parameters via URL:
+- **The badge must be linked to an event**
+- Fixed or responsive dimensions
+- Background with badge color, transparent, or custom color
+- Animation with any preset or disabled
+- Event and issuer information: full, summarized, or disabled
+- Watermark: full, summarized, or disabled
 - Fullscreen mode
 
 <Tip>
-For the best viewing experience, we recommend up-to-date browsers (Chrome, Safari, Firefox, Edge).
+For the best viewing experience, we recommend up-to-date browsers such as Chrome, Safari, Firefox, and Edge.
 </Tip>
 
 ## Next steps
 
 <CardGroup cols={3}>
-  <Card title="Badge Creator" icon="wand-magic-sparkles" href="/en/for-issuers/badge-creator">
-    Details on each creation path.
+  <Card title="TM Creator" icon="wand-magic-sparkles" href="/en/for-issuers/badge-creator">
+    See the details of each creation path.
   </Card>
-  <Card title="Badge Gallery" icon="images" href="/en/for-issuers/badge-gallery">
+  <Card title="TM Gallery" icon="images" href="/en/for-issuers/badge-gallery">
     Manage your published trophies.
   </Card>
   <Card title="Create event" icon="calendar-plus" href="/en/for-issuers/create-event">

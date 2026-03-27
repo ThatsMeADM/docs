@@ -5,82 +5,81 @@ description: "KYB, SHA-256 hash, traceability, community moderation, and LGPD co
 icon: "shield-check"
 ---
 
-That's Me was designed as a professional and trustworthy recognition platform. Every issuance carries context, authorship, date, and technical validation.
+That's Me was designed as a recognition platform with context, authorship, traceability, and technical validation.
 
 ## Certificate integrity
 
-Every certificate receives a **SHA-256 hash** generated at the time of issuance. The hash is computed from:
+Each certificate receives a **SHA-256 hash** generated at the time of issuance. The hash is computed from:
 
-```
+```text
 post_id | event_id | badge_id | profile_id | user_id | created_at | kyb_verification_id
 ```
 
 Anyone can verify authenticity at:
 
-```
-https://thatsme.com.br/certificate/verify/[hash]
+```text
+https://app.thatsme.com.br/certificate/verify/[hash]
 ```
 
 Verification confirms:
 - The certificate was issued by That's Me
-- The data has not been tampered with
-- Whether the issuer was verified (KYB) at the time of issuance
+- The certificate's core data has not been altered
+- Whether the issuer was KYB-verified at the time of issuance, when applicable
 
 <Info>
-The hash is **immutable**. Even if an issuer loses verification later, certificates issued during the verified period retain the verification ID in the hash — permanent proof.
+The hash is **immutable**. Even if the issuer loses verification later, certificates issued during the verified period continue to retain that record associated with the issuance.
 </Info>
 
 ## KYB — Know Your Business
 
-Organizations can apply for verification in **Settings → Verification**. Two paths available:
+Organizations can apply for verification in **Settings → Verification**. Two paths are available:
 
 <Tabs>
   <Tab title="Domain verification">
     ### Status: BASIC
 
-    Add a TXT record to your domain's DNS. Verification is **immediate** and confirms the organization controls the stated domain.
+    Add a TXT record to your domain's DNS. Verification is **immediate** and confirms that the organization controls the stated domain.
   </Tab>
   <Tab title="Document upload">
     ### Status: VERIFIED
 
-    Submit the company's official registration document. Review in **1 to 3 business days**.
+    Submit the company's official registration document. Review takes **1 to 3 business days**.
 
-    VERIFIED status displays a **verification badge** on the issuer's profile and on every certificate they issue.
+    The **VERIFIED** status displays a **verification badge** on the issuer's profile and on certificates issued during that period.
   </Tab>
 </Tabs>
 
 | Status | What it means |
 |--------|--------------|
 | **BASIC** | Domain control confirmed |
-| **VERIFIED** | Verification badge visible on profile and all certificates |
+| **VERIFIED** | Verification badge visible on the profile and on certificates issued during the verified period |
 
-## Full traceability
+## Traceability
 
-Every issuance is:
+Each issuance is:
 
 - **Recorded with date and time**, linked to the responsible administrator
-- **Auditable**, with a permanent record in the action history
-- **Associated with a unique 3D model**, reinforcing the visual identity
+- **Kept in the account's action history**
+- **Associated with the TM used** in the issuance
 
 <Note>
-Every action performed by an administrator (creating events, issuing achievements, adding members) is automatically recorded. This enables internal audits and accountability.
+Every action performed by an administrator, such as creating events, issuing achievements, and adding members, is recorded internally. This enables historical review and audit support.
 </Note>
 
 ## Community moderation
 
 If any achievement appears suspicious or out of context, **any platform member can report it** by clicking **"..."** on the post and selecting **"Report"**.
 
-Reports are reviewed by the team with support from automated checks and pattern analysis. This open audit model strengthens the ecosystem's trust.
+Reports are reviewed by the team with support from automated checks and pattern analysis.
 
 ## LGPD and data protection
 
-That's Me is fully compliant with Brazil's **General Data Protection Law (LGPD)**:
+That's Me operates in compliance with Brazil's **General Data Protection Law (LGPD)**:
 
-- No personal information is disclosed without explicit consent
-- Achievements only become public if the member opts in
-- Users can make their profile private at any time
-- Data can be deleted upon request
+- No personal information is disclosed without an appropriate legal basis
+- Members can control the visibility of their profile and achievements
+- Data can be deleted upon request, in accordance with applicable rules
 
 <Check>
-Who you are belongs to you — not the platform.
+The platform was designed to give users control over their visibility and their data.
 </Check>

@@ -1,0 +1,72 @@
+---
+title: "Use Cases — MCP"
+description: "Three real-world scenarios using the Issuer MCP with AI assistants."
+---
+
+## 1. HR automates issuance after training
+
+**Scenario:** A company uses an LMS (*Learning Management System*) for internal training. When an employee completes a module, HR needs to issue certificates on That's Me.
+
+**Flow with MCP:**
+
+1. The employee completes the training on the LMS
+2. HR opens Claude Desktop and says:
+
+> "Issue certificates for the 'Compliance 2025' training to the following employees who completed it today: Ana Costa (ana.costa@company.com), Carlos Souza (carlos.souza@company.com), Fernanda Lima (fernanda.lima@company.com)"
+
+3. Claude uses `search_events` to find the `Compliance 2025` event
+4. Then uses `issue_certificates` with the three employees' data
+5. Each employee receives the certificate by email and WhatsApp
+
+**Result:** An issuance that used to take around 15 minutes on the dashboard can now be done in seconds via chat.
+
+---
+
+## 2. Language school issues certificates in bulk
+
+**Scenario:** An English school finishes a class of 40 students and needs to issue certificates for all of them.
+
+**Flow with MCP:**
+
+1. The coordinator pastes the student list into the chat:
+
+> "Issue certificates for the 'English B2 — March 2026 Class' course to these students: [list with name and email]"
+
+2. Claude uses `search_events` to locate the event
+3. Then uses `issue_certificates` with all 40 recipients in a single call
+4. The coordinator asks for the status:
+
+> "How many have already accepted their certificate?"
+
+5. Claude uses `get_engagement_funnel` to display the funnel
+
+**Result:** Bulk issuance and acceptance tracking, all in a single conversation.
+
+---
+
+## 3. Marathon organizer checks analytics
+
+**Scenario:** The organizer of a road race issued 2,000 completion certificates and wants to understand the engagement level.
+
+**Flow with MCP:**
+
+1. The organizer asks:
+
+> "Show the engagement funnel for the SP Marathon 2026"
+
+2. Claude uses `get_engagement_funnel` and returns, for example:
+   - 2,000 issued → 1,847 accepted (92%) → 1,523 viewed (76%) → 412 shared (21%)
+
+3. The organizer asks for more details:
+
+> "Who hasn't accepted their certificate yet?"
+
+4. Claude uses `list_recipients` with `status: "pending"` and lists the 153 pending recipients
+
+5. The organizer decides to export:
+
+> "Export all issuance data from this month as CSV"
+
+6. Claude uses `export_csv` and returns the file with the data
+
+**Result:** Analytics queries and data export without leaving the chat.
