@@ -1,0 +1,55 @@
+---
+title: "Maximizando a Taxa de Recomendação"
+sidebarTitle: "Maximizar Recomendações"
+description: "Como preencher os dados do evento para que a IA recomende seus eventos às pessoas certas"
+icon: "chart-line-up"
+---
+
+O motor de recomendação da That's Me analisa a descrição do seu evento e extrai
+habilidades, palavras-chave, nível e público-alvo automaticamente. Descrições melhores = recomendações mais precisas.
+
+## Como a IA lê seu evento
+
+Quando você cria ou atualiza um evento, a plataforma automaticamente:
+1. Extrai `habilidades` (ex: "inglês", "liderança", "corrida de rua")
+2. Extrai `palavras-chave` (ex: "certificação", "maratona", "B2")
+3. Determina o `nível` (iniciante / intermediário / avançado)
+4. Determina o `tipo de etapa` (teoria / prática / experiência)
+
+Esses dados são usados para associar seu evento a usuários cujos Objetivos estejam alinhados.
+
+## Escrevendo um bom nome de evento
+
+<CodeGroup>
+```text Bom
+"Inglês Nível 2 — Conversação Intermediária"
+"Programa de Treinamento para Maratona 42km — Avançado"
+"Certificação em Gestão Ágil de Projetos"
+```
+
+```text Ruim
+"Curso 2"
+"Treinamento"
+"Evento Março"
+```
+</CodeGroup>
+
+## Escrevendo uma boa descrição
+
+Inclua:
+- **O que o participante vai aprender ou conquistar** ("Ao concluir este curso, os participantes serão capazes de...")
+- **Habilidades desenvolvidas** (cite-as explicitamente)
+- **Público-alvo** ("Voltado para falantes de inglês intermediário...")
+- **Formato** (online / presencial / híbrido)
+
+A IA relê sua descrição toda vez que você emite certificados — mantenha-a atualizada.
+
+## Conectando eventos em uma trilha
+
+Conecte seus eventos em **Evento → Editar → Trilha de Aprendizado**.
+Quando um usuário conclui o Evento A, o Evento B aparece como "Próximo Passo" na página do certificado
+e nos e-mails de recomendação — gerando upsell automaticamente.
+
+```
+Inglês Nível 1 ──→ Inglês Nível 2 ──→ Inglês Nível 3 ──→ [TOEFL — curadoria That's Me]
+```

@@ -63,8 +63,8 @@
                   "funcionalidades/one-page-certificate",
                   "funcionalidades/objetivos",
                   "funcionalidades/ecossistema-social",
-                  "integracoes/linkedin",
-                  "integracoes/compartilhamento"
+                  "funcionalidades/linkedin",
+                  "funcionalidades/compartilhamento"
                 ]
               }
             ]
@@ -81,7 +81,8 @@
                   "para-emissores/emissoes-e-cota",
                   "para-emissores/administradores",
                   "para-emissores/loja",
-                  "para-emissores/verificacao-e-seguranca"
+                  "para-emissores/verificacao-e-seguranca",
+                  "para-emissores/guia-de-recomendacao"
                 ]
               },
               {
@@ -203,14 +204,15 @@
                   "en/for-issuers/emissions-and-quota",
                   "en/for-issuers/administrators",
                   "en/for-issuers/badge-creator",
-                  "en/for-issuers/verification"
+                  "en/for-issuers/verification",
+                  "en/for-issuers/recommendation-guide"
                 ]
               },
               {
                 "group": "Integrations",
                 "pages": [
-                  "en/integrations/api",
-                  "en/integrations/linkedin"
+                  "en/integration/api",
+                  "en/integration/linkedin"
                 ]
               }
             ]
