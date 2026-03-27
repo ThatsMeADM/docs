@@ -1,0 +1,167 @@
+---
+title: "Objetivos"
+sidebarTitle: "Objetivos"
+description: "Declare para onde quer ir. A plataforma conecta sua intenção ao seu histórico e recomenda os próximos passos com mais precisão."
+icon: "bullseye-arrow"
+---
+
+Objetivos são a forma de indicar à plataforma **o que você quer alcançar**. Quando um objetivo é declarado, o motor de recomendação passa a considerar não apenas o que você já fez, mas também a direção que deseja seguir.
+
+Isso melhora a qualidade das recomendações: em vez de sugerir apenas eventos relacionados ao passado, a plataforma também prioriza oportunidades alinhadas à sua intenção.
+
+<Info>
+Objetivos são opcionais. A plataforma funciona sem eles, usando apenas o histórico de conquistas. Quando objetivos são declarados, a personalização tende a ficar mais precisa.
+</Info>
+
+## Como funciona
+
+<Steps>
+  <Step title="Você declara um objetivo">
+    Escolha uma categoria e descreva, em texto livre ou com tags, o que deseja alcançar. Pode ser algo mais amplo, como **"me tornar um programador melhor"**, ou algo específico, como **"completar a Maratona do Rio"**.
+
+    O fluxo aceita desde uma definição simples, com apenas a categoria, até uma configuração mais detalhada com tags, nível e destino específico.
+  </Step>
+
+  <Step title="A plataforma interpreta sua intenção">
+    Quando você escreve em texto livre, a plataforma identifica sinais semânticos do objetivo e os conecta ao vocabulário usado na organização dos eventos e recomendações.
+
+    Isso reduz o atrito entre a forma como a pessoa escreve e a forma como o sistema organiza oportunidades relacionadas.
+  </Step>
+
+  <Step title="As recomendações ganham mais aderência">
+    A partir do objetivo declarado, o motor de recomendação passa a priorizar eventos mais compatíveis com a direção desejada pelo usuário.
+
+    Isso ajuda a elevar oportunidades mais relevantes e a reduzir sugestões genéricas dentro da mesma categoria.
+  </Step>
+</Steps>
+
+## O que você pode definir
+
+O formulário de objetivos foi projetado para funcionar com pouco atrito. Apenas a categoria é obrigatória. Os demais campos servem para refinar o direcionamento quando necessário.
+
+### Campos principais
+
+| Campo | Descrição | Obrigatório |
+|-------|-----------|:-----------:|
+| **Categoria** | Esportes, Educação, Corporativo ou Sociocultural | Sim |
+| **Objetivo** | Texto livre descrevendo o que deseja alcançar | Não |
+| **Tags de interesse** | Termos que ajudam a refinar a aderência das recomendações | Não |
+
+### Campos avançados
+
+| Campo | Descrição |
+|-------|-----------|
+| **Prioridade** | Baixa, média ou alta |
+| **Nível** | Iniciante, intermediário, avançado ou especialista |
+| **Pontos fortes** | Habilidades que você já possui |
+| **Formato preferido** | Online, presencial, cidade ou estado |
+| **Destino específico** | Uma meta concreta, como um evento, prova ou certificação |
+
+<Tip>
+Você pode começar com o mínimo: categoria e uma frase curta. Depois, caso queira, pode refinar o objetivo com mais contexto.
+</Tip>
+
+## Tags de interesse
+
+As tags ajudam a aproximar a intenção declarada do universo de eventos disponíveis na plataforma.
+
+Quando um objetivo inclui termos relacionados a um tema, habilidade ou resultado esperado, a plataforma consegue melhorar a aderência entre esse objetivo e as oportunidades sugeridas.
+
+### Como as tags podem surgir
+
+Existem três caminhos principais:
+
+1. **Escolha manual** — você seleciona tags diretamente no formulário
+2. **Interpretação do texto** — a plataforma identifica sinais do objetivo escrito em linguagem natural
+3. **Leitura do histórico** — sugestões automáticas podem usar padrões observados nas suas conquistas anteriores
+
+## Eventos compatíveis
+
+Ao criar ou editar um objetivo, a plataforma pode exibir uma prévia de eventos compatíveis com a direção informada. Isso ajuda a validar rapidamente se o objetivo está bem definido e se o sistema entendeu a intenção corretamente.
+
+Essa prévia também torna mais fácil ajustar o objetivo antes de salvar.
+
+## Objetivos automáticos
+
+A plataforma também pode sugerir objetivos automaticamente a partir do histórico de conquistas.
+
+Quando identifica padrões consistentes de interesse, categoria ou progressão, o sistema pode propor um objetivo sugerido para o usuário revisar.
+
+Esses objetivos aparecem com destaque visual e podem ser:
+
+| Ação | O que acontece |
+|------|---------------|
+| **Confirmar** | O objetivo é incorporado ao perfil |
+| **Editar** | O formulário é aberto para ajustes antes de salvar |
+| **Descartar** | A sugestão é removida |
+
+<Note>
+Objetivos sugeridos automaticamente não passam a influenciar recomendações até que sejam confirmados ou editados pelo usuário.
+</Note>
+
+## Evolução automática
+
+Os objetivos podem evoluir junto com a trajetória da pessoa.
+
+Conforme novas conquistas são registradas, a plataforma pode atualizar o entendimento sobre nível, direção ou aderência daquele objetivo, respeitando o histórico acumulado e eventuais ajustes feitos manualmente pelo usuário.
+
+<Info>
+Quando houver edição manual de um objetivo, essa definição passa a ter prioridade sobre inferências automáticas da plataforma.
+</Info>
+
+## Destinos específicos
+
+Além de objetivos amplos, como **"quero melhorar em programação"**, também é possível definir metas concretas.
+
+Exemplos:
+- Maratona do Rio 42 km
+- TOEFL iBT
+- Certificação AWS Solutions Architect
+
+Quando existe um destino específico, o motor pode priorizar eventos diretamente ligados a essa meta ou oportunidades preparatórias coerentes com esse caminho.
+
+## Como os objetivos impactam as recomendações
+
+Os objetivos são um dos sinais mais relevantes no motor de recomendação.
+
+Na prática, eles ajudam a plataforma a responder melhor perguntas como:
+
+- qual categoria faz mais sentido agora
+- quais eventos têm maior aderência com a intenção declarada
+- quais oportunidades se alinham melhor ao nível atual
+- quais caminhos devem ser priorizados antes de outros
+
+Isso faz com que duas pessoas dentro da mesma categoria possam receber recomendações bem diferentes, de acordo com seus objetivos, histórico e momento.
+
+## O ciclo de refinamento
+
+Objetivos fazem parte de um ciclo contínuo de melhoria das recomendações:
+
+```text
+Você declara um objetivo
+        │
+        ▼
+A plataforma entende melhor sua direção
+        │
+        ▼
+As recomendações ganham mais aderência
+        │
+        ▼
+Novas conquistas são registradas
+        │
+        ▼
+O sistema refina o entendimento do seu perfil
+        │
+        ▼
+As recomendações ficam mais precisas ao longo do tempo
+```
+
+Cada nova conquista adiciona contexto. Com isso, o sistema passa a recomendar com mais precisão sem exigir reconfiguração constante.
+
+## Acesso
+
+Acesse seus objetivos em **Configurações → Objetivos**, pelo menu lateral no desktop ou pela barra inferior no mobile.
+
+<Tip>
+Comece simples. Uma categoria e uma frase curta já são suficientes para melhorar a direção das recomendações.
+</Tip>

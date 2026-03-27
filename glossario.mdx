@@ -7,113 +7,118 @@ description: "Conheça os principais termos da plataforma That’s Me, organizad
 
 ## Fundamentos da plataforma
 
-- **Plataforma** — Serviço digital que centraliza a criação, emissão, exibição e compartilhamento de conquistas e certificados.
-- **Conquista** — Registro de um reconhecimento (vitória, mérito, participação, meta atingida etc.) emitido por um **Emissor**, com dados de data, local e motivo.
-- **Reconhecimento** — Ato de valorizar formalmente alguém por um feito; na That’s Me, vira uma **Conquista**acompanhada de **Certificado Digital** e **TM 3D**.
-- **Certificado Digital** — Página dedicada e verificável da conquista ("Página da Conquista") com dados do evento, emissor, motivo, TM 3D e botões de compartilhamento.
-- **Experiência Digital** — Conjunto de interações do usuário com a conquista: visualização 3D/WebGL, página dedicada, feed social e metadados de compartilhamento.
-- **Validação** — Processo técnico e operacional que garante autenticidade (selo de verificação de emissor/KYB, logs, IDs únicos e checagens antifraude).
+- **Plataforma** — Serviço digital que centraliza a criação, emissão, visualização e compartilhamento de conquistas.
+- **Conquista** — Registro de um reconhecimento, como vitória, mérito, participação ou meta atingida, emitido por um **Emissor**. Na prática, uma conquista pode ser apresentada como **certificado digital**, **badge 3D**, **troféu 3D** ou **TM**, dependendo do contexto da plataforma.
+- **Conquista digital** — Forma digital de representar uma conquista emitida na plataforma. Pode incluir certificado, página pública, badge 3D, troféu 3D e recursos de compartilhamento.
+- **Reconhecimento** — Ato de valorizar formalmente alguém por um feito. Na That’s Me, esse reconhecimento é transformado em uma **Conquista**, acompanhada de **Certificado Digital** e representação visual em **TM 3D**.
+- **Certificado Digital** — Registro digital verificável de uma conquista. Na plataforma, esse termo pode se referir tanto ao certificado em si quanto à sua página pública dedicada, com dados do evento, emissor, motivo e elementos visuais em 3D.
+- **Badge 3D** — Representação visual tridimensional de uma conquista. Em muitos contextos da plataforma, funciona como sinônimo de **TM**, **troféu 3D** ou elemento visual do **certificado digital**.
+- **Troféu 3D** — Objeto visual tridimensional usado para representar uma conquista. Em contextos de produto, pode aparecer como sinônimo de **TM**, **badge 3D** ou representação visual da conquista.
+- **TM 3D** — Forma abreviada de se referir ao **Trophy Model**, ao **badge 3D** ou ao **troféu 3D** vinculado a uma conquista.
+- **Experiência Digital** — Conjunto de interações do usuário com a conquista: visualização 3D no navegador, página pública, feed social e metadados de compartilhamento.
+- **Validação** — Processo técnico e operacional que reforça a autenticidade da conquista, com uso de verificação de emissor, logs, IDs únicos e checagens antifraude.
 - **ID da Conquista** — Identificador único e rastreável usado para verificação e auditoria.
-- **Link único (público/verificável)** — URL da Página da Conquista com metadados sociais (Open Graph/Twitter Cards) para preview rico.
+- **Link único (público/verificável)** — URL da Página da Conquista com metadados sociais, usada para visualização pública e compartilhamento.
 
 ---
 
 ## Usuários
 
-- **Emissor** — Pessoa/empresa que cria **Eventos**, escolhe **TMs** e emite **Conquistas**.
-- **Administrador** — Membro com permissões de gestão (eventos, emissões e TMs). Todas as ações são logadas para **Auditoria**.
-- **Membro / Usuário comum** — Quem recebe, guarda e compartilha conquistas; mantém um **Mural de Conquistas**.
+- **Emissor** — Pessoa ou organização que cria **Eventos**, escolhe **TMs** e emite **Conquistas**.
+- **Administrador** — Membro com permissões de gestão sobre eventos, emissões e TMs. Todas as ações relevantes são registradas para auditoria.
+- **Membro / Usuário comum** — Pessoa que recebe, organiza e compartilha conquistas em seu **Mural de Conquistas**.
 
 ---
 
 ## Objetos e conteúdos do reconhecimento
 
-- **TM (Trophy Model)** — Troféu/medalha digital em 3D que representa visualmente a conquista.
-- **TM Essencial** — TM configurável via self‑service (cores, formas, ícones, textos); primeira versão liberada após revisão técnica.
-- **TM Exclusivo** — TM sob medida a partir de briefing; inclui primeira entrega em até 5 dias úteis e 2 revisões.
-- **Importar Modelo** — Função para enviar um 3D próprio (.zip com .glb/.fbx/texturas). Passa por integração técnica antes de uso.
-- **Configurar TM** — Personalização de aparência (materiais, cores, efeitos) quando disponível no Essencial.
-- **Jornada do Herói** — Texto do emissor que explica o motivo/ contexto do reconhecimento.
+- **TM (Trophy Model)** — Modelo visual 3D que representa uma conquista. Na prática, pode ser tratado como **troféu 3D**, **badge 3D** ou elemento visual principal do certificado digital.
+- **Trophy Model** — Nome completo de **TM**. É o modelo 3D usado para representar visualmente uma conquista na plataforma.
+- **TM Essencial** — TM configurável em fluxo self-service, com ajustes como cores, formas, ícones e textos.
+- **TM Exclusivo** — TM criado sob medida a partir de briefing, com fluxo dedicado de produção e revisão.
+- **Importar Modelo** — Função para enviar um modelo 3D próprio, normalmente em pacote `.zip` com `.glb`, `.fbx` e texturas.
+- **Configurar TM** — Personalização da aparência do modelo, como materiais, cores e efeitos, quando disponível no fluxo escolhido.
+- **Jornada do Herói** — Texto escrito pelo emissor para explicar o motivo ou o contexto do reconhecimento.
 
 ---
 
 ## Fluxos e operações
 
-- **Evento** — Ocasião criada pelo emissor (nome, categoria, datas, localidade) que agrupa TMs e emissões.
-- **TMs e Emissões (do Evento)** — Tela para vincular TMs ao evento e iniciar premiação.
-- **Emissão** — Geração de certificados: informar **Motivo**, adicionar ganhadores (e‑mail único ou CSV), revisar e enviar.
-- **Motivo da Conquista** — Campo descritivo e flexível (ex.: "1º lugar", "Top 3 vendas Q2", "Contribuição Pro Bono").
-- **Importação CSV** — Adição em massa de ganhadores via arquivo .csv (cada e‑mail = 1 emissão).
-- **Painel de Emissões** — Lista de emissões do evento com TM usado, motivo, e‑mail e situação (Aceita, Pendente, Recusada).
-- **Prova Pronta** — Marco do fluxo de TM (em Meus Pedidos) indicando versão para aprovação/aceite técnico.
-- **Finalizar Evento** — Trava edições e novas emissões daquele evento.
+- **Evento** — Estrutura criada pelo emissor para organizar uma emissão. Reúne nome, categoria, datas, localidade, TMs e certificados emitidos.
+- **TMs e Emissões (do Evento)** — Tela em que o emissor vincula TMs ao evento e inicia a emissão de conquistas.
+- **Emissão** — Processo de gerar certificados digitais para destinatários. Inclui motivo, ganhadores, revisão e envio.
+- **Motivo da Conquista** — Campo descritivo usado para registrar a razão do reconhecimento, como colocação, desempenho, participação ou contribuição.
+- **Importação CSV** — Adição em massa de ganhadores por arquivo `.csv`. Cada e-mail corresponde a 1 emissão.
+- **Painel de Emissões** — Lista de emissões do evento com TM utilizado, motivo, e-mail e status do certificado.
+- **Prova Pronta** — Etapa do fluxo de criação de TM que indica uma versão disponível para aprovação.
+- **Finalizar Evento** — Ação que encerra o evento para novas edições e novas emissões.
 
 ---
 
 ## Visualização 3D
 
-- **3D** — Modelo digital interativo renderizado no navegador.
-- **Visualização 3D (WebGL)** — Renderização interativa do TM no navegador via embed próprio da That's Me.
-- **Tela Cheia** — Modo de visualização do TM que prioriza imersão durante apreciação/compartilhamento.
+- **3D** — Representação tridimensional exibida digitalmente no navegador.
+- **Visualização 3D (WebGL)** — Renderização interativa do TM, troféu 3D ou badge 3D no navegador.
+- **Tela Cheia** — Modo de visualização que amplia a exibição do modelo 3D para uma experiência mais imersiva.
 
 ---
 
 ## Segurança, verificação e conformidade
 
-- **KYB (Know Your Business)** — Processo de verificação de emissores para aumentar credibilidade do ecossistema.
-- **Selo de Verificação** — Indica emissor autenticado/validado.
-- **Antifraude** — Checagens automáticas e manuais para detectar uso indevido; inclui **Denunciar** pela comunidade.
-- **Criptografia & Autenticação** — Proteções técnicas de dados e contas (inclui suporte a 2FA quando aplicável).
-- **Logs de Ação (Admin)** — Registro rastreável de atividades administrativas, disponível para auditoria.
-- **LGPD & Privacidade** — Conformidade com a lei; controle de visibilidade (perfil e conquistas), relatório e exclusão de dados mediante solicitação.
+- **KYB (Know Your Business)** — Processo de verificação aplicado a emissores para reforçar a credibilidade da organização.
+- **Selo de Verificação** — Indicador visual de que o emissor passou por um processo de verificação.
+- **Antifraude** — Conjunto de verificações automáticas e manuais para detectar uso indevido ou inconsistências.
+- **Criptografia & Autenticação** — Proteções técnicas de dados e contas, incluindo controles de acesso e mecanismos de autenticação.
+- **Logs de Ação (Admin)** — Registro rastreável de atividades administrativas, usado para histórico e auditoria.
+- **LGPD & Privacidade** — Conjunto de práticas de proteção de dados, visibilidade e controle de informações pessoais.
 
 ---
 
 ## Social e integrações
 
-- **Mural de Conquistas** — Perfil do usuário com todas as conquistas organizadas por data; permite filtrar, ajustar privacidade e compartilhar.
-- **Ecossistema Social (Feed)** — Timeline de conquistas públicas em tempo real; permite curtir e copiar link.
-- **Conexões/Seguidores** — Acompanhe membros e emissores; conteúdos aparecem com prioridade no feed.
-- **Notificações** — Área de interações (novos seguidores, conquistas recebidas, curtidas).
-- **Compartilhar** — Botões nativos para LinkedIn (Add ao Perfil), WhatsApp, X/Twitter, Pinterest, E‑mail e copiar link.
-- **Metadados Sociais** — Informações (og:title, og:description, imagem do TM) que geram o cartão/preview ao postar links.
-- **Integração com LinkedIn** — Preenche automaticamente o formulário de “Licenças e Certificados” com dados da conquista.
-- **Página da Conquista (Certificado em Página Única)** — Link público permanente da conquista com TM 3D e contexto do evento.
+- **Mural de Conquistas** — Perfil do usuário com conquistas organizadas por data, com recursos de filtro, privacidade e compartilhamento.
+- **Ecossistema Social (Feed)** — Feed de conquistas públicas em tempo real, com interações como curtidas, comentários e compartilhamento.
+- **Conexões / Seguidores** — Relação entre membros e emissores para acompanhar atividades e priorizar conteúdos no feed.
+- **Notificações** — Área que centraliza interações, novas conquistas, seguidores e atualizações relevantes.
+- **Compartilhar** — Recursos nativos de compartilhamento para LinkedIn, WhatsApp, X, e-mail e cópia de link.
+- **Metadados Sociais** — Informações como `og:title`, `og:description` e imagem de destaque, usadas para gerar previews ao compartilhar links.
+- **Integração com LinkedIn** — Preenchimento automático do formulário de “Licenças e Certificados” do LinkedIn com dados da conquista.
+- **Página da Conquista** — Página pública dedicada a uma conquista, com certificado digital, contexto do evento e visualização do modelo 3D.
 
 ---
 
 ## Loja, ativos e planos
 
-- **Criador de TMs** — Criação de TMs (Essencial, Exclusivo ou Importar Modelo). TMs são gratuitos em todos os planos.
-- **Meus Pedidos** — Acompanhamento dos projetos de TMs (Pedido Recebido → Em Produção → Prova Pronta → Concluído).
-- **Galeria de TMs** — Repositório do emissor; visualizar, renomear, descrever, aceitar TMs novos ou **Solicitar Revisão** (para Exclusivo ou problemas técnicos).
-- **Plano / Assinatura** — Modelo de cobrança mensal por emissões. Cada plano inclui uma cota de emissões/mês.
-- **Cota mensal** — Número de emissões incluídas no plano contratado.
-- **Excedente** — Emissões além da cota mensal, cobradas por unidade na próxima fatura.
+- **Criador de TMs** — Editor usado para criar ou personalizar TMs, badges 3D e troféus 3D.
+- **Meus Pedidos** — Área de acompanhamento dos projetos de TMs em produção.
+- **Galeria de TMs** — Repositório do emissor para visualizar, organizar, renomear e descrever TMs já criados.
+- **Plano / Assinatura** — Modelo de cobrança mensal ou anual com cota de emissões incluída.
+- **Cota mensal** — Quantidade de emissões incluídas no plano contratado.
+- **Excedente** — Emissões realizadas além da cota mensal, cobradas por unidade na próxima fatura.
 
 ---
 
 ## Métricas, estratégia e termos de valor
 
-- **Engajamento** — Interação gerada por conquistas (curtidas, compartilhamentos, alcance orgânico, adesão a programas).
-- **Microvitórias** — Resultados parciais celebrados para reforçar motivação contínua.
-- **Employer Branding** — Reforço da marca empregadora por meio de conquistas compartilhadas e verificáveis.
-- **Gamificação** — Uso de desafios, metas e recompensas digitais para estimular participação.
+- **Engajamento** — Interações geradas por conquistas, como curtidas, compartilhamentos, alcance e adesão a novas jornadas.
+- **Microvitórias** — Resultados parciais reconhecidos para reforçar motivação e continuidade.
+- **Employer Branding** — Fortalecimento da marca empregadora por meio de conquistas compartilhadas e verificáveis.
+- **Gamificação** — Uso de desafios, metas e recompensas digitais para estimular participação e recorrência.
 
 ---
 
 ## Tecnologias e arquivos
 
-- **WebGL** — Padrão web para gráficos 3D no navegador.
-- **.glb / .fbx / texturas** — Formatos aceitos para importação de modelos 3D.
-- **Open Graph / Twitter Cards** — Esquemas de metadados usados para previews sociais.
+- **WebGL** — Padrão web usado para renderização gráfica 3D no navegador.
+- **.glb / .fbx / texturas** — Formatos usados na importação de modelos 3D e seus materiais.
+- **Open Graph / Twitter Cards** — Padrões de metadados usados para gerar previews em redes sociais.
 
 ---
 
 ## Ações de confiança da comunidade
 
-- **Denunciar** — Botão presente na visualização da conquista para reportar suspeitas; alimenta nosso processo antifraude.
-- **Privacidade (perfil/conquista)** — Controle de visibilidade público/privado por perfil e individualmente por conquista.
+- **Denunciar** — Ação usada para reportar suspeitas ou inconsistências em uma conquista.
+- **Privacidade (perfil/conquista)** — Controle de visibilidade pública ou privada aplicado ao perfil e às conquistas individualmente.
 
 ---
 
@@ -121,7 +126,5 @@ description: "Conheça os principais termos da plataforma That’s Me, organizad
 
 - **Página da Conquista** ↔ **Certificado Digital**, **Metadados Sociais**
 - **Evento** ↔ **TMs e Emissões**, **Painel de Emissões**, **Finalizar Evento**
-- **Galeria de TMs** ↔ **Aceitar** / **Solicitar Revisão**
+- **Galeria de TMs** ↔ **TM**, **Badge 3D**, **Troféu 3D**
 - **Cota mensal** ↔ **Emissão** (1 emissão por destinatário)
-
----

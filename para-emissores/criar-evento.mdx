@@ -5,32 +5,33 @@ description: "Como criar eventos para emitir conquistas — templates, campos, d
 icon: "calendar-plus"
 ---
 
-Eventos são a base de toda emissão na That's Me. Cada evento define o **contexto**, **cronograma** e **localização** das conquistas que serão emitidas.
+Eventos são a base de toda emissão na That's Me. Cada evento define o **contexto**, o **cronograma** e a **localização** das conquistas que serão emitidas.
 
 ## Tela de eventos
 
-A página principal de eventos lista todos os eventos da conta do emissor com nome, datas, categoria e status. É possível buscar por nome e criar novos eventos pelo botão **"+ Criar Evento"**.
+A página principal de eventos lista todos os eventos da conta do emissor, com nome, datas, categoria e status. Nela, você pode buscar por nome e criar novos eventos pelo botão **"+ Criar Evento"**.
 
 ## Criação em duas etapas
 
 <Steps>
   <Step title="Escolha um template">
-    Selecione o tipo de evento que melhor se encaixa:
+    Selecione o tipo de evento que melhor se encaixa no seu caso:
 
     | Template | Exemplos |
     |----------|----------|
-    | **Competições e Premiações** | Hackathons, torneios, premiações |
-    | **Cursos e Formação** | Workshops, bootcamps, treinamentos |
-    | **Certificações Profissionais** | Técnicas, corporativas, avaliações |
-    | **Reconhecimento e Destaque** | Programas internos, incentivos, campanhas |
-    | **Comunidades** | Meetups, eventos sociais, networking |
+    | **Competições e Premiações** | Hackathons, torneios e premiações |
+    | **Cursos e Formação** | Workshops, bootcamps e treinamentos |
+    | **Certificações Profissionais** | Certificações técnicas, corporativas e avaliações |
+    | **Reconhecimento e Destaque** | Programas internos, incentivos e campanhas |
+    | **Comunidades** | Meetups, eventos sociais e networking |
     | **Evento Personalizado** | Crie do seu jeito |
 
-    A escolha do template e subcategoria serve apenas para te auxiliar no preenchimento os campos de emissão de forma mais direta e completa.
-    Criação via API tem o template "Evento Personalizado" como obrigatório
+    A escolha do template e da subcategoria serve apenas para facilitar o preenchimento dos campos de forma mais direta e completa.
+
+    Na criação via API, o template obrigatório é **"Evento Personalizado"**.
   </Step>
   <Step title="Preencha os detalhes">
-    Configure o evento com todos os campos disponíveis (veja abaixo).
+    Configure o evento com todos os campos disponíveis, conforme descrito abaixo.
   </Step>
 </Steps>
 
@@ -40,34 +41,34 @@ A página principal de eventos lista todos os eventos da conta do emissor com no
 
 | Campo | Obrigatório | Descrição |
 |-------|-------------|-----------|
-| **Categoria** | Sim | 4 categorias macro |
-| **Subcategoria** | Não | Filtrada pela categoria escolhida |
-| **Nome** | Sim | Nome do evento (sugestões de IA disponíveis) |
-| **Descrição** | Não | Detalhes, objetivo, público-alvo, regras (sugestões de IA disponíveis) |
-| **URL oficial** | Não | Link externo para aquisição ou inscrição do evento |
-| **Imagem** | Não | JPEG, PNG ou WebP (máx. 5 MB) |
-| **Evento privado** | Não | Se ativado, o evento não aparece no diretório público e nem é distribuido pela nossa IA |
+| **Categoria** | Sim | Uma das 4 categorias principais |
+| **Subcategoria** | Não | Lista filtrada com base na categoria escolhida |
+| **Nome** | Sim | Nome do evento, com sugestões de IA |
+| **Descrição** | Não | Detalhes, objetivo, público-alvo e regras, com sugestões de IA |
+| **URL oficial** | Não | Link externo para inscrição, compra ou página oficial do evento |
+| **Imagem** | Não | JPEG, PNG ou WebP, com até 5 MB |
+| **Evento privado** | Não | Se ativado, o evento não aparece no diretório público nem é distribuído pela IA da plataforma |
 
 <Tip>
-A IA da plataforma extrai automaticamente habilidades, nível e palavras-chave da descrição do evento. Quanto mais detalhada a descrição, melhores serão as recomendações geradas para os participantes e melhor é a distribuição do evento.
+A IA da plataforma extrai automaticamente habilidades, nível e palavras-chave a partir da descrição do evento. Quanto mais detalhada for a descrição, melhores tendem a ser as recomendações para os participantes e a distribuição do evento.
 </Tip>
 
 ### Localização
 
 Escolha entre:
 - **Online** — sem local físico
-- **Presencial** — selecione estado (lista IBGE) e digite a cidade
+- **Presencial** — selecione o estado e informe a cidade
 
 ### Data e período
 
-Quatro modalidade de data para atender qualquer evento:
+Há quatro modalidades de data para atender diferentes tipos de evento:
 
 | Modo | Campos | Uso |
 |------|--------|-----|
 | **Data única** | Data + horário de início (opcional) | Eventos de um dia |
-| **Período** | Data início, data fim + horários (opcionais) | Eventos com duração |
-| **Recorrente** | Frequência + data de início | Semanal, quinzenal, mensal, bimestral, trimestral, semestral ou anual |
-| **Sempre disponível** | Nenhum | Cursos on-demand, trilhas permanentes |
+| **Período** | Data de início, data de fim e horários (opcionais) | Eventos com duração definida |
+| **Recorrente** | Frequência + data de início | Eventos semanais, quinzenais, mensais, bimestrais, trimestrais, semestrais ou anuais |
+| **Sempre disponível** | Nenhum | Cursos on-demand e trilhas permanentes |
 
 ## Adicionar TMs ao evento
 
@@ -75,7 +76,7 @@ Após criar o evento, vá até a aba **"TMs e Emissões"**:
 
 <Steps>
   <Step title="Clique em 'Adicionar TMs'">
-    Selecione os troféus 3D da sua Galeria que serão usados como premiação.
+    Selecione, na sua Galeria, os troféus 3D que serão usados no evento.
   </Step>
   <Step title="Confirme a seleção">
     Cada TM adicionado poderá ser usado para premiar participantes individualmente ou em lote.
@@ -83,16 +84,16 @@ Após criar o evento, vá até a aba **"TMs e Emissões"**:
 </Steps>
 
 <Info>
-Use múltiplos TMs para reconhecer diferentes níveis dentro do mesmo evento: 1°, 2° e 3° lugar, destaque técnico, melhor projeto, participação, etc.
+Use múltiplos TMs para reconhecer diferentes níveis dentro do mesmo evento, como 1°, 2° e 3° lugar, destaque técnico, melhor projeto ou participação.
 </Info>
 
 <Warning>
-Quando um TM (Troféu 3D) é utilizado em uma emissão, ele não pode mais ser desvinculado daquele evento e nem excluído de sua galeria.
+Quando um TM (Troféu 3D) é usado em uma emissão, ele não pode mais ser desvinculado desse evento nem excluído da galeria.
 </Warning>
 
 ## Conectar eventos (Trilhas de Aprendizado)
 
-Vincule eventos relacionados para gerar trilhas de aprendizado personalizadas aos participantes. As conexões aparecem na página do certificado como **"Próximo passo"** e alimentam o motor de recomendação da IA.
+Vincule eventos relacionados para criar trilhas de aprendizado personalizadas para os participantes. Essas conexões aparecem na página do certificado como **"Próximo passo"** e também alimentam o motor de recomendação da IA.
 
 Tipos de relação disponíveis:
 
@@ -100,23 +101,35 @@ Tipos de relação disponíveis:
 |---------|-------------|
 | **Continuação** | O evento segue sequencialmente o anterior |
 | **Preparatório** | O evento prepara para o próximo |
-| **Aprofundamento** | O evento aprofunda conhecimento do anterior |
-| **Alternativo** | Caminho alternativo pelo mesmo tema |
-| **Sugestivo** | Apresente opções complementamente diferentes do tema atual |
+| **Aprofundamento** | O evento aprofunda o conteúdo do anterior |
+| **Alternativo** | O evento oferece um caminho alternativo dentro do mesmo tema |
+| **Sugestivo** | O evento apresenta opções complementares ao tema atual |
 
 <Note>
-Após adicionar, alterar ou remover algum detalhe do evento, aperte o botão 'Salvar' para confirmar e aplicar alterações.
+Após adicionar, alterar ou remover qualquer detalhe do evento, clique no botão **"Salvar"** para confirmar e aplicar as alterações.
 </Note>
+
+## Pré-requisitos
+
+Defina pré-requisitos para garantir que os participantes tenham a base necessária antes de participar do evento. Três tipos estão disponíveis:
+
+| Tipo | Descrição |
+|------|-----------|
+| **Conclusão de evento** | Exige que o participante tenha concluído um evento específico |
+| **Nível em categoria** | Exige nível mínimo em uma categoria (ex: intermediário em Educação) |
+| **Nível em disciplina** | Exige nível mínimo em uma disciplina específica (ex: intermediário em machine_learning) |
+
+Eventos com pré-requisitos não atendidos recebem prioridade significativamente menor nas recomendações, direcionando naturalmente os participantes para as etapas preparatórias primeiro.
 
 ## Estados do evento
 
 | Estado | Permissões |
 |--------|-----------|
-| **Em andamento** | Edição completa, emissão de conquistas, adição de TMs |
-| **Concluído** | Bloqueado para edições e novas emissões |
+| **Em andamento** | Permite edição completa, emissão de conquistas e adição de TMs |
+| **Concluído** | Bloqueia edições e novas emissões |
 
-Para finalizar um evento, clique em **"Finalizar Evento"** na página de detalhes. Essa ação é irreversível e garante a integridade do histórico.
+Para finalizar um evento, clique em **"Finalizar Evento"** na página de detalhes. Essa ação é irreversível e preserva a integridade do histórico.
 
 <Info>
-Apesar de que cada emissão de certificado cria dados imutáveis, recomendamos que eventos que encerraram, com data fim passada, e sem expectativa de novas emissões, sejam finalizados (status Concluído) para evitar uso por má fé.
+Embora cada emissão de certificado já gere dados imutáveis, recomendamos finalizar eventos encerrados, com data final já passada e sem expectativa de novas emissões. Isso reduz o risco de uso indevido.
 </Info>

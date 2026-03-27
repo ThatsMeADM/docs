@@ -5,34 +5,34 @@ description: "KYB, hash SHA-256, rastreabilidade, moderação comunitária e con
 icon: "shield-check"
 ---
 
-A That's Me foi projetada como uma plataforma de reconhecimento profissional e confiável. Cada emissão carrega contexto, autoria, data e validação técnica.
+A That's Me foi projetada como uma plataforma de reconhecimento com contexto, autoria, rastreabilidade e validação técnica.
 
 ## Integridade dos certificados
 
 Cada certificado recebe um **hash SHA-256** gerado no momento da emissão. O hash é computado a partir de:
 
-```
+```text
 post_id | event_id | badge_id | profile_id | user_id | created_at | kyb_verification_id
 ```
 
 Qualquer pessoa pode verificar a autenticidade em:
 
-```
+```text
 https://app.thatsme.com.br/certificate/verify/[hash]
 ```
 
 A verificação confirma:
 - O certificado foi emitido pela That's Me
-- Os dados não foram adulterados (nome, motivo, evento, data e localização)
-- Se o emissor era verificado (KYB) no momento da emissão
+- Os dados principais do certificado não foram alterados
+- Se o emissor estava verificado por KYB no momento da emissão, quando aplicável
 
 <Info>
-O hash é **imutável**. Mesmo que o emissor perca a verificação posteriormente, certificados emitidos durante o período verificado mantêm o ID de verificação no hash — prova permanente.
+O hash é **imutável**. Mesmo que o emissor perca a verificação posteriormente, certificados emitidos durante o período verificado continuam mantendo esse registro associado à emissão.
 </Info>
 
 ## KYB — Know Your Business
 
-Organizações podem solicitar verificação em **Configurações → Verificação**. Dois caminhos disponíveis:
+Organizações podem solicitar verificação em **Configurações → Verificação**. Há dois caminhos disponíveis:
 
 <Tabs>
   <Tab title="Verificação por domínio">
@@ -43,43 +43,43 @@ Organizações podem solicitar verificação em **Configurações → Verificaç
   <Tab title="Upload de documentos">
     ### Status: VERIFIED
 
-    Envie o documento de registro oficial da empresa. Análise em **1 a 3 dias úteis**.
+    Envie o documento de registro oficial da empresa. A análise leva de **1 a 3 dias úteis**.
 
-    O status VERIFIED exibe um **selo de verificação** no perfil do emissor e em cada certificado emitido.
+    O status **VERIFIED** exibe um **selo de verificação** no perfil do emissor e nos certificados emitidos durante esse período.
   </Tab>
 </Tabs>
 
 | Status | O que significa |
 |--------|----------------|
 | **BASIC** | Controle do domínio confirmado |
-| **VERIFIED** | Selo de verificação visível no perfil e em todos os certificados |
+| **VERIFIED** | Selo de verificação visível no perfil e nos certificados emitidos durante o período verificado |
 
-## Rastreabilidade total
+## Rastreabilidade
 
 Cada emissão é:
 
 - **Registrada com data e hora**, vinculada ao administrador responsável
-- **Auditável**, com registro permanente no histórico de ações
-- **Associada a um modelo 3D único**, reforçando a identidade visual
+- **Mantida no histórico de ações** da conta
+- **Associada ao TM utilizado** na emissão
 
 <Note>
-Toda ação executada por um administrador (criar eventos, emitir conquistas, adicionar membros) é automaticamente registrada. Isso permite auditorias internas e prestação de contas.
+Toda ação executada por um administrador, como criar eventos, emitir conquistas e adicionar membros, fica registrada internamente. Isso permite consulta histórica e apoio em auditorias.
 </Note>
 
 ## Moderação comunitária
 
 Se alguma conquista parecer suspeita ou descontextualizada, **qualquer membro da plataforma pode denunciá-la** clicando em **"..."** na publicação e selecionando **"Denunciar"**.
 
-Denúncias são avaliadas pela equipe com apoio de verificações automáticas e análise de padrões. Esse modelo de auditoria aberta fortalece a confiança do ecossistema.
+As denúncias são avaliadas pela equipe com apoio de verificações automáticas e análise de padrões.
 
 ## LGPD e proteção de dados
 
-A That's Me é 100% alinhada à **Lei Geral de Proteção de Dados (LGPD)**:
+A That's Me opera em conformidade com a **Lei Geral de Proteção de Dados (LGPD)**:
 
-- Nenhuma informação pessoal é divulgada sem consentimento explícito
-- O membro tem o direito a privacidade em multiplas camadas
-- Dados podem ser excluídos mediante solicitação
+- Nenhuma informação pessoal é divulgada sem base de uso adequada
+- O membro pode controlar a visibilidade do perfil e das conquistas
+- Dados podem ser excluídos mediante solicitação, conforme as regras aplicáveis
 
 <Check>
-Quem você é pertence a você — não à plataforma.
+A plataforma foi projetada para dar ao usuário controle sobre sua visibilidade e seus dados.
 </Check>

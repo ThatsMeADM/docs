@@ -1,0 +1,181 @@
+---
+title: "Objectives"
+sidebarTitle: "Objectives"
+description: "Declare where you want to go. The platform connects your intent to your history and recommends next steps with greater precision."
+icon: "bullseye-arrow"
+---
+
+Objectives are how you tell the platform **what you want to achieve**. When you declare an objective, the recommendation engine considers not only what you've already done, but also where you want to go.
+
+This changes the quality of recommendations: instead of only suggesting events related to your past, the platform also directs opportunities aligned with your intent.
+
+<Info>
+Objectives are optional. The platform works well without them, using only your achievement history. But with declared objectives, personalization becomes significantly more precise.
+</Info>
+
+## How it works
+
+<Steps>
+  <Step title="You declare an objective">
+    Choose a category and describe — in free text or with tags — what you want to achieve. It can be something broad like "become a better programmer" or specific like "complete the NYC Marathon".
+
+    The platform accepts anything from a quick click (just the category) to a detailed description with tags, level, and a specific destination.
+  </Step>
+
+  <Step title="The platform understands your intent">
+    If you write free text, the platform's intelligence automatically extracts **structured tags** from what you described. These tags connect your objective to the tag vocabulary that already exists in analyzed events.
+
+    This solves the language problem: you write "run a marathon" and the system understands the relevant tags are `running`, `marathon`, `endurance`.
+  </Step>
+
+  <Step title="Recommendations become more precise">
+    Events that share tags with your objective get a boost in the recommendation ranking. The more tags in common, the larger the boost.
+
+    The result: within the same category, events more aligned with your objective rise in the ranking while generic events drop.
+  </Step>
+</Steps>
+
+## What you can define
+
+The objectives form is designed to work with minimal friction. Only the category is required — everything else is optional and can be expanded when needed.
+
+### Main fields
+
+| Field | Description | Required |
+|-------|-------------|:--------:|
+| **Category** | Sports, Education, Corporate, or Sociocultural | Yes |
+| **Objective** | Free text describing what you want to achieve | No |
+| **Tags of interest** | Structured tags that refine matching | No |
+
+### Advanced fields (collapsed by default)
+
+| Field | Description |
+|-------|-------------|
+| **Priority** | Low, Medium, or High — high priority objectives get extra weight |
+| **Level** | Beginner, Intermediate, Advanced, or Expert |
+| **Strengths** | Skills you already have |
+| **Format preference** | Online, in-person, city, or state |
+| **Specific destination** | A concrete event or goal (e.g., TOEFL, NYC Marathon) |
+
+<Tip>
+When typing tags, the field offers suggestions based on tags already existing in the event directory. You can also create new tags by typing and pressing Enter.
+</Tip>
+
+## Tags of interest
+
+Tags are the primary precision mechanism for objectives. They connect your intent directly to the event tag vocabulary.
+
+When you create an objective with the tags `running` and `marathon`, events analyzed by the platform that have those same tags get priority in recommendations.
+
+### How tags are generated
+
+There are three ways:
+
+1. **You choose manually** — in the autocomplete field, searching among registered tags
+2. **The platform extracts from text** — if you write a free-text objective without adding tags, the intelligence extracts them automatically
+3. **The platform detects from history** — auto-generated objectives (see below) come with tags based on your profile
+
+## Matching events
+
+When creating or editing an objective, the platform shows a preview of **events in the directory that match your tags**. This gives immediate visibility into what's available and confirms that the objective is well-defined.
+
+The cards show the event name, image, and how many tags they share with your objective.
+
+## Auto-generated objectives
+
+The platform can detect patterns in your history and suggest objectives automatically.
+
+When you accumulate **3 or more achievements** in the same category without having an active objective in it, the system creates a suggested objective with:
+
+- The identified category
+- The level inferred from your achievements
+- Tags extracted from your history
+
+Auto-generated objectives appear highlighted with a visual indicator and three options:
+
+| Action | What happens |
+|--------|-------------|
+| **Confirm** | The objective is incorporated into your profile |
+| **Edit** | Opens the form for you to adjust before saving |
+| **Discard** | Removes the suggestion |
+
+<Note>
+Auto-generated objectives do not affect your recommendations until confirmed or edited by you.
+</Note>
+
+## Auto-evolution
+
+Your objectives evolve with you.
+
+When the platform detects that your level in a category has advanced — based on achievements obtained — the corresponding objective's level is automatically updated.
+
+**Example:** you create a Sports objective as a beginner. After completing running events assessed as intermediate and advanced, the objective is automatically promoted to reflect your new level.
+
+When this happens, the objective displays an indicator that the level was auto-updated.
+
+<Info>
+Auto-evolution never reduces the level. It only promotes. And if you manually edit the level, your edit is respected.
+</Info>
+
+## Specific destinations
+
+Beyond general direction objectives ("I want to improve at programming"), you can define **specific destinations**: a concrete goal you want to achieve.
+
+Examples:
+- NYC Marathon 42km
+- TOEFL iBT
+- AWS Solutions Architect Certification
+
+When a destination is linked to an existing event in the directory, it receives maximum priority in recommendations. And even when the destination is external (with a URL), the engine looks for preparatory events that make sense as intermediate steps.
+
+## How objectives impact recommendations
+
+Objectives represent **35% of the weight** in the recommendation engine — the factor with the highest influence on ranking.
+
+The impact works in layers:
+
+| Signal | Effect |
+|--------|--------|
+| Same category | Event rises in ranking |
+| Tags in common | Event rises proportionally to the number of shared tags |
+| Compatible level | Event gets an additional boost |
+| High priority | The entire calculation is amplified |
+| Exact destination | Event goes to the absolute top |
+
+In practice, this means two events in the same category can have very different positions — the one with tags matching your objective appears above, and the one without drops below.
+
+## The virtuous cycle
+
+Objectives aren't static. They're part of a cycle that refines itself:
+
+```
+You declare an objective (with tags)
+        │
+        ▼
+Recommendations become more precise
+        │
+        ▼
+You earn relevant certificates
+        │
+        ▼
+Your level in the category advances
+        │
+        ▼
+The objective auto-evolves
+        │
+        ▼
+Recommendations become even more precise
+        │
+        ▼
+      (cycle)
+```
+
+Each achievement feeds the system. No reconfiguration needed — the simple act of participating and earning achievements progressively refines the quality of suggestions.
+
+## Access
+
+Access your objectives in **Settings > Objectives**, from the sidebar menu on desktop or the bottom bar on mobile.
+
+<Tip>
+Start with just the category and a short text. The system extracts the tags and does the rest. You can refine later, as your recommendations become more relevant.
+</Tip>

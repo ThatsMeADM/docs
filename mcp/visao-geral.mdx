@@ -1,51 +1,51 @@
 ---
 title: "MCP — Model Context Protocol"
-description: "Conecte assistentes de IA a plataforma That's Me via MCP"
+description: "Conecte assistentes de IA à plataforma That's Me via MCP."
 ---
 
-## O que e MCP?
+## O que é MCP?
 
-MCP (Model Context Protocol) e um protocolo aberto que permite que assistentes de IA (Claude, ChatGPT, Cursor, etc.) acessem ferramentas externas de forma padronizada.
+MCP (*Model Context Protocol*) é um protocolo aberto que permite que assistentes de IA, como Claude, ChatGPT e Cursor, acessem ferramentas externas de forma padronizada.
 
 A That's Me oferece dois servidores MCP:
 
-| Servidor | Publico | Funcao |
+| Servidor | Público | Função |
 |---|---|---|
-| **@thatsme/mcp** | Sim | Buscar eventos e recomendar proximos passos |
-| **thatsme-mcp-issuer** | API Key necessaria | Emitir certificados, consultar analytics, exportar dados |
+| **@thatsme/mcp** | Sim | Buscar eventos e recomendar próximos passos |
+| **thatsme-mcp-issuer** | Requer API Key | Emitir certificados, consultar analytics e exportar dados |
 
-## MCP Publico — @thatsme/mcp
+## MCP Público — @thatsme/mcp
 
-O MCP publico permite que qualquer assistente de IA busque eventos da plataforma. Nao requer autenticacao.
+O MCP público permite que qualquer assistente de IA busque eventos da plataforma. Não requer autenticação.
 
-### Instalacao
+### Instalação
 
 ```bash
 npx -y @thatsme/mcp
 ```
 
-### Tools disponiveis
+### Tools disponíveis
 
-| Tool | Descricao |
+| Tool | Descrição |
 |---|---|
-| `search_thatsme_events` | Busca eventos por nome, categoria, nivel, localizacao |
-| `get_event_next_steps` | Dado um evento ou skill, sugere proximos passos |
+| `search_thatsme_events` | Busca eventos por nome, categoria, nível e localização |
+| `get_event_next_steps` | Dado um evento ou skill, sugere próximos passos |
 
 ### Exemplo de prompt
 
 > "Encontre cursos de Python para iniciantes no That's Me"
 
-O assistente usa `search_thatsme_events` para buscar eventos com `query: "Python"`, `level: "beginner"`, `category: "EDUCATION"`.
+O assistente usa `search_thatsme_events` para buscar eventos com `query: "Python"`, `level: "beginner"` e `category: "EDUCATION"`.
 
 ## MCP Emissor — thatsme-mcp-issuer
 
-Para emissores que querem gerenciar certificados via IA. Requer API Key.
+Voltado para emissores que desejam gerenciar certificados por IA. Requer API Key.
 
-[Documentacao completa do MCP Emissor →](/mcp/mcp-emissor)
+[Documentação completa do MCP Emissor →](/mcp/mcp-emissor)
 
 ## Compatibilidade
 
-| Assistente | MCP Publico | MCP Emissor |
+| Assistente | MCP Público | MCP Emissor |
 |---|---|---|
 | Claude Desktop | stdio | stdio |
 | Claude Code | stdio | stdio |

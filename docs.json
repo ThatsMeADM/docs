@@ -51,6 +51,7 @@
                   "introducao/bem-vindo",
                   "introducao/sobre-nos",
                   "introducao/trofeus-3d",
+                  "introducao/motor-de-recomendacao",
                   "introducao/faq"
                 ]
               },
@@ -60,6 +61,7 @@
                   "funcionalidades/mural-de-conquistas",
                   "funcionalidades/receber-visualizar-compartilhar",
                   "funcionalidades/one-page-certificate",
+                  "funcionalidades/objetivos",
                   "funcionalidades/ecossistema-social",
                   "integracoes/linkedin",
                   "integracoes/compartilhamento"
@@ -171,6 +173,7 @@
                   "en/introduction/welcome",
                   "en/introduction/about-us",
                   "en/introduction/3d-trophies",
+                  "en/introduction/recommendation-engine",
                   "en/introduction/faq"
                 ]
               },
@@ -180,6 +183,7 @@
                   "en/features/achievement-wall",
                   "en/features/receive-view-share",
                   "en/features/certificate-page",
+                  "en/features/objectives",
                   "en/features/social-ecosystem",
                   "en/features/linkedin",
                   "en/features/social-sharing"

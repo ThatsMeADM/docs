@@ -5,7 +5,7 @@ description: "Como emitir conquistas para participantes e acompanhar o status de
 icon: "paper-plane"
 ---
 
-Após [criar o evento](/para-emissores/criar-evento) e adicionar os TMs, você pode iniciar a emissão de conquistas.
+Após [criar o evento](/para-emissores/criar-evento) e adicionar os TMs, você já pode iniciar a emissão de conquistas.
 
 ## Fluxo de emissão
 
@@ -17,23 +17,34 @@ Após [criar o evento](/para-emissores/criar-evento) e adicionar os TMs, você p
     Preencha o campo livre com o motivo do reconhecimento. Esse texto aparecerá na página do certificado.
 
     Exemplos:
-    - Básico: *1° Lugar*
-    - Intermediário: *1° Lugar na categoria feminino sub-21*
+    - Básico: *1° lugar*
+    - Intermediário: *1° lugar na categoria feminina sub-21*
     - Detalhado: *Por sua dedicação, desempenho acima da média e contribuição direta para os resultados do time no primeiro semestre de 2025*
 
     <Tip>
-    Nossa IA compila os dados inseridos nos campos para criar um texto fluido, com correções gramaticais e com maior facilidade de entendimento. Capriche no contexto. Quanto mais contexto, melhor a apresentação final do certificado.
+    A IA da plataforma pode organizar as informações preenchidas para gerar um texto mais fluido, com correções gramaticais e maior clareza. Quanto mais contexto você fornecer, melhor tende a ser a apresentação final do certificado.
     </Tip>
   </Step>
+  <Step title="Selecione o tipo de conquista">
+    Indique como o participante se relacionou com o evento:
+
+    | Tipo | Significado | Efeito |
+    |------|------------|--------|
+    | **Concluiu** | Completou com sucesso | Avança o nível do participante na categoria e disciplina |
+    | **Participou** | Participou sem concluir | Mantém o nível atual |
+    | **Destaque** | Reconhecimento especial | Reforça afinidade, sem avanço de nível |
+
+    O tipo padrão é **"Concluiu"**. Essa distinção permite que o motor de recomendação respeite a progressão real de cada participante.
+  </Step>
   <Step title="Adicione os ganhadores">
-    Duas opções:
-    - **Manual** — digite nome, e-mail e telefone (opcional mas importante para notificação via WhatsApp)
-    - **CSV** — faça upload de uma planilha com os dados dos participantes. Nome e email são obrigatórios.
+    Você pode fazer isso de duas formas:
+    - **Manual** — informe nome, e-mail e telefone. O telefone é opcional, mas importante para notificações via WhatsApp.
+    - **CSV** — faça o upload de uma planilha com os dados dos participantes. Nome e e-mail são obrigatórios.
 
     Cada e-mail inserido equivale a **1 emissão** da sua cota mensal.
   </Step>
   <Step title="Confirme e emita">
-    Clique em **"Emitir Certificados"**. Um pop-up mostra:
+    Clique em **"Emitir Certificados"**. Um pop-up exibirá:
     - Quantidade de certificados que serão emitidos
     - Emissões restantes na cota mensal
     - Botões para **Confirmar** ou **Cancelar**
@@ -41,30 +52,30 @@ Após [criar o evento](/para-emissores/criar-evento) e adicionar os TMs, você p
 </Steps>
 
 <Warning>
-Cada emissão conta no seu **limite mensal**. A quantidade de e-mails adicionados = quantidade de emissões consumidas da cota. Consulte [Emissões e Cota](/para-emissores/emissoes-e-cota) para detalhes.
+Cada emissão conta no seu **limite mensal**. A quantidade de e-mails adicionados corresponde à quantidade de emissões consumidas da sua cota. Consulte [Emissões e Cota](/para-emissores/emissoes-e-cota) para mais detalhes.
 </Warning>
 
-## Auto-save
+## Salvamento automático
 
-O formulário de emissão salva automaticamente seu progresso a cada alteração (debounce de 800ms). Se você sair da página e voltar, os dados preenchidos estarão preservados.
+O formulário de emissão salva automaticamente o progresso a cada alteração. Se você sair da página e voltar depois, os dados preenchidos continuarão disponíveis.
 
 ## Campos personalizados
 
-No momento de descrever o motivo, você pode se deparar com até **7 campos extras** configuráveis. Esses campos podem ser usados para informações específicas do evento, como:
-- Especificar modalidade
+Ao descrever o motivo, você pode encontrar até **7 campos extras** configuráveis. Eles servem para registrar informações específicas do evento, como:
+
+- Modalidade
 - Categoria ou nível
-- Gênero e Idade
+- Gênero e idade
 - Resultado ou pontuação
 - Departamento ou turma
-e até mesmo:
-- Campo livre para um reconhecimento extenso
+- Campo livre para um reconhecimento mais detalhado
 - Data de validade
 
-Nossa IA compila tudo para garantir uma frase fluida e gramaticamente correta.
+A IA da plataforma pode usar essas informações para montar um texto mais claro e gramaticalmente correto.
 
 ## Histórico de campos preenchidos
 
-A página de emissão exibe também um histórico de campos preenchidos anteriormente por esse mesmo evento, gerando agilidade em emissões de diferentes modalidades, níveis e pontuação nesse evento.
+A página de emissão também exibe um histórico de campos preenchidos anteriormente no mesmo evento. Isso agiliza emissões recorrentes com modalidades, níveis, categorias ou pontuações semelhantes.
 
 ## Painel de acompanhamento
 
@@ -82,12 +93,10 @@ Todas as conquistas emitidas ficam no **Painel de Emissões** do evento, com as 
 
 | Status | Significado |
 |--------|-------------|
-| **Aceita** | O ganhador aceitou a conquista — certificado criado |
-| **Pendente** | Notificação enviada, aguardando resposta |
-| **Recusada** | O ganhador rejeitou a conquista |
+| **Aceita** | O ganhador aceitou a conquista e o certificado foi criado |
+| **Pendente** | A notificação foi enviada e aguarda resposta |
+| **Recusada** | O ganhador recusou a conquista |
 
 <Info>
-Filtre emissões por e-mail e acompanhe em tempo real o status de cada uma. Emissões pendentes podem ser reenviadas se necessário.
+Filtre emissões por e-mail e acompanhe em tempo real o status de cada uma. Emissões pendentes podem ser reenviadas, quando necessário.
 </Info>
-
-

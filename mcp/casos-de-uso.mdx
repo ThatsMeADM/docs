@@ -1,72 +1,72 @@
 ---
 title: "Casos de Uso — MCP"
-description: "Tres cenarios reais de uso do MCP Emissor com assistentes de IA"
+description: "Três cenários reais de uso do MCP Emissor com assistentes de IA."
 ---
 
-## 1. RH automatiza emissao apos treinamento
+## 1. RH automatiza a emissão após treinamento
 
-**Cenario:** Uma empresa usa um LMS (Learning Management System) para treinamentos internos. Ao concluir um modulo, o RH precisa emitir certificados na That's Me.
+**Cenário:** Uma empresa usa um LMS (*Learning Management System*) para treinamentos internos. Ao concluir um módulo, o RH precisa emitir certificados na That's Me.
 
 **Fluxo com MCP:**
 
-1. Funcionario conclui o treinamento no LMS
-2. RH abre o Claude Desktop e diz:
+1. O funcionário conclui o treinamento no LMS
+2. O RH abre o Claude Desktop e diz:
 
-> "Emita certificados do treinamento 'Compliance 2025' para os seguintes funcionarios que concluiram hoje: Ana Costa (ana.costa@empresa.com), Carlos Souza (carlos.souza@empresa.com), Fernanda Lima (fernanda.lima@empresa.com)"
+> "Emita certificados do treinamento 'Compliance 2025' para os seguintes funcionários que concluíram hoje: Ana Costa (ana.costa@empresa.com), Carlos Souza (carlos.souza@empresa.com), Fernanda Lima (fernanda.lima@empresa.com)"
 
-3. O Claude usa `search_events` para encontrar o evento "Compliance 2025"
-4. Depois usa `issue_certificates` com os dados dos 3 funcionarios
-5. Cada funcionario recebe o certificado por email e WhatsApp
+3. O Claude usa `search_events` para encontrar o evento `Compliance 2025`
+4. Em seguida, usa `issue_certificates` com os dados dos três funcionários
+5. Cada funcionário recebe o certificado por e-mail e WhatsApp
 
-**Resultado:** Emissao que levava 15 minutos no painel agora leva 30 segundos via chat.
+**Resultado:** Uma emissão que antes levava cerca de 15 minutos no painel pode ser feita em poucos segundos via chat.
 
 ---
 
 ## 2. Escola de idiomas emite certificados em lote
 
-**Cenario:** Uma escola de ingles conclui uma turma de 40 alunos e precisa emitir certificados para todos.
+**Cenário:** Uma escola de inglês conclui uma turma de 40 alunos e precisa emitir certificados para todos.
 
 **Fluxo com MCP:**
 
-1. Coordenador cola a lista de alunos no chat:
+1. O coordenador cola a lista de alunos no chat:
 
-> "Emita certificados do curso 'Ingles B2 — Turma Março 2026' para estes alunos: [lista com nome e email]"
+> "Emita certificados do curso 'Inglês B2 — Turma Março 2026' para estes alunos: [lista com nome e e-mail]"
 
-2. O Claude usa `search_events` para encontrar o evento
-3. Usa `issue_certificates` com os 40 destinatarios em uma unica chamada
-4. Coordenador pede o status:
+2. O Claude usa `search_events` para localizar o evento
+3. Depois, usa `issue_certificates` com os 40 destinatários em uma única chamada
+4. O coordenador pede o status:
 
-> "Quantos ja aceitaram o certificado?"
+> "Quantos já aceitaram o certificado?"
 
 5. O Claude usa `get_engagement_funnel` para mostrar o funil
 
-**Resultado:** Emissao em lote + acompanhamento de aceitacao, tudo via chat.
+**Resultado:** Emissão em lote e acompanhamento de aceitação, tudo em uma única conversa.
 
 ---
 
 ## 3. Organizador de maratona consulta analytics
 
-**Cenario:** Organizador de uma corrida de rua emitiu 2.000 certificados de conclusao e quer entender o engajamento.
+**Cenário:** O organizador de uma corrida de rua emitiu 2.000 certificados de conclusão e quer entender o nível de engajamento.
 
 **Fluxo com MCP:**
 
-1. Organizador pergunta:
+1. O organizador pergunta:
 
 > "Mostre o funil de engajamento da Maratona SP 2026"
 
-2. O Claude usa `get_engagement_funnel` e retorna:
+2. O Claude usa `get_engagement_funnel` e retorna, por exemplo:
    - 2.000 emitidos → 1.847 aceitos (92%) → 1.523 visualizados (76%) → 412 compartilhados (21%)
 
-3. Organizador pede mais detalhes:
+3. O organizador pede mais detalhes:
 
-> "Quem ainda nao aceitou o certificado?"
+> "Quem ainda não aceitou o certificado?"
 
 4. O Claude usa `list_recipients` com `status: "pending"` e lista os 153 pendentes
 
-5. Organizador decide exportar:
+5. O organizador decide exportar:
 
-> "Exporte todos os dados de emissao deste mes em CSV"
+> "Exporte todos os dados de emissão deste mês em CSV"
 
-6. O Claude usa `export_csv` e retorna o CSV completo
+6. O Claude usa `export_csv` e retorna o arquivo com os dados
 
-**Resultado:** Analytics completo e exportacao de dados sem sair do chat.
+**Resultado:** Consulta de analytics e exportação de dados sem sair do chat.

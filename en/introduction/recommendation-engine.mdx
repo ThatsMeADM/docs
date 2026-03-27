@@ -1,0 +1,174 @@
+---
+title: "Recommendation Engine"
+sidebarTitle: "Recommendation Engine"
+description: "How That's Me intelligence reads achievements, understands context, and recommends the right next step for each person."
+icon: "brain-circuit"
+---
+
+That's Me goes beyond recording achievements. The platform analyzes the context of every certificate issued to suggest the most relevant next steps for each person's journey — respecting their pace, level, and interests.
+
+<Info>
+All processing runs on anonymized, aggregated data. The platform never exposes personal information and strictly follows LGPD (Brazil's data protection law). The goal is always to **expand opportunities**, never to classify or restrict people.
+</Info>
+
+## How it works
+
+The engine combines three layers of intelligence to generate relevant recommendations:
+
+<Steps>
+  <Step title="AI context reading">
+    When an event is published, the AI analyzes its data (name, description, category, location, dates) and automatically extracts:
+
+    - **Category and subcategory** (Sports, Education, Corporate, Sociocultural)
+    - **Inferred tags** — specific disciplines and modalities (e.g., football, running, machine_learning)
+    - **Domain path** — event hierarchy (e.g., sports > running > marathon)
+    - **Step type** — theory, practice, or experience
+    - **Required and outcome level** — beginner, intermediate, or advanced
+    - **Skills involved** — up to 8 competencies per event
+    - **Keywords** — up to 12 distinguishing terms
+    - **Target audience and modality** — in-person, online, or hybrid
+
+    The AI infers intelligently even when an event has minimal description — using the name, category, and past emissions to extract maximum context. All results are automatically validated by strict schemas, with multi-layer fallbacks to ensure **no event ever goes without analysis**.
+  </Step>
+  <Step title="Profile intelligence">
+    From accepted achievements, the platform builds an understanding of each person's trajectory:
+
+    - **Dominant categories** — areas where the person achieves most
+    - **Level per category and discipline** — advanced in running doesn't mean advanced in swimming
+    - **Demonstrated tags** — accumulated disciplines and modalities (football, leadership, excel)
+    - **Demonstrated skills** — extracted from accumulated achievements
+    - **Declared goals** — objectives the user sets in the platform
+
+    This profile is continuously updated and never publicly exposed. It exists solely to personalize recommendations.
+  </Step>
+  <Step title="Scoring and recommendation">
+    Each candidate event receives a composite score from six factors:
+
+    | Factor | What it evaluates |
+    |--------|------------------|
+    | **Goal alignment** | Is the event on the path the user wants to follow? |
+    | **Continuity** | Does it logically follow something already achieved? |
+    | **Event relevance** | What's the quality and engagement of this event on the platform? |
+    | **Compatibility** | Do format (online/in-person) and location make sense? |
+    | **Engagement** | How interested is the community in this event? |
+    | **Time context** | Is the event recent and timely? |
+
+    The combination of these factors produces a personalized recommendation list. To ensure diversity, a portion of results always includes events from adjacent categories — broadening horizons without losing coherence.
+  </Step>
+</Steps>
+
+## Level scaling
+
+One of the engine's core principles is **respecting real progression**. The AI does not advance the recommendation level if the person hasn't demonstrated readiness.
+
+### Achievement types
+
+When issuing a certificate, the issuer can indicate the achievement type:
+
+| Type | Meaning | Effect on level |
+|------|---------|----------------|
+| **Completed** | Successfully finished | Advances level in category and discipline |
+| **Participated** | Attended but didn't complete | Keeps current level |
+| **Highlight** | Special recognition | Reinforces affinity, no level advancement |
+
+<Tabs>
+  <Tab title="Example: Running">
+    A participant who **completed a 5K race** starts receiving recommendations for **10K** events. But if they **entered a 10K without finishing**, the engine keeps suggestions at the same level — continuing to recommend 10K races until a completion is recorded.
+
+    The real progression looks like:
+
+    **5K** (completed) → **10K** (recommended) → **10K** (completed) → **21K** (recommended)
+  </Tab>
+  <Tab title="Example: Education">
+    A student who **completed module A1** of a language course gets a recommendation for **A2**. If there's no recorded completion, the engine won't suggest B1 — it keeps options at the current level.
+
+    **A1** (completed) → **A2** (recommended) → **A2** (completed) → **B1** (recommended)
+  </Tab>
+  <Tab title="Example: Corporate">
+    An employee who completed **Onboarding** gets **Technical Certification Level 1** as the next step. Progression only advances when each stage is recorded as completed.
+
+    **Onboarding** → **Certification Level 1** → **Certification Level 2** → **Leadership**
+  </Tab>
+</Tabs>
+
+### Level per category and discipline
+
+The level is calculated at a granular level. A person can be **advanced in running** and **beginner in swimming**, even though both are in the Sports category. The AI automatically infers the discipline from the event analysis and maintains a separate history per tag.
+
+<Note>
+The user's inferred level is calculated from their full history of completed achievements — not a single event. This prevents an isolated experience from distorting the profile.
+</Note>
+
+## Prerequisites
+
+Issuers can define **prerequisites** for their events, ensuring participants have the necessary foundation. Three prerequisite types are available:
+
+| Type | Example |
+|------|---------|
+| **Event completion** | "Requires completion of the Basic Module" |
+| **Category level** | "Requires intermediate level in Education" |
+| **Discipline level** | "Requires intermediate in machine_learning" |
+
+When a participant doesn't meet an event's prerequisites, that event appears with significantly lower priority in recommendations — directing the person to preparatory steps first.
+
+## Learning paths
+
+The engine connects all the dots in a user's portfolio to create **continuous development paths**. This happens on three fronts:
+
+### Event connections
+
+Issuers can link their events by creating continuity relationships. Five connection types are available:
+
+| Type | Meaning |
+|------|---------|
+| **Continuation** | Direct next step in the same path |
+| **Preparatory** | Prepares the participant for a more advanced event |
+| **Deepening** | Expands knowledge on a topic already explored |
+| **Alternative** | Offers a different route to the same goal |
+| **Suggestive** | Light recommendation, no direct progression relationship |
+
+When a participant completes an event, the engine identifies available connections and prioritizes the next step within the path — considering the participant's level and timing.
+
+### Visual trails (Learning Trails)
+
+Issuers can create **structured learning trails** — visual graphs with multiple connected events. A trail can have:
+
+- **Multiple entry points** — different starting points based on the participant's profile
+- **Branching paths** — "If you completed A, you can go to B or C"
+- **Trackable progress** — completion percentage per participant
+
+The engine automatically prioritizes **next available events** within a participant's active trails, creating a guided progression experience.
+
+### Intelligent discovery
+
+Even without explicit connections between events, the engine identifies **automatic similarity** between events from different issuers. The system calculates resemblance based on categories, inferred disciplines, skills, and keywords extracted by the AI — connecting opportunities the participant might not have found on their own.
+
+This transforms the individual portfolio into a **continuous journey**: each achievement informs the next recommendation, each accepted recommendation strengthens the profile, and the cycle repeats.
+
+<Tip>
+Issuers can track the conversion rate between connected events on the **Dashboard**, seeing how many participants progress from one stage to the next.
+</Tip>
+
+## Feedback and refinement
+
+The system learns from every interaction. In the recommendations area, users can:
+
+- **Like** a suggestion — reinforces the interest pattern
+- **Mark as "Not interested"** — removes the event and adjusts future recommendations
+
+This feedback loop ensures suggestions become more precise over time, without ever relying on sensitive personal data.
+
+## Personal goals
+
+Users can declare their **development goals** in **Settings → Objectives**. Each goal includes:
+
+- Area of interest (Sports, Education, Corporate, Sociocultural)
+- Current and desired level
+- Skills to develop
+- Preferred format (in-person, online)
+
+Declared goals carry the highest weight in the recommendation score. The platform can also **suggest goals automatically** based on achievement history — the user decides whether to accept.
+
+<Check>
+Intelligence exists to serve the person. Every recommendation is an opportunity presented — never an obligation or a judgment.
+</Check>

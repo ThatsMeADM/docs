@@ -1,59 +1,61 @@
 ---
 title: "Excedente"
-description: "Como funciona o excedente quando você emite além da cota mensal"
+description: "Como funciona o excedente quando você emite além da cota mensal."
 ---
 
 ## O que é excedente?
 
-Excedente permite continuar emitindo certificados após a cota mensal ser atingida. Cada emissão extra é cobrada por unidade na próxima fatura.
+O excedente permite continuar emitindo certificados depois que a cota mensal é atingida. Cada emissão extra é cobrada por unidade na próxima fatura.
 
-O excedente é **ativo por padrão** em todos os planos pagos. Você pode desativar ou definir um limite mensal em **Configurações → Cobrança → Excedente**.
+O excedente fica **ativado por padrão** em todos os planos pagos. Você pode desativá-lo ou definir um limite mensal em **Configurações → Cobrança → Excedente**.
 
 ## Preço por emissão
 
 | Plano | Sem WhatsApp | Com WhatsApp |
 |---|---|---|
 | **Starter** | R\$0,25 / \$0,05 | R\$0,40 / \$0,08 |
-| **Pro** | - | R\$0,40 / \$0,08 |
-| **Business** | - | R\$0,35 / \$0,07 |
-| **Enterprise** | - | Sob consulta |
+| **Pro** | — | R\$0,40 / \$0,08 |
+| **Business** | — | R\$0,35 / \$0,07 |
+| **Enterprise** | — | Sob consulta |
 
 <Tip>
-  No Pro e acima, WhatsApp está incluso em todas as emissões — dentro da cota e no excedente.
-  A coluna "Sem WhatsApp" só se aplica ao Starter.
+No plano Pro e superiores, o WhatsApp está incluído em todas as emissões, tanto dentro da cota quanto no excedente. A coluna **"Sem WhatsApp"** se aplica apenas ao plano Starter.
 </Tip>
 
 ## Definindo um limite de gastos
 
 Em **Configurações → Cobrança → Excedente**, você pode:
 
-1. **Ativar/desativar** o excedente
-2. **Definir um teto mensal** — ex: R\$20/mês
+1. **Ativar ou desativar** o excedente
+2. **Definir um teto mensal** de gasto, como `R\$20/mês`
 
-Quando o gasto de excedente atinge o teto:
-- Novas emissões são **bloqueadas** até o próximo ciclo
-- Você recebe um **alerta por email** em 80% e 100% do teto
-- Emissões voltam quando o ciclo renova
+Quando o gasto com excedente atinge esse teto:
+
+- Novas emissões ficam **bloqueadas** até o próximo ciclo
+- Você recebe um **alerta por e-mail** quando atingir 80% e 100% do limite
+- As emissões voltam a ser liberadas quando o ciclo é renovado
 
 ## Como funciona o ciclo
 
-O excedente zera na sua **data de ciclo** — o dia em que você assinou, não o dia 1.
+O excedente é zerado na sua **data de ciclo**, ou seja, no dia em que a assinatura foi iniciada, e não no primeiro dia do mês.
 
 Todas as cobranças de excedente são adicionadas automaticamente à próxima fatura no Stripe.
 
 ## Exemplo prático
 
-> Você está no plano **Pro** (1.000 emissões/mês).
-> Em agosto, você emitiu **1.247** certificados.
-> As 247 emissões extras custam R\$0,40 cada = **R\$98,80** adicionados à fatura de setembro.
+> Você está no plano **Pro**, com **1.000 emissões por mês**.
+> Em agosto, foram emitidos **1.247** certificados.
+> As **247 emissões excedentes** custam **R\$0,40** cada.
+> Total do excedente no período: **R\$98,80**.
 
 ## Desativando o excedente
 
 Se você desativar o excedente:
-- Emissões param ao atingir a cota
+
+- As emissões param ao atingir a cota
 - Nenhuma cobrança extra é gerada
-- Você pode reativar a qualquer momento
+- O excedente pode ser reativado a qualquer momento
 
 <Warning>
-  Se o excedente estiver desativado e você atingir a cota no meio de um evento, os destinatários restantes não receberão certificados até o próximo ciclo ou até fazer upgrade do plano.
+Se o excedente estiver desativado e a cota for atingida durante um evento, os destinatários restantes não receberão certificados até o próximo ciclo ou até que o plano seja alterado.
 </Warning>
