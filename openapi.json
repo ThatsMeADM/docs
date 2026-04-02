@@ -137,40 +137,37 @@
           },
           "state": {
             "type": "string",
-            "enum": [
-              "AC",
-              "AL",
-              "AP",
-              "AM",
-              "BA",
-              "CE",
-              "DF",
-              "ES",
-              "GO",
-              "MA",
-              "MT",
-              "MS",
-              "MG",
-              "PA",
-              "PB",
-              "PR",
-              "PE",
-              "PI",
-              "RJ",
-              "RN",
-              "RS",
-              "RO",
-              "RR",
-              "SC",
-              "SP",
-              "SE",
-              "TO"
-            ],
-            "description": "Estado do evento - UF brasileira (obrigatório quando location_type for physical)"
+            "description": "State or province of the event (e.g., 'SP', 'CA', 'Bayern'). Required when location_type is PHYSICAL.",
+            "nullable": true
           },
           "city": {
             "type": "string",
-            "description": "Cidade do evento (obrigatório quando location_type for physical)"
+            "description": "City of the event. Required when location_type is PHYSICAL."
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code (e.g., 'BR', 'US', 'DE').",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Latitude of the event location.",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude of the event location.",
+            "nullable": true
+          },
+          "timezone": {
+            "type": "string",
+            "description": "IANA timezone identifier (e.g., 'America/Sao_Paulo', 'Europe/Berlin').",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "Full formatted address of the event location.",
+            "nullable": true
           },
           "initial_date": {
             "type": "string",
@@ -287,40 +284,38 @@
           },
           "state": {
             "type": "string",
-            "enum": [
-              "AC",
-              "AL",
-              "AP",
-              "AM",
-              "BA",
-              "CE",
-              "DF",
-              "ES",
-              "GO",
-              "MA",
-              "MT",
-              "MS",
-              "MG",
-              "PA",
-              "PB",
-              "PR",
-              "PE",
-              "PI",
-              "RJ",
-              "RN",
-              "RS",
-              "RO",
-              "RR",
-              "SC",
-              "SP",
-              "SE",
-              "TO"
-            ],
-            "description": "Estado do evento - UF brasileira"
+            "description": "State or province of the event.",
+            "nullable": true
           },
           "city": {
             "type": "string",
-            "description": "Cidade do evento"
+            "description": "City of the event.",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code.",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Latitude of the event location.",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude of the event location.",
+            "nullable": true
+          },
+          "timezone": {
+            "type": "string",
+            "description": "IANA timezone identifier.",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "Full formatted address.",
+            "nullable": true
           },
           "initial_date": {
             "type": "string",
@@ -874,7 +869,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Filtra por status do evento (ex.: ACTIVE, FINISHED, PENDING, COMPLETED)"
+            "description": "Filtra por status do evento (ACTIVE, CLOSED, ARCHIVED)"
           },
           {
             "name": "category",

@@ -44,12 +44,23 @@ Inclua:
 
 A IA relê sua descrição toda vez que você emite certificados — mantenha-a atualizada.
 
-## Conectando eventos em uma trilha
+<Tip>
+O botão **"Sugerir com IA"** segue essas mesmas diretrizes — a IA vai sugerir descrições que incluam habilidades explícitas, público-alvo e o que o participante vai conquistar. Se você já começou a escrever, a IA usará seu texto como base e irá expandir e enriquecer, sem descartar o que você escreveu.
+</Tip>
 
-Conecte seus eventos em **Evento → Editar → Trilha de Aprendizado**.
-Quando um usuário conclui o Evento A, o Evento B aparece como "Próximo Passo" na página do certificado
-e nos e-mails de recomendação — gerando upsell automaticamente.
+## Localização e recomendações
+
+Dados precisos de localização (coordenadas, país) melhoram significativamente o matching geográfico do motor de recomendação. Eventos presenciais com localização completa são recomendados com prioridade para usuários na mesma cidade e estado.
+
+## Conectando eventos em uma Skill Tree
+
+Estruture seus eventos em **Evento → Editar → Skill Tree**.
+O editor visual permite organizar eventos em colunas de estágio e conectá-los com diferentes tipos de relação. Quando um usuário conclui o Evento A, o Evento B aparece como "Próximo Passo" na página do certificado e nos e-mails de recomendação — gerando upsell automaticamente.
 
 ```
-Inglês Nível 1 ──→ Inglês Nível 2 ──→ Inglês Nível 3 ──→ [TOEFL — curadoria That's Me]
+                    ┌─ Inglês Nível 2 ──→ Inglês Nível 3
+Inglês Nível 1 ──→ │
+                    └─ Conversação Int. ──→ [TOEFL — curadoria That's Me]
 ```
+
+A aba **Inteligência** do editor sugere conexões automaticamente e alerta sobre saltos de nível. Quanto mais completa a Skill Tree, mais preciso o motor de recomendação se torna.

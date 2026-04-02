@@ -96,13 +96,13 @@ The platform prioritizes next steps that are compatible with the history the per
 The engine considers the achievement history as a whole, not just an isolated action. This helps keep recommendations more consistent over time.
 </Note>
 
-## Learning paths and connections between events
+## Skill Trees and connections between events
 
-The recommendation engine operates on two complementary fronts.
+The recommendation engine operates on three complementary fronts.
 
-### Explicit connections
+### Explicit connections (Skill Trees)
 
-Issuers can link events and structure paths with relationships such as:
+Issuers can structure their events into visual Skill Trees with relationships such as:
 
 | Type | Meaning |
 |------|---------|
@@ -110,14 +110,23 @@ Issuers can link events and structure paths with relationships such as:
 | **Preparatory** | A stage that prepares for a later event |
 | **Deepening** | An expansion of a topic already started |
 | **Alternative** | A different route toward a similar goal |
+| **Suggestive** | A complementary option related to the current topic |
 
-When these connections exist, the platform has a clearer map of the expected progression and can prioritize recommendations within that logic.
+When these connections exist, the platform has a clearer map of the expected progression and can prioritize recommendations within that logic. **Alternative** connections follow elective logic: completing any one of the alternatives unlocks the next stage.
+
+The weight of these connections also factors in time: recent achievements drive stronger recommendations than older ones, prioritizing paths the participant is actively pursuing.
 
 ### Intelligent discovery
 
 Even without explicit connections between events, the engine identifies proximity between opportunities based on context, theme, skills, format, and other relevance signals.
 
-This makes it possible to discover relevant paths across different issuers, neighboring categories, and journeys the participant might not have found on their own.
+This includes two automatic mechanisms:
+- **Content similarity**: events with similar skills, keywords, and categories are connected through AI analysis
+- **Structural similarity**: if two events are similar and each leads to a next step, those next steps are also considered similar — even across different issuers
+
+### Behavioral mining
+
+The platform also learns from actual participant progression patterns. When many users complete Event A and then complete Event B, that transition is identified and incorporated into recommendations — even if the issuers haven't created an explicit connection.
 
 In other words: **today's achievement improves the chance of finding the right opportunity tomorrow**.
 

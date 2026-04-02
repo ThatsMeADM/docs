@@ -1,7 +1,7 @@
 ---
 title: "Create Event"
 sidebarTitle: "Create Event"
-description: "How to create events to issue achievements — templates, fields, dates, location, and learning trails."
+description: "How to create events to issue achievements — templates, fields, dates, location, and Skill Trees."
 icon: "calendar-plus"
 ---
 
@@ -91,9 +91,11 @@ Use multiple TMs to recognize different levels within the same event, such as 1s
 Once a TM (3D Trophy) is used in an issuance, it can no longer be unlinked from that event or deleted from the gallery.
 </Warning>
 
-## Connect events (Learning Trails)
+## Skill Tree
 
-Link related events to create personalized learning trails for participants. These connections appear on the certificate page as **"Next step"** and also feed the AI recommendation engine.
+Structure your events into a visual Skill Tree to create personalized progression paths for participants. These connections appear on the certificate page as **"Next step"** and directly feed the AI recommendation engine.
+
+The Skill Tree editor is a full-screen modal where you organize events into stage columns (E1, E2, E3...) and connect them with different relation types. The layout works as a visual graph — each event is a node, each connection is a directed edge.
 
 Available relation types:
 
@@ -104,6 +106,10 @@ Available relation types:
 | **Deepening** | The event deepens the content of the previous one |
 | **Alternative** | The event offers an alternate path within the same topic |
 | **Suggestive** | The event presents complementary options related to the current topic |
+
+The **Intelligence** tab in the editor automatically suggests connections based on AI analysis of your events, warns about level gaps (e.g., beginner straight to advanced), and shows similar events from other issuers that may complement the path.
+
+Optionally, you can configure a **completion TM** on the Skill Tree. When a participant completes all required events in the path, the TM is issued automatically — functioning as a completion diploma.
 
 <Note>
 After adding, changing, or removing any event detail, click the **"Save"** button to confirm and apply the changes.
@@ -125,11 +131,11 @@ Events with unmet prerequisites receive significantly lower priority in recommen
 
 | State | Permissions |
 |-------|------------|
-| **In progress** | Full editing, achievement issuance, and TM addition |
-| **Completed** | Locked for edits and new issuances |
+| **Active** | Full editing, achievement issuance, and TM addition |
+| **Closed** | Locked for edits and new issuances. Events without issuances can be deleted |
+| **Archived** | Permanent preservation. Events with issuances are archived instead of deleted |
 
-To finish an event, click **"Finish Event"** on the details page. This action is irreversible and preserves the integrity of the historical record.
+To close an event, go to the **Actions** menu (⋯) in the events table and select **"Close event"**. After closing:
 
-<Info>
-Although each certificate issuance already generates immutable data, we recommend finishing events that have ended, whose end date has passed, and for which no further issuances are expected. This reduces the risk of misuse.
-</Info>
+- **No issuances:** the event can be deleted from the actions menu.
+- **With issuances:** the event can be archived, preserving the certificate history.

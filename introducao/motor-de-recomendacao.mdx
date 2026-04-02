@@ -96,28 +96,37 @@ A plataforma prioriza próximos passos compatíveis com o histórico já demonst
 O motor considera o histórico de conquistas como um conjunto, e não apenas uma ação isolada. Isso ajuda a manter as recomendações mais consistentes ao longo do tempo.
 </Note>
 
-## Trilhas de aprendizado e conexões entre eventos
+## Skill Trees e conexões entre eventos
 
-O motor de recomendação opera em duas frentes complementares.
+O motor de recomendação opera em três frentes complementares.
 
-### Conexões explícitas
+### Conexões explícitas (Skill Trees)
 
-Emissores podem vincular eventos e estruturar trilhas com relações como:
+Emissores podem estruturar seus eventos em Skill Trees visuais com relações como:
 
 | Tipo | Significado |
 |------|------------|
 | **Continuação** | Próximo passo direto na mesma trilha |
 | **Preparatório** | Etapa que prepara para um evento posterior |
 | **Aprofundamento** | Expansão de um tema já iniciado |
-| **Alternativa** | Caminho diferente para um objetivo semelhante |
+| **Alternativo** | Caminho diferente para um objetivo semelhante |
+| **Sugestivo** | Opção complementar ao tema atual |
 
-Quando essas conexões existem, a plataforma passa a ter um mapa mais claro da progressão esperada e consegue priorizar recomendações dentro dessa lógica.
+Quando essas conexões existem, a plataforma passa a ter um mapa mais claro da progressão esperada e consegue priorizar recomendações dentro dessa lógica. Conexões do tipo **Alternativo** funcionam com lógica de eletivas: basta completar qualquer uma das alternativas para desbloquear o próximo estágio.
+
+O peso dessas conexões também considera o tempo: conquistas recentes geram recomendações mais fortes do que conquistas antigas, priorizando trilhas que o participante está percorrendo agora.
 
 ### Descoberta inteligente
 
 Mesmo sem conexões explícitas entre eventos, o motor identifica proximidade entre oportunidades com base em contexto, tema, competências, formato e outros sinais de aderência.
 
-Isso permite descobrir caminhos relevantes entre emissores diferentes, categorias próximas e jornadas que o participante talvez não encontrasse sozinho.
+Isso inclui dois mecanismos automáticos:
+- **Similaridade de conteúdo**: eventos com habilidades, palavras-chave e categorias semelhantes são conectados por análise de IA
+- **Similaridade estrutural**: se dois eventos são semelhantes e cada um leva a um próximo passo, esses próximos passos também são considerados semelhantes — mesmo entre emissores diferentes
+
+### Mineração comportamental
+
+A plataforma também aprende com os padrões reais de progressão dos participantes. Quando muitos usuários completam o Evento A e depois completam o Evento B, essa transição é identificada e incorporada às recomendações — mesmo que os emissores não tenham criado uma conexão explícita.
 
 Em outras palavras: **a conquista de hoje melhora a chance de encontrar a oportunidade certa amanhã**.
 

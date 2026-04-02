@@ -1,7 +1,7 @@
 ---
 title: "Criar Evento"
 sidebarTitle: "Criar Evento"
-description: "Como criar eventos para emitir conquistas — templates, campos, datas, localização e trilhas de aprendizado."
+description: "Como criar eventos para emitir conquistas — templates, campos, datas, localização e Skill Trees."
 icon: "calendar-plus"
 ---
 
@@ -57,7 +57,7 @@ A IA da plataforma extrai automaticamente habilidades, nível e palavras-chave a
 
 Escolha entre:
 - **Online** — sem local físico
-- **Presencial** — selecione o estado e informe a cidade
+- **Presencial** — busque o endereço ou cidade no campo de localização. A plataforma extrai automaticamente cidade, estado, país e coordenadas geográficas, alimentando o motor de recomendações com dados precisos de proximidade.
 
 ### Data e período
 
@@ -69,6 +69,8 @@ Há quatro modalidades de data para atender diferentes tipos de evento:
 | **Período** | Data de início, data de fim e horários (opcionais) | Eventos com duração definida |
 | **Recorrente** | Frequência + data de início | Eventos semanais, quinzenais, mensais, bimestrais, trimestrais, semestrais ou anuais |
 | **Sempre disponível** | Nenhum | Cursos on-demand e trilhas permanentes |
+
+O fuso horário é detectado automaticamente a partir do navegador e pode ser alterado manualmente. Para eventos recorrentes, uma prévia das próximas 5 ocorrências é exibida após selecionar a frequência e a data de início.
 
 ## Adicionar TMs ao evento
 
@@ -91,9 +93,11 @@ Use múltiplos TMs para reconhecer diferentes níveis dentro do mesmo evento, co
 Quando um TM (Troféu 3D) é usado em uma emissão, ele não pode mais ser desvinculado desse evento nem excluído da galeria.
 </Warning>
 
-## Conectar eventos (Trilhas de Aprendizado)
+## Skill Tree
 
-Vincule eventos relacionados para criar trilhas de aprendizado personalizadas para os participantes. Essas conexões aparecem na página do certificado como **"Próximo passo"** e também alimentam o motor de recomendação da IA.
+Estruture seus eventos em uma Skill Tree visual para criar trilhas de progressão personalizadas para os participantes. Essas conexões aparecem na página do certificado como **"Próximo passo"** e alimentam diretamente o motor de recomendação da IA.
+
+O editor de Skill Tree é um modal em tela cheia onde você organiza eventos em colunas de estágio (E1, E2, E3...) e os conecta com diferentes tipos de relação. O layout funciona como um grafo visual — cada evento é um nó, cada conexão é uma aresta direcionada.
 
 Tipos de relação disponíveis:
 
@@ -104,6 +108,10 @@ Tipos de relação disponíveis:
 | **Aprofundamento** | O evento aprofunda o conteúdo do anterior |
 | **Alternativo** | O evento oferece um caminho alternativo dentro do mesmo tema |
 | **Sugestivo** | O evento apresenta opções complementares ao tema atual |
+
+A aba **Inteligência** do editor sugere automaticamente conexões com base na análise de IA dos seus eventos, alerta sobre saltos de nível (ex: iniciante direto para avançado) e mostra eventos similares de outros emissores que podem complementar a trilha.
+
+Opcionalmente, você pode configurar um **TM de conclusão** na Skill Tree. Quando um participante completa todos os eventos obrigatórios da trilha, o TM é emitido automaticamente — funcionando como um diploma de conclusão.
 
 <Note>
 Após adicionar, alterar ou remover qualquer detalhe do evento, clique no botão **"Salvar"** para confirmar e aplicar as alterações.
@@ -125,11 +133,11 @@ Eventos com pré-requisitos não atendidos recebem prioridade significativamente
 
 | Estado | Permissões |
 |--------|-----------|
-| **Em andamento** | Permite edição completa, emissão de conquistas e adição de TMs |
-| **Concluído** | Bloqueia edições e novas emissões |
+| **Ativo** | Permite edição completa, emissão de conquistas e adição de TMs |
+| **Encerrado** | Bloqueia edições e novas emissões. Eventos sem emissões podem ser excluídos |
+| **Arquivado** | Preservação permanente. Eventos com emissões são arquivados em vez de excluídos |
 
-Para finalizar um evento, clique em **"Finalizar Evento"** na página de detalhes. Essa ação é irreversível e preserva a integridade do histórico.
+Para encerrar um evento, acesse o menu **Ações** (⋯) na tabela de eventos e selecione **"Encerrar evento"**. Após encerrado:
 
-<Info>
-Embora cada emissão de certificado já gere dados imutáveis, recomendamos finalizar eventos encerrados, com data final já passada e sem expectativa de novas emissões. Isso reduz o risco de uso indevido.
-</Info>
+- **Sem emissões:** o evento pode ser excluído pelo menu de ações.
+- **Com emissões:** o evento pode ser arquivado, preservando o histórico de certificados.
