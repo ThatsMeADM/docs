@@ -106,13 +106,13 @@ Emissores podem estruturar seus eventos em Skill Trees visuais com relações co
 
 | Tipo | Significado |
 |------|------------|
-| **Continuação** | Próximo passo direto na mesma trilha |
-| **Preparatório** | Etapa que prepara para um evento posterior |
+| **Continuação** | Próximo passo direto na mesma trilha (um por nó de origem) |
+| **Pré-requisito** | Etapa que deve ser concluída antes de um evento posterior |
 | **Aprofundamento** | Expansão de um tema já iniciado |
-| **Alternativo** | Caminho diferente para um objetivo semelhante |
-| **Sugestivo** | Opção complementar ao tema atual |
+| **Alternativo** | Caminho paralelo válido para o mesmo objetivo — recomendado com força junto à rota principal |
+| **Sugestivo** | Conexão temática leve, sem vínculo direto de progressão |
 
-Quando essas conexões existem, a plataforma passa a ter um mapa mais claro da progressão esperada e consegue priorizar recomendações dentro dessa lógica. Conexões do tipo **Alternativo** funcionam com lógica de eletivas: basta completar qualquer uma das alternativas para desbloquear o próximo estágio.
+Quando essas conexões existem, a plataforma passa a ter um mapa mais claro da progressão esperada e consegue priorizar recomendações dentro dessa lógica. Conexões do tipo **Alternativo** funcionam com lógica de eletivas: basta completar qualquer uma das alternativas para desbloquear o próximo estágio. Caminhos alternativos carregam peso alto de recomendação — quase tão forte quanto Aprofundamento — refletindo que são rotas reais e válidas, não sugestões fracas.
 
 O peso dessas conexões também considera o tempo: conquistas recentes geram recomendações mais fortes do que conquistas antigas, priorizando trilhas que o participante está percorrendo agora.
 
