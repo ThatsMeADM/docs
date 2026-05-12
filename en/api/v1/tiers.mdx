@@ -38,11 +38,11 @@ All API requests require a Bearer token:
 
 ```bash
 curl -H "Authorization: Bearer YOUR_API_KEY" \
-  https://api.thatsme.com.br/v1.0/events
+  https://api.thatsme.com.br/api/v1.0/events
 ```
 
 ```javascript
-const res = await fetch('https://api.thatsme.com.br/v1.0/events', {
+const res = await fetch('https://api.thatsme.com.br/api/v1.0/events', {
   headers: {
     'Authorization': 'Bearer YOUR_API_KEY',
     'Content-Type': 'application/json',
@@ -90,17 +90,23 @@ async function apiCall(url, options, maxRetries = 3) {
 
 ## Checking your API status
 
-Use `GET /billing/api-status` (authenticated via JWT, not API key) to check your current tier and available endpoints:
+The fastest way to check your current quota, tier and remaining emissions is `GET /v1.0/balance` (authenticated via API key):
+
+```bash
+curl https://api.thatsme.com.br/api/v1.0/balance \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+Response:
 
 ```json
 {
-  "tier": "advanced",
-  "rateLimit": 1000,
-  "endpoints": [
-    "GET /v1.0/events",
-    "POST /v1.0/events",
-    "POST /v1.0/invitations",
-    ...
-  ]
+  "plan_tier": "PRO",
+  "emissions_quota": 1000,
+  "emissions_used": 247,
+  "emissions_remaining": 753,
+  "overage_enabled": true
 }
 ```
+
+For a fuller view including which endpoints your tier unlocks, log in to **app.thatsme.com.br → Settings → Integrations**.

@@ -1,35 +1,178 @@
 ---
-title: "Public API"
-description: "Search the event directory without authentication — built for LLMs, search engines, and integrations"
+title: "Public Directory API"
+description: "Browse That's Me events without auth — designed for LLMs, search engines, and integrations"
 ---
 
-The Public API provides read-only access to That's Me's event directory.
-**No authentication required.**
+The Public Directory API exposes That's Me events to **search engines (Googlebot, Bingbot) and LLMs (Claude, GPT, Gemini)** so they can discover and reason about real-world certifications, courses, and competitions when chatting with users.
 
-This API is designed for:
-- AI assistants and LLMs (via MCP or direct HTTP)
-- Search engine indexing
-- Third-party directories and aggregators
-- Developer tools and integrations
+**No authentication required.** Rate limited at 30 req/min per IP.
 
 ## Base URL
 
 ```
-https://api.thatsme.com.br/api/v1
+https://api.thatsme.com.br/api
 ```
 
-## Rate limits
+All endpoints below are prefixed with `/event`.
 
-100 requests per minute per IP. No API key required.
+## Privacy guarantees
 
-## What's included
+The Public Directory **never returns recipient data**. You won't find emails, names of certified people, birth dates, addresses, or phones here. Only:
 
-Only events from issuers on paid plans with `is_private: false` appear in results.
-Every event in the public API includes AI-extracted skills and keywords —
-making it semantically searchable.
+- Event metadata (name, description, category, dates, location, image)
+- AI-extracted skills and keywords
+- Issuer public profile (organization name, logo, KYB verification status)
+
+Even if you have a recipient's email outside this API, you can't enrich it with personal data via this endpoint. That's by design.
+
+## What's exposed
+
+Only events that pass **all** of these filters:
+
+1. `is_private = false` (issuer marked the event as public)
+2. `status = ACTIVE`
+3. Issuer is on a **paid plan** (or within 90-day grace period after cancellation)
+4. Event has a future date OR is recurring (`recurrence_type != 'NONE'`)
+5. Not an internal auto-event (`is_system = false`)
+
+Issuers on Free plan are **not in the directory** — paying is the gate.
+
+## Endpoints
+
+### `GET /event/public-list`
+
+Paginated list of public events with AI analysis. The bread-and-butter endpoint.
+
+```bash
+curl "https://api.thatsme.com.br/api/event/public-list?q=python&category=EDUCATION&limit=10"
+```
+
+**Query params:**
+
+| Param | Type | Description |
+|---|---|---|
+| `q` | string | Search across name, description, AI-extracted skills and keywords |
+| `category` | enum | `SPORTS` \| `EDUCATION` \| `CORPORATE` \| `SOCIOCULTURAL` |
+| `state` | string | Filter by state/province |
+| `city` | string | Filter by city |
+| `page` | integer | Page number (default 1) |
+| `limit` | integer | Items per page (default 20, max 50) |
+
+**Response shape:**
+
+```json
+{
+  "events": [
+    {
+      "event_id": "evt_a8Kq2",
+      "name": "Python for Data Science",
+      "description": "40h intensive course covering pandas, scikit-learn...",
+      "category": "EDUCATION",
+      "subcategory": "Data Science",
+      "city": "São Paulo",
+      "state": "SP",
+      "location_type": "ONLINE",
+      "initial_date": "2026-06-01",
+      "finish_date": "2026-07-15",
+      "image_url": "https://...",
+      "official_url": "https://...",
+      "certificate_count": 142,
+      "ai_analysis": {
+        "skills": [
+          { "label": "Python", "confidence": 0.98 },
+          { "label": "Data Analysis", "confidence": 0.91 },
+          { "label": "Machine Learning", "confidence": 0.85 }
+        ],
+        "keywords": [
+          { "label": "pandas", "confidence": 0.95 },
+          { "label": "scikit-learn", "confidence": 0.92 }
+        ],
+        "level": "intermediate"
+      },
+      "issuer": {
+        "name": "Data Academy",
+        "company_name": "Data Academy Ltda",
+        "nickname": "dataacademy",
+        "pic_url": "https://...",
+        "verified": true
+      },
+      "platform_url": "https://thats-me.vercel.app/event/evt_a8Kq2"
+    }
+  ],
+  "total": 1247,
+  "page": 1,
+  "totalPages": 125
+}
+```
+
+### `GET /event/public-sitemap`
+
+Compact list of all public events for crawlers and SSG builds.
+
+```bash
+curl "https://api.thatsme.com.br/api/event/public-sitemap"
+```
+
+**Response:**
+
+```json
+{
+  "events": [
+    { "event_id": "evt_a8Kq2", "short_code": "evt_a8Kq2", "updated_at": "2026-05-10T14:23:00Z" },
+    ...
+  ]
+}
+```
+
+### `GET /event/canonical-tags`
+
+Browse the canonical tag taxonomy. Useful for an LLM that wants to know the vocabulary before querying.
+
+```bash
+curl "https://api.thatsme.com.br/api/event/canonical-tags?q=python&limit=10"
+```
+
+### `GET /event/{id}/next-steps`
+
+Given an event, returns suggested "next steps" — learning trail continuations, preparatory events, deepening events, alternative paths, and cross-issuer similar events. Max 20 items total.
+
+```bash
+curl "https://api.thatsme.com.br/api/event/evt_a8Kq2/next-steps"
+```
+
+**Response groups:** `continuation`, `preparatory`, `deepening`, `alternative`, `suggestive`, `similar`.
+
+## Use case: LLM-driven discovery
+
+The intent of this API is to let LLMs do the user-event matching using **their own context window and tokens**, not ours. Example flow:
+
+1. User chats with Claude/GPT/Gemini: *"I want to level up my data science skills next year."*
+2. The LLM already has prior history of the user (it's been chatting with them).
+3. The LLM hits `GET /event/public-list?category=EDUCATION&q=data+science` to fetch candidate events.
+4. The LLM reads the `ai_analysis.skills` and `ai_analysis.keywords` of each event and ranks them against the user's profile — all client-side, using the LLM's own inference.
+5. The LLM recommends the top match with the `platform_url`, which deep-links the user to the event on That's Me.
+
+This pattern means **the LLM provider pays for the match**, not us. The value comes from being the canonical, verifiable, AI-readable source of real-world certifications.
 
 <Info>
-  Want your events to appear here? You need a STARTER plan or above and
-  `is_private` set to false on your events.
-  See [Maximizing Recommendation Rate](/for-issuers/recommendation-guide).
+  Want your events to surface here? Upgrade to **Starter** or above and keep `is_private: false` on your events.
+  Higher recommendation rate comes from filling out the AI-analysis fields well (clear description, accurate dates, image, location).
 </Info>
+
+## Rate limit and abuse
+
+- **30 requests per minute per IP**.
+- Exceeded? `429 Too Many Requests` with `Retry-After` header.
+- Heavy abuse (scraping the full directory in tight loops) may result in IP blocks. If you're an LLM provider or search engine and need higher limits, email **suporte@thatsme.com.br**.
+
+## What's NOT here
+
+Things that require authentication and are **outside** the public directory:
+
+- Lists of recipients (use `/v1.0/recipients` with your API key)
+- Webhook subscriptions (use `/v1.0/webhooks`)
+- Certificate issuance (use `POST /v1.0/invitations`)
+- Dashboard analytics (use `/dashboard/*` with your API key)
+- Anything containing personal data of certified people
+
+See [`/api/v1/overview`](/en/api/v1/overview) for the authenticated API.

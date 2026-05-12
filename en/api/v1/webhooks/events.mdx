@@ -90,21 +90,8 @@ Fires when a certificate passes its expiration date (checked daily).
 }
 ```
 
-## recipient.registered
-
-Fires when a recipient who had pending certificates creates a That's Me account.
-The certificates are automatically added to their profile at this moment.
-
-```json
-{
-  "event": "recipient.registered",
-  "created_at": "2026-03-18T12:00:00Z",
-  "data": {
-    "recipient_email": "leonardo@email.com",
-    "recipient_name": "Leonardo Silva",
-    "profile_url": "https://thatsme.com.br/@leonardosilva",
-    "registered_at": "2026-03-18T12:00:00Z",
-    "pending_certificates_resolved": 3
-  }
-}
-```
+<Note>
+  Looking for a `recipient.registered` event (fired when a recipient signs up)?
+  It's on the roadmap but not yet implemented. Subscribe to `certificate.accepted` —
+  it fires when a recipient accepts a certificate, which only happens after they have a profile.
+</Note>

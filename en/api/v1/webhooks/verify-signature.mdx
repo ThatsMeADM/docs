@@ -6,6 +6,16 @@ description: "How to verify That's Me webhook signatures in Node.js, Python, and
 That's Me signs every webhook payload using HMAC-SHA256.
 Always verify the signature before processing the payload.
 
+## Request headers
+
+Every delivery includes three custom headers:
+
+| Header | Purpose |
+|---|---|
+| `X-TM-Signature` | HMAC-SHA256 signature (see format below) — **verify this before doing anything else** |
+| `X-TM-Event` | Event type (`certificate.issued`, `certificate.accepted`, etc) — handy for routing without parsing the body |
+| `X-TM-Delivery` | Unique delivery ID — use for idempotency / dedup on your side (we may retry on transient failures) |
+
 ## Signature format
 
 The `X-TM-Signature` header contains:

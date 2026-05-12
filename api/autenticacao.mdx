@@ -95,22 +95,17 @@ const data = await response.json();
 
 ## Tiers de acesso
 
-| Plano | Tier API | Acesso |
-|---|---|---|
-| Free | — | Sem acesso à API |
-| Starter | Basic | Leitura (listar eventos, badges, destinatários) |
-| Pro | Advanced | Leitura + escrita (emitir certificados, webhooks) |
-| Business | Advanced | Mesmo que Pro, com rate limits maiores |
-| Enterprise | Advanced | Rate limits customizados |
+| Plano | Tier API | Acesso | Rate limit |
+|---|---|---|---|
+| Free | — | Sem acesso à API (todas as chamadas retornam 403) | — |
+| Starter | Basic | Leitura (listar eventos, badges, destinatários, saldo) | 100 req/min |
+| Pro | Advanced | Leitura + escrita (emitir certificados, gerenciar eventos, webhooks) | 1.000 req/min |
+| Business | Advanced | Mesmo que Pro, com rate limit igual | 1.000 req/min |
+| Enterprise | Advanced | Mesmo que Pro, com rate limit elevado | 10.000 req/min (ajustável sob negociação) |
 
-## Rate limits
-
-| Plano | Limite |
-|---|---|
-| Starter | 100 requisições/minuto |
-| Pro | 1.000 requisições/minuto |
-| Business | 1.000 requisições/minuto |
-| Enterprise | Customizado |
+<Info>
+  Rate limit é aplicado **por organização**, não por IP. Todas as suas API keys compartilham o mesmo balde.
+</Info>
 
 Quando o limite é atingido, a API retorna `429 Too Many Requests` com o header `Retry-After` indicando quantos segundos aguardar.
 

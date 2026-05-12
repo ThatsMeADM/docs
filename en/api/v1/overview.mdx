@@ -6,12 +6,14 @@ description: "Authentication, base URL, rate limits and plan requirements"
 ## Base URL
 
 ```
-https://api.thatsme.com.br
+https://api.thatsme.com.br/api
 ```
+
+All v1.0 endpoints are prefixed with `/v1.0` after the base URL (e.g. `https://api.thatsme.com.br/api/v1.0/events`).
 
 ## Authentication
 
-All API v1 endpoints require an API key sent as a Bearer token:
+All v1.0 endpoints require an API key sent as a Bearer token:
 
 ```bash
 Authorization: Bearer your_api_key
@@ -21,28 +23,34 @@ Generate your API key at **Settings → Integrations → Generate API Key**.
 The key is shown once at creation — store it securely.
 
 <Warning>
-  A FREE plan API key can read data but **cannot emit certificates**.
-  Certificate emission requires STARTER plan or above.
+  A **FREE** plan cannot use the API at all — all requests return `403 Forbidden`.
+  You need at least the **Starter** plan for read access and **Pro** plan or above
+  for certificate emission and webhooks.
 </Warning>
 
 ## Rate limits
 
-| Endpoint | Limit |
-|---|---|
-| `POST /v1.0/invitations` | 100 req/min |
-| `GET` endpoints | 300 req/min |
-| Webhook test | 10 req/min |
+Rate limits are per organization (not per IP), applied across all API keys you own.
 
-Rate limit responses return HTTP 429 with `Retry-After` header.
+| Plan | Rate limit |
+|---|---|
+| Free | No access (403 Forbidden) |
+| Starter | 100 req/min |
+| Pro / Business | 1,000 req/min |
+| Enterprise | 10,000 req/min |
+
+Rate limit responses return HTTP 429 with `Retry-After` header. See [Tiers](/en/api/v1/tiers) for full details.
 
 ## Plan requirements by endpoint
 
-| Endpoint | FREE | STARTER+ |
-|---|---|---|
-| `GET /v1.0/events` | ✅ | ✅ |
-| `GET /v1.0/badges` | ✅ | ✅ |
-| `GET /v1.0/invitations` | ✅ | ✅ |
-| `GET /v1.0/balance` | ✅ | ✅ |
-| `POST /v1.0/invitations` | ❌ | ✅ |
-| `POST /v1.0/webhooks` | ❌ | ✅ |
-| `GET /api/v1/events` (public) | — | — (no auth required) |
+| Endpoint | Free | Starter | Pro+ |
+|---|---|---|---|
+| `GET /v1.0/events` | ❌ | ✅ | ✅ |
+| `GET /v1.0/badges` | ❌ | ✅ | ✅ |
+| `GET /v1.0/invitations` | ❌ | ✅ | ✅ |
+| `GET /v1.0/balance` | ❌ | ✅ | ✅ |
+| `POST /v1.0/invitations` | ❌ | ❌ | ✅ |
+| `POST /v1.0/events` | ❌ | ❌ | ✅ |
+| `POST /v1.0/webhooks` | ❌ | ❌ | ✅ |
+
+For the Public Directory (no auth required, for LLMs and search engines), see [Public Directory API](/en/public-api/overview).

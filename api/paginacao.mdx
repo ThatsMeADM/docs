@@ -3,89 +3,126 @@ title: "Paginação"
 description: "Como paginar resultados na API That's Me"
 ---
 
-## Paginação
+A API da That's Me usa **dois estilos de paginação** dependendo do grupo de endpoints:
 
-Endpoints que retornam listas usam paginação via query parameters.
+- **Endpoints `/v1.0/*`** usam `limit` + `offset` (estilo SQL clássico)
+- **Endpoints `/dashboard/*` e `/v1.0/webhooks/{id}/deliveries`** usam `page` + `limit`
+
+## Estilo 1: `limit` + `offset` (v1.0)
+
+Usado pelos endpoints principais de integração.
 
 | Parâmetro | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `page` | number | 1 | Número da página |
-| `limit` | number | 20 | Itens por página (máx: 50) |
+| `limit` | number | 50 (varia por endpoint) | Itens por página |
+| `offset` | number | 0 | Posição inicial (`offset = (página - 1) × limit`) |
 
-## Exemplo
+### Exemplo
 
 ```bash
-curl "https://api.thatsme.com.br/api/v1.0/events?page=2&limit=10" \
+# Segunda "página" de 10 em 10 itens (offset 10, limit 10)
+curl "https://api.thatsme.com.br/api/v1.0/invitations?offset=10&limit=10" \
   -H "Authorization: Bearer SUA_API_KEY"
 ```
 
-## Resposta paginada
+### Resposta
 
 ```json
 {
   "data": [...],
   "total": 150,
-  "page": 2,
   "limit": 10,
-  "hasMore": true
+  "offset": 10
 }
 ```
+
+Para saber se há mais páginas, compare `offset + data.length < total`.
+
+### Endpoints com estilo limit/offset
+
+| Endpoint | Padrão | Máximo |
+|---|---|---|
+| `GET /v1.0/events` | 50 | — |
+| `GET /v1.0/events/{id}/badges` | 50 | — |
+| `GET /v1.0/badges` | 50 | — |
+| `GET /v1.0/invitations` | 50 | — |
+| `GET /v1.0/recipient-invitations` | 50 | — |
+
+## Estilo 2: `page` + `limit` (dashboard + webhook deliveries)
+
+Usado pelos endpoints de analytics e auditoria.
+
+| Parâmetro | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `page` | number | 1 | Número da página (a partir de 1) |
+| `limit` | number | 20 (varia por endpoint) | Itens por página |
+
+### Exemplo
+
+```bash
+curl "https://api.thatsme.com.br/api/dashboard/winners/evt_a8Kq2?page=2&limit=20" \
+  -H "Authorization: Bearer SUA_API_KEY"
+```
+
+### Endpoints com estilo page/limit
+
+| Endpoint | Padrão | Máximo |
+|---|---|---|
+| `GET /dashboard/events/list` | 20 | — |
+| `GET /dashboard/winners/{event_id}` | 50 | 50 |
+| `GET /v1.0/webhooks/{id}/deliveries` | 20 | — |
 
 ## Percorrendo todas as páginas
 
 <CodeGroup>
 
-```javascript Node.js
-async function fetchAll(baseUrl, apiKey) {
+```javascript Node.js (limit/offset)
+async function fetchAllInvitations(apiKey) {
   const results = [];
-  let page = 1;
-  let hasMore = true;
+  let offset = 0;
+  const limit = 50;
 
-  while (hasMore) {
-    const res = await fetch(`${baseUrl}?page=${page}&limit=50`, {
-      headers: { Authorization: `Bearer ${apiKey}` },
-    });
+  while (true) {
+    const res = await fetch(
+      `https://api.thatsme.com.br/api/v1.0/invitations?offset=${offset}&limit=${limit}`,
+      { headers: { Authorization: `Bearer ${apiKey}` } }
+    );
     const json = await res.json();
     results.push(...json.data);
-    hasMore = json.hasMore;
-    page++;
+    if (offset + json.data.length >= json.total) break;
+    offset += limit;
   }
 
   return results;
 }
 ```
 
-```python Python
+```python Python (limit/offset)
 import requests
 
-def fetch_all(base_url, api_key):
+def fetch_all_invitations(api_key):
     results = []
-    page = 1
-    has_more = True
+    offset = 0
+    limit = 50
 
-    while has_more:
+    while True:
         res = requests.get(
-            f'{base_url}?page={page}&limit=50',
-            headers={'Authorization': f'Bearer {api_key}'}
+            f'https://api.thatsme.com.br/api/v1.0/invitations',
+            params={'offset': offset, 'limit': limit},
+            headers={'Authorization': f'Bearer {api_key}'},
         )
         data = res.json()
         results.extend(data['data'])
-        has_more = data['hasMore']
-        page += 1
+        if offset + len(data['data']) >= data['total']:
+            break
+        offset += limit
 
     return results
 ```
 
 </CodeGroup>
 
-## Endpoints que suportam paginação
-
-| Endpoint | Padrão de itens |
-|---|---|
-| `GET /v1.0/events` | 20 |
-| `GET /v1.0/badges` | 20 |
-| `GET /v1.0/invitations` | 20 |
-| `GET /v1.0/recipients` | 20 |
-| `GET /v1.0/recipient-invitations` | 20 |
-| `GET /v1.0/webhooks` | 20 |
-| `GET /dashboard/winners/{event_id}` | 20 |
+<Note>
+  Os 4 endpoints públicos do diretório (`/event/public-list`, etc) também usam `page + limit`.
+  Veja [Public Directory API](/en/public-api/overview).
+</Note>

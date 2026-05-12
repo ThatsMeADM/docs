@@ -21,6 +21,12 @@
         "type": "http",
         "scheme": "bearer",
         "bearerFormat": "API_KEY"
+      },
+      "dashboardAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Token JWT do painel That's Me (obtido via login web em app.thatsme.com.br). Diferente da API Key — é o token de sessão do usuário logado. Usado APENAS para endpoints de administração da própria conta, como gerenciar API keys."
       }
     },
     "schemas": {
@@ -59,13 +65,13 @@
         "properties": {
           "event_id": {
             "type": "string",
-            "format": "uuid",
-            "description": "ID do evento vinculado à emissão"
+            "description": "Identificador do evento. Aceita short_code (recomendado, mais curto e melhor pra UX) ou o UUID completo.",
+            "example": "evt_a8Kq2"
           },
           "badge_id": {
             "type": "string",
-            "format": "uuid",
-            "description": "ID do badge utilizado na emissão"
+            "description": "Identificador do badge. Aceita short_code (recomendado, mais curto e melhor pra UX) ou o UUID completo.",
+            "example": "bdg_x9Lp3"
           },
           "recipient": {
             "description": "Destinatário único ou array de destinatários",
@@ -453,6 +459,144 @@
             "example": "2025-12-31T23:59:59Z"
           }
         }
+      },
+      "PublicEventDto": {
+        "type": "object",
+        "description": "Evento do diretório público (sem dados pessoais de destinatários).",
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "description": "UUID do evento."
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "SPORTS",
+              "EDUCATION",
+              "CORPORATE",
+              "SOCIOCULTURAL"
+            ]
+          },
+          "subcategory": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "location_type": {
+            "type": "string",
+            "enum": [
+              "PHYSICAL",
+              "ONLINE"
+            ],
+            "nullable": true
+          },
+          "initial_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "finish_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "recurrence_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "image_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "official_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "certificate_count": {
+            "type": "integer",
+            "description": "Número de certificados já emitidos por este evento."
+          },
+          "ai_analysis": {
+            "type": "object",
+            "nullable": true,
+            "description": "Análise semântica do evento gerada por IA. Use isso pra match com histórico do usuário.",
+            "properties": {
+              "skills": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "confidence": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "confidence": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "level": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "issuer": {
+            "type": "object",
+            "description": "Perfil público do emissor. NÃO contém dados pessoais de destinatários.",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "company_name": {
+                "type": "string",
+                "nullable": true
+              },
+              "nickname": {
+                "type": "string",
+                "nullable": true
+              },
+              "pic_url": {
+                "type": "string",
+                "nullable": true
+              },
+              "verified": {
+                "type": "boolean",
+                "description": "True se a organização passou no KYB."
+              }
+            }
+          },
+          "platform_url": {
+            "type": "string",
+            "description": "URL canônica do evento na plataforma That's Me."
+          }
+        }
       }
     }
   },
@@ -491,7 +635,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID do evento associado à emissão"
+            "description": "ID do evento associado à emissão Aceita short_code ou UUID."
           },
           {
             "name": "badge_id",
@@ -500,7 +644,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID do badge utilizado na emissão"
+            "description": "ID do badge utilizado na emissão Aceita short_code ou UUID."
           },
           {
             "name": "invitation_id",
@@ -686,7 +830,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Filtra certificados emitidos para um evento específico"
+            "description": "Filtra certificados emitidos para um evento específico Aceita short_code ou UUID."
           },
           {
             "name": "badge_id",
@@ -695,7 +839,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Filtra certificados emitidos utilizando um badge específico"
+            "description": "Filtra certificados emitidos utilizando um badge específico Aceita short_code ou UUID."
           },
           {
             "name": "created_from",
@@ -806,7 +950,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID do badge (badge_id)"
+            "description": "Identificador do badge. Aceita short_code (ex: bdg_x9Lp3) ou UUID."
           }
         ],
         "responses": {
@@ -984,7 +1128,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID do evento"
+            "description": "Identificador do evento. Aceita short_code (ex: evt_a8Kq2) ou UUID."
           }
         ],
         "requestBody": {
@@ -1037,7 +1181,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID do evento a ser deletado (event_id)"
+            "description": "Identificador do evento a ser deletado. Aceita short_code (ex: evt_a8Kq2) ou UUID."
           }
         ],
         "responses": {
@@ -1074,7 +1218,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID do evento"
+            "description": "Identificador do evento. Aceita short_code (ex: evt_a8Kq2) ou UUID."
           }
         ],
         "responses": {
@@ -1110,7 +1254,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID do evento"
+            "description": "Identificador do evento. Aceita short_code (ex: evt_a8Kq2) ou UUID."
           },
           {
             "name": "limit",
@@ -1511,7 +1655,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID do evento"
+            "description": "Identificador do evento. Aceita short_code (ex: evt_a8Kq2) ou UUID."
           }
         ],
         "responses": {
@@ -1541,7 +1685,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID do evento"
+            "description": "Identificador do evento. Aceita short_code (ex: evt_a8Kq2) ou UUID."
           },
           {
             "name": "page",
@@ -1562,6 +1706,22 @@
               "default": 50
             },
             "description": "Itens por página (máximo 50)"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "INVITED",
+                "PENDING",
+                "ACCEPTED",
+                "REJECTED",
+                "all"
+              ]
+            },
+            "description": "Filtra por status do destinatário. INVITED = invitação enviada mas ainda sem cadastro. PENDING = badge_request aguardando aceite. ACCEPTED = certificado aceito. REJECTED = recusado. all (ou omitido) = todos."
           }
         ],
         "responses": {
@@ -1632,11 +1792,11 @@
           "API Keys"
         ],
         "summary": "Gerar nova API Key",
-        "description": "Gera uma nova API Key para autenticação na API pública v1.0. A autenticação é feita apenas através do token fornecido.",
+        "description": "Gera uma nova API Key para autenticação na API pública v1.0. A autenticação é feita apenas através do token fornecido.\n\n⚠️ Este endpoint requer **JWT do painel** (sessão de usuário logado COMPANY), NÃO API key. É um endpoint de administração da conta, não de integração.",
         "operationId": "generateApiKey",
         "security": [
           {
-            "bearerAuth": []
+            "dashboardAuth": []
           }
         ],
         "requestBody": {
@@ -1669,7 +1829,7 @@
         "operationId": "listApiKeys",
         "security": [
           {
-            "bearerAuth": []
+            "dashboardAuth": []
           }
         ],
         "responses": {
@@ -1682,7 +1842,8 @@
           "403": {
             "description": "Acesso negado"
           }
-        }
+        },
+        "description": "\n\n⚠️ Este endpoint requer **JWT do painel** (sessão de usuário logado COMPANY), NÃO API key. É um endpoint de administração da conta, não de integração."
       }
     },
     "/api-keys/{id}/revoke": {
@@ -1694,7 +1855,7 @@
         "operationId": "revokeApiKey",
         "security": [
           {
-            "bearerAuth": []
+            "dashboardAuth": []
           }
         ],
         "parameters": [
@@ -1720,6 +1881,277 @@
           },
           "404": {
             "description": "API Key não encontrada"
+          }
+        },
+        "description": "\n\n⚠️ Este endpoint requer **JWT do painel** (sessão de usuário logado COMPANY), NÃO API key. É um endpoint de administração da conta, não de integração."
+      }
+    },
+    "/event/public-list": {
+      "get": {
+        "tags": [
+          "Public Directory"
+        ],
+        "summary": "Listar eventos públicos (sem auth)",
+        "description": "Lista paginada do diretório público de eventos. Retorna apenas eventos de organizações em plano pago, com is_private=false e status ACTIVE. Cada evento inclui ai_analysis (skills, keywords, level) extraído via IA — pensado pra busca semântica por LLMs (Claude, GPT, Gemini) e SEO. Rate limit: 30 req/min por IP.",
+        "security": [],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Termo de busca (busca em name, description, skills, keywords)."
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "SPORTS",
+                "EDUCATION",
+                "CORPORATE",
+                "SOCIOCULTURAL"
+              ]
+            },
+            "description": "Filtro por categoria do evento."
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtro por estado/província."
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filtro por cidade."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Página (a partir de 1)."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50
+            },
+            "description": "Eventos por página (máx 50)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista paginada de eventos públicos com AI analysis.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PublicEventDto"
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "totalPages": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit excedido."
+          }
+        }
+      }
+    },
+    "/event/public-sitemap": {
+      "get": {
+        "tags": [
+          "Public Directory"
+        ],
+        "summary": "Sitemap de eventos públicos (sem auth)",
+        "description": "Endpoint leve devolvendo event_id + short_code + updated_at de todos os eventos publicamente elegíveis. Pensado pra crawlers (Googlebot) e SSG builds.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Lista compacta de eventos pro sitemap.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "event_id": {
+                            "type": "string"
+                          },
+                          "short_code": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/event/canonical-tags": {
+      "get": {
+        "tags": [
+          "Public Directory"
+        ],
+        "summary": "Buscar canonical tags (sem auth)",
+        "description": "Busca tags canônicas do sistema That's Me (skills/keywords padronizadas). Útil pra LLMs descobrirem o vocabulário taxonômico antes de fazer match com perfil do usuário. Rate limit: 30 req/min por IP.",
+        "security": [],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Termo de busca por nome da tag."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "maximum": 20
+            },
+            "description": "Resultados por chamada (máx 20)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de tags canônicas que casam com o termo.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/event/{id}/next-steps": {
+      "get": {
+        "tags": [
+          "Public Directory"
+        ],
+        "summary": "Próximos passos pra um evento (sem auth)",
+        "description": "Retorna sugestões agregadas de 'próximos passos' pra um evento, incluindo trilha de aprendizado (continuação, preparatório, aprofundamento, alternativo, sugestivo), conexões curadas pelo emissor e eventos similares (cross-issuer). Máx 20 itens. Pensado pra LLMs continuarem a conversa com o usuário recomendando próximos eventos coerentes com a jornada. Rate limit: 30 req/min por IP.",
+        "security": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Identificador do evento. Aceita short_code (ex: evt_a8Kq2) ou UUID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Próximos passos agrupados por tipo de relação.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "next_steps": {
+                      "type": "object",
+                      "properties": {
+                        "continuation": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        },
+                        "preparatory": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        },
+                        "deepening": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        },
+                        "alternative": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        },
+                        "suggestive": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        },
+                        "similar": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
