@@ -93,15 +93,20 @@ const data = await response.json();
   Emissões no Sandbox não enviam WhatsApp nem email reais.
 </Info>
 
-## Tiers de acesso
+## Acesso por plano
 
-| Plano | Tier API | Acesso | Rate limit |
-|---|---|---|---|
-| Free | — | Sem acesso à API (todas as chamadas retornam 403) | — |
-| Starter | Basic | Leitura (listar eventos, badges, destinatários, saldo) | 100 req/min |
-| Pro | Advanced | Leitura + escrita (emitir certificados, gerenciar eventos, webhooks) | 1.000 req/min |
-| Business | Advanced | Mesmo que Pro, com rate limit igual | 1.000 req/min |
-| Enterprise | Advanced | Mesmo que Pro, com rate limit elevado | 10.000 req/min (ajustável sob negociação) |
+A API é **a mesma em todos os planos**, inclusive no Free: leitura e escrita,
+emitir certificados, criar e gerenciar eventos, webhooks. O que muda entre os
+planos é a **cota de emissões por mês** — e o rate limit, que é proteção de
+infraestrutura, não recurso de plano.
+
+| Plano | Acesso à API | Emissões/mês | Rate limit |
+|---|---|---:|---|
+| Free | Completo (leitura + escrita) | 50 | 100 req/min |
+| Starter | Completo (leitura + escrita) | 200 | 1.000 req/min |
+| Pro | Completo (leitura + escrita) | 1.000 | 1.000 req/min |
+| Business | Completo (leitura + escrita) | 5.000 | 1.000 req/min |
+| Enterprise | Completo (leitura + escrita) | Negociado | 10.000 req/min (ajustável) |
 
 <Info>
   Rate limit é aplicado **por organização**, não por IP. Todas as suas API keys compartilham o mesmo balde.
