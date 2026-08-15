@@ -5,13 +5,19 @@ description: "O que cada plano inclui, os preços e como funciona o ciclo de cob
 
 ## Planos
 
-| Plano | Emissões/mês | Preço (BRL) | Preço (USD) | Tier API |
+| Plano | Emissões/mês | Preço (BRL) | Preço (USD) | API |
 |---|---:|---|---|---|
-| **Free** | 50 | R\$0 | \$0 | — |
-| **Starter** | 200 | R\$199/mês | \$39/mês | Basic |
-| **Pro** | 1.000 | R\$749/mês | \$129/mês | Advanced |
-| **Business** | 5.000 | R\$2.499/mês | \$449/mês | Advanced |
-| **Enterprise** | Negociado | Sob consulta | Sob consulta | Advanced |
+| **Free** | 50 | R\$0 | \$0 | Completa |
+| **Starter** | 200 | R\$199/mês | \$39/mês | Completa |
+| **Pro** | 1.000 | R\$749/mês | \$129/mês | Completa |
+| **Business** | 5.000 | R\$2.499/mês | \$449/mês | Completa |
+| **Enterprise** | Negociado | Sob consulta | Sob consulta | Completa |
+
+A **API é a mesma em todos os planos** — criar evento, emitir, consultar e
+receber webhooks, inclusive no Free. O que muda entre os planos é apenas a
+**cota de emissões por mês**. Não existe recurso de integração atrás de
+upgrade: se você emite 40 certificados por mês, dá para automatizar tudo sem
+pagar nada.
 
 O plano anual oferece **2 meses grátis**, o equivalente a um desconto de 17%. O valor é cobrado em um único pagamento anual.
 
